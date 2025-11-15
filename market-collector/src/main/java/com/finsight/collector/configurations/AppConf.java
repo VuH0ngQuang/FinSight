@@ -18,7 +18,7 @@ public class AppConf {
     @PostConstruct
     public void logConfig() {
         logger.info("===== Application Configuration =====");
-        logger.info("Cluster ID            : {}", clusterId);
+        logger.info("Cluster ID        : {}", clusterId);
         if (kafka != null) {
             logger.info("Kafka URLs        : {}", kafka.getUrls());
             logger.info("Kafka Topic       : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
