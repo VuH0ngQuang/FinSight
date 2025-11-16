@@ -1,0 +1,25 @@
+server:
+    port: 0
+
+app:
+    clusterId: ${CLUSTER_ID}
+    kafka:
+        urls: ${KAFKA_URLS:localhost:9092}
+        timeout: 15000
+        topic:
+        marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
+
+    mqtt:
+        url: ${MQTT_URL:tcp://localhost:1883}
+        username: ${MQTT_USERNAME:}
+        password: ${MQTT_PASSWORD:}
+        topic:
+        marketData: ${MQTT_TOPIC_MARKET_DATA:market-data}
+
+    dataFeed:
+        tokenUrl: ${DATAFEED_TOKENURL:wss://datafeed-lts-krx.dnse.com.vn:443/wss}
+        investorUrl: ${DATAFEED_INVERSTORURL}
+        websocketUrl: ${DATAFEED_WEBSOCKETURL}
+        username: ${DATAFEED_USERNAME:}
+        password: ${DATAFEED_PASSWORD:}
+        timeout: 15000
