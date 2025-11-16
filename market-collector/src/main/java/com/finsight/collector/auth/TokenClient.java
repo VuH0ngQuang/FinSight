@@ -35,7 +35,7 @@ public class TokenClient {
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(java.net.URI.create(appConf.getDataFeed().getUrl()))
+                .uri(java.net.URI.create(appConf.getDataFeed().getTokenUrl()))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(bodyString))
                 .build();
@@ -46,7 +46,25 @@ public class TokenClient {
             return json.get("token").asText();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new IOException("Token request interrupted", e);
+            throw new IOException("Interrupted while requesting token", e);
+        }
+    }
+
+    public String getInvestorId(String token) throws IOException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(java.net.URI.create(appConf.getDataFeed().getInvestorUrl()))
+                .header("Authorization", "Bearer " + token)
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            JsonNode json = mapper.readTree(response.body());
+            return json.get("investorId").asText();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IOException("Interrupted while requesting token", e);
         }
     }
 }

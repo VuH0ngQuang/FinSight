@@ -17,10 +17,9 @@ public class KafkaProducer extends KafkaService {
     public KafkaProducer(AppConf appConf) {
         super(appConf);
         this.appConf = appConf;
-        init();
-        publish("KafkaProducer initialized");
     }
-    
+
+    @PostConstruct
     public void init() {
         createDefaultTopic(appConf.getKafka().getTopic().getMarketData());
         connectProducer(appConf.getKafka().getUrls(), appConf.getClusterId());

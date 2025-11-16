@@ -6,9 +6,11 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import javax.net.ssl.SSLSocketFactory;
+
+@Service
 public class MqttService implements MqttCallback {
     private static final Logger logger = LoggerFactory.getLogger(MqttService.class);
     private final AppConf appConf;
@@ -38,6 +40,12 @@ public class MqttService implements MqttCallback {
 
         MqttConnectOptions options = new MqttConnectOptions();
         options.setCleanSession(true);
+
+        // Enable TLS automatically for WSS
+        if (brokerUrl.startsWith("wss://")) {
+            options.setSocketFactory(SSLSocketFactory.getDefault());
+        }
+
         if (username != null && password != null && !username.isBlank() && !password.isBlank()) {
             options.setUserName(username);
             options.setPassword(password.toCharArray());
@@ -111,5 +119,5 @@ public class MqttService implements MqttCallback {
     @Override
     public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {}
 
-    protected void handleIncomingMessage(String topic, String payload){};
+    protected void handleIncomingMessage(String topic, String payload){}
 }

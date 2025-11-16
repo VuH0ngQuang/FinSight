@@ -18,21 +18,23 @@ public class AppConf {
     @PostConstruct
     public void logConfig() {
         logger.info("===== Application Configuration =====");
-        logger.info("Cluster ID        : {}", clusterId);
+        logger.info("Cluster ID           : {}", clusterId);
         if (kafka != null) {
-            logger.info("Kafka URLs        : {}", kafka.getUrls());
-            logger.info("Kafka Topic       : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
+            logger.info("Kafka URLs           : {}", kafka.getUrls());
+            logger.info("Kafka Topic          : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
         }
         if (mqtt != null) {
-            logger.info("MQTT URL          : {}", mqtt.getUrl());
-            logger.info("MQTT Topic        : {}", mqtt.getTopic() != null ? mqtt.getTopic().getMarketData() : "(none)");
-            logger.info("MQTT username     : {}", mqtt.getUsername());
-            logger.info("MQTT password     : {}", mqtt.getPassword());
+            logger.info("MQTT URL             : {}", mqtt.getUrl());
+            logger.info("MQTT Topic           : {}", mqtt.getTopic() != null ? mqtt.getTopic().getMarketData() : "(none)");
+            logger.info("MQTT username        : {}", mqtt.getUsername());
+            logger.info("MQTT password        : {}", mqtt.getPassword());
         }
         if (dataFeed != null) {
-            logger.info("DataFeed URL      : {}", dataFeed.getUrl());
-            logger.info("DataFeed username : {}", dataFeed.getUsername());
-            logger.info("DataFeed password : {}", dataFeed.getPassword());
+            logger.info("DataFeed TokenURL    : {}", dataFeed.getTokenUrl());
+            logger.info("DataFeed InvestorURL : {}", dataFeed.getInvestorUrl());
+            logger.info("DataFeed WebSocketURL: {}", dataFeed.getWebsocketUrl());
+            logger.info("DataFeed username    : {}", dataFeed.getUsername());
+            logger.info("DataFeed password    : {}", dataFeed.getPassword());
             logger.info("=====================================");
         }
     }
@@ -64,9 +66,11 @@ public class AppConf {
 
     @Data
     public static class DataFeed {
-        private String url;
+        private String tokenUrl;
+        private String investorUrl;
+        private String websocketUrl;
         private String username;
         private String password;
-        private Integer timeout = 15000;
+
     }
 }

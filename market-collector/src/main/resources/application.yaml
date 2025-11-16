@@ -17,7 +17,9 @@ app:
       marketData: ${MQTT_TOPIC_MARKET_DATA:market-data}
 
   dataFeed:
-    url: ${DATAFEED_URL:wss://datafeed-lts-krx.dnse.com.vn:443/wss}
+    tokenUrl: ${DATAFEED_TOKENURL:wss://datafeed-lts-krx.dnse.com.vn:443/wss}
+    investorUrl: ${DATAFEED_INVERSTORURL}
+    websocketUrl: ${DATAFEED_WEBSOCKETURL}
     username: ${DATAFEED_USERNAME:}
     password: ${DATAFEED_PASSWORD:}
     timeout: 15000
