@@ -1,6 +1,7 @@
 package com.finsight.collector.configurations;
 
 import jakarta.annotation.PostConstruct;
+import lombok.Builder;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

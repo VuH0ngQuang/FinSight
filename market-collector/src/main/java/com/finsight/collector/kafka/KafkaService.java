@@ -1,6 +1,8 @@
 package com.finsight.collector.kafka;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finsight.collector.configurations.AppConf;
+import com.finsight.collector.model.Message;
 import jakarta.annotation.PreDestroy;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -20,11 +22,12 @@ import java.time.Duration;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Properties;
+import java.util.UUID;
 
 @Service
 public class KafkaService {
     private static final Logger logger = LoggerFactory.getLogger(KafkaService.class);
-
+    private ObjectMapper mapper;
     private final AppConf appConf;
     private KafkaProducer producer;
     private KafkaConsumer consumer;
@@ -34,8 +37,9 @@ public class KafkaService {
     private volatile boolean running = false;
 
     @Autowired
-    public KafkaService(AppConf appConf) {
+    public KafkaService(AppConf appConf, ObjectMapper mapper) {
         this.appConf = appConf;
+        this.mapper = mapper;
     }
 
     public void connectProducer(String bootstrapServers, String clientId) {
@@ -185,6 +189,22 @@ public class KafkaService {
             }
         } catch (Exception e) {
             logger.error("KAFKA producer close error: {}", e.getMessage());
+        }
+    }
+
+    public String toJson(String message, String uri) {
+        Message msg = Message.builder()
+                .sourceId(appConf.getClusterId())
+                .eventId(UUID.randomUUID().toString())
+                .uri(uri)
+                .payload(message)
+                .build();
+
+        try {
+            return mapper.writeValueAsString(msg);
+        } catch (Exception e) {
+            logger.error("KAFKA toJson error: {}", e.getMessage());
+            return "";
         }
     }
 
