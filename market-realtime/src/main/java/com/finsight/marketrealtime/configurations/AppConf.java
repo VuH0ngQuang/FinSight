@@ -38,7 +38,7 @@ public class AppConf {
     }
 
     @Data
-    public static  class Kafka {
+    public static class Kafka {
         private String urls;
         private Integer timeout = 15000;
         private String groupId;
@@ -46,12 +46,12 @@ public class AppConf {
     }
 
     @Data
-    public static  class KafkaTopic {
+    public static class KafkaTopic {
         private String marketData;
     }
 
     @Data
-    public static  class Mqtt {
+    public static class Mqtt {
         private String url;
         private String username;
         private String password;
