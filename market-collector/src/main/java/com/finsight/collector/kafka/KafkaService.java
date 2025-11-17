@@ -42,7 +42,7 @@ public class KafkaService {
         this.mapper = mapper;
     }
 
-    public void connectProducer(String bootstrapServers, String clientId) {
+    public void connectProducer(String bootstrapServers, String clientId, String groupId) {
         if (producer != null) {
             try {
                 producer.close();
@@ -55,7 +55,7 @@ public class KafkaService {
             Properties props = new Properties();
             props.put("bootstrap.servers", bootstrapServers);
             props.put("client.id", clientId);
-            props.put("group.id", StringSerializer.class.getName());
+            props.put("group.id", groupId);
             props.put("key.serializer", StringSerializer.class.getName());
             props.put("value.serializer", StringSerializer.class.getName());
 
@@ -101,6 +101,7 @@ public class KafkaService {
         try {
             Properties props = new Properties();
             props.put("bootstrap.servers", bootstrapServers);
+            props.put("client.id", appConf.getClusterId());
             props.put("group.id", groupId);
             props.put("key.deserializer", StringDeserializer.class.getName());
             props.put("value.deserializer", StringDeserializer.class.getName());
@@ -208,5 +209,5 @@ public class KafkaService {
         }
     }
 
-    protected void handleIncomingMessage(String topic, String key, String payload){};
+    protected void handleIncomingMessage(String topic, String key, String payload){}
 }

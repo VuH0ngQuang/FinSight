@@ -13,6 +13,7 @@ public class AppConf {
     private String clusterId;
     private Kafka kafka;
     private Mqtt mqtt;
+    private Database database;
 
     @PostConstruct
     public void logConfig() {
@@ -21,6 +22,7 @@ public class AppConf {
         if (kafka != null) {
             logger.info("Kafka URLs           : {}", kafka.getUrls());
             logger.info("Kafka Topic          : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
+            logger.info("Kafka GroupId        : {}", kafka.getGroupId());
         }
         if (mqtt != null) {
             logger.info("MQTT URL             : {}", mqtt.getUrl());
@@ -28,12 +30,18 @@ public class AppConf {
             logger.info("MQTT username        : {}", mqtt.getUsername());
             logger.info("MQTT password        : {}", mqtt.getPassword());
         }
+        if (database != null) {
+            logger.info("Database URL         : {}", database.getUrl());
+            logger.info("Database username    : {}", database.getUsername());
+            logger.info("Database password    : {}", database.getPassword());
+        }
     }
 
     @Data
     public static  class Kafka {
         private String urls;
         private Integer timeout = 15000;
+        private String groupId;
         private KafkaTopic topic;
     }
 
@@ -51,8 +59,15 @@ public class AppConf {
     }
 
     @Data
-    public static  class MqttTopic {
+    public static class MqttTopic {
         private String marketData;
+    }
+
+    @Data
+    public static class Database {
+        private String url;
+        private String username;
+        private String password;
     }
 }
 

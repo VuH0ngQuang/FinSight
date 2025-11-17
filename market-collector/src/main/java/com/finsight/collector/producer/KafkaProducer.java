@@ -28,7 +28,7 @@ public class KafkaProducer extends KafkaService {
     @PostConstruct
     public void init() {
         createDefaultTopic(appConf.getKafka().getTopic().getMarketData());
-        connectProducer(appConf.getKafka().getUrls(), appConf.getClusterId());
+        connectProducer(appConf.getKafka().getUrls(), appConf.getClusterId(), appConf.getKafka().getGroupId());
     }
 
     public void publish(String message ) {

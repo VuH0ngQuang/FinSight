@@ -1,6 +1,8 @@
 package com.finsight.marketrealtime.kafka;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finsight.marketrealtime.configurations.AppConf;
+import com.finsight.marketrealtime.model.Message;
 import jakarta.annotation.PreDestroy;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -20,11 +22,12 @@ import java.time.Duration;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Properties;
+import java.util.UUID;
 
 @Service
 public class KafkaService {
     private static final Logger logger = LoggerFactory.getLogger(KafkaService.class);
-
+    private final ObjectMapper mapper;
     private final AppConf appConf;
     private KafkaProducer producer;
     private KafkaConsumer consumer;
@@ -34,11 +37,12 @@ public class KafkaService {
     private volatile boolean running = false;
 
     @Autowired
-    public KafkaService(AppConf appConf) {
+    public KafkaService(AppConf appConf, ObjectMapper mapper) {
         this.appConf = appConf;
+        this.mapper = mapper;
     }
 
-    public void connectProducer(String bootstrapServers, String clientId) {
+    public void connectProducer(String bootstrapServers, String clientId, String groupId) {
         if (producer != null) {
             try {
                 producer.close();
@@ -51,7 +55,7 @@ public class KafkaService {
             Properties props = new Properties();
             props.put("bootstrap.servers", bootstrapServers);
             props.put("client.id", clientId);
-            props.put("group.id", StringSerializer.class.getName());
+            props.put("group.id", groupId);
             props.put("key.serializer", StringSerializer.class.getName());
             props.put("value.serializer", StringSerializer.class.getName());
 
@@ -97,6 +101,7 @@ public class KafkaService {
         try {
             Properties props = new Properties();
             props.put("bootstrap.servers", bootstrapServers);
+            props.put("client.id", appConf.getClusterId());
             props.put("group.id", groupId);
             props.put("key.deserializer", StringDeserializer.class.getName());
             props.put("value.deserializer", StringDeserializer.class.getName());
@@ -188,5 +193,21 @@ public class KafkaService {
         }
     }
 
-    protected void handleIncomingMessage(String topic, String key, String payload){};
+    public String toJson(String message, String uri) {
+        Message msg = Message.builder()
+                .sourceId(appConf.getClusterId())
+                .eventId(UUID.randomUUID().toString())
+                .uri(uri)
+                .payload(message)
+                .build();
+
+        try {
+            return mapper.writeValueAsString(msg);
+        } catch (Exception e) {
+            logger.error("KAFKA toJson error: {}", e.getMessage());
+            return "";
+        }
+    }
+
+    protected void handleIncomingMessage(String topic, String key, String payload){}
 }

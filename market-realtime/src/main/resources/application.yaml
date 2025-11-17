@@ -1,25 +1,28 @@
 server:
     port: 0
 
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 app:
     clusterId: ${CLUSTER_ID}
     kafka:
         urls: ${KAFKA_URLS:localhost:9092}
         timeout: 15000
+        groupId: ${KAFKA_GROUP_ID:market-collector}
         topic:
-        marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
+          marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
 
     mqtt:
         url: ${MQTT_URL:tcp://localhost:1883}
         username: ${MQTT_USERNAME:}
         password: ${MQTT_PASSWORD:}
         topic:
-        marketData: ${MQTT_TOPIC_MARKET_DATA:market-data}
+          marketData: ${MQTT_TOPIC_MARKET_DATA:market-data}
 
-    dataFeed:
-        tokenUrl: ${DATAFEED_TOKENURL:wss://datafeed-lts-krx.dnse.com.vn:443/wss}
-        investorUrl: ${DATAFEED_INVERSTORURL}
-        websocketUrl: ${DATAFEED_WEBSOCKETURL}
-        username: ${DATAFEED_USERNAME:}
-        password: ${DATAFEED_PASSWORD:}
-        timeout: 15000
+    database:
+      url: ${DB_HOST:localhost}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}

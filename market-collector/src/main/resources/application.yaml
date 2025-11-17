@@ -6,6 +6,7 @@ app:
   kafka:
     urls: ${KAFKA_URLS:localhost:9092}
     timeout: 15000
+    groupId: ${KAFKA_GROUP_ID:market-collector}
     topic:
       marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
 
