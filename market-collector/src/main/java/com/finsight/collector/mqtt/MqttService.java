@@ -39,7 +39,9 @@ public class MqttService implements MqttCallback {
         client.setCallback(this);
 
         MqttConnectOptions options = new MqttConnectOptions();
-        options.setCleanSession(true);
+        options.setCleanSession(false);
+        options.setMaxInflight(32768);
+        options.setAutomaticReconnect(true);
 
         // Enable TLS automatically for WSS
         if (brokerUrl.startsWith("wss://")) {
@@ -58,11 +60,11 @@ public class MqttService implements MqttCallback {
         } catch (MqttException e) {
             logger.error("MQTT {} got error: {}",brokerUrl,e.getMessage());
         }
-        try {
-            client.subscribe(defaultTopic);
-        } catch (MqttException e) {
-            logger.error("MQTT {} got error: {}",brokerUrl,e.getMessage());
-        }
+//        try {
+//            client.subscribe(defaultTopic);
+//        } catch (MqttException e) {
+//            logger.error("MQTT {} got error: {}",brokerUrl,e.getMessage());
+//        }
         logger.info("MQTT {} connected with clientId: {}", brokerUrl,clientId);
     }
 

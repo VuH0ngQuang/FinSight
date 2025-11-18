@@ -33,13 +33,17 @@ public class MqttListener extends MqttService {
 
     @PostConstruct
     public void init() throws IOException {
-        createDefaultTopic("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/ACB");
         String password = tokenClient.getToken();
         String username = tokenClient.getInvestorId(password);
         connect(appConf.getDataFeed().getWebsocketUrl(),
                 "<dnse-price-json-mqtt-ws-sub>-<>-<"+appConf.getClusterId()+">",
                 username,
                 password);
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/ACB");
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/VIX");
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/SHB");
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/HPG");
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/NVL");
     }
 
     @Override

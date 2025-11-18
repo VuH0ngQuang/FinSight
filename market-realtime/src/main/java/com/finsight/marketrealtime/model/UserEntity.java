@@ -33,5 +33,4 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     HashSet<Subscription> subscriptions;
-
 }

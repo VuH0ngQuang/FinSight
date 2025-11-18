@@ -1,5 +1,6 @@
 package com.finsight.marketrealtime.model;
 
+import com.finsight.marketrealtime.enums.SubscriptionEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,23 +16,16 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Subscription {
-    @EmbeddedId
-    private SubscriptionKey subscriptionId;
+    @Id
+    @Builder.Default
+    private UUID subscriptionId = UUID.randomUUID();
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private enum status { ACTIVE, EXPIRED, CANCELED }
+    public SubscriptionEnum status;
 
     @ManyToOne
     private UserEntity user;
 
     @ManyToOne
     private SubscriptionPlanEntity subscriptionPlan;
-
-
-    @Data
-    @Embeddable
-    public static class SubscriptionKey {
-        private UUID userId;
-        private int planId;
-    }
 }
