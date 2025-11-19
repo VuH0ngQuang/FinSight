@@ -10,6 +10,7 @@ import java.util.UUID;
 public class SubscriptionDto {
     private UUID subscriptionId;
     private UUID userId;
+    private int subscriptionPlanId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     public SubscriptionEnum status;

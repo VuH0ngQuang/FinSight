@@ -47,6 +47,15 @@ public class MqttListener extends MqttService {
     }
 
     @Override
+    public void connectionLost(Throwable cause) {
+        try {
+            init();
+        } catch (IOException e) {
+            logger.error("Error while initializing MQTT listener: {}",e.getMessage());
+        }
+    }
+
+    @Override
     protected void handleIncomingMessage(String topic, String message) {
         logger.info("Received MQTT message on topic {}: {}", topic, message);
         kafkaProducer.publish(message);

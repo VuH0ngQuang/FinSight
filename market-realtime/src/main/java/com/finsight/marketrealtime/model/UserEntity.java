@@ -26,11 +26,22 @@ public class UserEntity {
     private String phoneNumber;
     @Builder.Default
     private OffsetDateTime createdAt = OffsetDateTime.now(ZoneOffset.ofHours(7));
-    private int role;
+    private boolean isAdmin;
 
     @ManyToMany(mappedBy = "favoredByUsers")
     HashSet<StockEntity> favoriteStocks;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     HashSet<Subscription> subscriptions;
+
+    @OneToOne(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private AhpConfigEntity ahpConfig;
 }

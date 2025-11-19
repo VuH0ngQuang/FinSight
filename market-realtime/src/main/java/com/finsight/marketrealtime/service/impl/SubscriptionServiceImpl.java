@@ -2,8 +2,13 @@ package com.finsight.marketrealtime.service.impl;
 
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.SubscriptionDto;
+import com.finsight.marketrealtime.enums.SubscriptionEnum;
 import com.finsight.marketrealtime.model.Subscription;
+import com.finsight.marketrealtime.model.SubscriptionPlanEntity;
+import com.finsight.marketrealtime.model.UserEntity;
+import com.finsight.marketrealtime.repository.SubscriptionPlanRepository;
 import com.finsight.marketrealtime.repository.SubscriptionRepository;
+import com.finsight.marketrealtime.repository.UserRepository;
 import com.finsight.marketrealtime.service.SubscriptionService;
 
 import com.finsight.marketrealtime.utils.LockManager;
@@ -22,17 +27,60 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private static final Logger log = LoggerFactory.getLogger(SubscriptionServiceImpl.class);
     private final SubscriptionRepository subscriptionRepository;
     private final LockManager<UUID> lockManager;
+    private final UserRepository userRepository;
+    private final SubscriptionPlanRepository subscriptionPlanRepository;
 
     @Autowired
-    public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository, LockManager<UUID> lockManager) {
+    public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository,
+                                   LockManager<UUID> lockManager,
+                                   UserRepository userRepository,
+                                   SubscriptionPlanRepository subscriptionPlanRepository) {
         this.subscriptionRepository = subscriptionRepository;
         this.lockManager = lockManager;
+        this.userRepository = userRepository;
+        this.subscriptionPlanRepository = subscriptionPlanRepository;
     }
 
-    public ResponseDto<Subscription> getSubscriptions(UUID userId) {
-        return ResponseDto.<Subscription>builder().success(true).data(
-                subscriptionRepository.findFirstByUserUserIdOrderByEndDateDesc(userId)
-        ).build();
+    @Override
+    public ResponseDto createSubscription(SubscriptionDto subscriptionDto) {
+        Subscription subscription = new Subscription();
+        ReentrantLock lock = lockManager.getLock(subscription.getSubscriptionId());
+        lock.lock();
+        try {
+            subscription.setStartDate(subscriptionDto.getStartDate());
+            subscription.setEndDate(subscriptionDto.getEndDate());
+            subscription.setStatus(SubscriptionEnum.CANCELED);
+            UserEntity user;
+            SubscriptionPlanEntity subscriptionPlan;
+            try {
+                user = userRepository
+                        .findById(subscriptionDto.getUserId())
+                        .orElseThrow();
+            } catch (Exception e) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("User not found: "+subscriptionDto.getUserId().toString())
+                        .build();
+            }
+            try {
+                subscriptionPlan = subscriptionPlanRepository
+                        .findById(subscriptionDto.getSubscriptionPlanId())
+                        .orElseThrow();
+            } catch (Exception e) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Subscription plan not found")
+                        .build();
+            }
+            subscription.setUser(user);
+            subscription.setSubscriptionPlan(subscriptionPlan);
+            subscriptionRepository.save(subscription);
+            return ResponseDto.builder().success(true).build();
+        } finally {
+            lock.unlock();
+        }
     }
 
     public ResponseDto updateSubscription(SubscriptionDto dto) {
@@ -49,7 +97,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 return ResponseDto.builder()
                         .success(false)
                         .errorCode(404)
-                        .errorMessage("Subscription not found")
+                        .errorMessage("Subscription not found: "+dto.getSubscriptionId().toString())
                         .build();
             }
 
@@ -58,6 +106,32 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             if (dto.getStatus() != null) subscription.setStatus(dto.getStatus());
 
             subscriptionRepository.save(subscription);
+
+            return ResponseDto.builder().success(true).build();
+
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public ResponseDto deleteSubscription(UUID subscriptionId) {
+
+        ReentrantLock lock = lockManager.getLock(subscriptionId);
+
+        lock.lock();
+        try {
+            Subscription subscription = subscriptionRepository
+                    .findById(subscriptionId)
+                    .orElse(null);
+
+            if (subscription == null) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Subscription not found: "+subscriptionId.toString())
+                        .build();
+            }
+            subscriptionRepository.delete(subscription);
 
             return ResponseDto.builder().success(true).build();
 
