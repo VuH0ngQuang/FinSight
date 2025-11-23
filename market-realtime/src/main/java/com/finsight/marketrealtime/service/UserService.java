@@ -9,5 +9,5 @@ public interface UserService {
     ResponseDto createUser(UserDto userDto);
     ResponseDto updateUser(UserDto userDto);
     ResponseDto deleteUser(UUID userId);
-    ResponseDto updatePassword(UUID userId, String newPassword);
+    ResponseDto updatePassword(UserDto userDto);
 }

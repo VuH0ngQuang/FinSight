@@ -16,7 +16,8 @@ import java.util.UUID;
 public class AhpConfigEntity {
 
     @Id
-    private UUID ahpConfigId;
+    @Builder.Default
+    private UUID ahpConfigId = UUID.randomUUID();
 
     @OneToOne
     @JoinColumn(name = "userId")
@@ -24,11 +25,13 @@ public class AhpConfigEntity {
 
     // === DEFAULT: criteria list ===
     // ["DDM","DCFM","RI","PB","PE","PC","PS"]
+    @Builder.Default
     @Lob
     private String criteriaJson = "[\"DDM\",\"DCFM\",\"RI\",\"PB\",\"PE\",\"PC\",\"PS\"]";
 
     // === DEFAULT: AHP pairwise matrix (7x7 identity of 1's) ===
     // double[][] as JSON
+    @Builder.Default
     @Lob
     private String pairwiseMatrixJson =
             "[" +
@@ -43,6 +46,7 @@ public class AhpConfigEntity {
 
     // === DEFAULT: equal weights (1/7 each) ===
     // double[] as JSON
+    @Builder.Default
     @Lob
     private String weightsJson = "[0.142857, 0.142857, 0.142857, 0.142857, 0.142857, 0.142857, 0.142857]";
 

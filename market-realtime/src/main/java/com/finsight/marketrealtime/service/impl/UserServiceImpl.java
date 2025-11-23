@@ -114,21 +114,21 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public ResponseDto updatePassword(UUID userId, String newPassword) {
-        ReentrantLock lock = lockManager.getLock(userId);
+    public ResponseDto updatePassword(UserDto userDto) {
+        ReentrantLock lock = lockManager.getLock(userDto.getUserId());
         lock.lock();
         try {
             UserEntity userEntity = userRepository
-                    .findById(userId)
+                    .findById(userDto.getUserId())
                     .orElse(null);
 
             if (userEntity == null) return ResponseDto.builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("User not found: " + userId.toString()).
+                    errorMessage("User not found: " + userDto.getUserId().toString()).
                     build();
 
-            userEntity.setPassword(passwordEncoder.encode(newPassword));
+            userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
             userRepository.save(userEntity);
             return ResponseDto.builder().success(true).build();
         } finally {

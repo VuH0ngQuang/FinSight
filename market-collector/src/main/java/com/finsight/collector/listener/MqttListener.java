@@ -9,6 +9,7 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -32,7 +33,15 @@ public class MqttListener extends MqttService {
     }
 
     @PostConstruct
-    public void init() throws IOException {
+    public void init() {
+        try {
+            initConnection();
+        } catch (IOException e) {
+            logger.error("Error while initializing MQTT listener: {}",e.getMessage());
+        }
+    }
+
+    public void initConnection() throws IOException {
         String password = tokenClient.getToken();
         String username = tokenClient.getInvestorId(password);
         connect(appConf.getDataFeed().getWebsocketUrl(),
@@ -49,7 +58,7 @@ public class MqttListener extends MqttService {
     @Override
     public void connectionLost(Throwable cause) {
         try {
-            init();
+            initConnection();
         } catch (IOException e) {
             logger.error("Error while initializing MQTT listener: {}",e.getMessage());
         }
@@ -60,5 +69,11 @@ public class MqttListener extends MqttService {
         logger.info("Received MQTT message on topic {}: {}", topic, message);
         kafkaProducer.publish(message);
         mqttProducer.publish(message);
+    }
+
+    // Runs at 7:45 AM Monday–Friday
+    @Scheduled(cron = "0 45 8 * * MON-FRI")
+    private void scheduleReset() throws IOException {
+        initConnection();
     }
 }

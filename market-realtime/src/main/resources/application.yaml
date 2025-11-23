@@ -11,7 +11,7 @@ app:
     kafka:
         urls: ${KAFKA_URLS:localhost:9092}
         timeout: 15000
-        groupId: ${KAFKA_GROUP_ID:market-collector}
+        groupId: ${KAFKA_GROUP_ID:market-realtime}
         topic:
           marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
 
@@ -26,3 +26,26 @@ app:
       url: ${DB_HOST:localhost}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
+
+    uri:
+      user:
+        create: "/user/create"
+        update: "/user/update"
+        delete: "/user/delete"
+        updatePassword: "/user/updatePassword"
+      stock:
+        create: "/stock/create"
+        update: "/stock/update"
+        delete: "/stock/delete"
+        updateIndustryRatios: "/stock/updateIndustryRatios"
+        updateYearData: "/stock/updateYearData/"
+        updateMatchPrice: "/stock/updateMatchPrice/"
+      subscription:
+        create: "/subscription/create"
+        update: "/subscription/update"
+        delete: "/subscription/delete"
+      ahp-config:
+        create: "/ahpConfig/create"
+        update: "/ahpConfig/update"
+
+

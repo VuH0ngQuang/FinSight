@@ -20,6 +20,7 @@ public class StockEntity {
     @Id
     private String stockId;
     private String stockName;
+    private String sector;
     @Column(precision = 10, scale = 2)
     private BigDecimal matchPrice;
     @Column(precision = 10, scale = 4)
@@ -30,6 +31,14 @@ public class StockEntity {
     private BigDecimal pcfRatio;
     @Column(precision = 10, scale = 4)
     private BigDecimal psRatio;
+    @Column(precision = 10, scale = 4)
+    private BigDecimal industryPeRatio;
+    @Column(precision = 10, scale = 4)
+    private BigDecimal industryPbRatio;
+    @Column(precision = 10, scale = 4)
+    private BigDecimal industryPcfRatio;
+    @Column(precision = 10, scale = 4)
+    private BigDecimal industryPsRatio;
 
     @ElementCollection
     @CollectionTable(name = "stock_year_data", joinColumns =
@@ -48,18 +57,25 @@ public class StockEntity {
 
     @Embeddable
     @Data
-    private static class StockYearData{
-        public BigDecimal netIncome;
-        public BigDecimal totalEquity;
-        public BigDecimal intangibles;
-        public BigDecimal operatingCashFlow;
-        public BigDecimal freeCashFlow;
-        public BigDecimal revenue;
-        public BigDecimal dividendPerShare;
-        public Long sharesOutstanding;
-        public BigDecimal priceEndYear;
-        public BigDecimal costOfEquity;
-        public BigDecimal wacc;
-        public BigDecimal dividendGrowthRate;
+    public static class StockYearData{
+        private BigDecimal netIncome;
+        private BigDecimal totalEquity;
+        private BigDecimal intangibles;
+        private BigDecimal operatingCashFlow;
+        private BigDecimal freeCashFlow;
+        private BigDecimal revenue;
+        private BigDecimal dividendPerShare;
+        private Long sharesOutstanding;
+        private BigDecimal priceEndYear;
+        private BigDecimal costOfEquity;
+        private BigDecimal wacc;
+        private BigDecimal dividendGrowthRate;
+        private BigDecimal ddm;
+        private BigDecimal dcf;
+        private BigDecimal ri;
+        private BigDecimal pe;
+        private BigDecimal pbv;
+        private BigDecimal pcf;
+        private BigDecimal ps;
     }
 }

@@ -1,0 +1,24 @@
+How it works
+KafkaListener receives messages from Kafka and parses the JSON payload into a Message object.
+MessageRouterService routes based on the uri field:
+    /user/* → UserService methods
+    /stock/* → StockService methods
+    /subscription/* → SubscriptionService methods
+    /ahp-config/* → AhpConfigService methods
+The router deserializes the payload into the appropriate DTO and calls the corresponding service method.
+URI patterns supported
+    /user/create - Create user
+    /user/update - Update user
+    /user/delete/{userId} - Delete user
+    /user/update-password/{userId}/{newPassword} - Update password
+    /stock/create - Create stock
+    /stock/update - Update stock
+    /stock/delete - Delete stock
+    /stock/update-industry-ratios - Update industry ratios
+    /stock/update-year-data/{year}/{stockId} - Update stock year data
+    /stock/update-match-price/{stockId} - Update match price
+    /subscription/create - Create subscription
+    /subscription/update - Update subscription
+    /subscription/delete/{subscriptionId} - Delete subscription
+    /ahp-config/create - Create AHP config
+    /ahp-config/update - Update AHP config

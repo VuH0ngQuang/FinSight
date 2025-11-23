@@ -26,8 +26,8 @@ public class DatabaseConf {
         config.setUsername(appConf.getDatabase().getUsername());
         config.setPassword(appConf.getDatabase().getPassword());
         // --- Pool size ---
-        config.setMaximumPoolSize(10);  // how many concurrent connections max
-        config.setMinimumIdle(2);       // keep a couple idle ready
+        config.setMaximumPoolSize(20);  // how many concurrent connections max
+        config.setMinimumIdle(5);       // keep a couple idle ready
 
         // --- Timeouts ---
         // Close idle connections after 5 minutes

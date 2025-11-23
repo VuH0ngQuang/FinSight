@@ -26,7 +26,8 @@ public class UserEntity {
     private String phoneNumber;
     @Builder.Default
     private OffsetDateTime createdAt = OffsetDateTime.now(ZoneOffset.ofHours(7));
-    private boolean isAdmin;
+    @Builder.Default
+    private boolean isAdmin = false;
 
     @ManyToMany(mappedBy = "favoredByUsers")
     HashSet<StockEntity> favoriteStocks;

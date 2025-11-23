@@ -75,20 +75,43 @@ public class KafkaService {
     }
 
     public void send(String topic, String payload){
+        send(topic, null, payload);
+    }
+
+    public void send(String topic, String key, String payload){
         if (producer == null) {
             logger.error("KAFKA {} producer not initialized", topic);
             return;
         }
 
         try {
-            ProducerRecord<String, String> record = new ProducerRecord<>(topic, payload);
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, payload);
             producer.send(record, (RecordMetadata metadata, Exception exception) -> {
                 if (exception != null) {
                     logger.error("KAFKA {} got error: {}", topic, exception.getMessage());
+                } else {
+                    logger.debug("KAFKA message sent to topic {} with key {}", topic, key);
                 }
             });
         } catch (Exception e) {
             logger.error("KAFKA {} got error: {}", topic, e.getMessage());
+        }
+    }
+
+    public void sendResponse(String targetTopic, String key, Object responsePayload, String originalUri) {
+        try {
+            Message responseMessage = Message.builder()
+                    .sourceId(appConf.getClusterId())
+                    .eventId(UUID.randomUUID().toString())
+                    .uri(originalUri) // Keep the original URI for reference
+                    .payload(responsePayload)
+                    .build();
+            
+            String jsonPayload = mapper.writeValueAsString(responseMessage);
+            send(targetTopic, key, jsonPayload);
+            logger.info("Response sent to topic {} with key {}", targetTopic, key);
+        } catch (Exception e) {
+            logger.error("Error sending response to topic {}: {}", targetTopic, e.getMessage(), e);
         }
     }
 
