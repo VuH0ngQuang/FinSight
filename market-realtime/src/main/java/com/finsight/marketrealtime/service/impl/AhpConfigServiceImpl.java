@@ -59,7 +59,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
         } finally {
             lock.unlock();
         }
-        return null;
+        return ResponseDto.builder().success(true).build();
     }
 
     @Override
@@ -79,8 +79,10 @@ public class AhpConfigServiceImpl implements AhpConfigService {
                     build();
 
             if (ahpConfigDto.getCriteriaJson() != null) ahpConfig.setCriteriaJson(ahpConfigDto.getCriteriaJson());
-            if (ahpConfigDto.getPairwiseMatrixJson() != null) ahpConfig.setPairwiseMatrixJson(ahpConfigDto.getPairwiseMatrixJson());
-            if (ahpConfigDto.getWeightsJson() != null) ahpConfig.setWeightsJson(recalcWeights(ahpConfig));
+            if (ahpConfigDto.getPairwiseMatrixJson() != null) {
+                ahpConfig.setPairwiseMatrixJson(ahpConfigDto.getPairwiseMatrixJson());
+                ahpConfig.setWeightsJson(recalcWeights(ahpConfig));
+            }
 
             ahpConfigRepository.save(ahpConfig);
             return ResponseDto.builder().success(true).build();

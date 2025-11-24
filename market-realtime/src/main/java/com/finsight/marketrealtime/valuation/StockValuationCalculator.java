@@ -223,110 +223,91 @@ public class StockValuationCalculator {
     }
 
     /**
-     * Calculate P/E based valuation
-     * Formula: V₀ = EPS₁ × Industry P/E ratio
+     * Calculate P/E ratio (Price divided by Earnings per Share)
+     * Formula: PE = Market Price per Share / EPS
      */
-    public BigDecimal calculatePE(StockYearData data, BigDecimal industryPE) {
-        if (data.getNetIncome() == null || data.getSharesOutstanding() == null) {
-            logger.warn("Missing required data for P/E calculation");
+    public BigDecimal calculatePE(StockYearData data, BigDecimal unusedIndustryPE) {
+        if (data.getNetIncome() == null || data.getSharesOutstanding() == null || data.getPriceEndYear() == null) {
+            logger.warn("Missing required data for P/E ratio calculation");
             return null;
         }
 
-        // Calculate EPS
+        // EPS = Net income / shares
         BigDecimal eps = data.getNetIncome()
-            .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
+                .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
 
         if (eps.compareTo(BigDecimal.ZERO) <= 0) {
-            logger.warn("EPS is zero or negative, P/E valuation not applicable");
+            logger.warn("EPS is zero or negative, cannot compute P/E ratio");
             return null;
         }
 
-        // Estimate value using industry average P/E
-        if (industryPE != null && industryPE.compareTo(BigDecimal.ZERO) > 0) {
-            return eps.multiply(industryPE).setScale(2, RoundingMode.HALF_UP);
-        }
-
-        return null;
+        // PE = Price / EPS
+        return data.getPriceEndYear().divide(eps, 2, RoundingMode.HALF_UP);
     }
 
     /**
-     * Calculate P/B (Price-to-Book) based valuation
-     * Formula: V₀ = Book Value per Share × Industry P/B ratio
+     * Calculate P/BV ratio (Price-to-Tangible Book Value)
+     * Formula: PBV = Market Price per Share / Tangible Book Value per Share
      */
-    public BigDecimal calculatePBV(StockYearData data, BigDecimal industryPB) {
-        if (data.getTotalEquity() == null ||
-            data.getIntangibles() == null ||
-            data.getSharesOutstanding() == null) {
-            logger.warn("Missing required data for P/B calculation");
+    public BigDecimal calculatePBV(StockYearData data, BigDecimal unusedIndustryPB) {
+        if (data.getTotalEquity() == null || data.getIntangibles() == null ||
+            data.getSharesOutstanding() == null || data.getPriceEndYear() == null) {
+            logger.warn("Missing required data for P/BV ratio calculation");
             return null;
         }
 
-        // Calculate tangible book value
+        // Tangible BVPS = (Equity − Intangibles) / shares
         BigDecimal tangibleBookValue = data.getTotalEquity().subtract(data.getIntangibles());
-        BigDecimal bookValuePerShare = tangibleBookValue
-            .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
+        BigDecimal bvps = tangibleBookValue.divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
 
-        // Estimate value using industry average P/B
-        if (industryPB != null && industryPB.compareTo(BigDecimal.ZERO) > 0) {
-            return bookValuePerShare.multiply(industryPB).setScale(2, RoundingMode.HALF_UP);
+        if (bvps.compareTo(BigDecimal.ZERO) <= 0) {
+            logger.warn("Book value per share is zero or negative, cannot compute P/BV ratio");
+            return null;
         }
 
-        // Return book value per share if no industry multiple available
-        return bookValuePerShare.setScale(2, RoundingMode.HALF_UP);
+        return data.getPriceEndYear().divide(bvps, 2, RoundingMode.HALF_UP);
     }
 
     /**
-     * Calculate P/CF (Price-to-Cash Flow) based valuation
-     * Formula: V₀ = Cash Flow per Share × Industry P/CF ratio
+     * Calculate P/CF ratio (Price-to-Operating Cash Flow)
+     * Formula: PCF = Market Price per Share / Cash Flow per Share
      */
-    public BigDecimal calculatePCF(StockYearData data, BigDecimal industryPCF) {
-        if (data.getOperatingCashFlow() == null || data.getSharesOutstanding() == null) {
-            logger.warn("Missing required data for P/CF calculation");
+    public BigDecimal calculatePCF(StockYearData data, BigDecimal unusedIndustryPCF) {
+        if (data.getOperatingCashFlow() == null || data.getSharesOutstanding() == null || data.getPriceEndYear() == null) {
+            logger.warn("Missing required data for P/CF ratio calculation");
             return null;
         }
 
-        // Calculate operating cash flow per share
-        BigDecimal cashFlowPerShare = data.getOperatingCashFlow()
-            .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
+        BigDecimal cfps = data.getOperatingCashFlow()
+                .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
 
-        if (cashFlowPerShare.compareTo(BigDecimal.ZERO) <= 0) {
-            logger.warn("Cash flow per share is zero or negative");
+        if (cfps.compareTo(BigDecimal.ZERO) <= 0) {
+            logger.warn("Cash flow per share is zero or negative, cannot compute P/CF ratio");
             return null;
         }
 
-        // Estimate value using industry average P/CF
-        if (industryPCF != null && industryPCF.compareTo(BigDecimal.ZERO) > 0) {
-            return cashFlowPerShare.multiply(industryPCF).setScale(2, RoundingMode.HALF_UP);
-        }
-
-        return null;
+        return data.getPriceEndYear().divide(cfps, 2, RoundingMode.HALF_UP);
     }
 
     /**
-     * Calculate P/S (Price-to-Sales) based valuation
-     * Formula: V₀ = Sales per Share × Industry P/S ratio
+     * Calculate P/S ratio (Price-to-Sales)
+     * Formula: PS = Market Price per Share / Sales per Share
      */
-    public BigDecimal calculatePS(StockYearData data, BigDecimal industryPS) {
-        if (data.getRevenue() == null || data.getSharesOutstanding() == null) {
-            logger.warn("Missing required data for P/S calculation");
+    public BigDecimal calculatePS(StockYearData data, BigDecimal unusedIndustryPS) {
+        if (data.getRevenue() == null || data.getSharesOutstanding() == null || data.getPriceEndYear() == null) {
+            logger.warn("Missing required data for P/S ratio calculation");
             return null;
         }
 
-        // Calculate sales (revenue) per share
-        BigDecimal salesPerShare = data.getRevenue()
-            .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
+        BigDecimal sps = data.getRevenue()
+                .divide(new BigDecimal(data.getSharesOutstanding()), 4, RoundingMode.HALF_UP);
 
-        if (salesPerShare.compareTo(BigDecimal.ZERO) <= 0) {
-            logger.warn("Sales per share is zero or negative");
+        if (sps.compareTo(BigDecimal.ZERO) <= 0) {
+            logger.warn("Sales per share is zero or negative, cannot compute P/S ratio");
             return null;
         }
 
-        // Estimate value using industry average P/S
-        if (industryPS != null && industryPS.compareTo(BigDecimal.ZERO) > 0) {
-            return salesPerShare.multiply(industryPS).setScale(2, RoundingMode.HALF_UP);
-        }
-
-        return null;
+        return data.getPriceEndYear().divide(sps, 2, RoundingMode.HALF_UP);
     }
 
     /**

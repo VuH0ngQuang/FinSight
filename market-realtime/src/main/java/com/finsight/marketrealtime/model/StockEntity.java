@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Data
 @Entity
@@ -53,7 +54,7 @@ public class StockEntity {
             joinColumns = @JoinColumn(name = "stockId"),
             inverseJoinColumns = @JoinColumn(name = "userId")
     )
-    HashSet<UserEntity> favoredByUsers;
+    Set<UserEntity> favoredByUsers;
 
     @Embeddable
     @Data

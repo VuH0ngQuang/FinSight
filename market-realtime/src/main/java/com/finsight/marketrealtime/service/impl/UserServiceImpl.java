@@ -1,9 +1,12 @@
 package com.finsight.marketrealtime.service.impl;
 
+import com.finsight.marketrealtime.dto.AhpConfigDto;
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.UserDto;
+import com.finsight.marketrealtime.model.AhpConfigEntity;
 import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.UserRepository;
+import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.service.UserService;
 import com.finsight.marketrealtime.utils.LockManager;
 import org.slf4j.Logger;
@@ -22,11 +25,15 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final UserRepository userRepository;
     private final LockManager<UUID> lockManager;
+    private final AhpConfigService ahpConfigService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, LockManager<UUID> lockManager) {
+    public UserServiceImpl(UserRepository userRepository,
+                           LockManager<UUID> lockManager,
+                           AhpConfigService ahpConfigService) {
         this.userRepository = userRepository;
         this.lockManager = lockManager;
+        this.ahpConfigService = ahpConfigService;
     }
 
     @Override
@@ -47,6 +54,9 @@ public class UserServiceImpl implements UserService {
                 userEntity.setEmail(userDto.getEmail());
                 userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
                 userEntity.setPhoneNumber(userDto.getPhoneNumber());
+                AhpConfigEntity ahpConfigEntity = new AhpConfigEntity();
+                ahpConfigEntity.setUser(userEntity);
+                userEntity.setAhpConfig(ahpConfigEntity);
                 userRepository.save(userEntity);
                 return ResponseDto.builder().success(true).build();
             } finally {
@@ -77,10 +87,12 @@ public class UserServiceImpl implements UserService {
                     errorMessage("Username or Email already exists").
                     build();
 
-            userEntity.setUsername(userDto.getUsername());
-            userEntity.setEmail(userDto.getEmail());
-            userEntity.setPhoneNumber(userDto.getPhoneNumber());
-
+            if (userDto.getUsername() != null)
+                userEntity.setUsername(userDto.getUsername());
+            if (userDto.getEmail() != null)
+                userEntity.setEmail(userDto.getEmail());
+            if (userDto.getPhoneNumber() != null)
+                userEntity.setPhoneNumber(userDto.getPhoneNumber());
             userRepository.save(userEntity);
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -94,7 +106,7 @@ public class UserServiceImpl implements UserService {
         lock.lock();
         try {
             UserEntity userEntity = userRepository
-                    .findById(userId)
+                    .findByIdWithFavoriteStocks(userId)
                     .orElse(null);
 
             if (userEntity == null) return ResponseDto.builder().
@@ -103,9 +115,11 @@ public class UserServiceImpl implements UserService {
                     errorMessage("User not found: " + userId.toString()).
                     build();
 
-            userEntity.getFavoriteStocks()
-                    .forEach(stock -> stock.getFavoredByUsers().remove(userEntity));
-            userEntity.getFavoriteStocks().clear();
+            if (userEntity.getFavoriteStocks() != null) {
+                userEntity.getFavoriteStocks()
+                        .forEach(stock -> stock.getFavoredByUsers().remove(userEntity));
+                userEntity.getFavoriteStocks().clear();
+            }
 
             userRepository.deleteById(userId);
             return ResponseDto.builder().success(true).build();
@@ -137,6 +151,8 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean existsByUsernameAndEmail(String username, String email) {
-        return userRepository.existsByUsername(username) || userRepository.existsByEmail(email);
+        boolean usernameExists = (username != null) && userRepository.existsByUsername(username);
+        boolean emailExists = (email != null) && userRepository.existsByEmail(email);
+        return usernameExists || emailExists;
     }
 }

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class StockYearDataDto {
+    private String stockId;
     private BigDecimal netIncome;
     private BigDecimal totalEquity;
     private BigDecimal intangibles;

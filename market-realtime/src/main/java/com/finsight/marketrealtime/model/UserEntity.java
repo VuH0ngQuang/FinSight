@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Builder
@@ -30,14 +31,14 @@ public class UserEntity {
     private boolean isAdmin = false;
 
     @ManyToMany(mappedBy = "favoredByUsers")
-    HashSet<StockEntity> favoriteStocks;
+    Set<StockEntity> favoriteStocks;
 
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    HashSet<Subscription> subscriptions;
+    Set<Subscription> subscriptions;
 
     @OneToOne(
             mappedBy = "user",

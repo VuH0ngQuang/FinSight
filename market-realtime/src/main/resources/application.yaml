@@ -38,14 +38,17 @@ app:
         update: "/stock/update"
         delete: "/stock/delete"
         updateIndustryRatios: "/stock/updateIndustryRatios"
-        updateYearData: "/stock/updateYearData/"
         updateMatchPrice: "/stock/updateMatchPrice/"
       subscription:
         create: "/subscription/create"
         update: "/subscription/update"
         delete: "/subscription/delete"
-      ahp-config:
+      ahpConfig:
         create: "/ahpConfig/create"
         update: "/ahpConfig/update"
+      stockYearData:
+        create: "/stockYearData/create"
+        update: "/stockYearData/update/"
+        delete: "/stockYearData/delete"
 
 

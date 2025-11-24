@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -51,6 +52,7 @@ public class StockServiceImpl implements StockService {
         try {
             stockEntity.setStockId(stockDto.getStockId());
             stockEntity.setStockName(stockDto.getStockName());
+            stockEntity.setSector(stockDto.getSector());
             stockRepository.save(stockEntity);
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -85,7 +87,8 @@ public class StockServiceImpl implements StockService {
         ReentrantLock lock = lockManager.getLock(stockDto.getStockId());
         lock.lock();
         try {
-            StockEntity stockEntity = stockRepository.findById(stockDto.getStockId()).orElse(null);
+            // Use the new method that eagerly loads favoredByUsers
+            StockEntity stockEntity = stockRepository.findByIdWithFavoredByUsers(stockDto.getStockId()).orElse(null);
             if (stockEntity == null) return ResponseDto.
                     builder().
                     success(false).
@@ -93,9 +96,11 @@ public class StockServiceImpl implements StockService {
                     errorMessage("Stock not found").
                     build();
 
-            stockEntity.getFavoredByUsers().
-                    forEach(user -> user.getFavoriteStocks().remove(stockEntity));
-            stockEntity.getFavoredByUsers().clear();
+            if (stockEntity.getFavoredByUsers() != null) {
+                stockEntity.getFavoredByUsers().
+                        forEach(user -> user.getFavoriteStocks().remove(stockEntity));
+                stockEntity.getFavoredByUsers().clear();
+            }
 
             stockRepository.delete(stockEntity);
             return ResponseDto.builder().success(true).build();
@@ -105,11 +110,12 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
+    @Transactional
     public ResponseDto updateStockYearData(StockYearDataDto stockYearDataDto,int year, String stockId) {
         ReentrantLock lock = lockManager.getLock(stockId+year);
         lock.lock();
         try {
-            StockEntity stockEntity = stockRepository.findById(stockId).orElse(null);
+            StockEntity stockEntity = stockRepository.findByIdWithYearData(stockId).orElse(null);
             if (stockEntity == null) return ResponseDto.
                     builder().
                     success(false).

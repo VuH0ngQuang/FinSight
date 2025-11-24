@@ -89,6 +89,11 @@ public class MessageRouterService {
                 UserDto userDto = mapPayloadToDto(payload, UserDto.class);
                 return routeUserMessage(uri, userDto);
             }
+            // StockYearData service routes (check before /stock since /stockYearData starts with /stock)
+            else if (uri.startsWith("/stockYearData")) {
+                StockYearDataDto stockYearDataDto = mapPayloadToDto(payload, StockYearDataDto.class);
+                return routeYearDataMessage(uri, stockYearDataDto);
+            }
             // Stock service routes
             else if (uri.startsWith("/stock")) {
                 StockDto stockDto = mapPayloadToDto(payload, StockDto.class);
@@ -103,8 +108,7 @@ public class MessageRouterService {
             else if (uri.startsWith("/ahpConfig")) {
                 AhpConfigDto ahpConfigDto = mapPayloadToDto(payload, AhpConfigDto.class);
                 return routeAhpConfigMessage(uri, ahpConfigDto);
-            }
-            else {
+            } else {
                 logger.warn("Unknown URI pattern: {}", uri);
                 return ResponseDto.builder()
                         .success(false)
@@ -131,14 +135,6 @@ public class MessageRouterService {
                 return userService.updateUser(payload);
             }
             else if (uri.startsWith(appConf.getUri().getUser().getDelete())) {
-                if (payload == null || payload.getUserId() == null) {
-                    logger.warn("User ID is required for delete operation");
-                    return ResponseDto.builder()
-                            .success(false)
-                            .errorCode(400)
-                            .errorMessage("User ID is required for delete operation")
-                            .build();
-                }
                 return userService.deleteUser(payload.getUserId());
             }
             else if (uri.startsWith(appConf.getUri().getUser().getUpdatePassword())) {
@@ -185,23 +181,7 @@ public class MessageRouterService {
             else if (uri.equals(appConf.getUri().getStock().getUpdateIndustryRatios())) {
                 return stockService.updateIndustryRatios(payload);
             }
-            else if (uri.startsWith(appConf.getUri().getStock().getUpdateYearData()+"/")) {
-                // Format: /stock/updateYearData/{year}
-                String[] parts = uri.substring("/stock/updateYearData/".length()).split("/");
-                if (parts.length == 2) {
-                    int year = Integer.parseInt(parts[0]);
-                    StockYearDataDto stockYearDataDto = mapPayloadToDto(payload.getStockYearData(), StockYearDataDto.class);
-                    return stockService.updateStockYearData(stockYearDataDto, year, payload.getStockId());
-                } else {
-                    logger.warn("Invalid URI format for updateYearData: {}", uri);
-                    return ResponseDto.builder()
-                            .success(false)
-                            .errorCode(400)
-                            .errorMessage("Invalid URI format for updateYearData. Expected: /stock/updateYearData/{year}")
-                            .build();
-                }
-            }
-            else if (uri.startsWith("/stock/updateMatchPrice")) {
+            else if (uri.startsWith(appConf.getUri().getStock().getUpdateMatchPrice())) {
                 stockService.updateMatchPrice(payload.getStockId(), payload.getMatchPrice());
                 return ResponseDto.builder()
                         .success(true)
@@ -276,6 +256,41 @@ public class MessageRouterService {
                     .success(false)
                     .errorCode(500)
                     .errorMessage("Error processing AHP config message: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    private ResponseDto routeYearDataMessage(String uri, StockYearDataDto payload) {
+        try {
+            if (uri.startsWith(appConf.getUri().getStockYearData().getUpdate())) {
+                // Format: /stockYearData/update/{year}
+                String yearPart = uri.substring("/stockYearData/update/".length());
+                if (!yearPart.isEmpty()) {
+                    int year = Integer.parseInt(yearPart);
+                    return stockService.updateStockYearData(payload, year, payload.getStockId());
+                } else {
+                    logger.warn("Invalid URI format for updateYearData: {}", uri);
+                    return ResponseDto.builder()
+                            .success(false)
+                            .errorCode(400)
+                            .errorMessage("Invalid URI format for updateYearData. Expected: /stockYearData/update/{year}")
+                            .build();
+                }
+            }
+            else {
+                logger.warn("Unknown year data URI: {}", uri);
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Unknown year data URI: " + uri)
+                        .build();
+            }
+        } catch (Exception e) {
+            logger.error("Error processing year data message with URI {}: {}", uri, e.getMessage(), e);
+            return ResponseDto.builder()
+                    .success(false)
+                    .errorCode(500)
+                    .errorMessage("Error processing year data message: " + e.getMessage())
                     .build();
         }
     }

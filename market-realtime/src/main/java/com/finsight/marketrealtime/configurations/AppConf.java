@@ -40,7 +40,6 @@ public class AppConf {
             logger.info("Stock Update URI      : {}", uri.getStock().getUpdate());
             logger.info("Stock Delete URI      : {}", uri.getStock().getDelete());
             logger.info("Stock UpdateIndustry  : {}", uri.getStock().getUpdateIndustryRatios());
-            logger.info("Stock UpdateYearData  : {}", uri.getStock().getUpdateYearData());
             logger.info("Stock UpdateMatchPrice: {}", uri.getStock().getUpdateMatchPrice());
 
             logger.info("Subscription Create   : {}", uri.getSubscription().getCreate());
@@ -49,6 +48,10 @@ public class AppConf {
 
             logger.info("AHP Config Create     : {}", uri.getAhpConfig().getCreate());
             logger.info("AHP Config Update     : {}", uri.getAhpConfig().getUpdate());
+
+            logger.info("StockYearData Create  : {}", uri.getStockYearData().getCreate());
+            logger.info("StockYearData Update  : {}", uri.getStockYearData().getUpdate());
+            logger.info("StockYearData Delete  : {}", uri.getStockYearData().getDelete());
         }
         logger.info("=====================================");
     }
@@ -85,6 +88,7 @@ public class AppConf {
         private Stock stock;
         private Subscription subscription;
         private AhpConfig ahpConfig;
+        private StockYearData stockYearData;
     }
 
     @Data
@@ -101,7 +105,6 @@ public class AppConf {
         private String update;
         private String delete;
         private String updateIndustryRatios;
-        private String updateYearData;
         private String updateMatchPrice;
     }
 
@@ -116,6 +119,13 @@ public class AppConf {
     public static class AhpConfig {
         private String create;
         private String update;
+    }
+
+    @Data
+    public static class StockYearData {
+        private String create;
+        private String update;
+        private String delete;
     }
 }
 

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface StockRepository extends JpaRepository<StockEntity, String> {
@@ -25,4 +26,10 @@ public interface StockRepository extends JpaRepository<StockEntity, String> {
           )
         """)
     StockEntity.StockYearData findLatestYearDataByStockId(@Param("stockId") String stockId);
+
+    @Query("SELECT s FROM StockEntity s LEFT JOIN FETCH s.favoredByUsers WHERE s.stockId = :stockId")
+    Optional<StockEntity> findByIdWithFavoredByUsers(@Param("stockId") String stockId);
+
+    @Query("SELECT s FROM StockEntity s LEFT JOIN FETCH s.yearData WHERE s.stockId = :stockId")
+    Optional<StockEntity> findByIdWithYearData(@Param("stockId") String stockId);
 }
