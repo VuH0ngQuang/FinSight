@@ -53,6 +53,7 @@ public class MqttListener extends MqttService {
         subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/SHB");
         subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/HPG");
         subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/NVL");
+        subscribe("plaintext/quotes/krx/mdds/tick/v1/roundlot/symbol/VCB");
     }
 
     @Override
