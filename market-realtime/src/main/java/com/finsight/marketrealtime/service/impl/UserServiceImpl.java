@@ -101,18 +101,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseDto deleteUser(UUID userId) {
-        ReentrantLock lock = lockManager.getLock(userId);
+    public ResponseDto deleteUser(UserDto userDto) {
+        ReentrantLock lock = lockManager.getLock(userDto.getUserId());
         lock.lock();
         try {
             UserEntity userEntity = userRepository
-                    .findByIdWithFavoriteStocks(userId)
+                    .findByIdWithFavoriteStocks(userDto.getUserId())
                     .orElse(null);
 
             if (userEntity == null) return ResponseDto.builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("User not found: " + userId.toString()).
+                    errorMessage("User not found: " + userDto.getUserId().toString()).
                     build();
 
             if (userEntity.getFavoriteStocks() != null) {
@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
                 userEntity.getFavoriteStocks().clear();
             }
 
-            userRepository.deleteById(userId);
+            userRepository.deleteById(userDto.getUserId());
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();

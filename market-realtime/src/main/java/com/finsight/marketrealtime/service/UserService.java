@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface UserService {
     ResponseDto createUser(UserDto userDto);
     ResponseDto updateUser(UserDto userDto);
-    ResponseDto deleteUser(UUID userId);
+    ResponseDto deleteUser(UserDto userDto);
     ResponseDto updatePassword(UserDto userDto);
 }

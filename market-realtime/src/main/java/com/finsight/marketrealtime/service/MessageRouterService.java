@@ -135,7 +135,7 @@ public class MessageRouterService {
                 return userService.updateUser(payload);
             }
             else if (uri.startsWith(appConf.getUri().getUser().getDelete())) {
-                return userService.deleteUser(payload.getUserId());
+                return userService.deleteUser(payload);
             }
             else if (uri.startsWith(appConf.getUri().getUser().getUpdatePassword())) {
                 if (payload != null) {
