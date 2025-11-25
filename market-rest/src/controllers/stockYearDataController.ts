@@ -36,7 +36,9 @@ export const getStockYearData = async (req: Request, res: Response): Promise<voi
 export const createStockYearData = async (req: Request, res: Response): Promise<void> => {
   try {
     const stockYearDataPayload = req.body as StockYearDataDto;
-    const result = await stockYearDataQueueService.createStockYearData(stockYearDataPayload)
+    const result = await stockYearDataQueueService.createStockYearData(stockYearDataPayload);
+    const statusCode = result.success ? 201 : 400;
+    res.status(statusCode).json(result);
   } catch(error) {
     // eslint-disable-next-line no-console
     console.error('Failed to create stock year data', error);
@@ -48,7 +50,16 @@ export const updateStockYearData = async (req: Request, res: Response): Promise<
   try {
     const { year } = req.params;
     const stockYearDataPayload = req.body as StockYearDataDto;
-    const result = await stockYearDataQueueService.updateStockYearData(stockYearDataPayload, year);
+    const parsedYear = Number(year);
+
+    if (Number.isNaN(parsedYear)) {
+      res.status(400).json({ message: 'year must be a number' });
+      return;
+    }
+
+    const result = await stockYearDataQueueService.updateStockYearData(stockYearDataPayload, parsedYear);
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
   } catch(error) {
     // eslint-disable-next-line no-console
     console.error('Failed to update stock year data', error);
@@ -60,6 +71,8 @@ export const deleteStockYearData = async (req: Request, res: Response): Promise<
   try {
     const stockYearDataPayload = req.body as StockYearDataDto;
     const result = await stockYearDataQueueService.deleteStockYearData(stockYearDataPayload);
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
   } catch(error) {
     // eslint-disable-next-line no-console
     console.error('Failed to delete stock year data', error);
