@@ -13,6 +13,7 @@ import com.finsight.marketrealtime.valuation.StockValuationCalculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -187,18 +188,38 @@ public class StockServiceImpl implements StockService {
                 return;
             }
 
-            // update price first
+            // update price only
             stockEntity.setMatchPrice(matchPrice);
+            stockRepository.save(stockEntity);
+
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void recalculateValuationsForStock(String stockId) {
+        ReentrantLock lock = lockManager.getLock(stockId);
+        lock.lock();
+        try {
+            StockEntity stockEntity = stockRepository.findById(stockId).orElse(null);
+            if (stockEntity == null) {
+                logger.error("Cannot find stock to recalculate valuations: {}", stockId);
+                return;
+            }
+
+            if (stockEntity.getMatchPrice() == null) {
+                logger.warn("Stock {} has no match price, skipping valuation recalculation", stockId);
+                return;
+            }
 
             // get latest fundamental year data
             StockEntity.StockYearData latestYearData = stockRepository.findLatestYearDataByStockId(stockId);
             if (latestYearData == null) {
-                logger.error("No year data found for stock {} to recalculate valuations", stockId);
-                stockRepository.save(stockEntity); // at least persist the new price
+                logger.warn("No year data found for stock {} to recalculate valuations", stockId);
                 return;
             }
 
-            BigDecimal price  = stockEntity.getMatchPrice();
+            BigDecimal price = stockEntity.getMatchPrice().multiply(BigDecimal.valueOf(1000));
             BigDecimal shares = BigDecimal.valueOf(latestYearData.getSharesOutstanding());
 
             // PE
@@ -268,6 +289,26 @@ public class StockServiceImpl implements StockService {
         } finally {
             lock.unlock();
         }
+    }
+
+    @Scheduled(cron = "0 0 15 * * MON-FRI")
+    public void recalculateValuationsForAllStocks() {
+        logger.info("Starting valuation recalculation for all stocks");
+        List<StockEntity> allStocks = stockRepository.findAll();
+        int successCount = 0;
+        int failureCount = 0;
+
+        for (StockEntity stock : allStocks) {
+            try {
+                recalculateValuationsForStock(stock.getStockId());
+                successCount++;
+            } catch (Exception e) {
+                logger.error("Failed to recalculate valuations for stock {}", stock.getStockId(), e);
+                failureCount++;
+            }
+        }
+
+        logger.info("Completed valuation recalculation: {} succeeded, {} failed", successCount, failureCount);
     }
 
 

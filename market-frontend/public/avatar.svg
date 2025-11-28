@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="11in" height="8.5in" viewBox="0 0 2200 1700" role="img" aria-labelledby="title desc">
+  <title id="title">Narwhal</title>
+  <desc id="desc">Illustration of a narwhal in cute kawaii style, drawn by Alvaro Montoro</desc>
+  <defs>
+    <linearGradient id="sea-gradient"  x1="0" x2="0" y1="0" y2="1">
+        <stop stop-color="#569aaa00" offset="10%" />
+        <stop stop-color="#569aaacc" offset="90%" />
+    </linearGradient>
+    <filter id="blur5">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+    <filter id="blur80">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="80" />
+    </filter>
+  </defs>
+  <path d="M0,0 2200,0 2200,1700 0,1700Z" fill="#a5c9d1" />
+  <ellipse cx="1500" cy="-100" rx="1200" ry="500" fill="#ffe2" filter="url(#blur80)" />
+  <path id="rays" filter="url(#blur5)" fill="#fff1" d="M 1287.00,-78.00 -108.00,597.00 -177.00,975.00 1596.00,-186.00 1638.00,-168.00 -411.00,1761.00 453.00,1551.00 1755.00,-264.00" />
+  <path d="M0,0 2200,0 2200,1700 0,1700Z" fill="url(#sea-gradient)" />
+  <circle cx="780" cy="580" r="45" fill="#fff3"/>
+  <circle cx="720" cy="520" r="25" fill="#fff3"/>
+  <circle cx="770" cy="465" r="35" fill="#fff3"/>
+  <svg xmlns="http://www.w3.org/2000/svg" x="500" y="400" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+    <defs>
+      <clipPath id="body-clip">
+        <path d="M 980,398 C 1007,343 1077,265 1131,271 1133,271 1058,484 1058,484 1058,484 1109,629 1109,629 1083,626 1028,617 980,528 947,643 799,732 647,748 261,778 69,497 251,305 253,299 250,297 272,282 403,154 847,101 980,397" />
+      </clipPath>
+      <clipPath id="fin-clip">
+        <path d="M 783,632 C 783,632 882,846 882,846 882,846 728,930 601,687" />
+      </clipPath>
+      <clipPath id="tusk-clip">
+        <path d="M 65,61 C 147,131 336,365 349,380 362,395 345,414 327,394 309,374 75,97 65,61" />
+      </clipPath>
+      <linearGradient id="body-gradient"  x1="0" x2="0" y1="0" y2="1">
+        <stop stop-color="#99aacc" offset="20%" />
+        <stop stop-color="#8899bb" offset="70%" />
+      </linearGradient>
+    </defs>
+    <path id="fin-back-dark" fill="#000" d="M 563,621 C 563,621 461,861 461,861 461,861 289,805 340,591" />
+    <path id="fin-back" fill="#6d7a95" d="M 508,713 C 508,713 455,845 455,845 455,845 357,819 337,625" />
+    <path id="body-dark" fill="#000" d="M 980,363 C 1044,250 1129,254 1151,262 1150,264 1070,488 1070,488 1070,488 1126,637 1126,637 1126,637 1043,664 980,568 891,715 812,710 740,743 220,847 39,466 250,281 399,141 827,91 981,364" />
+    <path id="body" fill="url(#body-gradient)" d="M 980,398 C 1007,343 1077,265 1131,271 1133,271 1058,484 1058,484 1058,484 1109,629 1109,629 1083,626 1028,617 980,528 947,643 799,732 647,748 261,778 69,497 251,305 253,299 250,297 272,282 403,154 847,101 980,397" />
+    <path id="tummy" fill="#a8b4ce" clip-path="url(#body-clip)" d="M 208,704 C 310,647 677,633 808,797 965,895 322,823 321,823" />
+    <path id="body-light" fill="rgba(255,255,255,0.2)" clip-path="url(#body-clip)" d="M 173,437 C 329,71 879,162 980,397 1065,278 1126,272 1160,277 1189,298 1109,48 1109,48 1109,48 70,127 70,127" />
+    <path id="body-shadow" fill="rgba(0,0,0,0.05)" clip-path="url(#body-clip)" d="M 147,445 C 276,875 915,768 976,523 1007,574 1072,633 1131,614 1190,595 1137,852 1136,852 1135,852 151,834 151,834" />
+    <path id="fin-front-dark" fill="#000" d="M 783,632 C 783,632 882,846 882,846 882,846 728,930 601,687" />
+    <path id="fin-front" fill="#8899bb" d="M 770,627 C 770,627 867,838 867,838 867,838 715,885 612,670" />
+    <path id="fin-front-shadow" clip-path="url(#fin-clip)" fill="rgba(0,0,0,0.1)" d="M 870,827 C 831,843 696,827 620,672 621,672 528,880 528,880 528,880 971,923 971,923" />
+    <circle id="eye-1" cx="496" cy="471" r="25" fill="#000"/>
+    <circle id="eye-2" cx="245" cy="470" r="25" fill="#000"/>
+    <circle id="eye-1-spark" cx="488" cy="461" r="7" fill="#fff"/>
+    <circle id="eye-2-spark" cx="237" cy="461" r="7" fill="#fff"/>
+    <ellipse id="cheek-1" cx="243" cy="525" rx="42" ry="20" fill="#b8adc2" />
+    <ellipse id="cheek-2" cx="500" cy="524" rx="42" ry="20" fill="#b8adc2" />
+    <path id="cheek-lines" fill="none" stroke="#9a6c76" stroke-width="5" stroke-linecap="round" d="M 223,528 C 223,528 231,517 231,517M 239,533 C 239,533 250,516 250,516M 256,532 C 256,532 264,520 264,520M 478,528 C 478,528 486,517 486,517M 494,532 C 494,532 504,516 504,516M 512,531 C 512,531 520,520 520,520" />
+    <path id="mouth" fill="#000" d="M 326,501 C 326,501 336,499 336,499 330,541 396,550 398,499 398,499 407,501 407,501 410,527 386,546 365,545 345,545 325,527 326,501" />
+    <path id="tusk-dark" fill="#000" d="M 245,238 C 245,238 340,353 348,361 356,369 370,387 366,397 362,407 351,416 336,411 321,406 309,391 206,269 103,147 46,49 51,44 56,39 131,103 244,237" />
+    <path id="tusk" fill="#ccddef" d="M 65,61 C 147,131 336,365 349,380 362,395 345,414 327,394 309,374 75,97 65,61" />
+    <path id="tusk-lines" fill="none" stroke="#a4b1bf" stroke-width="5" clip-path="url(#tusk-clip)" d="M 387,370 C 387,370 217,340 216,340 215,340 177,285 177,285 177,285 351,319 351,319 351,319 284,255 284,255 284,255 135,229 135,229 135,229 112,170 112,170 112,170 243,201 243,201 243,201 181,128 181,128 181,128 34,106 33,106" />
+  </svg>
+  <circle cx="200"  cy="200"  r="2" fill="#fff2"/>
+  <circle cx="700"  cy="300"  r="2" fill="#fff3"/>
+  <circle cx="1200" cy="400"  r="2" fill="#fff4"/>
+  <circle cx="2000" cy="200"  r="2" fill="#fff3"/>
+  <circle cx="2100" cy="1500" r="2" fill="#fff2"/>
+  <circle cx="2050" cy="220"  r="2" fill="#fff4"/>
+  <circle cx="500"  cy="1200" r="2" fill="#fff2"/>
+  <circle cx="800"  cy="1500" r="2" fill="#fff3"/>
+  <circle cx="700"  cy="1600" r="2" fill="#fff4"/>
+  <circle cx="900"  cy="1300" r="2" fill="#fff3"/>
+  <circle cx="1000" cy="200"  r="2" fill="#fff2"/>
+  <circle cx="1100" cy="50"   r="2" fill="#fff5"/>
+  <circle cx="1200" cy="1500" r="2" fill="#fff2"/>
+  <circle cx="1600" cy="200"  r="2" fill="#fff3"/>
+  <circle cx="1760" cy="1100" r="2" fill="#fff4"/>
+  <circle cx="2000" cy="1340" r="2" fill="#fff3"/>
+</svg>

@@ -264,7 +264,7 @@ public class MessageRouterService {
         try {
             if (uri.startsWith(appConf.getUri().getStockYearData().getUpdate())) {
                 // Format: /stockYearData/update/{year}
-                String yearPart = uri.substring("/stockYearData/update/".length());
+                String yearPart = uri.substring(appConf.getUri().getStockYearData().getUpdate().length());
                 if (!yearPart.isEmpty()) {
                     int year = Integer.parseInt(yearPart);
                     return stockService.updateStockYearData(payload, year, payload.getStockId());

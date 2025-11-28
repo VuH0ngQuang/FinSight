@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import routes from './routes';
 
@@ -7,6 +8,7 @@ import routes from './routes';
 export const createApp = (): Application => {
   const app = express();
 
+  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 

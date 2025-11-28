@@ -18,7 +18,7 @@ export const getStockById = async (req: Request, res: Response): Promise<void> =
             return;
         }
 
-        res.json({ data: stock });
+        res.json(stock);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to get stock', error);
@@ -29,7 +29,7 @@ export const getStockById = async (req: Request, res: Response): Promise<void> =
 export const getAllStocksId = async (_req: Request, res: Response): Promise<void> => {
     try {
         const stockIds = await stockService.getAllStocksId();
-        res.json({ data: stockIds });
+        res.json(stockIds);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to get stock IDs', error);

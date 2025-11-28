@@ -32,13 +32,13 @@ public class KafkaProducer extends KafkaService {
     }
 
     public void publish(String message ) {
-        String payload = toJson(message, "market/stock/updateMatchPrice");
+        String payload = toJson(message, "/stock/updateMatchPrice/");
         logger.info("Publish Kafka to {}: {}",appConf.getKafka().getTopic().getMarketData(), payload);
         send(appConf.getKafka().getTopic().getMarketData(), payload);
     }
 
     public void publish(String topic, String message) {
-        String payload = toJson(message, "market/stock/updateMatchPrice");
+        String payload = toJson(message, "/stock/updateMatchPrice/");
         logger.info("Publish Kafka to {}: {}",topic, payload);
         send(topic, payload);
     }

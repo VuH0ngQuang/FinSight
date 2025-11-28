@@ -13,6 +13,7 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.kafka.common.serialization.UUIDDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,8 @@ public class KafkaService {
         }
 
         try {
-            ProducerRecord<String, String> record = new ProducerRecord<>(topic, payload);
+            String key = UUID.randomUUID().toString();
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, payload);
             producer.send(record, (RecordMetadata metadata, Exception exception) -> {
                 if (exception != null) {
                     logger.error("KAFKA {} got error: {}", topic, exception.getMessage());
