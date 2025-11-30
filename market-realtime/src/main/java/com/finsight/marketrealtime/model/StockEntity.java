@@ -41,13 +41,6 @@ public class StockEntity {
     @Column(precision = 10, scale = 4)
     private BigDecimal industryPsRatio;
 
-    @ElementCollection
-    @CollectionTable(name = "stock_year_data", joinColumns =
-    @JoinColumn(name = "stockId"))
-    @MapKeyColumn(name = "year")
-    @Column(name = "unused")
-    private Map<Integer, StockYearData> yearData = new HashMap<>();
-
     @ManyToMany
     @JoinTable(
             name = "user_favorite_stocks",
@@ -55,6 +48,13 @@ public class StockEntity {
             inverseJoinColumns = @JoinColumn(name = "userId")
     )
     Set<UserEntity> favoredByUsers;
+
+    @ElementCollection
+    @CollectionTable(name = "stock_year_data", joinColumns =
+    @JoinColumn(name = "stockId"))
+    @MapKeyColumn(name = "year")
+    @Column(name = "unused")
+    private Map<Integer, StockYearData> yearData = new HashMap<>();
 
     @Embeddable
     @Data

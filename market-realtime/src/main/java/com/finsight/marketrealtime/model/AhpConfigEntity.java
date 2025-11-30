@@ -19,10 +19,6 @@ public class AhpConfigEntity {
     @Builder.Default
     private UUID ahpConfigId = UUID.randomUUID();
 
-    @OneToOne
-    @JoinColumn(name = "userId")
-    private UserEntity user;
-
     // === DEFAULT: criteria list ===
     // ["DDM","DCFM","RI","PB","PE","PC","PS"]
     @Builder.Default
@@ -50,4 +46,7 @@ public class AhpConfigEntity {
     @Lob
     private String weightsJson = "[0.142857, 0.142857, 0.142857, 0.142857, 0.142857, 0.142857, 0.142857]";
 
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private UserEntity user;
 }
