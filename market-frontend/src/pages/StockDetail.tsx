@@ -9,6 +9,7 @@ import {
   type StockDetailResponse,
   type StockYearApiRecord,
 } from '../services/stockDetail'
+import { useMarketData } from '../hooks/useMarketData'
 
 type ChartMode = 'vietstock' | 'local'
 
@@ -79,6 +80,7 @@ const StockDetail = () => {
   )
   const [isFetching, setIsFetching] = useState(false)
   const [fetchError, setFetchError] = useState<string | null>(null)
+  const { getMatchPrice, isRecentlyUpdated } = useMarketData()
 
   useEffect(() => {
     if (!symbol) {
@@ -174,10 +176,12 @@ const StockDetail = () => {
   const chartData = hasHistoricalData ? remoteYearHistory : fallbackYearHistory
   const selectedYearDataArray = chartData.slice(0, 5)
 
+  const realtimePrice = getMatchPrice(normalizedSymbol)
+  const isPriceUpdated = isRecentlyUpdated(normalizedSymbol)
   const displayStock = {
     symbol: normalizedSymbol || fallbackRow?.symbol || symbol,
     stockName: stockDetail?.stockName ?? fallbackRow?.stockName ?? symbol,
-    matchPrice: stockDetail?.matchPrice ?? fallbackRow?.matchPrice,
+    matchPrice: realtimePrice ?? stockDetail?.matchPrice ?? fallbackRow?.matchPrice,
     pb: stockDetail?.pbRatio ?? fallbackRow?.pb,
     pcf: stockDetail?.pcfRatio ?? fallbackRow?.pcf,
     pe: stockDetail?.peRatio ?? fallbackRow?.pe,
@@ -222,7 +226,7 @@ const StockDetail = () => {
       )}
 
       <div className="flex rounded-3xl bg-[#2c2c2c] p-4 text-center text-sm">
-        <div className="w-1/5 px-2">
+        <div className={`w-1/5 px-2 transition-colors duration-300 ${isPriceUpdated ? 'animate-flash' : ''}`}>
           <p className="text-xs text-slate-300">Match price</p>
           <p className="mt-1 text-base font-semibold">
             {formatDisplayValue(displayStock.matchPrice)}

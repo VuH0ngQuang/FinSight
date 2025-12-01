@@ -39,7 +39,7 @@ public class MqttService implements MqttCallback {
         client.setCallback(this);
 
         MqttConnectOptions options = new MqttConnectOptions();
-        options.setCleanSession(false);
+        options.setCleanSession(true);
         options.setMaxInflight(32768);
         options.setAutomaticReconnect(true);
 
@@ -83,7 +83,7 @@ public class MqttService implements MqttCallback {
                 return;
             }
             MqttMessage message = new MqttMessage(payload.getBytes());
-            message.setQos(1);
+            message.setQos(0);
             client.publish(topic,message);
         } catch (Exception e) {
             logger.error("MQTT {} got error: {}",topic,e.getMessage());

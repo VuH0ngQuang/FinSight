@@ -9,6 +9,7 @@ import {
   getCachedStockDetail,
   type StockDetailResponse,
 } from '../services/stockDetail'
+import { useMarketData } from '../hooks/useMarketData'
 
 const headers = [
   'Symbol',
@@ -206,6 +207,7 @@ const Stock = () => {
     },
   )
   const loadingSymbolsRef = useRef(new Set<string>())
+  const { getMatchPrice, isRecentlyUpdated } = useMarketData()
 
   useEffect(() => {
     const controller = new AbortController()
@@ -451,7 +453,12 @@ const Stock = () => {
           <p className="text-sm text-emerald-300">
             Score {bestStockEntry ? formatScoreValue(bestStockEntry.score) : '—'} · Match price{' '}
             {bestStock
-              ? formatLiveValue(bestDetail?.matchPrice ?? bestStock.matchPrice, 2)
+              ? formatLiveValue(
+                  getMatchPrice(bestStock.symbol) ??
+                    bestDetail?.matchPrice ??
+                    bestStock.matchPrice,
+                  2,
+                )
               : '—'}
           </p>
         </div>
@@ -463,7 +470,12 @@ const Stock = () => {
           <p className="text-sm text-rose-300">
             Score {worstStockEntry ? formatScoreValue(worstStockEntry.score) : '—'} · Match price{' '}
             {worstStock
-              ? formatLiveValue(worstDetail?.matchPrice ?? worstStock.matchPrice, 2)
+              ? formatLiveValue(
+                  getMatchPrice(worstStock.symbol) ??
+                    worstDetail?.matchPrice ??
+                    worstStock.matchPrice,
+                  2,
+                )
               : '—'}
           </p>
         </div>
@@ -504,13 +516,15 @@ const Stock = () => {
                 : 'bg-transparent'
 
               const detail = stockDetails[row.symbol]
-              const matchPriceValue = detail?.matchPrice ?? row.matchPrice
+              const realtimePrice = getMatchPrice(row.symbol)
+              const matchPriceValue = realtimePrice ?? detail?.matchPrice ?? row.matchPrice
               const pbValue = detail?.pbRatio ?? row.pb
               const pcfValue = detail?.pcfRatio ?? row.pcf
               const peValue = detail?.peRatio ?? row.pe
               const psValue = detail?.psRatio ?? row.ps
               const scoreValue = scoreBySymbol.get(row.symbol) ?? row.overallScore ?? 0
 
+              const isPriceUpdated = isRecentlyUpdated(row.symbol)
               const columns = [
                 {
                   value: row.symbol,
@@ -519,6 +533,7 @@ const Stock = () => {
                 },
                 {
                   value: formatLiveValue(matchPriceValue, 2),
+                  isPrice: true,
                 },
                 {
                   value: formatLiveValue(pbValue),
@@ -548,16 +563,21 @@ const Stock = () => {
                   }}
                 >
                   {columns.map(
-                    ({ value, className, isSymbol, isScore, scoreValue: columnScore }, columnIndex) => {
+                    (
+                      { value, className, isSymbol, isScore, isPrice, scoreValue: columnScore },
+                      columnIndex,
+                    ) => {
                       const numericScore = columnScore ?? 0
                       const textClass = isScore
                         ? getScoreColorClass(row, numericScore)
                         : 'text-white/80'
+                      const flashClass =
+                        isPrice && isPriceUpdated ? 'animate-flash' : ''
 
                       return (
                         <div
                           key={`${row.symbol}-${value}-${columnIndex}`}
-                          className={`px-4 py-3 text-center ${className ?? ''} ${textClass}`}
+                          className={`px-4 py-3 text-center transition-colors duration-300 ${className ?? ''} ${textClass} ${flashClass}`}
                         >
                           {isSymbol ? (
                             <Link
