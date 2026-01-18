@@ -82,7 +82,7 @@ public class MessageRouterService {
         Object payload = message.getPayload();
 
         try {
-            logger.info("Routing message with URI: {}", uri);
+//            logger.info("Routing message with URI: {}", uri);
 
             // User service routes
             if (uri.startsWith("/user")) {
@@ -183,9 +183,7 @@ public class MessageRouterService {
             }
             else if (uri.startsWith(appConf.getUri().getStock().getUpdateMatchPrice())) {
                 stockService.updateMatchPrice(payload.getStockId(), payload.getMatchPrice());
-                return ResponseDto.builder()
-                        .success(true)
-                        .build();
+                return null;
             }
             else {
                 logger.warn("Unknown stock URI: {}", uri);

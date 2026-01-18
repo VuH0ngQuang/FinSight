@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { findPriceRow } from '../data/priceboard'
-import { getStockYearDataForSymbol, StockYearData } from '../data/stockyeardata'
+import { StockYearData } from '../data/stockyeardata'
 import {
   fetchStockDetail,
   getCachedStockDetail,
@@ -68,11 +67,6 @@ const StockDetail = () => {
   const [chartMode, setChartMode] = useState<ChartMode>('vietstock')
   const normalizedSymbol = useMemo(
     () => symbol?.trim().toUpperCase() ?? '',
-    [symbol],
-  )
-  const fallbackRow = useMemo(() => findPriceRow(symbol), [symbol])
-  const fallbackYearHistory = useMemo(
-    () => getStockYearDataForSymbol(symbol),
     [symbol],
   )
   const [stockDetail, setStockDetail] = useState<StockDetailResponse | null>(() =>
@@ -149,7 +143,7 @@ const StockDetail = () => {
     )
   }
 
-  const showMissingState = !stockDetail && !fallbackRow && !isFetching
+  const showMissingState = !stockDetail && !isFetching
   if (showMissingState) {
     return (
       <section className="space-y-4 text-white">
@@ -170,27 +164,26 @@ const StockDetail = () => {
   }
 
   const hasHistoricalData = !!stockDetail?.yearData
-  const remoteYearHistory = hasHistoricalData
+  const chartData = hasHistoricalData
     ? buildStockYearHistoryFromApi(stockDetail.stockId, stockDetail.yearData)
     : []
-  const chartData = hasHistoricalData ? remoteYearHistory : fallbackYearHistory
   const selectedYearDataArray = chartData.slice(0, 5)
 
   const realtimePrice = getMatchPrice(normalizedSymbol)
   const isPriceUpdated = isRecentlyUpdated(normalizedSymbol)
   const displayStock = {
-    symbol: normalizedSymbol || fallbackRow?.symbol || symbol,
-    stockName: stockDetail?.stockName ?? fallbackRow?.stockName ?? symbol,
-    matchPrice: realtimePrice ?? stockDetail?.matchPrice ?? fallbackRow?.matchPrice,
-    pb: stockDetail?.pbRatio ?? fallbackRow?.pb,
-    pcf: stockDetail?.pcfRatio ?? fallbackRow?.pcf,
-    pe: stockDetail?.peRatio ?? fallbackRow?.pe,
-    ps: stockDetail?.psRatio ?? fallbackRow?.ps,
-    industryPe: stockDetail?.industryPeRatio ?? fallbackRow?.pe,
-    industryPb: stockDetail?.industryPbRatio ?? fallbackRow?.pb,
-    industryPcf: stockDetail?.industryPcfRatio ?? fallbackRow?.pcf,
-    industryPs: stockDetail?.industryPsRatio ?? fallbackRow?.ps,
-    overallScore: fallbackRow?.overallScore ?? 0,
+    symbol: normalizedSymbol || symbol,
+    stockName: stockDetail?.stockName ?? symbol,
+    matchPrice: realtimePrice ?? stockDetail?.matchPrice,
+    pb: stockDetail?.pbRatio,
+    pcf: stockDetail?.pcfRatio,
+    pe: stockDetail?.peRatio,
+    ps: stockDetail?.psRatio,
+    industryPe: stockDetail?.industryPeRatio,
+    industryPb: stockDetail?.industryPbRatio,
+    industryPcf: stockDetail?.industryPcfRatio,
+    industryPs: stockDetail?.industryPsRatio,
+    overallScore: 0,
   }
 
   const hasLocalData = selectedYearDataArray.length > 0

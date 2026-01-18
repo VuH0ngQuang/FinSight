@@ -1,14 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { normalizedPriceboard } from '../data/priceboard'
-import type { Stock as StockModel } from '../models/Stock'
+import { Stock } from '../models/Stock'
 import { API_STOCK_IDS_URL } from '../config/api'
-import {
-  fetchStockDetail,
-  getCachedStockDetail,
-  type StockDetailResponse,
-} from '../services/stockDetail'
+import { fetchStockDetail, type StockDetailResponse } from '../services/stockDetail'
 import { useMarketData } from '../hooks/useMarketData'
 
 const headers = [
@@ -71,7 +66,7 @@ const getLatestYearSnapshot = (detail?: StockDetailResponse) => {
 }
 
 const buildCriterionMetrics = (
-  row: StockModel,
+  _row: Stock,
   detail?: StockDetailResponse,
 ): CriterionMetrics => {
   const latest = getLatestYearSnapshot(detail)
@@ -89,7 +84,7 @@ const buildCriterionMetrics = (
 }
 
 const computeTopsisScores = (
-  rows: StockModel[],
+  rows: Stock[],
   details: Record<string, StockDetailResponse | undefined>,
 ) => {
   const datasets = rows.map((row) => ({
@@ -160,7 +155,7 @@ const computeTopsisScores = (
   return scores
 }
 
-const getScoreColorClass = (row: StockModel, score: number) => {
+const getScoreColorClass = (row: Stock, score: number) => {
   if (row.scoreClass) {
     return row.scoreClass
   }
@@ -191,20 +186,11 @@ const renderHeaderLabel = (header: string) => {
   ))
 }
 
-const Stock = () => {
+const StockPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [allowedSymbols, setAllowedSymbols] = useState<string[] | null>(null)
   const [stockDetails, setStockDetails] = useState<Record<string, StockDetailResponse>>(
-    () => {
-      const cachedDetails: Record<string, StockDetailResponse> = {}
-      normalizedPriceboard.forEach((row) => {
-        const cached = getCachedStockDetail(row.symbol)
-        if (cached) {
-          cachedDetails[row.symbol] = cached
-        }
-      })
-      return cachedDetails
-    },
+    () => ({}),
   )
   const loadingSymbolsRef = useRef(new Set<string>())
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
@@ -257,26 +243,17 @@ const Stock = () => {
     }
   }, [])
 
-  const displayedPriceboard = useMemo(() => {
-    if (allowedSymbols === null) {
-      return normalizedPriceboard
+  useEffect(() => {
+    if (!allowedSymbols || allowedSymbols.length === 0) {
+      return
     }
 
-    return normalizedPriceboard.filter((row) =>
-      allowedSymbols.includes(row.symbol),
-    )
-  }, [allowedSymbols])
-
-  useEffect(() => {
     const controller = new AbortController()
     let isMounted = true
 
-    const symbolsToLoad = displayedPriceboard
-      .map((row) => row.symbol)
-      .filter(
-        (symbol) =>
-          !stockDetails[symbol] && !loadingSymbolsRef.current.has(symbol),
-      )
+    const symbolsToLoad = allowedSymbols.filter(
+      (symbol) => !stockDetails[symbol] && !loadingSymbolsRef.current.has(symbol),
+    )
 
     if (symbolsToLoad.length === 0) {
       return () => {
@@ -311,23 +288,45 @@ const Stock = () => {
       isMounted = false
       controller.abort()
     }
-  }, [displayedPriceboard, stockDetails])
+  }, [allowedSymbols])
+
+  const statsSource: Stock[] = useMemo(() => {
+    if (!allowedSymbols || allowedSymbols.length === 0) {
+      return []
+    }
+
+    const rows = allowedSymbols.map((symbol) => {
+      const detail = stockDetails[symbol]
+
+      return new Stock({
+        stockId: symbol,
+        stockName: detail?.stockName ?? symbol,
+        sector: detail?.sector ?? '',
+        // Use 0s as internal defaults; UI will render "—" when no detail
+        matchPrice: detail?.matchPrice ?? 0,
+        peRatio: detail?.peRatio ?? 0,
+        pbRatio: detail?.pbRatio ?? 0,
+        pcfRatio: detail?.pcfRatio ?? 0,
+        psRatio: detail?.psRatio ?? 0,
+        industryPeRatio: detail?.industryPeRatio,
+        industryPbRatio: detail?.industryPbRatio,
+        industryPcfRatio: detail?.industryPcfRatio,
+        industryPsRatio: detail?.industryPsRatio,
+      })
+    })
+
+    rows.sort((a, b) => a.symbol.localeCompare(b.symbol))
+
+    return rows
+  }, [allowedSymbols, stockDetails])
 
   const filteredPriceboard = useMemo(
     () =>
-      displayedPriceboard.filter((row) =>
+      statsSource.filter((row) =>
         row.symbol.toLowerCase().includes(searchTerm.trim().toLowerCase()),
       ),
-    [displayedPriceboard, searchTerm],
+    [statsSource, searchTerm],
   )
-
-  const statsSource = useMemo(() => {
-    if (displayedPriceboard.length > 0) {
-      return displayedPriceboard
-    }
-
-    return normalizedPriceboard
-  }, [displayedPriceboard])
 
   const topsisScores = useMemo(
     () => computeTopsisScores(statsSource, stockDetails),
@@ -338,10 +337,9 @@ const Stock = () => {
     () =>
       statsSource.map((row) => {
         const computedScore = topsisScores.get(row.symbol)
-        const score = Number.isFinite(computedScore ?? NaN)
-          ? (computedScore as number)
-          : 0
-        return { row, score }
+        const hasScore = Number.isFinite(computedScore ?? NaN)
+        const score = hasScore ? (computedScore as number) : 0
+        return { row, score, hasScore }
       }),
     [statsSource, topsisScores],
   )
@@ -377,8 +375,10 @@ const Stock = () => {
 
   const scoreBySymbol = useMemo(() => {
     const map = new Map<string, number>()
-    scoredStatsSource.forEach(({ row, score }) => {
-      map.set(row.symbol, score)
+    scoredStatsSource.forEach(({ row, score, hasScore }) => {
+      if (hasScore) {
+        map.set(row.symbol, score)
+      }
     })
     return map
   }, [scoredStatsSource])
@@ -517,12 +517,14 @@ const Stock = () => {
 
               const detail = stockDetails[row.symbol]
               const realtimePrice = getMatchPrice(row.symbol)
-              const matchPriceValue = realtimePrice ?? detail?.matchPrice ?? row.matchPrice
-              const pbValue = detail?.pbRatio ?? row.pb
-              const pcfValue = detail?.pcfRatio ?? row.pcf
-              const peValue = detail?.peRatio ?? row.pe
-              const psValue = detail?.psRatio ?? row.ps
-              const scoreValue = scoreBySymbol.get(row.symbol) ?? row.overallScore ?? 0
+              const matchPriceValue = realtimePrice ?? detail?.matchPrice
+              const pbValue = detail?.pbRatio
+              const pcfValue = detail?.pcfRatio
+              const peValue = detail?.peRatio
+              const psValue = detail?.psRatio
+              const rawScore = scoreBySymbol.get(row.symbol)
+              const hasScore = rawScore !== undefined
+              const scoreValue = hasScore ? rawScore : 0
 
               const isPriceUpdated = isRecentlyUpdated(row.symbol)
               const columns = [
@@ -548,9 +550,9 @@ const Stock = () => {
                   value: formatLiveValue(psValue),
                 },
                 {
-                  value: formatScoreValue(scoreValue),
-                  isScore: true,
-                  scoreValue,
+                  value: hasScore ? formatScoreValue(scoreValue) : '—',
+                  isScore: hasScore,
+                  scoreValue: hasScore ? scoreValue : undefined,
                 },
               ]
 
@@ -616,5 +618,5 @@ const Stock = () => {
   )
 }
 
-export default Stock
+export default StockPage
 

@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class MqttProducer extends MqttService {
     private static final Logger logger = LoggerFactory.getLogger(MqttProducer.class);
@@ -21,15 +23,37 @@ public class MqttProducer extends MqttService {
     }
 
     @PostConstruct
-    public void init() throws MqttException {
+    public void init() {
+        try {
+            initConnection();
+        } catch (IOException e) {
+            logger.error("Error while initializing MQTT producer: {}",e.getMessage());
+        }
+    }
+
+    public void initConnection() throws IOException {
         createDefaultTopic(appConf.getMqtt().getTopic().getMarketData());
         connect(appConf.getMqtt().getUrl(),appConf.getClusterId(),
                 appConf.getMqtt().getUsername(), appConf.getMqtt().getPassword());
     }
 
+    @Override
+    public void connectionLost(Throwable cause) {
+        try {
+            initConnection();
+        } catch (IOException e) {
+            logger.error("Error while initializing MQTT producer: {}",e.getMessage());
+        }
+    }
+
     public void publish(String payload ) {
         logger.info("Publish MQTT to {}: {}",appConf.getMqtt().getTopic().getMarketData(), payload);
-        send(appConf.getMqtt().getTopic().getMarketData(), payload);
+        try {
+            send(appConf.getMqtt().getTopic().getMarketData(), payload);
+        } catch (Exception e) {
+            send(appConf.getMqtt().getTopic().getMarketData(), payload);
+            logger.error("Error while sending message MQTT producer: {}", e.getMessage());
+        }
     }
 
     public void publish(String topic, String payload) {

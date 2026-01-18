@@ -10,6 +10,7 @@ const startServer = async () => {
 
     app.listen(config.port, () => {
       console.log(`Server listening on port ${config.port}`);
+      console.log('KAFKA_BROKER =', process.env.KAFKA_URLS)
     });
   } catch (error) {
     console.error('Failed to start server', error);

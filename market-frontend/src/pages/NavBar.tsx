@@ -71,7 +71,7 @@ const navItems: Array<{
   to: string
 }> = [
   { label: 'Dashboard', icon: IconDashboard, to: '/' },
-  { label: 'Stock', icon: IconStock, to: '/stock' },
+  { label: 'Priceboard', icon: IconStock, to: '/stock' },
   { label: 'Profile', icon: IconProfile, to: '/profile' },
 ]
 

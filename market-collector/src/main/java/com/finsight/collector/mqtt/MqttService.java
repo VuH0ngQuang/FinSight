@@ -16,6 +16,7 @@ public class MqttService implements MqttCallback {
     private final AppConf appConf;
     private MqttClient client;
     private String defaultTopic;
+    protected boolean isDisconnect;
 
     @Autowired
     public MqttService(AppConf appConf) {
@@ -57,6 +58,8 @@ public class MqttService implements MqttCallback {
 
         try {
             client.connect(options);
+            isDisconnect = false;
+            logger.info("MQTT {} connected with clientId: {}", brokerUrl,clientId);
         } catch (MqttException e) {
             logger.error("MQTT {} got error: {}",brokerUrl,e.getMessage());
         }
@@ -65,7 +68,6 @@ public class MqttService implements MqttCallback {
 //        } catch (MqttException e) {
 //            logger.error("MQTT {} got error: {}",brokerUrl,e.getMessage());
 //        }
-        logger.info("MQTT {} connected with clientId: {}", brokerUrl,clientId);
     }
 
     public void createDefaultTopic(String defaultTopic) {
@@ -109,6 +111,7 @@ public class MqttService implements MqttCallback {
     @Override
     public void connectionLost(Throwable throwable) {
         logger.error("MQTT got error: {}",throwable.getMessage());
+        isDisconnect = true;
     }
 
     @Override

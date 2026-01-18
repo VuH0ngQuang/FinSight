@@ -23,6 +23,7 @@ const optionalEnv = (key: string, fallback: string): string => {
 export const config = {
   nodeEnv: optionalEnv('NODE_ENV', 'development'),
   port: Number(optionalEnv('PORT', '3000')),
+  hostname: requireEnv('HOSTNAME'),
   database: {
     host: requireEnv('DB_HOST'),
     port: Number(optionalEnv('DB_PORT', '3306')),

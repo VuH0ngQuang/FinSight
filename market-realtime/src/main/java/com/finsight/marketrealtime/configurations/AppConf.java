@@ -5,6 +5,11 @@ import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import jakarta.annotation.PostConstruct;
+import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "app")
@@ -13,6 +18,7 @@ public class AppConf {
     private String clusterId;
     private Kafka kafka;
     private Database database;
+    private Redis redis;
     private Uri uri;
 
     @PostConstruct
@@ -24,10 +30,18 @@ public class AppConf {
             logger.info("Kafka Topic           : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
             logger.info("Kafka GroupId         : {}", kafka.getGroupId());
         }
+
         if (database != null) {
             logger.info("Database URL          : {}", database.getUrl());
             logger.info("Database username     : {}", database.getUsername());
             logger.info("Database password     : {}", database.getPassword());
+        }
+
+        if (redis != null) {
+            logger.info("Redis HOST            : {}", redis.getHost());
+            logger.info("Redis port            : {}", redis.getPort());
+            logger.info("Redis password        : {}", redis.getPassword());
+            logger.info("Redis database        : {}", redis.getDatabase());
         }
 
         if (uri != null) {
@@ -80,6 +94,14 @@ public class AppConf {
         private String url;
         private String username;
         private String password;
+    }
+
+    @Data
+    public static class Redis {
+        private String host;
+        private int port;
+        private String password;
+        private int database;
     }
 
     @Data
