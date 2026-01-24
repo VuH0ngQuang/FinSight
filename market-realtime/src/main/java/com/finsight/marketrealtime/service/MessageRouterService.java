@@ -23,6 +23,7 @@ public class MessageRouterService {
     private final SubscriptionService subscriptionService;
     private final AhpConfigService ahpConfigService;
     private final AppConf appConf;
+    private final StockYearDataService stockYearDataService;
 
     @Autowired
     public MessageRouterService(
@@ -31,13 +32,16 @@ public class MessageRouterService {
             StockService stockService,
             SubscriptionService subscriptionService,
             AhpConfigService ahpConfigService,
-            AppConf appConf) {
+            AppConf appConf,
+            StockYearDataService stockYearDataService
+    ) {
         this.mapper = mapper;
         this.userService = userService;
         this.stockService = stockService;
         this.subscriptionService = subscriptionService;
         this.ahpConfigService = ahpConfigService;
         this.appConf = appConf;
+        this.stockYearDataService = stockYearDataService;
     }
 
     /**
@@ -265,7 +269,7 @@ public class MessageRouterService {
                 String yearPart = uri.substring(appConf.getUri().getStockYearData().getUpdate().length());
                 if (!yearPart.isEmpty()) {
                     int year = Integer.parseInt(yearPart);
-                    return stockService.updateStockYearData(payload, year, payload.getStockId());
+                    return stockYearDataService.updateStockYearData(payload, year, payload.getStockId());
                 } else {
                     logger.warn("Invalid URI format for updateYearData: {}", uri);
                     return ResponseDto.builder()

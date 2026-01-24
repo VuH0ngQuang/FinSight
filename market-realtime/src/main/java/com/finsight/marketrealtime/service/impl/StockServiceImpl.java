@@ -1,8 +1,9 @@
 package com.finsight.marketrealtime.service.impl;
 
+import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.StockDto;
-import com.finsight.marketrealtime.dto.StockYearDataDto;
+import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.StockEntity;
 import com.finsight.marketrealtime.model.StockEntity.StockYearData;
 import com.finsight.marketrealtime.repository.StockRepository;
@@ -15,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -32,17 +32,20 @@ public class StockServiceImpl implements StockService {
     private final UserRepository userRepository;
     private final LockManager<String> lockManager;
     private final StockValuationCalculator stockValuationCalculator;
+    private final RedisDao redisDao;
 
     @Autowired
     public StockServiceImpl(
             StockRepository stockRepository,
             UserRepository userRepository,
             LockManager<String> lockManager,
-            StockValuationCalculator stockValuationCalculator) {
+            StockValuationCalculator stockValuationCalculator,
+            RedisDao redisDao) {
         this.stockRepository = stockRepository;
         this.userRepository = userRepository;
         this.lockManager = lockManager;
         this.stockValuationCalculator = stockValuationCalculator;
+        this.redisDao = redisDao;
     }
 
     @Override
@@ -55,6 +58,7 @@ public class StockServiceImpl implements StockService {
             stockEntity.setStockName(stockDto.getStockName());
             stockEntity.setSector(stockDto.getSector());
             stockRepository.save(stockEntity);
+            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -77,6 +81,7 @@ public class StockServiceImpl implements StockService {
             stockEntity.setStockName(stockDto.getStockName());
             stockEntity.setSector(stockDto.getSector());
             stockRepository.save(stockEntity);
+            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -104,55 +109,8 @@ public class StockServiceImpl implements StockService {
             }
 
             stockRepository.delete(stockEntity);
-            return ResponseDto.builder().success(true).build();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    @Override
-    @Transactional
-    public ResponseDto updateStockYearData(StockYearDataDto stockYearDataDto,int year, String stockId) {
-        ReentrantLock lock = lockManager.getLock(stockId+year);
-        lock.lock();
-        try {
-            StockEntity stockEntity = stockRepository.findByIdWithYearData(stockId).orElse(null);
-            if (stockEntity == null) return ResponseDto.
-                    builder().
-                    success(false).
-                    errorCode(404).
-                    errorMessage("Stock not found: "+stockId).
-                    build();
-            StockEntity.StockYearData yearData = stockEntity.getYearData()
-                    .computeIfAbsent(year, y -> new StockEntity.StockYearData());
-
-            if (stockYearDataDto.getNetIncome() != null)
-                yearData.setNetIncome(stockYearDataDto.getNetIncome());
-            if (stockYearDataDto.getTotalEquity() != null)
-                yearData.setTotalEquity(stockYearDataDto.getTotalEquity());
-            if (stockYearDataDto.getIntangibles() != null)
-                yearData.setIntangibles(stockYearDataDto.getIntangibles());
-            if (stockYearDataDto.getOperatingCashFlow() != null)
-                yearData.setOperatingCashFlow(stockYearDataDto.getOperatingCashFlow());
-            if (stockYearDataDto.getFreeCashFlow() != null)
-                yearData.setFreeCashFlow(stockYearDataDto.getFreeCashFlow());
-            if (stockYearDataDto.getRevenue() != null)
-                yearData.setRevenue(stockYearDataDto.getRevenue());
-            if (stockYearDataDto.getDividendPerShare() != null)
-                yearData.setDividendPerShare(stockYearDataDto.getDividendPerShare());
-            if (stockYearDataDto.getSharesOutstanding() != null)
-                yearData.setSharesOutstanding(stockYearDataDto.getSharesOutstanding());
-            if (stockYearDataDto.getPriceEndYear() != null)
-                yearData.setPriceEndYear(stockYearDataDto.getPriceEndYear());
-            if (stockYearDataDto.getCostOfEquity() != null)
-                yearData.setCostOfEquity(stockYearDataDto.getCostOfEquity());
-            if (stockYearDataDto.getWacc() != null)
-                yearData.setWacc(stockYearDataDto.getWacc());
-            if (stockYearDataDto.getDividendGrowthRate() != null)
-                yearData.setDividendGrowthRate(stockYearDataDto.getDividendGrowthRate());
-
-            recalculateValuations(stockEntity, year);
-            stockRepository.save(stockEntity);
+            redisDao.delete(stockEntity.getStockId(), RedisEnum.STOCK.toString());
+            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -171,6 +129,7 @@ public class StockServiceImpl implements StockService {
                 if (stockDto.getIndustryPsRatio() != null) stock.setIndustryPsRatio(stockDto.getIndustryPsRatio());
 
                 stockRepository.save(stock);
+                redisDao.save(RedisEnum.STOCK.toString(), stock.getStockId(), convertToDto(stock));
             } finally {
                 lock.unlock();
             }
@@ -191,7 +150,7 @@ public class StockServiceImpl implements StockService {
             // update price only
             stockEntity.setMatchPrice(matchPrice);
             stockRepository.save(stockEntity);
-
+            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
         } finally {
             lock.unlock();
         }
@@ -285,6 +244,7 @@ public class StockServiceImpl implements StockService {
 
             // Single DB write at the end
             stockRepository.save(stockEntity);
+            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
 
         } finally {
             lock.unlock();
@@ -312,7 +272,7 @@ public class StockServiceImpl implements StockService {
     }
 
 
-    private void recalculateValuations(StockEntity stockEntity, int targetYear) {
+    public void recalculateValuations(StockEntity stockEntity, int targetYear) {
         StockYearData currentData = stockEntity.getYearData().get(targetYear);
         if (currentData == null) {
             return;
@@ -388,5 +348,22 @@ public class StockServiceImpl implements StockService {
         defaults.put("PCF", new BigDecimal("12.0"));
         defaults.put("PS", new BigDecimal("1.5"));
         return defaults;
+    }
+
+    public StockDto convertToDto(StockEntity stockEntity) {
+        StockDto stockDto = new StockDto();
+        stockDto.setStockId(stockEntity.getStockId());
+        stockDto.setStockName(stockEntity.getStockName());
+        stockDto.setSector(stockEntity.getSector());
+        stockDto.setMatchPrice(stockEntity.getMatchPrice());
+        stockDto.setPeRatio(stockEntity.getPeRatio());
+        stockDto.setPbRatio(stockEntity.getPbRatio());
+        stockDto.setPcfRatio(stockEntity.getPcfRatio());
+        stockDto.setPsRatio(stockEntity.getPsRatio());
+        stockDto.setIndustryPeRatio(stockEntity.getIndustryPeRatio());
+        stockDto.setIndustryPbRatio(stockEntity.getIndustryPbRatio());
+        stockDto.setIndustryPcfRatio(stockEntity.getIndustryPcfRatio());
+        stockDto.setIndustryPsRatio(stockEntity.getIndustryPsRatio());
+        return stockDto;
     }
 }

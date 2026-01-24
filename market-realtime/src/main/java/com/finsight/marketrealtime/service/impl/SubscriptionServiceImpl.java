@@ -1,7 +1,9 @@
 package com.finsight.marketrealtime.service.impl;
 
+import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.SubscriptionDto;
+import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.enums.SubscriptionEnum;
 import com.finsight.marketrealtime.model.Subscription;
 import com.finsight.marketrealtime.model.SubscriptionPlanEntity;
@@ -29,16 +31,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final LockManager<UUID> lockManager;
     private final UserRepository userRepository;
     private final SubscriptionPlanRepository subscriptionPlanRepository;
+    private final RedisDao redisDao;
 
     @Autowired
     public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository,
                                    LockManager<UUID> lockManager,
                                    UserRepository userRepository,
-                                   SubscriptionPlanRepository subscriptionPlanRepository) {
+                                   SubscriptionPlanRepository subscriptionPlanRepository,
+                                   RedisDao redisDao
+                                   ) {
         this.subscriptionRepository = subscriptionRepository;
         this.lockManager = lockManager;
         this.userRepository = userRepository;
         this.subscriptionPlanRepository = subscriptionPlanRepository;
+        this.redisDao = redisDao;
     }
 
     @Override
@@ -77,6 +83,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             subscription.setUser(user);
             subscription.setSubscriptionPlan(subscriptionPlan);
             subscriptionRepository.save(subscription);
+            redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -106,7 +113,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             if (dto.getStatus() != null) subscription.setStatus(dto.getStatus());
 
             subscriptionRepository.save(subscription);
-
+            redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
             return ResponseDto.builder().success(true).build();
 
         } finally {
@@ -132,11 +139,22 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                         .build();
             }
             subscriptionRepository.delete(subscription);
-
+            redisDao.delete(RedisEnum.SUBSCRIPTION.toString(), subscriptionId);
             return ResponseDto.builder().success(true).build();
 
         } finally {
             lock.unlock();
         }
+    }
+
+    private SubscriptionDto convertToDto(Subscription subscription) {
+        SubscriptionDto dto = new SubscriptionDto();
+        dto.setSubscriptionId(subscription.getSubscriptionId());
+        dto.setUserId(subscription.getUser().getUserId());
+        dto.setSubscriptionPlanId(subscription.getSubscriptionPlan().getPlanId());
+        dto.setStartDate(subscription.getStartDate());
+        dto.setEndDate(subscription.getEndDate());
+        dto.setStatus(subscription.getStatus());
+        return dto;
     }
 }

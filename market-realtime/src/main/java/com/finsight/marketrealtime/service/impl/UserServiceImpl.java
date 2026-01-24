@@ -1,12 +1,12 @@
 package com.finsight.marketrealtime.service.impl;
 
-import com.finsight.marketrealtime.dto.AhpConfigDto;
+import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.UserDto;
+import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.AhpConfigEntity;
 import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.UserRepository;
-import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.service.UserService;
 import com.finsight.marketrealtime.utils.LockManager;
 import org.slf4j.Logger;
@@ -25,15 +25,15 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final UserRepository userRepository;
     private final LockManager<UUID> lockManager;
-    private final AhpConfigService ahpConfigService;
+    private final RedisDao redisDao;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
                            LockManager<UUID> lockManager,
-                           AhpConfigService ahpConfigService) {
+                           RedisDao redisDao) {
         this.userRepository = userRepository;
         this.lockManager = lockManager;
-        this.ahpConfigService = ahpConfigService;
+        this.redisDao=redisDao;
     }
 
     @Override
@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService {
                 ahpConfigEntity.setUser(userEntity);
                 userEntity.setAhpConfig(ahpConfigEntity);
                 userRepository.save(userEntity);
+                redisDao.save(RedisEnum.USER.toString(), userEntity.getUserId(), convertToDto(userEntity));
                 return ResponseDto.builder().success(true).build();
             } finally {
                 lock.unlock();
@@ -94,6 +95,7 @@ public class UserServiceImpl implements UserService {
             if (userDto.getPhoneNumber() != null)
                 userEntity.setPhoneNumber(userDto.getPhoneNumber());
             userRepository.save(userEntity);
+            redisDao.save(RedisEnum.USER.toString(), userEntity.getUserId(), convertToDto(userEntity));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -122,6 +124,7 @@ public class UserServiceImpl implements UserService {
             }
 
             userRepository.deleteById(userDto.getUserId());
+            redisDao.delete(RedisEnum.USER.toString(), userDto.getUserId());
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -154,5 +157,14 @@ public class UserServiceImpl implements UserService {
         boolean usernameExists = (username != null) && userRepository.existsByUsername(username);
         boolean emailExists = (email != null) && userRepository.existsByEmail(email);
         return usernameExists || emailExists;
+    }
+
+    private UserDto convertToDto(UserEntity userEntity) {
+        UserDto userDto = new UserDto();
+        userDto.setUserId(userEntity.getUserId());
+        userDto.setUsername(userEntity.getUsername());
+        userDto.setEmail(userEntity.getEmail());
+        userDto.setPhoneNumber(userEntity.getPhoneNumber());
+        return userDto;
     }
 }

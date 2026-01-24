@@ -2,8 +2,10 @@ package com.finsight.marketrealtime.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.AhpConfigDto;
 import com.finsight.marketrealtime.dto.ResponseDto;
+import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.AhpConfigEntity;
 import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.AhpConfigRepository;
@@ -25,16 +27,20 @@ public class AhpConfigServiceImpl implements AhpConfigService {
     private final UserRepository userRepository;
     private final AhpConfigRepository ahpConfigRepository;
     private final LockManager<UUID> lockManager;
+    private final RedisDao redisDao;
 
     @Autowired
     public AhpConfigServiceImpl(UserRepository userRepository,
                                 AhpConfigRepository ahpConfigRepository,
                                 LockManager<UUID> lockManager,
-                                ObjectMapper objectMapper) {
+                                ObjectMapper objectMapper,
+                                RedisDao redisDao
+                                ) {
         this.userRepository = userRepository;
         this.ahpConfigRepository = ahpConfigRepository;
         this.lockManager = lockManager;
         this.objectMapper = objectMapper;
+        this.redisDao = redisDao;
     }
 
     @Override
@@ -56,6 +62,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
 
             ahpConfigEntity.setUser(user);
             ahpConfigRepository.save(ahpConfigEntity);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(),ahpConfigDto.getAhpConfigId(),convertToDto(ahpConfigEntity));
         } finally {
             lock.unlock();
         }
@@ -85,6 +92,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
             }
 
             ahpConfigRepository.save(ahpConfig);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(),ahpConfigDto.getAhpConfigId(),convertToDto(ahpConfig));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -152,5 +160,16 @@ public class AhpConfigServiceImpl implements AhpConfigService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Failed to parse or write AHP JSON", e);
         }
+    }
+
+    private AhpConfigDto convertToDto(AhpConfigEntity ahpConfigEntity) {
+
+        return AhpConfigDto.builder()
+                .ahpConfigId(ahpConfigEntity.getAhpConfigId())
+                .userId(ahpConfigEntity.getUser().getUserId())
+                .criteriaJson(ahpConfigEntity.getCriteriaJson())
+                .pairwiseMatrixJson(ahpConfigEntity.getPairwiseMatrixJson())
+                .weightsJson(ahpConfigEntity.getWeightsJson())
+                .build();
     }
 }
