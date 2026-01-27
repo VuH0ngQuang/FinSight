@@ -3,12 +3,14 @@ package com.finsight.marketrealtime.configurations;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Configuration
 public class DotEnvPostProcessor implements EnvironmentPostProcessor {
 
     @Override

@@ -16,15 +16,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AppConf {
     private static final Logger logger = LoggerFactory.getLogger(AppConf.class);
     private String clusterId;
+    private String appDomain;
     private Kafka kafka;
     private Database database;
     private Redis redis;
+    private Mail mail;
     private Uri uri;
 
     @PostConstruct
     public void logConfig() {
         logger.info("===== Application Configuration =====");
         logger.info("Cluster ID            : {}", clusterId);
+        logger.info("App Domain            : {}", appDomain);
         if (kafka != null) {
             logger.info("Kafka URLs            : {}", kafka.getUrls());
             logger.info("Kafka Topic           : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketData() : "(none)");
@@ -42,6 +45,13 @@ public class AppConf {
             logger.info("Redis port            : {}", redis.getPort());
             logger.info("Redis password        : {}", redis.getPassword());
             logger.info("Redis database        : {}", redis.getDatabase());
+        }
+
+        if (redis != null) {
+            logger.info("Mail HOST             : {}", mail.getHost());
+            logger.info("Mail port             : {}", mail.getPort());
+            logger.info("Mail username         : {}", mail.getUsername());
+            logger.info("Mail password         : {}", mail.getPassword());
         }
 
         if (uri != null) {
@@ -102,6 +112,14 @@ public class AppConf {
         private int port;
         private String password;
         private int database;
+    }
+
+    @Data
+    public static class Mail {
+        private String host;
+        private int port;
+        private String username;
+        private String password;
     }
 
     @Data

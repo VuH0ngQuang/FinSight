@@ -8,6 +8,7 @@ spring:
 
 app:
     clusterId: ${CLUSTER_ID}
+    appDomain: ${APP_DOMAIN:localhost}
     kafka:
         urls: ${KAFKA_URLS:localhost:9092}
         timeout: 15000
@@ -32,6 +33,12 @@ app:
       port: ${REDIS_PORT:6379}
       password: ${REDIS_PASSWORD}
       database: ${REDIS_DATABASE}
+
+    mail:
+      host: ${MAIL_HOST:smtp.example.com}
+      port: ${MAIL_PORT:587}
+      username: ${MAIL_USERNAME:}
+      password: ${MAIL_PASSWORD:}
 
     uri:
       user:
