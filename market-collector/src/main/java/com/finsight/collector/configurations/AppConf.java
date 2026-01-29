@@ -14,6 +14,7 @@ public class AppConf {
     private Kafka kafka;
     private Mqtt mqtt;
     private DataFeed dataFeed;
+    private Database database;
 
     @PostConstruct
     public void logConfig() {
@@ -35,8 +36,15 @@ public class AppConf {
             logger.info("DataFeed WebSocketURL: {}", dataFeed.getWebsocketUrl());
             logger.info("DataFeed username    : {}", dataFeed.getUsername());
             logger.info("DataFeed password    : {}", dataFeed.getPassword());
-            logger.info("=====================================");
         }
+
+        if (database != null) {
+            logger.info("Database URL         : {}", database.getUrl());
+            logger.info("Database username    : {}", database.getUsername());
+            logger.info("Database password    : {}", database.getPassword());
+        }
+
+        logger.info("=====================================");
     }
 
     @Data
@@ -73,5 +81,12 @@ public class AppConf {
         private String username;
         private String password;
 
+    }
+
+    @Data
+    public static class Database {
+        private String url;
+        private String username;
+        private String password;
     }
 }

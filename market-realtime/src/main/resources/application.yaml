@@ -15,6 +15,8 @@ app:
         groupId: ${KAFKA_GROUP_ID:market-realtime}
         topic:
           marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
+          marketWebhooks: ${KAFKA_TOPIC_WEBHOOKS:market-payment}
+          marketRest: ${KAFKA_TOPIC_RESTART:market-rest}
 
     mqtt:
         url: ${MQTT_URL:tcp://localhost:1883}

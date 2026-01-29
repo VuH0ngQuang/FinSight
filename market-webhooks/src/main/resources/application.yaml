@@ -1,0 +1,15 @@
+server:
+    port: 5000
+
+app:
+    clusterId: ${CLUSTER_ID}
+    kafka:
+        urls: ${KAFKA_URLS:localhost:9092}
+        timeout: 15000
+        groupId: ${KAFKA_GROUP_ID:market-realtime}
+        topic:
+            marketWebhooks: ${KAFKA_TOPIC_WEBHOOKS:market-payment}
+
+    uri:
+        webhooks:
+            payment: "/webhooks/payment"

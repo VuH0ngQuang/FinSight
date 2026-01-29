@@ -24,3 +24,8 @@ app:
     username: ${DATAFEED_USERNAME:}
     password: ${DATAFEED_PASSWORD:}
     timeout: 15000
+
+  database:
+    url: ${DB_HOST:localhost}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
