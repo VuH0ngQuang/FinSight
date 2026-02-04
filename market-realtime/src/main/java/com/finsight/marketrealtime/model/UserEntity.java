@@ -18,9 +18,8 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 public class UserEntity {
-    @Builder.Default
     @Id
-    private UUID userId = UUID.randomUUID();
+    private long userId;
     private String username;
     private String email;
     private String password;

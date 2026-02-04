@@ -1,5 +1,5 @@
 package com.finsight.marketrealtime.enums;
 
 public enum SubscriptionEnum {
-    ACTIVE, EXPIRED, CANCELED
+    ACTIVE, EXPIRED, CANCELED, UNPAID, ERROR
 }

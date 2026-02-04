@@ -10,9 +10,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository <UserEntity, UUID> {
+public interface UserRepository extends JpaRepository <UserEntity, Long> {
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
     @Query("SELECT u FROM UserEntity u LEFT JOIN FETCH u.favoriteStocks WHERE u.userId = :userId")
-    Optional<UserEntity> findByIdWithFavoriteStocks(@Param("userId") UUID userId);
+    Optional<UserEntity> findByIdWithFavoriteStocks(@Param("userId") long userId);
 }

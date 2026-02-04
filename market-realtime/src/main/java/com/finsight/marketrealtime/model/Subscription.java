@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -16,12 +15,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Subscription {
+
     @Id
-    @Builder.Default
-    private UUID subscriptionId = UUID.randomUUID();
+    private Long subscriptionId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String errorMessage;
+    @Enumerated(EnumType.STRING)
     public SubscriptionEnum status;
+
 
     @ManyToOne
     private UserEntity user;

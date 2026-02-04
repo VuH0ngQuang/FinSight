@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface AhpConfigRepository extends JpaRepository<AhpConfigEntity, UUID> {
+public interface AhpConfigRepository extends JpaRepository<AhpConfigEntity, Long> {
 }

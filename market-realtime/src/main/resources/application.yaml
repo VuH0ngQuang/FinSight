@@ -42,6 +42,12 @@ app:
       username: ${MAIL_USERNAME:}
       password: ${MAIL_PASSWORD:}
 
+    payOSEnv:
+      clientID: ${PAYOS_CLIENT_ID}
+      apiKey: ${PAYOS_API_KEY}
+      checksumKey: ${PAYOS_CHECKSUM_KEY}
+
+
     uri:
       user:
         create: "/user/create"
@@ -65,5 +71,7 @@ app:
         create: "/stockYearData/create"
         update: "/stockYearData/update/"
         delete: "/stockYearData/delete"
+      webhooks:
+        payment: "/webhooks/payment"
 
 

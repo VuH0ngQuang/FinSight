@@ -8,6 +8,7 @@ import com.finsight.marketrealtime.model.AhpConfigEntity;
 import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.UserRepository;
 import com.finsight.marketrealtime.service.UserService;
+import com.finsight.marketrealtime.utils.IDGenerator;
 import com.finsight.marketrealtime.utils.LockManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +25,12 @@ public class UserServiceImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final UserRepository userRepository;
-    private final LockManager<UUID> lockManager;
+    private final LockManager<Long> lockManager;
     private final RedisDao redisDao;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
-                           LockManager<UUID> lockManager,
+                           LockManager<Long> lockManager,
                            RedisDao redisDao) {
         this.userRepository = userRepository;
         this.lockManager = lockManager;
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
                     build();
         } else {
             UserEntity userEntity = new UserEntity();
+            userEntity.setUserId(IDGenerator.nextId());
             ReentrantLock lock = lockManager.getLock(userEntity.getUserId());
             lock.lock();
             try {
@@ -78,7 +80,7 @@ public class UserServiceImpl implements UserService {
             if (userEntity == null) return ResponseDto.builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("User not found: " + userDto.getUserId().toString()).
+                    errorMessage("User not found: " + userDto.getUserId()).
                     build();
 
             if (existsByUsernameAndEmail(userDto.getUsername(), userDto.getEmail())) return ResponseDto.
@@ -114,7 +116,7 @@ public class UserServiceImpl implements UserService {
             if (userEntity == null) return ResponseDto.builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("User not found: " + userDto.getUserId().toString()).
+                    errorMessage("User not found: " + userDto.getUserId()).
                     build();
 
             if (userEntity.getFavoriteStocks() != null) {
@@ -142,7 +144,7 @@ public class UserServiceImpl implements UserService {
             if (userEntity == null) return ResponseDto.builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("User not found: " + userDto.getUserId().toString()).
+                    errorMessage("User not found: " + userDto.getUserId()).
                     build();
 
             userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));

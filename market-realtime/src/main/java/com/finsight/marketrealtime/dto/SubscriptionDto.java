@@ -8,10 +8,12 @@ import java.util.UUID;
 
 @Data
 public class SubscriptionDto {
-    private UUID subscriptionId;
-    private UUID userId;
+    private long subscriptionId;
+    private long userId;
     private int subscriptionPlanId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String errorMessage;
+    private String type;
     public SubscriptionEnum status;
 }

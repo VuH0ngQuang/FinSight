@@ -16,8 +16,7 @@ import java.util.UUID;
 public class AhpConfigEntity {
 
     @Id
-    @Builder.Default
-    private UUID ahpConfigId = UUID.randomUUID();
+    private long ahpConfigId;
 
     // === DEFAULT: criteria list ===
     // ["DDM","DCFM","RI","PB","PE","PC","PS"]

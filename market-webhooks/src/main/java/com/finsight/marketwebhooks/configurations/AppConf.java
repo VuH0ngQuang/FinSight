@@ -13,6 +13,7 @@ public class AppConf {
     private String clusterId;
     private Uri uri;
     private Kafka kafka;
+    private PayOSEnv payOSEnv;
 
     @PostConstruct
     private void init() {
@@ -45,6 +46,13 @@ public class AppConf {
     @Data
     public static class Webhooks {
         private String payment;
+    }
+
+    @Data
+    public static class PayOSEnv {
+        private String clientID;
+        private String apiKey;
+        private String checksumKey;
     }
 
     @Data

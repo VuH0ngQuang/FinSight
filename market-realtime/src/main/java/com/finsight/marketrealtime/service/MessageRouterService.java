@@ -112,6 +112,11 @@ public class MessageRouterService {
             else if (uri.startsWith("/ahpConfig")) {
                 AhpConfigDto ahpConfigDto = mapPayloadToDto(payload, AhpConfigDto.class);
                 return routeAhpConfigMessage(uri, ahpConfigDto);
+            }
+            //Webhooks service routes
+            else if (uri.startsWith("/webhooks")) {
+                PaymentDto webhookPayload = mapPayloadToDto(payload, PaymentDto.class);
+                return routeWebhooksMessages(uri, webhookPayload);
             } else {
                 logger.warn("Unknown URI pattern: {}", uri);
                 return ResponseDto.builder()
@@ -293,6 +298,29 @@ public class MessageRouterService {
                     .success(false)
                     .errorCode(500)
                     .errorMessage("Error processing year data message: " + e.getMessage())
+                    .build();
+        }
+    }
+    
+    private ResponseDto routeWebhooksMessages(String uri, PaymentDto payload) {
+        try {
+            if (uri.startsWith(appConf.getUri().getWebhooks().getPayment())) {
+                subscriptionService.paymentSubscription(payload);
+                return null; //dont need to response so return null
+            } else {
+                logger.warn("Unknown webhooks URI: {}", uri);
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Unknown webhooks URI: " + uri)
+                        .build();
+            }
+        } catch (Exception e) {
+            logger.error("Error processing webhooks message with URI {}: {}", uri, e.getMessage(), e);
+            return ResponseDto.builder()
+                    .success(false)
+                    .errorCode(500)
+                    .errorMessage("Error processing webhooks message: " + e.getMessage())
                     .build();
         }
     }

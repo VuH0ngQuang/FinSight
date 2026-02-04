@@ -16,6 +16,7 @@ public class AppConf {
     private Database database;
     private Redis redis;
     private Mail mail;
+    private PayOSEnv payOSEnv;
     private Uri uri;
 
     @PostConstruct
@@ -121,6 +122,13 @@ public class AppConf {
         private int port;
         private String username;
         private String password;
+    }
+
+    @Data
+    public static class PayOSEnv {
+        private String clientID;
+        private String apiKey;
+        private String checksumKey;
     }
 
     @Data

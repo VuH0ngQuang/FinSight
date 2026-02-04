@@ -24,11 +24,11 @@ public class MailServiceImpl implements MailService {
         this.javaMailSender = javaMailSender;
         this.templateEngine = templateEngine;
     }
-
-    @PostConstruct
-    public void init() throws MessagingException {
-        sendWelcome("admin@vuhongquang.com","Vũ Hồng Quang");
-    }
+//
+//    @PostConstruct
+//    public void init() throws MessagingException {
+//        sendWelcome("admin@vuhongquang.com","Vũ Hồng Quang");
+//    }
 
     @Override
     public void sendWelcome(String to, String username) throws MessagingException {

@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubscriptionPlanEntity {
+
     @Id
     private int planId;
     private String planName;

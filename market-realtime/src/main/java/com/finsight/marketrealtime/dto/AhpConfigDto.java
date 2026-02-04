@@ -8,8 +8,8 @@ import java.util.UUID;
 @Builder
 @Data
 public class AhpConfigDto {
-    private UUID ahpConfigId;
-    private UUID userId;
+    private long ahpConfigId;
+    private long userId;
     private String criteriaJson;
     private String pairwiseMatrixJson;
     private String weightsJson;

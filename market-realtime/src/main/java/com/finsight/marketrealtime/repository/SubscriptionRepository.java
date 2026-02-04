@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface SubscriptionRepository extends JpaRepository <Subscription, UUID> {
-    Subscription findFirstByUserUserIdOrderByEndDateDesc(UUID userId);
+public interface SubscriptionRepository extends JpaRepository <Subscription, Long> {
+    Subscription findFirstByUserUserIdOrderByEndDateDesc(long userId);
 }

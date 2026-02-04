@@ -11,6 +11,7 @@ import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.AhpConfigRepository;
 import com.finsight.marketrealtime.repository.UserRepository;
 import com.finsight.marketrealtime.service.AhpConfigService;
+import com.finsight.marketrealtime.utils.IDGenerator;
 import com.finsight.marketrealtime.utils.LockManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +27,13 @@ public class AhpConfigServiceImpl implements AhpConfigService {
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
     private final AhpConfigRepository ahpConfigRepository;
-    private final LockManager<UUID> lockManager;
+    private final LockManager<Long> lockManager;
     private final RedisDao redisDao;
 
     @Autowired
     public AhpConfigServiceImpl(UserRepository userRepository,
                                 AhpConfigRepository ahpConfigRepository,
-                                LockManager<UUID> lockManager,
+                                LockManager<Long> lockManager,
                                 ObjectMapper objectMapper,
                                 RedisDao redisDao
                                 ) {
@@ -46,6 +47,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
     @Override
     public ResponseDto createAhpConfig(AhpConfigDto ahpConfigDto) {
         AhpConfigEntity ahpConfigEntity = new AhpConfigEntity();
+        ahpConfigEntity.setAhpConfigId(IDGenerator.nextId());
         ReentrantLock lock = lockManager.getLock(ahpConfigEntity.getAhpConfigId());
         lock.lock();
         try {
@@ -82,7 +84,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
                     builder().
                     success(false).
                     errorCode(404).
-                    errorMessage("AHP Config not found: " + ahpConfigDto.getAhpConfigId().toString()).
+                    errorMessage("AHP Config not found: " + ahpConfigDto.getAhpConfigId()).
                     build();
 
             if (ahpConfigDto.getCriteriaJson() != null) ahpConfig.setCriteriaJson(ahpConfigDto.getCriteriaJson());
