@@ -21,7 +21,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 //    @PostConstruct
 //    public void init() {
-//        log.error(createPayment(1L,"1",10000L));
+//        log.error(createPayment(123L,"123",10000L));
 //    }
 
     @Override

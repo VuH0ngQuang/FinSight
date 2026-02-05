@@ -34,7 +34,7 @@ public class WebhookController {
         this.objectMapper = objectMapper;
     }
 
-    @PostMapping("/webhooks")
+    @PostMapping("/webhooks1")
     public ResponseEntity<Void> handleWebhook(@RequestBody Webhook payload,
                                                 @RequestHeader Map<String, String> headers
     ) {

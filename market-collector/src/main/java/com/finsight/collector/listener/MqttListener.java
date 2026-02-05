@@ -108,4 +108,15 @@ public class MqttListener extends MqttService {
     private void scheduleReset() throws IOException {
         initConnection();
     }
+
+    // Runs at 4:00 PM Monday–Friday (after trading hours)
+    @Scheduled(cron = "0 0 16 * * MON-FRI")
+    private void scheduleDisconnect() throws IOException {
+        try {
+            super.disconnect();
+            logger.info("MQTT connection disconnected after trading hours");
+        } catch (Exception e) {
+            logger.error("Error while disconnecting MQTT listener: {}", e.getMessage());
+        }
+    }
 }

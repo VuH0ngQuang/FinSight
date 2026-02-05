@@ -17,6 +17,7 @@ import com.finsight.marketrealtime.service.SubscriptionService;
 
 import com.finsight.marketrealtime.utils.LockManager;
 import com.finsight.marketrealtime.utils.IDGenerator;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,6 +53,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         this.redisDao = redisDao;
         this.paymentService = paymentService;
     }
+
+//    @PostConstruct
+//    public void init() {
+//        SubscriptionDto dto = new SubscriptionDto();
+//        dto.setUserId(144995632409477120L);
+//        dto.setSubscriptionPlanId(2);
+//        dto.setType("1Y");
+//        createSubscription(dto);
+//    }
 
     @Override
     public ResponseDto<String> createSubscription(SubscriptionDto subscriptionDto) {
@@ -101,7 +111,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
             String ref = String.format("%08d", subscriptionId % 100000000);
             String checkoutUrl = paymentService.createPayment(subscriptionId, ref, subscriptionPlan.getPrice().longValueExact());
-            return ResponseDto.<String>builder().success(true).data(checkoutUrl).build();
+            return ResponseDto.<String>builder().success(true).data(null).build();
         } finally {
             lock.unlock();
         }

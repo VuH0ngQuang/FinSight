@@ -70,6 +70,19 @@ public class MqttService implements MqttCallback {
 //        }
     }
 
+    public void disconnect() {
+        try {
+            if (client != null && client.isConnected()) {
+                client.disconnect();
+                logger.info("MQTT disconnected");
+            }
+        } catch (MqttException e) {
+            logger.error("MQTT disconnect error: {}", e.getMessage());
+        } finally {
+            isDisconnect = true;
+        }
+    }
+
     public void createDefaultTopic(String defaultTopic) {
         this.defaultTopic = defaultTopic;
     }
