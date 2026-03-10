@@ -22,60 +22,63 @@ public class AppConf {
     @PostConstruct
     public void logConfig() {
         logger.info("===== Application Configuration =====");
-        logger.info("Cluster ID                : {}", clusterId);
-        logger.info("App Domain                : {}", appDomain);
+        logger.info("Cluster ID                 : {}", clusterId);
+        logger.info("App Domain                 : {}", appDomain);
         if (kafka != null) {
-            logger.info("Kafka URLs                : {}", kafka.getUrls());
-            logger.info("Kafka GroupId             : {}", kafka.getGroupId());
-            logger.info("Kafka Topic MarketData    : {}", kafka.getTopic().getMarketData());
-            logger.info("Kafka Topic MarketWebhooks: {}", kafka.getTopic().getMarketWebhooks());
-            logger.info("Kafka Topic MarketRest    : {}", kafka.getTopic().getMarketRest());
+            logger.info("Kafka URLs                 : {}", kafka.getUrls());
+            logger.info("Kafka GroupId              : {}", kafka.getGroupId());
+            logger.info("Kafka Topic MarketData     : {}", kafka.getTopic().getMarketData());
+            logger.info("Kafka Topic MarketWebhooks : {}", kafka.getTopic().getMarketWebhooks());
+            logger.info("Kafka Topic MarketRest     : {}", kafka.getTopic().getMarketRest());
+            logger.info("Kafka Topic MarketIngestion: {}", kafka.getTopic().getMarketIngestion());
         }
 
         if (database != null) {
-            logger.info("Database URL              : {}", database.getUrl());
-            logger.info("Database username         : {}", database.getUsername());
-            logger.info("Database password         : {}", database.getPassword());
+            logger.info("Database URL               : {}", database.getUrl());
+            logger.info("Database username          : {}", database.getUsername());
+            logger.info("Database password          : {}", database.getPassword());
         }
 
         if (redis != null) {
-            logger.info("Redis HOST                : {}", redis.getHost());
-            logger.info("Redis port                : {}", redis.getPort());
-            logger.info("Redis password            : {}", redis.getPassword());
-            logger.info("Redis database            : {}", redis.getDatabase());
+            logger.info("Redis HOST                 : {}", redis.getHost());
+            logger.info("Redis port                 : {}", redis.getPort());
+            logger.info("Redis password             : {}", redis.getPassword());
+            logger.info("Redis database             : {}", redis.getDatabase());
         }
 
         if (redis != null) {
-            logger.info("Mail HOST                 : {}", mail.getHost());
-            logger.info("Mail port                 : {}", mail.getPort());
-            logger.info("Mail username             : {}", mail.getUsername());
-            logger.info("Mail password             : {}", mail.getPassword());
+            logger.info("Mail HOST                  : {}", mail.getHost());
+            logger.info("Mail port                  : {}", mail.getPort());
+            logger.info("Mail username              : {}", mail.getUsername());
+            logger.info("Mail password              : {}", mail.getPassword());
         }
 
         if (uri != null) {
-            logger.info("User Create URI           : {}", uri.getUser().getCreate());
-            logger.info("User Update URI           : {}", uri.getUser().getUpdate());
-            logger.info("User Delete URI           : {}", uri.getUser().getDelete());
-            logger.info("User UpdatePassword       : {}", uri.getUser().getUpdatePassword());
+            logger.info("User Create URI            : {}", uri.getUser().getCreate());
+            logger.info("User Update URI            : {}", uri.getUser().getUpdate());
+            logger.info("User Delete URI            : {}", uri.getUser().getDelete());
+            logger.info("User UpdatePassword        : {}", uri.getUser().getUpdatePassword());
 
-            logger.info("Stock Create URI          : {}", uri.getStock().getCreate());
-            logger.info("Stock Update URI          : {}", uri.getStock().getUpdate());
-            logger.info("Stock Delete URI          : {}", uri.getStock().getDelete());
-            logger.info("Stock UpdateIndustry      : {}", uri.getStock().getUpdateIndustryRatios());
-            logger.info("Stock UpdateMatchPrice    : {}", uri.getStock().getUpdateMatchPrice());
+            logger.info("Stock Create URI           : {}", uri.getStock().getCreate());
+            logger.info("Stock Update URI           : {}", uri.getStock().getUpdate());
+            logger.info("Stock Delete URI           : {}", uri.getStock().getDelete());
+            logger.info("Stock UpdateIndustry       : {}", uri.getStock().getUpdateIndustryRatios());
+            logger.info("Stock UpdateMatchPrice     : {}", uri.getStock().getUpdateMatchPrice());
 
-            logger.info("Subscription Create       : {}", uri.getSubscription().getCreate());
-            logger.info("Subscription Update       : {}", uri.getSubscription().getUpdate());
-            logger.info("Subscription Delete       : {}", uri.getSubscription().getDelete());
+            logger.info("Subscription Create        : {}", uri.getSubscription().getCreate());
+            logger.info("Subscription Update        : {}", uri.getSubscription().getUpdate());
+            logger.info("Subscription Delete        : {}", uri.getSubscription().getDelete());
 
-            logger.info("AHP Config Create         : {}", uri.getAhpConfig().getCreate());
-            logger.info("AHP Config Update         : {}", uri.getAhpConfig().getUpdate());
+            logger.info("AHP Config Create          : {}", uri.getAhpConfig().getCreate());
+            logger.info("AHP Config Update          : {}", uri.getAhpConfig().getUpdate());
 
-            logger.info("StockYearData Create      : {}", uri.getStockYearData().getCreate());
-            logger.info("StockYearData Update      : {}", uri.getStockYearData().getUpdate());
-            logger.info("StockYearData Delete      : {}", uri.getStockYearData().getDelete());
+            logger.info("StockYearData Create       : {}", uri.getStockYearData().getCreate());
+            logger.info("StockYearData Update       : {}", uri.getStockYearData().getUpdate());
+            logger.info("StockYearData Delete       : {}", uri.getStockYearData().getDelete());
 
-            logger.info("Webhooks Payment          : {}", uri.getWebhooks().getPayment());
+            logger.info("Webhooks Payment           : {}", uri.getWebhooks().getPayment());
+
+            logger.info("Portfolio Allocate         : {}", uri.getPortfolio().getAllocate());
         }
         logger.info("=====================================");
     }
@@ -93,6 +96,7 @@ public class AppConf {
         private String marketData;
         private String marketWebhooks;
         private String marketRest;
+        private String marketIngestion;
     }
 
 
@@ -139,6 +143,7 @@ public class AppConf {
         private AhpConfig ahpConfig;
         private StockYearData stockYearData;
         private Webhooks webhooks;
+        private Portfolio portfolio;
     }
 
     @Data
@@ -169,6 +174,11 @@ public class AppConf {
     public static class AhpConfig {
         private String create;
         private String update;
+    }
+
+    @Data
+    public static class Portfolio {
+        private String allocate;
     }
 
     @Data

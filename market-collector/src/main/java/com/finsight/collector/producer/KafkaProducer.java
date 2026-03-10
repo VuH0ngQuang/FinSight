@@ -3,7 +3,6 @@ package com.finsight.collector.producer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finsight.collector.configurations.AppConf;
 import com.finsight.collector.kafka.KafkaService;
-import com.finsight.collector.model.Message;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

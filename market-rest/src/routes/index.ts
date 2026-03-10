@@ -3,6 +3,7 @@ import stockRoutes from './stockRoutes';
 import userRoutes from './userRoutes';
 import ahpConfigRoutes from './ahpConfigRoutes';
 import stockYearDataRoutes from './stockYearDataRoutes';
+import portfolioRoutes from './portfolioRoutes';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.use('/stock', stockRoutes);
 router.use('/user', userRoutes);
 router.use('/ahpConfig', ahpConfigRoutes);
 router.use('/stockYearData', stockYearDataRoutes);
+router.use('/portfolio', portfolioRoutes);
 
 export default router;
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Overvaluation Alert</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 20px;">
+
+<div style="max-width: 720px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+    <!-- Header -->
+    <h2 style="margin-top: 0; color: #d32f2f;">
+        🚨 Overvaluation Alert
+    </h2>
+
+    <!-- Stock Info -->
+    <p style="font-size: 16px; margin-bottom: 8px;">
+        <strong>Stock:</strong>
+        <span th:text="${stockName}">ABC Corporation</span>
+        (<span th:text="${stockId}">ABC</span>)
+    </p>
+
+    <p style="font-size: 16px; margin-bottom: 16px;">
+        <strong>Current Match Price:</strong>
+        <span th:text="${#numbers.formatDecimal(currentPrice, 1, 'COMMA', 2, 'POINT')}">
+            123,456.00
+        </span>
+    </p>
+
+    <!-- Summary -->
+    <div style="padding: 12px; background-color: #fff3e0; border-left: 4px solid #fb8c00; margin-bottom: 20px;">
+        <strong>Overvaluation Summary:</strong>
+        <span th:text="${overvaluedCount}">5</span> /
+        <span th:text="${totalIndicators}">8</span>
+        indicators =
+        <span th:text="${overvaluedPercentage}">62.5</span>%
+    </div>
+
+    <!-- Indicator Table -->
+    <table width="100%" cellpadding="8" cellspacing="0" border="1"
+           style="border-collapse: collapse; font-size: 14px; text-align: left;">
+
+        <thead style="background-color: #f0f0f0;">
+        <tr>
+            <th>Indicator</th>
+            <th>Value</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="indicator : ${indicators}">
+            <td th:text="${indicator.name}">P/E Ratio</td>
+            <td th:text="${indicator.value}">32.5</td>
+
+            <td th:switch="${indicator.status}">
+                <span th:case="'OVERVALUED'" style="color: #d32f2f;">❌ Overvalued</span>
+                <span th:case="'FAIR'" style="color: #2e7d32;">✅ Fair</span>
+                <span th:case="'WARNING'" style="color: #f9a825;">⚠ Warning</span>
+                <span th:case="*">Unknown</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Disclaimer -->
+    <div style="margin-top: 24px; font-size: 12px; color: #757575; line-height: 1.6;">
+        <hr style="border: none; border-top: 1px solid #eeeeee; margin-bottom: 12px;"/>
+        <p>
+            <strong>Disclaimer:</strong><br/>
+            This alert is automatically generated based on quantitative valuation indicators.
+            It is provided for informational purposes only and does not constitute financial,
+            investment, or trading advice. Investors should conduct their own due diligence
+            or consult with a licensed financial advisor before making investment decisions.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

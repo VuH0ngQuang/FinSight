@@ -13,6 +13,7 @@ import com.finsight.marketrealtime.repository.UserRepository;
 import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.utils.IDGenerator;
 import com.finsight.marketrealtime.utils.LockManager;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,16 @@ public class AhpConfigServiceImpl implements AhpConfigService {
         this.lockManager = lockManager;
         this.objectMapper = objectMapper;
         this.redisDao = redisDao;
+    }
+
+    @PostConstruct
+    public void init() {
+        AhpConfigDto ahpConfigDto = AhpConfigDto.builder().
+                ahpConfigId(123L)
+                .userId(144995632409477120L)
+                .pairwiseMatrixJson("[[1,2,4,6,8,3,5],[0.5,1,3,5,7,2,4],[0.25,0.3333,1,4,6,2,3],[0.1667,0.2,0.25,1,5,3,4],[0.125,0.1429,0.1667,0.2,1,4,6],[0.3333,0.5,0.5,0.3333,0.25,1,2],[0.2,0.25,0.3333,0.25,0.1667,0.5,1]]")
+                .build();
+        updateAhpConfig(ahpConfigDto);
     }
 
     @Override

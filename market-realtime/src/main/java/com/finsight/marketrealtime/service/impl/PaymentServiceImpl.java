@@ -20,9 +20,9 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
 //    @PostConstruct
-//    public void init() {
-//        log.error(createPayment(123L,"123",10000L));
-//    }
+////    public void init() {
+////        log.error(createPayment(124L,"124",10000L));
+////    }
 
     @Override
     public String createPayment(Long id,String ref, Long amount) {

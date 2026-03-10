@@ -67,6 +67,9 @@ export const config = {
       update: '/stockYearData/update/',
       delete: '/stockYearData/delete',
     },
+    portfolio: {
+      allocate: '/portfolio/allocate',
+    },
   },
 };
 

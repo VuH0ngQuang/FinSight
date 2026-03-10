@@ -1,0 +1,15 @@
+server:
+  port: 1111
+
+app:
+    clusterId: ${CLUSTER_ID}
+    kafka:
+        urls: ${KAFKA_URLS:localhost:9092}
+        timeout: 15000
+        groupId: ${KAFKA_GROUP_ID:market-ingestion}
+        topic:
+          marketIngestion: ${KAFKA_TOPIC_INGESTION:market-ingestion}
+
+    uri:
+      stockYearData:
+          update: "/stockYearData/update/"

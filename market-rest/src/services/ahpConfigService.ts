@@ -1,3 +1,4 @@
+
 import type { RowDataPacket } from 'mysql2';
 import { pool } from '../config/database';
 import type { AhpConfigDto } from '../dto/AhpConfigDto';

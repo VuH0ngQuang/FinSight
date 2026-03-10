@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface AhpConfigRepository extends JpaRepository<AhpConfigEntity, Long> {
+    AhpConfigEntity findByUserUserId(long userId);
 }

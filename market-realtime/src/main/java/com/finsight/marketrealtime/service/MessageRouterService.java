@@ -24,6 +24,7 @@ public class MessageRouterService {
     private final AhpConfigService ahpConfigService;
     private final AppConf appConf;
     private final StockYearDataService stockYearDataService;
+    private final PortfolioAllocationService portfolioAllocationService;
 
     @Autowired
     public MessageRouterService(
@@ -33,7 +34,8 @@ public class MessageRouterService {
             SubscriptionService subscriptionService,
             AhpConfigService ahpConfigService,
             AppConf appConf,
-            StockYearDataService stockYearDataService
+            StockYearDataService stockYearDataService,
+            PortfolioAllocationService portfolioAllocationService
     ) {
         this.mapper = mapper;
         this.userService = userService;
@@ -42,6 +44,7 @@ public class MessageRouterService {
         this.ahpConfigService = ahpConfigService;
         this.appConf = appConf;
         this.stockYearDataService = stockYearDataService;
+        this.portfolioAllocationService = portfolioAllocationService;
     }
 
     /**
@@ -112,6 +115,11 @@ public class MessageRouterService {
             else if (uri.startsWith("/ahpConfig")) {
                 AhpConfigDto ahpConfigDto = mapPayloadToDto(payload, AhpConfigDto.class);
                 return routeAhpConfigMessage(uri, ahpConfigDto);
+            }
+            // Portfolio allocation routes
+            else if (uri.startsWith("/portfolio")) {
+                PortfolioAllocationRequest portfolioRequest = mapPayloadToDto(payload, PortfolioAllocationRequest.class);
+                return routePortfolioMessage(uri, portfolioRequest);
             }
             //Webhooks service routes
             else if (uri.startsWith("/webhooks")) {
@@ -302,6 +310,28 @@ public class MessageRouterService {
         }
     }
     
+    private ResponseDto routePortfolioMessage(String uri, PortfolioAllocationRequest payload) {
+        try {
+            if (uri.equals(appConf.getUri().getPortfolio().getAllocate())) {
+                return portfolioAllocationService.allocate(payload);
+            } else {
+                logger.warn("Unknown portfolio URI: {}", uri);
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Unknown portfolio URI: " + uri)
+                        .build();
+            }
+        } catch (Exception e) {
+            logger.error("Error processing portfolio message with URI {}: {}", uri, e.getMessage(), e);
+            return ResponseDto.builder()
+                    .success(false)
+                    .errorCode(500)
+                    .errorMessage("Error processing portfolio message: " + e.getMessage())
+                    .build();
+        }
+    }
+
     private ResponseDto routeWebhooksMessages(String uri, PaymentDto payload) {
         try {
             if (uri.startsWith(appConf.getUri().getWebhooks().getPayment())) {

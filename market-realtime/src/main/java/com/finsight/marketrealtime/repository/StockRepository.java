@@ -32,4 +32,7 @@ public interface StockRepository extends JpaRepository<StockEntity, String> {
 
     @Query("SELECT s FROM StockEntity s LEFT JOIN FETCH s.yearData WHERE s.stockId = :stockId")
     Optional<StockEntity> findByIdWithYearData(@Param("stockId") String stockId);
+
+    @Query("SELECT DISTINCT s FROM StockEntity s LEFT JOIN FETCH s.yearData")
+    List<StockEntity> findAllWithYearData();
 }

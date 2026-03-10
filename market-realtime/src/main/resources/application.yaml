@@ -17,6 +17,7 @@ app:
           marketData: ${KAFKA_TOPIC_MARKET_DATA:market-data}
           marketWebhooks: ${KAFKA_TOPIC_WEBHOOKS:market-payment}
           marketRest: ${KAFKA_TOPIC_RESTART:market-rest}
+          marketIngestion: ${KAFKA_TOPIC_INGESTION:market-ingestion}
 
     mqtt:
         url: ${MQTT_URL:tcp://localhost:1883}
@@ -73,5 +74,7 @@ app:
         delete: "/stockYearData/delete"
       webhooks:
         payment: "/webhooks/payment"
+      portfolio:
+        allocate: "/portfolio/allocate"
 
 

@@ -16,5 +16,5 @@ app:
         checksumKey: ${PAYOS_CHECKSUM_KEY}
 
     uri:
-        webhooks:
-            payment: "/webhooks/payment"
+        stockYearData:
+            update: "/stockYearData/update/"

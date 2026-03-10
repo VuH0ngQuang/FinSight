@@ -39,6 +39,7 @@ public class KafkaListener extends KafkaService {
         topics.add(appConf.getKafka().getTopic().getMarketData());
         topics.add(appConf.getKafka().getTopic().getMarketRest());
         topics.add(appConf.getKafka().getTopic().getMarketWebhooks());
+        topics.add(appConf.getKafka().getTopic().getMarketIngestion());
 
         // Initialize producer to send responses
         connectProducer(
