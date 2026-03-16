@@ -11,4 +11,5 @@ public class UserDto {
     private String password;
     private String phoneNumber;
     private boolean isAdmin;
+    private String stockId;
 }

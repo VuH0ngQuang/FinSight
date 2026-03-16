@@ -81,3 +81,45 @@ export const updatePassword = async (req: Request, res: Response): Promise<void>
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+export const loginUser = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const userPayload = req.body as UserDto;
+    const result = await userQueueService.login(userPayload);
+
+    const statusCode = result.success ? 200 : 401;
+    res.status(statusCode).json(result);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to login', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+export const addFavoriteStock = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const userPayload = req.body as UserDto;
+    const result = await userQueueService.addFavoriteStock(userPayload);
+
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to add favorite stock', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+export const removeFavoriteStock = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const userPayload = req.body as UserDto;
+    const result = await userQueueService.removeFavoriteStock(userPayload);
+
+    const statusCode = result.success ? 200 : 400;
+    res.status(statusCode).json(result);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to remove favorite stock', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};

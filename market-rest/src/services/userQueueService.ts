@@ -8,6 +8,9 @@ class UserQueueService {
   private readonly updateUserUri = config.uri.user.update;
   private readonly deleteUserUri = config.uri.user.delete;
   private readonly updatePasswordUri = config.uri.user.updatePassword;
+  private readonly loginUri = config.uri.user.login;
+  private readonly addFavoriteStockUri = config.uri.user.addFavoriteStock;
+  private readonly removeFavoriteStockUri = config.uri.user.removeFavoriteStock;
 
   async createUser(user: UserDto): Promise<ResponseDto<unknown>> {
     const { message } = await kafkaRequestResponseService.sendAndWait<UserDto, ResponseDto<unknown>>(
@@ -68,6 +71,57 @@ class UserQueueService {
 
     if (!message) {
       throw new Error('No response received from user delete pipeline');
+    }
+
+    if (!message.payload) {
+      throw new Error('Invalid Kafka response: missing payload');
+    }
+
+    return message.payload;
+  }
+
+  async login(user: UserDto): Promise<ResponseDto<unknown>> {
+    const { message } = await kafkaRequestResponseService.sendAndWait<UserDto, ResponseDto<unknown>>(
+        this.loginUri,
+        user
+    );
+
+    if (!message) {
+      throw new Error('No response received from user login pipeline');
+    }
+
+    if (!message.payload) {
+      throw new Error('Invalid Kafka response: missing payload');
+    }
+
+    return message.payload;
+  }
+
+  async addFavoriteStock(user: UserDto): Promise<ResponseDto<unknown>> {
+    const { message } = await kafkaRequestResponseService.sendAndWait<UserDto, ResponseDto<unknown>>(
+        this.addFavoriteStockUri,
+        user
+    );
+
+    if (!message) {
+      throw new Error('No response received from add favorite stock pipeline');
+    }
+
+    if (!message.payload) {
+      throw new Error('Invalid Kafka response: missing payload');
+    }
+
+    return message.payload;
+  }
+
+  async removeFavoriteStock(user: UserDto): Promise<ResponseDto<unknown>> {
+    const { message } = await kafkaRequestResponseService.sendAndWait<UserDto, ResponseDto<unknown>>(
+        this.removeFavoriteStockUri,
+        user
+    );
+
+    if (!message) {
+      throw new Error('No response received from remove favorite stock pipeline');
     }
 
     if (!message.payload) {

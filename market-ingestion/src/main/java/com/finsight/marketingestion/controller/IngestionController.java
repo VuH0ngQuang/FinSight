@@ -68,8 +68,6 @@ public class IngestionController {
                     continue;
                 }
                  parseStockData(sheet);
-
-                // TODO: persist or further process stockDataList per sheet
             }
 
             workbook.close();

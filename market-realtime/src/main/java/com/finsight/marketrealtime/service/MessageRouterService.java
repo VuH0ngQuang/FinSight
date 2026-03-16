@@ -166,6 +166,15 @@ public class MessageRouterService {
                             .build();
                 }
             }
+            else if (uri.equals(appConf.getUri().getUser().getLogin())) {
+                return userService.login(payload);
+            }
+            else if (uri.equals(appConf.getUri().getUser().getAddFavoriteStock())) {
+                return userService.addFavoriteStock(payload);
+            }
+            else if (uri.equals(appConf.getUri().getUser().getRemoveFavoriteStock())) {
+                return userService.removeFavoriteStock(payload);
+            }
             else {
                 logger.warn("Unknown user URI: {}", uri);
                 return ResponseDto.builder()

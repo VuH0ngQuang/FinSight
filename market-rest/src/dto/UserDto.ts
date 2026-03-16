@@ -5,5 +5,6 @@ export interface UserDto {
     password: string;
     phoneNumber: string;
     isAdmin: boolean;
+    stockId?: string;
 }
 

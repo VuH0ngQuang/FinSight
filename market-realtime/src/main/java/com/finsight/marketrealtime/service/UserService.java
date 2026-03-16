@@ -10,4 +10,7 @@ public interface UserService {
     ResponseDto updateUser(UserDto userDto);
     ResponseDto deleteUser(UserDto userDto);
     ResponseDto updatePassword(UserDto userDto);
+    ResponseDto login(UserDto userDto);
+    ResponseDto addFavoriteStock(UserDto userDto);
+    ResponseDto removeFavoriteStock(UserDto userDto);
 }

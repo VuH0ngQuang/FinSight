@@ -12,27 +12,32 @@ interface AhpConfigRow extends RowDataPacket {
 }
 
 class AhpConfigService {
+  private isBigIntString(value: string): boolean {
+    return /^[0-9]+$/.test(value.trim());
+  }
   async getByUserId(userId: string): Promise<AhpConfigDto | null> {
+    const normalizedUserId = userId.trim();
+    if (!this.isBigIntString(normalizedUserId)) {
+      return null;
+    }
     const [rows] = await pool.query<AhpConfigRow[]>(
       `
-      SELECT
-        BIN_TO_UUID(ahp_config_id) AS ahpConfigId,
-        BIN_TO_UUID(user_id) AS userId,
-        criteria_json AS criteriaJson,
-        pairwise_matrix_json AS pairwiseMatrixJson,
-        weights_json AS weightsJson
-      FROM ahp_config_entity
-      WHERE user_id = UUID_TO_BIN(:userId)
-      LIMIT 1
+        SELECT
+          CAST(ahp_config_id AS CHAR) AS ahpConfigId,
+          CAST(user_id AS CHAR) AS userId,
+          criteria_json AS criteriaJson,
+          pairwise_matrix_json AS pairwiseMatrixJson,
+          weights_json AS weightsJson
+        FROM ahp_config_entity
+        WHERE user_id = CAST(? AS UNSIGNED)
+        LIMIT 1
       `,
-      { userId }
+      [normalizedUserId]
     );
-
     const row = rows[0];
     if (!row) {
       return null;
     }
-
     return {
       ahpConfigId: row.ahpConfigId,
       userId: row.userId,

@@ -22,7 +22,7 @@ public class StockValuationCalculator {
 
     /**
      * Calculate DDM (Dividend Discount Model) using Gordon Growth Model
-     * Formula: V₀ = D₁/(k-g) where D₁ = D₀(1+g)
+     * Formula: V0 = D1/(k-g) where D1 = D0(1+g)
      */
     public BigDecimal calculateDDM(StockYearData data) {
         if (data.getDividendPerShare() == null ||
@@ -42,11 +42,11 @@ public class StockValuationCalculator {
             return null;
         }
 
-        // Calculate D₁ = D₀ × (1 + g)
+        // Calculate D1 = D0 × (1 + g)
         BigDecimal nextDividend = data.getDividendPerShare()
             .multiply(BigDecimal.ONE.add(growthRate));
 
-        // Calculate V₀ = D₁ / (k - g)
+        // Calculate V0 = D1 / (k - g)
         BigDecimal denominator = costOfEquity.subtract(growthRate);
 
         return nextDividend.divide(denominator, 2, RoundingMode.HALF_UP);

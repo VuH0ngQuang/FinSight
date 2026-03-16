@@ -1,12 +1,12 @@
-import type { RowDataPacket } from 'mysql2';
-import { pool } from '../config/database';
-import type { UserEntity } from '../models/UserEntity';
-import type { UserDetailDto } from '../dto/UserDetailDto';
-import type { Subscription } from '../models/Subscription';
-import type { AhpConfigEntity } from '../models/AhpConfigEntity';
-import { SubscriptionEnum } from '../models/Subscription';
-import type { SubscriptionPlanEntity } from '../models/SubscriptionPlanEntity';
-import { BillingCycle } from '../models/SubscriptionPlanEntity';
+import { pool } from "../config/database";
+import type { UserDetailDto } from "../dto/UserDetailDto";
+import type { UserEntity } from "../models/UserEntity";
+import type { Subscription } from "../models/Subscription";
+import type { AhpConfigEntity } from "../models/AhpConfigEntity";
+import { SubscriptionEnum } from "../models/Subscription";
+import type { SubscriptionPlanEntity } from "../models/SubscriptionPlanEntity";
+import { BillingCycle } from "../models/SubscriptionPlanEntity";
+import {RowDataPacket} from "mysql2";
 
 interface UserRow extends RowDataPacket {
   userId: string;
@@ -38,61 +38,60 @@ interface AhpConfigRow extends RowDataPacket {
 }
 
 class UserService {
+  private isBigIntString(value: string): boolean {
+    return /^[0-9]+$/.test(value.trim());
+  }
+
   private toBoolean(value: number | string | boolean): boolean {
-    if (typeof value === 'boolean') {
-      return value;
-    }
-
-    if (typeof value === 'number') {
-      return value !== 0;
-    }
-
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value !==0;
     const normalized = value.toString().toLowerCase();
-    return normalized === 'true' || normalized === '1';
+    return normalized === "true" || normalized === "1";
   }
 
   async getUserById(userId: string): Promise<UserDetailDto | null> {
-    const [userRows] = await pool.query<UserRow[]>(
-      `
-      SELECT
-        BIN_TO_UUID(user_id) AS userId,
-        username,
-        email,
-        phone_number AS phoneNumber,
-        created_at AS createdAt,
-        is_admin AS isAdmin
-      FROM user_entity
-      WHERE user_id = UUID_TO_BIN(:userId)
-      LIMIT 1
-      `,
-      { userId }
-    );
-
-    const userRow = userRows[0];
-    if (!userRow) {
+    const normalizedUserId = userId.trim();
+    if (!this.isBigIntString(normalizedUserId)) {
       return null;
     }
-
-    // Get subscriptions
+    // 1) User row
+    const [userRows] = await pool.query<UserRow[]>(
+      `
+        SELECT
+          CAST(user_id AS CHAR) AS userId,
+          username,
+          email,
+          phone_number AS phoneNumber,
+          created_at AS createdAt,
+          is_admin AS isAdmin
+        FROM user_entity
+        WHERE user_id = CAST(? AS UNSIGNED)
+        LIMIT 1
+      `,
+      [normalizedUserId]
+    );
+    const userRow = userRows[0];
+    if (!userRow) return null;
+    // 2) Subscriptions
     const [subscriptionRows] = await pool.query<SubscriptionRow[]>(
       `
-      SELECT
-        BIN_TO_UUID(s.subscription_id) AS subscriptionId,
-        BIN_TO_UUID(s.user_user_id) AS userId,
-        s.start_date AS startDate,
-        s.end_date AS endDate,
-        s.status,
-        sp.plan_id AS planId,
-        sp.plan_name AS planName,
-        sp.price,
-        sp.billing_cycle AS billingCycle
-      FROM subscription s
-      LEFT JOIN subscription_plan_entity sp ON s.subscription_plan_plan_id = sp.plan_id
-      WHERE s.user_user_id = UUID_TO_BIN(:userId)
+        SELECT
+          CAST(s.subscription_id AS CHAR) AS subscriptionId,
+          CAST(s.user_user_id AS CHAR) AS userId,
+          s.start_date AS startDate,
+          s.end_date AS endDate,
+          s.status,
+          sp.plan_id AS planId,
+          sp.plan_name AS planName,
+          sp.price,
+          sp.billing_cycle AS billingCycle
+        FROM subscription s
+        LEFT JOIN subscription_plan_entity sp
+          ON s.subscription_plan_plan_id = sp.plan_id
+        WHERE s.user_user_id = CAST(? AS UNSIGNED)
       `,
-      { userId }
+      [normalizedUserId]
     );
-
     const subscriptions: Subscription[] = subscriptionRows.map((row) => ({
       subscriptionId: row.subscriptionId,
       startDate: row.startDate,
@@ -102,28 +101,26 @@ class UserService {
       subscriptionPlan: {
         planId: row.planId,
         planName: row.planName,
-        price: typeof row.price === 'number' ? row.price : Number(row.price || 0),
+        price: typeof row.price === "number" ? row.price : Number(row.price || 0),
         billingCycle: row.billingCycle as BillingCycle,
         subscriptions: [],
       } as SubscriptionPlanEntity,
     }));
-
-    // Get AHP config
+    // 3) AHP config
     const [ahpConfigRows] = await pool.query<AhpConfigRow[]>(
       `
-      SELECT
-        BIN_TO_UUID(ahp_config_id) AS ahpConfigId,
-        BIN_TO_UUID(user_id) AS userId,
-        criteria_json AS criteriaJson,
-        pairwise_matrix_json AS pairwiseMatrixJson,
-        weights_json AS weightsJson
-      FROM ahp_config_entity
-      WHERE user_id = UUID_TO_BIN(:userId)
-      LIMIT 1
+        SELECT
+          CAST(ahp_config_id AS CHAR) AS ahpConfigId,
+          CAST(user_id AS CHAR) AS userId,
+          criteria_json AS criteriaJson,
+          pairwise_matrix_json AS pairwiseMatrixJson,
+          weights_json AS weightsJson
+        FROM ahp_config_entity
+        WHERE user_id = CAST(? AS UNSIGNED)
+        LIMIT 1
       `,
-      { userId }
+      [normalizedUserId]
     );
-
     const ahpConfigRow = ahpConfigRows[0];
     const ahpConfig: AhpConfigEntity | null = ahpConfigRow
       ? {
@@ -134,8 +131,7 @@ class UserService {
           weightsJson: ahpConfigRow.weightsJson,
         }
       : null;
-
-    const userDetail: UserDetailDto = {
+    return {
       userId: userRow.userId,
       username: userRow.username,
       email: userRow.email,
@@ -145,10 +141,7 @@ class UserService {
       subscriptions,
       ahpConfig,
     };
-
-    return userDetail;
   }
 }
 
 export const userService = new UserService();
-

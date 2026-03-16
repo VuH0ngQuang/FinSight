@@ -55,6 +55,9 @@ app:
         update: "/user/update"
         delete: "/user/delete"
         updatePassword: "/user/updatePassword"
+        login: "/user/login"
+        addFavoriteStock: "/user/addFavoriteStock"
+        removeFavoriteStock: "/user/removeFavoriteStock"
       stock:
         create: "/stock/create"
         update: "/stock/update"

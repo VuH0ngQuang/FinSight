@@ -58,6 +58,9 @@ public class AppConf {
             logger.info("User Update URI            : {}", uri.getUser().getUpdate());
             logger.info("User Delete URI            : {}", uri.getUser().getDelete());
             logger.info("User UpdatePassword        : {}", uri.getUser().getUpdatePassword());
+            logger.info("User Login                 : {}", uri.getUser().getLogin());
+            logger.info("User AddFavoriteStock      : {}", uri.getUser().getAddFavoriteStock());
+            logger.info("User RemoveFavoriteStock   : {}", uri.getUser().getRemoveFavoriteStock());
 
             logger.info("Stock Create URI           : {}", uri.getStock().getCreate());
             logger.info("Stock Update URI           : {}", uri.getStock().getUpdate());
@@ -152,6 +155,9 @@ public class AppConf {
         private String update;
         private String delete;
         private String updatePassword;
+        private String login;
+        private String addFavoriteStock;
+        private String removeFavoriteStock;
     }
 
     @Data

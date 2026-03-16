@@ -13,6 +13,8 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository <UserEntity, Long> {
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
+    Optional<UserEntity> findByUsername(String username);
+    Optional<UserEntity> findByEmail(String email);
     @Query("SELECT u FROM UserEntity u LEFT JOIN FETCH u.favoriteStocks WHERE u.userId = :userId")
     Optional<UserEntity> findByIdWithFavoriteStocks(@Param("userId") long userId);
 }
