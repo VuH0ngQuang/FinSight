@@ -20,7 +20,7 @@ interface SendOptions {
 class KafkaRequestResponseService {
   private readonly pendingResponses = new Map<string, PendingResponse>();
   private readonly consumerReady: Promise<void>;
-  private readonly defaultTimeoutMs = 15000;
+  private readonly defaultTimeoutMs = config.kafka.requestTimeoutMs;
 
   constructor() {
     this.consumerReady = kafkaConsumer.waitUntilReady();

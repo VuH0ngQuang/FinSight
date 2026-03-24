@@ -1,5 +1,5 @@
 package com.finsight.marketrealtime.enums;
 
 public enum RedisEnum {
-    AHPCONFIG, STOCK, STOCKYEARDATA,SUBSCRIPTION, USER;
+    AHPCONFIG, STOCK, STOCKYEARDATA, SUBSCRIPTION, USER, USER_SUBSCRIPTIONS;
 }

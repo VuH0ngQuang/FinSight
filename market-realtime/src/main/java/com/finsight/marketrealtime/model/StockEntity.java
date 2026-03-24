@@ -1,10 +1,7 @@
 package com.finsight.marketrealtime.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -17,8 +14,10 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class StockEntity {
     @Id
+    @EqualsAndHashCode.Include
     private String stockId;
     private String stockName;
     private String sector;

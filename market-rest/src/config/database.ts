@@ -8,7 +8,7 @@ export const pool = mysql.createPool({
   password: config.database.password,
   database: config.database.name,
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 125,
   queueLimit: 0,
   namedPlaceholders: true,
 });
@@ -17,7 +17,7 @@ export const initDatabase = async (): Promise<void> => {
   const connection = await pool.getConnection();
   try {
     await connection.ping();
-    console.log('✅ Connected to MySQL');
+    console.log('Connected to MySQL');
   } finally {
     connection.release();
   }

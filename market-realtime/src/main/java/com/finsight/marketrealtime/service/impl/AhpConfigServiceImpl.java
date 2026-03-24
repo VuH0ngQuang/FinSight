@@ -75,7 +75,9 @@ public class AhpConfigServiceImpl implements AhpConfigService {
 
             ahpConfigEntity.setUser(user);
             ahpConfigRepository.save(ahpConfigEntity);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(),ahpConfigDto.getAhpConfigId(),convertToDto(ahpConfigEntity));
+            AhpConfigDto dto = convertToDto(ahpConfigEntity);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
         } finally {
             lock.unlock();
         }
@@ -105,7 +107,9 @@ public class AhpConfigServiceImpl implements AhpConfigService {
             }
 
             ahpConfigRepository.save(ahpConfig);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(),ahpConfigDto.getAhpConfigId(),convertToDto(ahpConfig));
+            AhpConfigDto dto = convertToDto(ahpConfig);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();

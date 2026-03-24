@@ -1,7 +1,7 @@
-
 import type { RowDataPacket } from 'mysql2';
 import { pool } from '../config/database';
 import type { AhpConfigDto } from '../dto/AhpConfigDto';
+import { cacheService } from '../utils/cacheService';
 
 interface AhpConfigRow extends RowDataPacket {
   ahpConfigId: string;
@@ -20,6 +20,18 @@ class AhpConfigService {
     if (!this.isBigIntString(normalizedUserId)) {
       return null;
     }
+
+    const cached = await cacheService.hget<AhpConfigDto>('AHPCONFIG', normalizedUserId);
+    if (cached) {
+      return {
+        ahpConfigId: String(cached.ahpConfigId),
+        userId: String(cached.userId),
+        criteriaJson: cached.criteriaJson,
+        pairwiseMatrixJson: cached.pairwiseMatrixJson,
+        weightsJson: cached.weightsJson,
+      };
+    }
+
     const [rows] = await pool.query<AhpConfigRow[]>(
       `
         SELECT
@@ -38,13 +50,18 @@ class AhpConfigService {
     if (!row) {
       return null;
     }
-    return {
+    const dto: AhpConfigDto = {
       ahpConfigId: row.ahpConfigId,
       userId: row.userId,
       criteriaJson: row.criteriaJson,
       pairwiseMatrixJson: row.pairwiseMatrixJson,
       weightsJson: row.weightsJson,
     };
+    await Promise.all([
+      cacheService.hset('AHPCONFIG', row.userId, dto),
+      cacheService.hset('AHPCONFIG', row.ahpConfigId, dto),
+    ]);
+    return dto;
   }
 }
 

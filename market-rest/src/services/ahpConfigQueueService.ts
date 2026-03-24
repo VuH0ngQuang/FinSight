@@ -1,5 +1,5 @@
-import ResponseDto from "../dto/ResponseDto";
-import AhpConfigDto from "../dto/AhpConfigDto";
+import type { ResponseDto } from "../dto/ResponseDto";
+import type { AhpConfigDto } from "../dto/AhpConfigDto";
 import { kafkaRequestResponseService } from "./kafkaRequestResponseService";
 import { config } from "../config/env";
 

@@ -1,6 +1,8 @@
 import type { RowDataPacket } from 'mysql2';
 import { pool } from '../config/database';
 import type { StockEntity, StockYearData } from '../models/StockEntity';
+import { cacheService } from '../utils/cacheService';
+import { stockYearDataService } from './stockYearDataService';
 
 interface StockRow extends RowDataPacket {
     stockId: string;
@@ -47,35 +49,43 @@ const toNumber = (value: number | string | null): number => {
     return typeof value === 'number' ? value : Number(value);
 };
 
+/** STOCK hash payload (same fields as market-realtime StockDto JSON). */
+type StockRedisPayload = Pick<
+    StockEntity,
+    | 'stockId'
+    | 'stockName'
+    | 'sector'
+    | 'matchPrice'
+    | 'peRatio'
+    | 'pbRatio'
+    | 'pcfRatio'
+    | 'psRatio'
+    | 'industryPeRatio'
+    | 'industryPbRatio'
+    | 'industryPcfRatio'
+    | 'industryPsRatio'
+>;
+
 class StockService {
-    async getStockById(stockId: string): Promise<StockEntity | null> {
-        const [stockRows] = await pool.query<StockRow[]>(
-            `
-            SELECT
-                stock_id   AS stockId,
-                stock_name AS stockName,
-                sector,
-                match_price      AS matchPrice,
-                pe_ratio         AS peRatio,
-                pb_ratio         AS pbRatio,
-                pcf_ratio        AS pcfRatio,
-                ps_ratio         AS psRatio,
-                industry_pe_ratio  AS industryPeRatio,
-                industry_pb_ratio  AS industryPbRatio,
-                industry_pcf_ratio AS industryPcfRatio,
-                industry_ps_ratio  AS industryPsRatio
-            FROM stock_entity
-            WHERE stock_id = :stockId
-            LIMIT 1
-            `,
-            { stockId }
-        );
+    private async persistStockScalarsToCache(entity: StockRedisPayload): Promise<void> {
+        const payload: StockRedisPayload = {
+            stockId: entity.stockId,
+            stockName: entity.stockName,
+            sector: entity.sector,
+            matchPrice: entity.matchPrice,
+            peRatio: entity.peRatio,
+            pbRatio: entity.pbRatio,
+            pcfRatio: entity.pcfRatio,
+            psRatio: entity.psRatio,
+            industryPeRatio: entity.industryPeRatio,
+            industryPbRatio: entity.industryPbRatio,
+            industryPcfRatio: entity.industryPcfRatio,
+            industryPsRatio: entity.industryPsRatio,
+        };
+        await cacheService.hset('STOCK', entity.stockId, payload);
+    }
 
-        const stockRow = stockRows[0];
-        if (!stockRow) {
-            return null;
-        }
-
+    private async queryYearData(stockId: string): Promise<Record<number, StockYearData>> {
         const [yearRows] = await pool.query<StockYearRow[]>(
             `
             SELECT
@@ -106,7 +116,7 @@ class StockService {
             { stockId }
         );
 
-        const yearData = yearRows.reduce<Record<number, StockYearData>>((acc, row) => {
+        return yearRows.reduce<Record<number, StockYearData>>((acc, row) => {
             acc[row.year] = {
                 netIncome: toNumber(row.netIncome),
                 totalEquity: toNumber(row.totalEquity),
@@ -130,8 +140,51 @@ class StockService {
             };
             return acc;
         }, {});
+    }
 
-        const stock: StockEntity = {
+    async getStockById(stockId: string): Promise<StockEntity | null> {
+        const cached = await cacheService.hget<StockEntity>('STOCK', stockId);
+        if (cached) {
+            let yearData = await stockYearDataService.getYearDataRecordFromRedis(stockId);
+            if (!yearData) {
+                yearData = await this.queryYearData(stockId);
+                if (Object.keys(yearData).length > 0) {
+                    await stockYearDataService.persistAllForStock(stockId, yearData);
+                }
+            }
+            return { ...cached, yearData, favoredByUsers: [] };
+        }
+
+        const [stockRows] = await pool.query<StockRow[]>(
+            `
+            SELECT
+                stock_id   AS stockId,
+                stock_name AS stockName,
+                sector,
+                match_price      AS matchPrice,
+                pe_ratio         AS peRatio,
+                pb_ratio         AS pbRatio,
+                pcf_ratio        AS pcfRatio,
+                ps_ratio         AS psRatio,
+                industry_pe_ratio  AS industryPeRatio,
+                industry_pb_ratio  AS industryPbRatio,
+                industry_pcf_ratio AS industryPcfRatio,
+                industry_ps_ratio  AS industryPsRatio
+            FROM stock_entity
+            WHERE stock_id = :stockId
+            LIMIT 1
+            `,
+            { stockId }
+        );
+
+        const stockRow = stockRows[0];
+        if (!stockRow) {
+            return null;
+        }
+
+        const yearData = await this.queryYearData(stockId);
+
+        const entity: StockEntity = {
             stockId: stockRow.stockId,
             stockName: stockRow.stockName,
             sector: stockRow.sector,
@@ -147,8 +200,9 @@ class StockService {
             yearData,
             favoredByUsers: [],
         };
-
-        return stock;
+        await this.persistStockScalarsToCache(entity);
+        await stockYearDataService.persistAllForStock(stockId, yearData);
+        return entity;
     }
 
     async getAllStocksId(): Promise<string[]> {

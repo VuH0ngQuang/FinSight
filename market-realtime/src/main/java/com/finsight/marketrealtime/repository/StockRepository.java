@@ -35,4 +35,7 @@ public interface StockRepository extends JpaRepository<StockEntity, String> {
 
     @Query("SELECT DISTINCT s FROM StockEntity s LEFT JOIN FETCH s.yearData")
     List<StockEntity> findAllWithYearData();
+
+    @Query("SELECT DISTINCT s FROM StockEntity s LEFT JOIN FETCH s.favoredByUsers LEFT JOIN FETCH s.yearData")
+    List<StockEntity> findAllWithYearDataAndFavoredUsers();
 }

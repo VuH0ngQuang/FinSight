@@ -45,74 +45,139 @@ public class StockYearDataServiceImpl implements StockYearDataService {
 
     @Override
     @Transactional
-    public ResponseDto updateStockYearData(StockYearDataDto stockYearDataDto, int year, String stockId) {
-        ReentrantLock lock = lockManager.getLock(stockId+year);
+    public ResponseDto createStockYearData(StockYearDataDto stockYearDataDto, int year, String stockId) {
+        ReentrantLock lock = lockManager.getLock(stockId + year);
         lock.lock();
         try {
             StockEntity stockEntity = stockRepository.findByIdWithYearData(stockId).orElse(null);
-            if (stockEntity == null) return ResponseDto.
-                    builder().
-                    success(false).
-                    errorCode(404).
-                    errorMessage("Stock not found: "+stockId).
-                    build();
-            StockEntity.StockYearData yearData = stockEntity.getYearData()
-                    .computeIfAbsent(year, y -> new StockEntity.StockYearData());
+            if (stockEntity == null) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Stock not found: " + stockId)
+                        .build();
+            }
 
-            if (stockYearDataDto.getNetIncome() != null)
-                yearData.setNetIncome(stockYearDataDto.getNetIncome());
-            if (stockYearDataDto.getTotalEquity() != null)
-                yearData.setTotalEquity(stockYearDataDto.getTotalEquity());
-            if (stockYearDataDto.getIntangibles() != null)
-                yearData.setIntangibles(stockYearDataDto.getIntangibles());
-            if (stockYearDataDto.getOperatingCashFlow() != null)
-                yearData.setOperatingCashFlow(stockYearDataDto.getOperatingCashFlow());
-            if (stockYearDataDto.getFreeCashFlow() != null)
-                yearData.setFreeCashFlow(stockYearDataDto.getFreeCashFlow());
-            if (stockYearDataDto.getRevenue() != null)
-                yearData.setRevenue(stockYearDataDto.getRevenue());
-            if (stockYearDataDto.getDividendPerShare() != null)
-                yearData.setDividendPerShare(stockYearDataDto.getDividendPerShare());
-            if (stockYearDataDto.getSharesOutstanding() != null)
-                yearData.setSharesOutstanding(stockYearDataDto.getSharesOutstanding());
-            if (stockYearDataDto.getPriceEndYear() != null)
-                yearData.setPriceEndYear(stockYearDataDto.getPriceEndYear());
-            if (stockYearDataDto.getCostOfEquity() != null)
-                yearData.setCostOfEquity(stockYearDataDto.getCostOfEquity());
-            if (stockYearDataDto.getWacc() != null)
-                yearData.setWacc(stockYearDataDto.getWacc());
-            if (stockYearDataDto.getDividendGrowthRate() != null)
-                yearData.setDividendGrowthRate(stockYearDataDto.getDividendGrowthRate());
+            if (stockEntity.getYearData().containsKey(year)) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(409)
+                        .errorMessage("Year data already exists for stock " + stockId + " year " + year)
+                        .build();
+            }
+
+            StockEntity.StockYearData yearData = new StockEntity.StockYearData();
+            applyDtoToYearData(stockYearDataDto, yearData);
+            stockEntity.getYearData().put(year, yearData);
 
             stockService.recalculateValuations(stockEntity, year);
             stockRepository.save(stockEntity);
-            redisDao.save(RedisEnum.STOCKYEARDATA.toString(), stockEntity.getStockId(), yearData);
+            String cacheField = stockEntity.getStockId() + ":" + year;
+            redisDao.save(RedisEnum.STOCKYEARDATA.toString(), cacheField, convertToDto(yearData));
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
         }
     }
 
-    private void convertToDto(StockEntity.StockYearData yearData) {
-        StockYearDataDto yearDataDto = new StockYearDataDto();
-        yearDataDto.setNetIncome(yearData.getNetIncome());
-        yearDataDto.setTotalEquity(yearData.getTotalEquity());
-        yearDataDto.setIntangibles(yearData.getIntangibles());
-        yearDataDto.setOperatingCashFlow(yearData.getOperatingCashFlow());
-        yearDataDto.setFreeCashFlow(yearData.getFreeCashFlow());
-        yearDataDto.setRevenue(yearData.getRevenue());
-        yearDataDto.setDividendPerShare(yearData.getDividendPerShare());
-        yearDataDto.setSharesOutstanding(yearData.getSharesOutstanding());
-        yearDataDto.setPriceEndYear(yearData.getPriceEndYear());
-        yearDataDto.setCostOfEquity(yearData.getCostOfEquity());
-        yearDataDto.setWacc(yearData.getWacc());
-        yearDataDto.setDividendGrowthRate(yearData.getDividendGrowthRate());
-        yearDataDto.setDdm(yearData.getDdm());
-        yearDataDto.setDcf(yearData.getDcf());
-        yearDataDto.setRi(yearData.getRi());
-        yearDataDto.setPe(yearData.getPe());
-        yearDataDto.setPbv(yearData.getPbv());
-        yearDataDto.setPcf(yearData.getPcf());
-        yearDataDto.setPs(yearData.getPs());
+    @Override
+    @Transactional
+    public ResponseDto updateStockYearData(StockYearDataDto stockYearDataDto, int year, String stockId) {
+        ReentrantLock lock = lockManager.getLock(stockId + year);
+        lock.lock();
+        try {
+            StockEntity stockEntity = stockRepository.findByIdWithYearData(stockId).orElse(null);
+            if (stockEntity == null) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Stock not found: " + stockId)
+                        .build();
+            }
+
+            StockEntity.StockYearData yearData = stockEntity.getYearData()
+                    .computeIfAbsent(year, y -> new StockEntity.StockYearData());
+            applyDtoToYearData(stockYearDataDto, yearData);
+
+            stockService.recalculateValuations(stockEntity, year);
+            stockRepository.save(stockEntity);
+            String cacheField = stockEntity.getStockId() + ":" + year;
+            redisDao.save(RedisEnum.STOCKYEARDATA.toString(), cacheField, convertToDto(yearData));
+            return ResponseDto.builder().success(true).build();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    @Override
+    @Transactional
+    public ResponseDto deleteStockYearData(StockYearDataDto stockYearDataDto) {
+        String stockId = stockYearDataDto.getStockId();
+        if (stockId == null) {
+            return ResponseDto.builder()
+                    .success(false)
+                    .errorCode(400)
+                    .errorMessage("stockId is required")
+                    .build();
+        }
+
+        ReentrantLock lock = lockManager.getLock(stockId);
+        lock.lock();
+        try {
+            StockEntity stockEntity = stockRepository.findByIdWithYearData(stockId).orElse(null);
+            if (stockEntity == null) {
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Stock not found: " + stockId)
+                        .build();
+            }
+
+            stockEntity.getYearData().clear();
+            stockRepository.save(stockEntity);
+            redisDao.delete(RedisEnum.STOCKYEARDATA.toString(), stockId);
+            return ResponseDto.builder().success(true).build();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private void applyDtoToYearData(StockYearDataDto dto, StockEntity.StockYearData yearData) {
+        if (dto.getNetIncome() != null) yearData.setNetIncome(dto.getNetIncome());
+        if (dto.getTotalEquity() != null) yearData.setTotalEquity(dto.getTotalEquity());
+        if (dto.getIntangibles() != null) yearData.setIntangibles(dto.getIntangibles());
+        if (dto.getOperatingCashFlow() != null) yearData.setOperatingCashFlow(dto.getOperatingCashFlow());
+        if (dto.getFreeCashFlow() != null) yearData.setFreeCashFlow(dto.getFreeCashFlow());
+        if (dto.getRevenue() != null) yearData.setRevenue(dto.getRevenue());
+        if (dto.getDividendPerShare() != null) yearData.setDividendPerShare(dto.getDividendPerShare());
+        if (dto.getSharesOutstanding() != null) yearData.setSharesOutstanding(dto.getSharesOutstanding());
+        if (dto.getPriceEndYear() != null) yearData.setPriceEndYear(dto.getPriceEndYear());
+        if (dto.getCostOfEquity() != null) yearData.setCostOfEquity(dto.getCostOfEquity());
+        if (dto.getWacc() != null) yearData.setWacc(dto.getWacc());
+        if (dto.getDividendGrowthRate() != null) yearData.setDividendGrowthRate(dto.getDividendGrowthRate());
+    }
+
+    private StockYearDataDto convertToDto(StockEntity.StockYearData yearData) {
+        StockYearDataDto dto = new StockYearDataDto();
+        dto.setNetIncome(yearData.getNetIncome());
+        dto.setTotalEquity(yearData.getTotalEquity());
+        dto.setIntangibles(yearData.getIntangibles());
+        dto.setOperatingCashFlow(yearData.getOperatingCashFlow());
+        dto.setFreeCashFlow(yearData.getFreeCashFlow());
+        dto.setRevenue(yearData.getRevenue());
+        dto.setDividendPerShare(yearData.getDividendPerShare());
+        dto.setSharesOutstanding(yearData.getSharesOutstanding());
+        dto.setPriceEndYear(yearData.getPriceEndYear());
+        dto.setCostOfEquity(yearData.getCostOfEquity());
+        dto.setWacc(yearData.getWacc());
+        dto.setDividendGrowthRate(yearData.getDividendGrowthRate());
+        dto.setDdm(yearData.getDdm());
+        dto.setDcf(yearData.getDcf());
+        dto.setRi(yearData.getRi());
+        dto.setPe(yearData.getPe());
+        dto.setPbv(yearData.getPbv());
+        dto.setPcf(yearData.getPcf());
+        dto.setPs(yearData.getPs());
+        return dto;
     }
 }

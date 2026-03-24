@@ -109,6 +109,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             subscription.setSubscriptionPlan(subscriptionPlan);
             subscriptionRepository.save(subscription);
             redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
+            invalidateUserSubscriptionsCache(subscriptionDto.getUserId());
             String ref = String.format("%08d", subscriptionId % 100000000);
             String checkoutUrl = paymentService.createPayment(subscriptionId, ref, subscriptionPlan.getPrice().longValueExact());
             return ResponseDto.<String>builder().success(true).data(null).build();
@@ -142,6 +143,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
             subscriptionRepository.save(subscription);
             redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
+            invalidateUserSubscriptionsCache(subscription.getUser().getUserId());
 
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -166,8 +168,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                         .errorMessage("Subscription not found: "+subscriptionId)
                         .build();
             }
+            long userId = subscription.getUser().getUserId();
             subscriptionRepository.delete(subscription);
             redisDao.delete(RedisEnum.SUBSCRIPTION.toString(), subscriptionId);
+            invalidateUserSubscriptionsCache(userId);
             return ResponseDto.builder().success(true).build();
 
         } finally {
@@ -204,11 +208,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
             subscriptionRepository.save(subscription);
             redisDao.save(RedisEnum.SUBSCRIPTION.toString(), subscription.getSubscriptionId(), convertToDto(subscription));
+            invalidateUserSubscriptionsCache(subscription.getUser().getUserId());
 
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
         }
+    }
+
+    private void invalidateUserSubscriptionsCache(long userId) {
+        redisDao.delete(RedisEnum.USER_SUBSCRIPTIONS.toString(), userId);
     }
 
     private SubscriptionDto convertToDto(Subscription subscription) {

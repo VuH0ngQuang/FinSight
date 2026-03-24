@@ -286,20 +286,34 @@ public class MessageRouterService {
 
     private ResponseDto routeYearDataMessage(String uri, StockYearDataDto payload) {
         try {
-            if (uri.startsWith(appConf.getUri().getStockYearData().getUpdate())) {
-                // Format: /stockYearData/update/{year}
+            if (uri.startsWith(appConf.getUri().getStockYearData().getCreate())) {
+                String yearPart = uri.substring(appConf.getUri().getStockYearData().getCreate().length());
+                if (!yearPart.isEmpty()) {
+                    int year = Integer.parseInt(yearPart);
+                    return stockYearDataService.createStockYearData(payload, year, payload.getStockId());
+                } else {
+                    return ResponseDto.builder()
+                            .success(false)
+                            .errorCode(400)
+                            .errorMessage("Invalid URI format. Expected: /stockYearData/create/{year}")
+                            .build();
+                }
+            }
+            else if (uri.startsWith(appConf.getUri().getStockYearData().getUpdate())) {
                 String yearPart = uri.substring(appConf.getUri().getStockYearData().getUpdate().length());
                 if (!yearPart.isEmpty()) {
                     int year = Integer.parseInt(yearPart);
                     return stockYearDataService.updateStockYearData(payload, year, payload.getStockId());
                 } else {
-                    logger.warn("Invalid URI format for updateYearData: {}", uri);
                     return ResponseDto.builder()
                             .success(false)
                             .errorCode(400)
-                            .errorMessage("Invalid URI format for updateYearData. Expected: /stockYearData/update/{year}")
+                            .errorMessage("Invalid URI format. Expected: /stockYearData/update/{year}")
                             .build();
                 }
+            }
+            else if (uri.equals(appConf.getUri().getStockYearData().getDelete())) {
+                return stockYearDataService.deleteStockYearData(payload);
             }
             else {
                 logger.warn("Unknown year data URI: {}", uri);

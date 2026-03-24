@@ -35,9 +35,17 @@ export const config = {
     brokers: requireEnv('KAFKA_URLS').split(',').map((url) => url.trim()),
     groupId: requireEnv('KAFKA_GROUP_ID'),
     clientId: optionalEnv('CLUSTER_ID', 'market-rest'),
+    requestTimeoutMs: Number(optionalEnv('KAFKA_REQUEST_TIMEOUT_MS', '15000')),
     topics: {
       rest: requireEnv('KAFKA_REST_TOPIC'),
     },
+  },
+  redis: {
+    host: optionalEnv('REDIS_HOST', 'localhost'),
+    port: Number(optionalEnv('REDIS_PORT', '6379')),
+    password: optionalEnv('REDIS_PASSWORD', ''),
+    db: Number(optionalEnv('REDIS_DB', '0')),
+    cacheTtl: Number(optionalEnv('REDIS_CACHE_TTL', '3600')),
   },
   uri: {
     user: {
@@ -45,6 +53,9 @@ export const config = {
       update: '/user/update',
       delete: '/user/delete',
       updatePassword: '/user/updatePassword',
+      login: '/user/login',
+      addFavoriteStock: '/user/addFavoriteStock',
+      removeFavoriteStock: '/user/removeFavoriteStock',
     },
     stock: {
       create: '/stock/create',
@@ -63,7 +74,7 @@ export const config = {
       update: '/ahpConfig/update',
     },
     stockYearData: {
-      create: '/stockYearData/create',
+      create: '/stockYearData/create/',
       update: '/stockYearData/update/',
       delete: '/stockYearData/delete',
     },

@@ -51,7 +51,18 @@ public class RedisDao {
         save(keyEntity, id, entity, null);
     }
 
+    public <T> T find(String keyEntity, String field, Class<T> clazz) {
+        String json = hashOperations.get(keyEntity, field);
+        if (json == null) return null;
+        try {
+            return objectMapper.readValue(json, clazz);
+        } catch (JsonProcessingException e) {
+            log.error("Error deserializing entity from Redis [{}:{}]", keyEntity, field, e);
+            return null;
+        }
+    }
+
     public <ID> void delete(String keyEntity, ID id) {
-        hashOperations.delete(keyEntity, id);
+        hashOperations.delete(keyEntity, String.valueOf(id));
     }
 }

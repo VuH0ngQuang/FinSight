@@ -7,6 +7,11 @@ import { SubscriptionEnum } from "../models/Subscription";
 import type { SubscriptionPlanEntity } from "../models/SubscriptionPlanEntity";
 import { BillingCycle } from "../models/SubscriptionPlanEntity";
 import {RowDataPacket} from "mysql2";
+import { cacheService } from "../utils/cacheService";
+import { ahpConfigService } from "./ahpConfigService";
+
+/** Hash field = userId, value = JSON array of full Subscription objects (incl. plan). */
+const USER_SUBSCRIPTIONS_HASH = "USER_SUBSCRIPTIONS";
 
 interface UserRow extends RowDataPacket {
   userId: string;
@@ -29,50 +34,23 @@ interface SubscriptionRow extends RowDataPacket {
   billingCycle: string;
 }
 
-interface AhpConfigRow extends RowDataPacket {
-  ahpConfigId: string;
-  userId: string;
-  criteriaJson: string;
-  pairwiseMatrixJson: string;
-  weightsJson: string;
-}
-
 class UserService {
   private isBigIntString(value: string): boolean {
     return /^[0-9]+$/.test(value.trim());
   }
 
-  private toBoolean(value: number | string | boolean): boolean {
+  private toBoolean(value: unknown): boolean {
     if (typeof value === "boolean") return value;
-    if (typeof value === "number") return value !==0;
-    const normalized = value.toString().toLowerCase();
-    return normalized === "true" || normalized === "1";
+    if (typeof value === "number") return value !== 0;
+    if (Buffer.isBuffer(value)) return value.length > 0 && value[0] === 1;
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+      return normalized === "true" || normalized === "1";
+    }
+    return false;
   }
 
-  async getUserById(userId: string): Promise<UserDetailDto | null> {
-    const normalizedUserId = userId.trim();
-    if (!this.isBigIntString(normalizedUserId)) {
-      return null;
-    }
-    // 1) User row
-    const [userRows] = await pool.query<UserRow[]>(
-      `
-        SELECT
-          CAST(user_id AS CHAR) AS userId,
-          username,
-          email,
-          phone_number AS phoneNumber,
-          created_at AS createdAt,
-          is_admin AS isAdmin
-        FROM user_entity
-        WHERE user_id = CAST(? AS UNSIGNED)
-        LIMIT 1
-      `,
-      [normalizedUserId]
-    );
-    const userRow = userRows[0];
-    if (!userRow) return null;
-    // 2) Subscriptions
+  private async querySubscriptions(normalizedUserId: string): Promise<Subscription[]> {
     const [subscriptionRows] = await pool.query<SubscriptionRow[]>(
       `
         SELECT
@@ -92,7 +70,7 @@ class UserService {
       `,
       [normalizedUserId]
     );
-    const subscriptions: Subscription[] = subscriptionRows.map((row) => ({
+    return subscriptionRows.map((row) => ({
       subscriptionId: row.subscriptionId,
       startDate: row.startDate,
       endDate: row.endDate,
@@ -106,31 +84,166 @@ class UserService {
         subscriptions: [],
       } as SubscriptionPlanEntity,
     }));
-    // 3) AHP config
-    const [ahpConfigRows] = await pool.query<AhpConfigRow[]>(
+  }
+
+  /**
+   * Returns null = cache miss (field absent). [] = cached empty list (no DB).
+   */
+  private async getSubscriptionsFromUserCache(normalizedUserId: string): Promise<Subscription[] | null> {
+    const raw = await cacheService.hget<unknown>(USER_SUBSCRIPTIONS_HASH, normalizedUserId);
+    if (raw === null) {
+      return null;
+    }
+    if (!Array.isArray(raw)) {
+      return null;
+    }
+    return raw.map((item) => this.normalizeSubscriptionFromCache(item));
+  }
+
+  private normalizeSubscriptionFromCache(item: unknown): Subscription {
+    const o = item as Record<string, unknown>;
+    const planRaw = o.subscriptionPlan as Record<string, unknown> | undefined;
+    const planId = Number(planRaw?.planId ?? 0);
+    const plan: SubscriptionPlanEntity = {
+      planId: Number.isFinite(planId) ? planId : 0,
+      planName: String(planRaw?.planName ?? ""),
+      price: typeof planRaw?.price === "number" ? planRaw.price : Number(planRaw?.price ?? 0),
+      billingCycle: (planRaw?.billingCycle as BillingCycle) ?? BillingCycle.MONTHLY,
+      subscriptions: [],
+    };
+    return {
+      subscriptionId: String(o.subscriptionId ?? ""),
+      startDate: String(o.startDate ?? ""),
+      endDate: String(o.endDate ?? ""),
+      status: o.status as SubscriptionEnum,
+      user: {} as UserEntity,
+      subscriptionPlan: plan,
+    };
+  }
+
+  /** Per-user list + legacy SUBSCRIPTION entries (by subscriptionId) for market-realtime. */
+  private async persistSubscriptionsToCache(normalizedUserId: string, subs: Subscription[]): Promise<void> {
+    const serializable = subs.map((sub) => ({
+      subscriptionId: sub.subscriptionId,
+      startDate: sub.startDate,
+      endDate: sub.endDate,
+      status: sub.status,
+      user: {},
+      subscriptionPlan: {
+        planId: sub.subscriptionPlan.planId,
+        planName: sub.subscriptionPlan.planName,
+        price: sub.subscriptionPlan.price,
+        billingCycle: sub.subscriptionPlan.billingCycle,
+        subscriptions: [],
+      },
+    }));
+    await cacheService.hset(USER_SUBSCRIPTIONS_HASH, normalizedUserId, serializable);
+    await Promise.all(
+      subs.map((sub) =>
+        cacheService.hset("SUBSCRIPTION", sub.subscriptionId, {
+          subscriptionId: sub.subscriptionId,
+          userId: normalizedUserId,
+          subscriptionPlanId: sub.subscriptionPlan.planId,
+          startDate: sub.startDate,
+          endDate: sub.endDate,
+          status: sub.status,
+        })
+      )
+    );
+  }
+
+  private async loadSubscriptionsWithCacheBackfill(normalizedUserId: string): Promise<Subscription[]> {
+    const fromRedis = await this.getSubscriptionsFromUserCache(normalizedUserId);
+    if (fromRedis !== null) {
+      return fromRedis;
+    }
+    const subs = await this.querySubscriptions(normalizedUserId);
+    await this.persistSubscriptionsToCache(normalizedUserId, subs);
+    return subs;
+  }
+
+  async getUserById(userId: string): Promise<UserDetailDto | null> {
+    const normalizedUserId = userId.trim();
+    if (!this.isBigIntString(normalizedUserId)) {
+      return null;
+    }
+
+    interface CachedUser {
+      userId: number | string;
+      username: string;
+      email: string;
+      phoneNumber: string;
+      admin?: boolean;
+      isAdmin?: boolean;
+    }
+
+    const cached = await cacheService.hget<CachedUser>('USER', normalizedUserId);
+    if (cached) {
+      const [subscriptions, ahpDto] = await Promise.all([
+        this.loadSubscriptionsWithCacheBackfill(normalizedUserId),
+        ahpConfigService.getByUserId(normalizedUserId),
+      ]);
+      const ahpConfig: AhpConfigEntity | null = ahpDto
+        ? {
+            ahpConfigId: ahpDto.ahpConfigId,
+            user: {} as UserEntity,
+            criteriaJson: ahpDto.criteriaJson,
+            pairwiseMatrixJson: ahpDto.pairwiseMatrixJson,
+            weightsJson: ahpDto.weightsJson,
+          }
+        : null;
+      return {
+        userId: String(cached.userId).trim(),
+        username: cached.username,
+        email: cached.email,
+        phoneNumber: cached.phoneNumber,
+        createdAt: '',
+        isAdmin: this.toBoolean(cached.isAdmin ?? cached.admin ?? false),
+        subscriptions,
+        ahpConfig,
+      };
+    }
+
+    const [userRows] = await pool.query<UserRow[]>(
       `
         SELECT
-          CAST(ahp_config_id AS CHAR) AS ahpConfigId,
           CAST(user_id AS CHAR) AS userId,
-          criteria_json AS criteriaJson,
-          pairwise_matrix_json AS pairwiseMatrixJson,
-          weights_json AS weightsJson
-        FROM ahp_config_entity
+          username,
+          email,
+          phone_number AS phoneNumber,
+          created_at AS createdAt,
+          CAST(is_admin AS UNSIGNED) AS isAdmin
+        FROM user_entity
         WHERE user_id = CAST(? AS UNSIGNED)
         LIMIT 1
       `,
       [normalizedUserId]
     );
-    const ahpConfigRow = ahpConfigRows[0];
-    const ahpConfig: AhpConfigEntity | null = ahpConfigRow
+    const userRow = userRows[0];
+    if (!userRow) return null;
+
+    const [subscriptions, ahpDto] = await Promise.all([
+      this.loadSubscriptionsWithCacheBackfill(normalizedUserId),
+      ahpConfigService.getByUserId(normalizedUserId),
+    ]);
+    const ahpConfig: AhpConfigEntity | null = ahpDto
       ? {
-          ahpConfigId: ahpConfigRow.ahpConfigId,
+          ahpConfigId: ahpDto.ahpConfigId,
           user: {} as UserEntity,
-          criteriaJson: ahpConfigRow.criteriaJson,
-          pairwiseMatrixJson: ahpConfigRow.pairwiseMatrixJson,
-          weightsJson: ahpConfigRow.weightsJson,
+          criteriaJson: ahpDto.criteriaJson,
+          pairwiseMatrixJson: ahpDto.pairwiseMatrixJson,
+          weightsJson: ahpDto.weightsJson,
         }
       : null;
+
+    await cacheService.hset("USER", normalizedUserId, {
+      userId: userRow.userId,
+      username: userRow.username,
+      email: userRow.email,
+      phoneNumber: userRow.phoneNumber,
+      isAdmin: this.toBoolean(userRow.isAdmin),
+    });
+
     return {
       userId: userRow.userId,
       username: userRow.username,

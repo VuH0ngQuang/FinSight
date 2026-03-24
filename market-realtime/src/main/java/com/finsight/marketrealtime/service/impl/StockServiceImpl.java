@@ -6,10 +6,14 @@ import com.finsight.marketrealtime.dto.StockDto;
 import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.StockEntity;
 import com.finsight.marketrealtime.model.StockEntity.StockYearData;
+import com.finsight.marketrealtime.model.UserEntity;
 import com.finsight.marketrealtime.repository.StockRepository;
 import com.finsight.marketrealtime.repository.UserRepository;
+import com.finsight.marketrealtime.service.MailService;
 import com.finsight.marketrealtime.service.StockService;
 import com.finsight.marketrealtime.utils.LockManager;
+import com.finsight.marketrealtime.valuation.OvervaluationDetector;
+import com.finsight.marketrealtime.valuation.OvervaluationResult;
 import com.finsight.marketrealtime.valuation.StockValuationCalculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +36,8 @@ public class StockServiceImpl implements StockService {
     private final UserRepository userRepository;
     private final LockManager<String> lockManager;
     private final StockValuationCalculator stockValuationCalculator;
+    private final OvervaluationDetector overvaluationDetector;
+    private final MailService mailService;
     private final RedisDao redisDao;
 
     @Autowired
@@ -40,11 +46,15 @@ public class StockServiceImpl implements StockService {
             UserRepository userRepository,
             LockManager<String> lockManager,
             StockValuationCalculator stockValuationCalculator,
+            OvervaluationDetector overvaluationDetector,
+            MailService mailService,
             RedisDao redisDao) {
         this.stockRepository = stockRepository;
         this.userRepository = userRepository;
         this.lockManager = lockManager;
         this.stockValuationCalculator = stockValuationCalculator;
+        this.overvaluationDetector = overvaluationDetector;
+        this.mailService = mailService;
         this.redisDao = redisDao;
     }
 
@@ -109,8 +119,7 @@ public class StockServiceImpl implements StockService {
             }
 
             stockRepository.delete(stockEntity);
-            redisDao.delete(stockEntity.getStockId(), RedisEnum.STOCK.toString());
-            redisDao.save(RedisEnum.STOCK.toString(), stockEntity.getStockId(), convertToDto(stockEntity));
+            redisDao.delete(RedisEnum.STOCK.toString(), stockEntity.getStockId());
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -254,21 +263,66 @@ public class StockServiceImpl implements StockService {
     @Scheduled(cron = "0 0 15 * * MON-FRI")
     public void recalculateValuationsForAllStocks() {
         logger.info("Starting valuation recalculation for all stocks");
-        List<StockEntity> allStocks = stockRepository.findAll();
+        List<StockEntity> allStocks = stockRepository.findAllWithYearDataAndFavoredUsers();
         int successCount = 0;
         int failureCount = 0;
+        int alertsSent = 0;
 
         for (StockEntity stock : allStocks) {
             try {
                 recalculateValuationsForStock(stock.getStockId());
                 successCount++;
+
+                alertsSent += checkOvervaluationAndNotify(stock);
             } catch (Exception e) {
                 logger.error("Failed to recalculate valuations for stock {}", stock.getStockId(), e);
                 failureCount++;
             }
         }
 
-        logger.info("Completed valuation recalculation: {} succeeded, {} failed", successCount, failureCount);
+        logger.info("Completed valuation recalculation: {} succeeded, {} failed, {} overvaluation alerts sent",
+                successCount, failureCount, alertsSent);
+    }
+
+    private int checkOvervaluationAndNotify(StockEntity stock) {
+        if (stock.getMatchPrice() == null || stock.getYearData() == null || stock.getYearData().isEmpty()) {
+            return 0;
+        }
+
+        int maxYear = stock.getYearData().keySet().stream().mapToInt(Integer::intValue).max().orElse(0);
+        StockYearData latestYearData = stock.getYearData().get(maxYear);
+        if (latestYearData == null) {
+            return 0;
+        }
+
+        OvervaluationResult result = overvaluationDetector.evaluate(stock, latestYearData);
+        if (!result.isOvervalued()) {
+            return 0;
+        }
+
+        if (stock.getFavoredByUsers() == null || stock.getFavoredByUsers().isEmpty()) {
+            return 0;
+        }
+
+        BigDecimal displayPrice = stock.getMatchPrice().multiply(BigDecimal.valueOf(1000));
+        int sent = 0;
+
+        for (UserEntity user : stock.getFavoredByUsers()) {
+            if (user.getEmail() == null || user.getEmail().isBlank()) {
+                continue;
+            }
+            try {
+                mailService.sendOvervaluationAlert(user.getEmail(), result, displayPrice);
+                sent++;
+            } catch (Exception e) {
+                logger.error("Failed to send overvaluation alert to {} for stock {}",
+                        user.getEmail(), stock.getStockId(), e);
+            }
+        }
+
+        logger.info("Stock {} is overvalued ({}/{} indicators), notified {} subscribers",
+                stock.getStockId(), result.getOvervaluedCount(), result.getTotalIndicators(), sent);
+        return sent;
     }
 
 

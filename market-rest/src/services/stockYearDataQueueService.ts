@@ -8,9 +8,9 @@ class StockYearDataQueueService {
   private readonly updateStockYearDataUri = config.uri.stockYearData.update;
   private readonly deleteStockYearDataUri = config.uri.stockYearData.delete;
 
-  async createStockYearData(stockYearData: StockYearDataDto): Promise<ResponseDto<unknown>> {
+  async createStockYearData(stockYearData: StockYearDataDto, year: number): Promise<ResponseDto<unknown>> {
     const { message } = await kafkaRequestResponseService.sendAndWait<StockYearDataDto, ResponseDto<unknown>>(
-        this.createStockYearDataUri,
+        `${this.createStockYearDataUri}${year}`,
         stockYearData
     );
 

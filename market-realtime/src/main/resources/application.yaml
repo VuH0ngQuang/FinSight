@@ -72,7 +72,7 @@ app:
         create: "/ahpConfig/create"
         update: "/ahpConfig/update"
       stockYearData:
-        create: "/stockYearData/create"
+        create: "/stockYearData/create/"
         update: "/stockYearData/update/"
         delete: "/stockYearData/delete"
       webhooks:

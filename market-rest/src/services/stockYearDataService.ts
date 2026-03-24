@@ -1,6 +1,8 @@
 import type { RowDataPacket } from 'mysql2';
 import { pool } from '../config/database';
 import type { StockYearDataDto } from '../dto/StockYearDataDto';
+import type { StockYearData } from '../models/StockEntity';
+import { cacheService } from '../utils/cacheService';
 
 interface StockYearRow extends RowDataPacket {
   stockId: string;
@@ -35,6 +37,10 @@ const toNumber = (value: number | string | null): number => {
 
 class StockYearDataService {
   async getByStockAndYear(stockId: string, year: number): Promise<StockYearDataDto | null> {
+    const cacheField = `${stockId}:${year}`;
+    const cached = await cacheService.hget<StockYearDataDto>('STOCKYEARDATA', cacheField);
+    if (cached) return cached;
+
     const [rows] = await pool.query<StockYearRow[]>(
       `
       SELECT
@@ -71,7 +77,7 @@ class StockYearDataService {
       return null;
     }
 
-    return {
+    const result: StockYearDataDto = {
       stockId: row.stockId,
       netIncome: toNumber(row.netIncome),
       totalEquity: toNumber(row.totalEquity),
@@ -93,6 +99,68 @@ class StockYearDataService {
       pcf: toNumber(row.pcf),
       ps: toNumber(row.ps),
     };
+
+    await cacheService.hset('STOCKYEARDATA', `${stockId}:${year}`, result);
+    return result;
+  }
+
+  /**
+   * Build full year map from Redis (fields `stockId:year` in STOCKYEARDATA).
+   * Returns null when no rows exist in Redis (caller may fall back to DB).
+   */
+  async getYearDataRecordFromRedis(stockId: string): Promise<Record<number, StockYearData> | null> {
+    const entries = await cacheService.hScanMatch('STOCKYEARDATA', `${stockId}:*`);
+    if (entries.length === 0) {
+      return null;
+    }
+    const acc: Record<number, StockYearData> = {};
+    for (const { field, value } of entries) {
+      const yearPart = field.split(':')[1];
+      const year = Number(yearPart);
+      if (!Number.isFinite(year)) {
+        continue;
+      }
+      try {
+        const parsed = JSON.parse(value) as Record<string, unknown>;
+        acc[year] = {
+          netIncome: toNumber(parsed.netIncome as number | string | null),
+          totalEquity: toNumber(parsed.totalEquity as number | string | null),
+          intangibles: toNumber(parsed.intangibles as number | string | null),
+          operatingCashFlow: toNumber(parsed.operatingCashFlow as number | string | null),
+          freeCashFlow: toNumber(parsed.freeCashFlow as number | string | null),
+          revenue: toNumber(parsed.revenue as number | string | null),
+          dividendPerShare: toNumber(parsed.dividendPerShare as number | string | null),
+          sharesOutstanding: toNumber(parsed.sharesOutstanding as number | string | null),
+          priceEndYear: toNumber(parsed.priceEndYear as number | string | null),
+          costOfEquity: toNumber(parsed.costOfEquity as number | string | null),
+          wacc: toNumber(parsed.wacc as number | string | null),
+          dividendGrowthRate: toNumber(parsed.dividendGrowthRate as number | string | null),
+          ddm: toNumber(parsed.ddm as number | string | null),
+          dcf: toNumber(parsed.dcf as number | string | null),
+          ri: toNumber(parsed.ri as number | string | null),
+          pe: toNumber(parsed.pe as number | string | null),
+          pbv: toNumber(parsed.pbv as number | string | null),
+          pcf: toNumber(parsed.pcf as number | string | null),
+          ps: toNumber(parsed.ps as number | string | null),
+        };
+      } catch {
+        continue;
+      }
+    }
+    return Object.keys(acc).length > 0 ? acc : null;
+  }
+
+  /** Write all year rows for a stock (fields `stockId:year` in STOCKYEARDATA). */
+  async persistAllForStock(stockId: string, yearData: Record<number, StockYearData>): Promise<void> {
+    const tasks = Object.entries(yearData).map(([yearStr, data]) => {
+      const y = Number(yearStr);
+      if (!Number.isFinite(y)) {
+        return Promise.resolve();
+      }
+      const dto: StockYearDataDto = { stockId, ...data };
+      return cacheService.hset('STOCKYEARDATA', `${stockId}:${y}`, dto);
+    });
+    await Promise.all(tasks);
   }
 }
 

@@ -35,8 +35,16 @@ export const getStockYearData = async (req: Request, res: Response): Promise<voi
 
 export const createStockYearData = async (req: Request, res: Response): Promise<void> => {
   try {
+    const { year } = req.params;
     const stockYearDataPayload = req.body as StockYearDataDto;
-    const result = await stockYearDataQueueService.createStockYearData(stockYearDataPayload);
+    const parsedYear = Number(year);
+
+    if (Number.isNaN(parsedYear)) {
+      res.status(400).json({ message: 'year must be a number' });
+      return;
+    }
+
+    const result = await stockYearDataQueueService.createStockYearData(stockYearDataPayload, parsedYear);
     const statusCode = result.success ? 201 : 400;
     res.status(statusCode).json(result);
   } catch(error) {

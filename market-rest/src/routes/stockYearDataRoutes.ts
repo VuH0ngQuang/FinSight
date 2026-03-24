@@ -5,7 +5,7 @@ import { createStockYearData, updateStockYearData, deleteStockYearData } from '.
 const router = Router();
 
 router.get('/get/:stockId/:year', getStockYearData);
-router.post('/create', createStockYearData);
+router.post('/create/:year', createStockYearData);
 router.put('/update/:year', updateStockYearData);
 router.delete('/delete', deleteStockYearData);
 
