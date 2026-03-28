@@ -116,6 +116,27 @@ public class AhpConfigServiceImpl implements AhpConfigService {
         }
     }
 
+    @Override
+    public AhpConfigDto getAhpConfigByUserId(long userId) {
+        AhpConfigDto dto = redisDao.find(
+                RedisEnum.AHPCONFIG.toString(),
+                String.valueOf(userId),
+                AhpConfigDto.class
+        );
+        if (dto != null) {
+            return dto;
+        }
+
+        AhpConfigEntity ahpConfigEntity = ahpConfigRepository.findByUserUserId(userId);
+        if (ahpConfigEntity == null) {
+            return null;
+        }
+        dto = convertToDto(ahpConfigEntity);
+        redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
+        redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
+        return dto;
+    }
+
     private String recalcWeights(AhpConfigEntity ahpConfig) {
         try {
             // 1. Parse JSON -> double[][]

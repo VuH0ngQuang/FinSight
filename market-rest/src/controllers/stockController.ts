@@ -92,3 +92,15 @@ export const updateIndustryRatios = async (req: Request, res: Response): Promise
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+export const forceRecalculateValuations = async (_req: Request, res: Response): Promise<void> => {
+    try {
+        const result = await stockQueueService.recalculateValuations();
+        const statusCode = result.success ? 200 : 400;
+        res.status(statusCode).json(result);
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to force stock valuation recalculation', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};

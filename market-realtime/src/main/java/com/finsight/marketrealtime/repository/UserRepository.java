@@ -11,8 +11,8 @@ import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository <UserEntity, Long> {
-    boolean existsByUsername(String username);
-    boolean existsByEmail(String email);
+    boolean existsByUsernameAndUserIdNot(String username, long userId);
+    boolean existsByEmailAndUserIdNot(String email, long userId);
     Optional<UserEntity> findByUsername(String username);
     Optional<UserEntity> findByEmail(String email);
     @Query("SELECT u FROM UserEntity u LEFT JOIN FETCH u.favoriteStocks WHERE u.userId = :userId")

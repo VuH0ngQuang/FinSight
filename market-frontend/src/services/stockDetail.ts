@@ -145,7 +145,11 @@ export const getCachedStockDetail = (symbol?: string) => {
   return symbolCache.get(normalizeSymbol(symbol)) ?? null
 }
 
-export const fetchStockDetail = async (symbol: string, signal?: AbortSignal) => {
+export const fetchStockDetail = async (
+  symbol: string,
+  signal?: AbortSignal,
+  options?: { forceRefresh?: boolean },
+) => {
   const normalizedSymbol = normalizeSymbol(symbol)
   if (!normalizedSymbol) {
     throw new Error('Stock symbol is required to load details.')
@@ -154,7 +158,7 @@ export const fetchStockDetail = async (symbol: string, signal?: AbortSignal) => 
   hydrateCache()
 
   const cached = symbolCache.get(normalizedSymbol)
-  if (cached) {
+  if (cached && !options?.forceRefresh) {
     return cached
   }
 

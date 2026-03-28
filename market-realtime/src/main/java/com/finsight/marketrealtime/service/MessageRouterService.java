@@ -207,6 +207,9 @@ public class MessageRouterService {
             else if (uri.equals(appConf.getUri().getStock().getUpdateIndustryRatios())) {
                 return stockService.updateIndustryRatios(payload);
             }
+            else if (uri.equals(appConf.getUri().getStock().getRecalculateValuations())) {
+                return stockService.forceRecalculateValuations();
+            }
             else if (uri.startsWith(appConf.getUri().getStock().getUpdateMatchPrice())) {
                 stockService.updateMatchPrice(payload.getStockId(), payload.getMatchPrice());
                 return null;

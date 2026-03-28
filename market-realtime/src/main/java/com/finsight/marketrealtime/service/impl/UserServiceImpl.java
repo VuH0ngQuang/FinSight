@@ -2,6 +2,7 @@ package com.finsight.marketrealtime.service.impl;
 
 import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.LoginCacheDto;
+import com.finsight.marketrealtime.dto.LoginDto;
 import com.finsight.marketrealtime.dto.ResponseDto;
 import com.finsight.marketrealtime.dto.UserDto;
 import com.finsight.marketrealtime.enums.RedisEnum;
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseDto createUser(UserDto userDto) {
-        if (existsByUsernameAndEmail(userDto.getUsername(), userDto.getEmail())) {
+        if (existsByUsernameAndEmail(userDto.getUsername(), userDto.getEmail(), 0L)) {
             return ResponseDto.
                     builder().
                     success(false).
@@ -103,7 +104,7 @@ public class UserServiceImpl implements UserService {
                     errorMessage("User not found: " + userDto.getUserId()).
                     build();
 
-            if (existsByUsernameAndEmail(userDto.getUsername(), userDto.getEmail())) return ResponseDto.
+            if (existsByUsernameAndEmail(userDto.getUsername(), userDto.getEmail(), userDto.getUserId())) return ResponseDto.
                     builder().
                     success(false).
                     errorCode(404).
@@ -207,11 +208,12 @@ public class UserServiceImpl implements UserService {
                         .errorMessage("Invalid username/email or password")
                         .build();
             }
-            UserDto result = new UserDto();
-            result.setUserId(cached.getUserId());
+            LoginDto result = new LoginDto();
+            result.setUserId(String.valueOf(cached.getUserId()));
             result.setUsername(cached.getUsername());
             result.setEmail(cached.getEmail());
             result.setPhoneNumber(cached.getPhoneNumber());
+            result.setAdmin(cached.isAdmin());
             return ResponseDto.builder().success(true).data(result).build();
         }
 
@@ -316,9 +318,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private boolean existsByUsernameAndEmail(String username, String email) {
-        boolean usernameExists = (username != null) && userRepository.existsByUsername(username);
-        boolean emailExists = (email != null) && userRepository.existsByEmail(email);
+    private boolean existsByUsernameAndEmail(String username, String email, long userid) {
+        boolean usernameExists = (username != null) && userRepository.existsByUsernameAndUserIdNot(username, userid);
+        boolean emailExists = (email != null) && userRepository.existsByEmailAndUserIdNot(email, userid);
         return usernameExists || emailExists;
     }
 

@@ -8,6 +8,7 @@ class StockQueueService {
   private readonly updateStockUri = config.uri.stock.update;
   private readonly deleteStockUri = config.uri.stock.delete;
   private readonly updateIndustryRatiosUri = config.uri.stock.updateIndustryRatios;
+  private readonly recalculateValuationsUri = config.uri.stock.recalculateValuations;
 
   async createStock(stock: StockDto): Promise<ResponseDto<unknown>> {
     const { message } =
@@ -79,6 +80,24 @@ class StockQueueService {
       }
 
       return message.payload;
+  }
+
+  async recalculateValuations(): Promise<ResponseDto<unknown>> {
+    const { message } =
+      await kafkaRequestResponseService.sendAndWait<Record<string, never>, ResponseDto<unknown>>(
+        this.recalculateValuationsUri,
+        {}
+      );
+
+    if (!message) {
+      throw new Error('No response received from stock recalculation pipeline');
+    }
+
+    if (!message.payload) {
+      throw new Error('Invalid Kafka response: missing payload');
+    }
+
+    return message.payload;
   }
 }
 

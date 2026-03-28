@@ -67,6 +67,7 @@ public class AppConf {
             logger.info("Stock Delete URI           : {}", uri.getStock().getDelete());
             logger.info("Stock UpdateIndustry       : {}", uri.getStock().getUpdateIndustryRatios());
             logger.info("Stock UpdateMatchPrice     : {}", uri.getStock().getUpdateMatchPrice());
+            logger.info("Stock RecalculateValuation : {}", uri.getStock().getRecalculateValuations());
 
             logger.info("Subscription Create        : {}", uri.getSubscription().getCreate());
             logger.info("Subscription Update        : {}", uri.getSubscription().getUpdate());
@@ -167,6 +168,7 @@ public class AppConf {
         private String delete;
         private String updateIndustryRatios;
         private String updateMatchPrice;
+        private String recalculateValuations;
     }
 
     @Data

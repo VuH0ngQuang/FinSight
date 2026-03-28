@@ -146,6 +146,15 @@ public class StockServiceImpl implements StockService {
         return ResponseDto.builder().success(true).build();
     }
 
+    @Override
+    public ResponseDto forceRecalculateValuations() {
+        recalculateValuationsForAllStocks();
+        return ResponseDto.builder()
+                .success(true)
+                .errorMessage("Triggered valuation recalculation for all stocks")
+                .build();
+    }
+
     public void updateMatchPrice(String stockId, BigDecimal matchPrice) {
         ReentrantLock lock = lockManager.getLock(stockId);
         lock.lock();
@@ -187,6 +196,7 @@ public class StockServiceImpl implements StockService {
                 return;
             }
 
+            // matchPrice and per-share fundamentals must use the same unit.
             BigDecimal price = stockEntity.getMatchPrice().multiply(BigDecimal.valueOf(1000));
             BigDecimal shares = BigDecimal.valueOf(latestYearData.getSharesOutstanding());
 

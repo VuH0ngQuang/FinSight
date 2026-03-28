@@ -12,6 +12,7 @@ public interface StockService {
     ResponseDto updateStock(StockDto stockDto);
     ResponseDto deleteStock(StockDto stockDto);
     ResponseDto updateIndustryRatios(StockDto stockDto);
+    ResponseDto forceRecalculateValuations();
     void updateMatchPrice(String stockId, BigDecimal matchPrice);
     void recalculateValuations(StockEntity stockEntity, int targetYear) ;
     StockDto convertToDto(StockEntity stockEntity);

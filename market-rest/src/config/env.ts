@@ -62,6 +62,7 @@ export const config = {
       update: '/stock/update',
       delete: '/stock/delete',
       updateIndustryRatios: '/stock/updateIndustryRatios',
+      recalculateValuations: '/stock/recalculateValuations',
       updateMatchPrice: '/stock/updateMatchPrice/',
     },
     subscription: {

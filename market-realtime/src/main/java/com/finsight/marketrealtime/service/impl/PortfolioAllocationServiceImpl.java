@@ -1,11 +1,14 @@
 package com.finsight.marketrealtime.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.*;
+import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.AhpConfigEntity;
 import com.finsight.marketrealtime.model.StockEntity;
 import com.finsight.marketrealtime.repository.AhpConfigRepository;
 import com.finsight.marketrealtime.repository.StockRepository;
+import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.service.PortfolioAllocationService;
 import com.finsight.marketrealtime.valuation.TopsisCalculator;
 import org.slf4j.Logger;
@@ -25,6 +28,8 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
     private final StockRepository stockRepository;
     private final AhpConfigRepository ahpConfigRepository;
     private final TopsisCalculator topsisCalculator;
+    private final RedisDao redisDao;
+    private final AhpConfigService ahpConfigService;
     private final ObjectMapper objectMapper;
 
     @Autowired
@@ -32,10 +37,14 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
             StockRepository stockRepository,
             AhpConfigRepository ahpConfigRepository,
             TopsisCalculator topsisCalculator,
+            RedisDao redisDao,
+            AhpConfigService ahpConfigService,
             ObjectMapper objectMapper) {
         this.stockRepository = stockRepository;
         this.ahpConfigRepository = ahpConfigRepository;
         this.topsisCalculator = topsisCalculator;
+        this.redisDao = redisDao;
+        this.ahpConfigService = ahpConfigService;
         this.objectMapper = objectMapper;
     }
 
@@ -49,7 +58,8 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
         }
         int lotSize = request.getLotSize() > 0 ? request.getLotSize() : 100;
 
-        AhpConfigEntity ahpConfig = ahpConfigRepository.findByUserUserId(request.getUserId());
+//        AhpConfigEntity ahpConfig = ahpConfigRepository.findByUserUserId(request.getUserId());
+        AhpConfigDto ahpConfig = ahpConfigService.getAhpConfigByUserId(request.getUserId());
         if (ahpConfig == null) {
             return errorResponse(404, "AHP config not found for user: " + request.getUserId());
         }
