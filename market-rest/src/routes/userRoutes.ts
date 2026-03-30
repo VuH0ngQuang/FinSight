@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {
   getUserDetail,
+  getFavoriteStocks,
   createUser,
   updateUser,
   deleteUser,
@@ -13,6 +14,7 @@ import {
 const router = Router();
 
 router.get('/getDetail/:userId', getUserDetail);
+router.get('/favoriteStocks/:userId', getFavoriteStocks);
 router.post('/create', createUser);
 router.put('/update', updateUser);
 router.delete('/delete', deleteUser);

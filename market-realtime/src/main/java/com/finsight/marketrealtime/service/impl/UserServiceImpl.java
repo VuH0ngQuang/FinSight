@@ -152,6 +152,7 @@ public class UserServiceImpl implements UserService {
 
             userRepository.deleteById(userDto.getUserId());
             redisDao.delete(RedisEnum.USER.toString(), userDto.getUserId());
+            invalidateFavoriteStocksCache(userDto.getUserId());
             clearLoginCache(userEntity);
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -278,9 +279,14 @@ public class UserServiceImpl implements UserService {
             if (userEntity.getFavoriteStocks() == null) {
                 userEntity.setFavoriteStocks(new HashSet<>());
             }
+            if (stockEntity.getFavoredByUsers() == null) {
+                stockEntity.setFavoredByUsers(new HashSet<>());
+            }
 
             userEntity.getFavoriteStocks().add(stockEntity);
-            userRepository.save(userEntity);
+            stockEntity.getFavoredByUsers().add(userEntity);
+            stockRepository.save(stockEntity);
+            invalidateFavoriteStocksCache(userDto.getUserId());
 
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -298,19 +304,25 @@ public class UserServiceImpl implements UserService {
                     .findByIdWithFavoriteStocks(userDto.getUserId())
                     .orElse(null);
 
-            if (userEntity == null) {
+            StockEntity stockEntity = stockRepository
+                    .findById(userDto.getStockId())
+                    .orElse(null);
+
+            if (stockEntity == null) {
                 return ResponseDto.builder()
                         .success(false)
                         .errorCode(404)
-                        .errorMessage("User not found: " + userDto.getUserId())
+                        .errorMessage("Stock not found: " + userDto.getStockId())
                         .build();
             }
-
             if (userEntity.getFavoriteStocks() != null) {
-                userEntity.getFavoriteStocks()
-                        .removeIf(stock -> stock.getStockId().equals(userDto.getStockId()));
-                userRepository.save(userEntity);
+                userEntity.getFavoriteStocks().remove(stockEntity);
             }
+            if (stockEntity.getFavoredByUsers() != null) {
+                stockEntity.getFavoredByUsers().remove(userEntity);
+            }
+            stockRepository.save(stockEntity);
+            invalidateFavoriteStocksCache(userDto.getUserId());
 
             return ResponseDto.builder().success(true).build();
         } finally {
@@ -325,6 +337,11 @@ public class UserServiceImpl implements UserService {
     }
 
     private static final String LOGIN_CACHE_KEY = "USER_LOGIN";
+
+    /** Same hash key as market-rest `USER_FAVORITE_STOCKS` (watchlist cache invalidation). */
+    private void invalidateFavoriteStocksCache(long userId) {
+        redisDao.delete(RedisEnum.USER_FAVORITE_STOCKS.toString(), userId);
+    }
 
     private void cacheLoginData(UserEntity userEntity) {
         LoginCacheDto dto = LoginCacheDto.builder()

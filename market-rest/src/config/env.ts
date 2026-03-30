@@ -56,6 +56,7 @@ export const config = {
       login: '/user/login',
       addFavoriteStock: '/user/addFavoriteStock',
       removeFavoriteStock: '/user/removeFavoriteStock',
+      favoriteStocks: '/user/favoriteStocks',
     },
     stock: {
       create: '/stock/create',

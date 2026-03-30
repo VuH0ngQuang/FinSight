@@ -168,3 +168,16 @@ export const removeFavoriteStock = async (req: FavoriteStockRequest): Promise<vo
   const res = await authFetch('/user/removeFavoriteStock', { method: 'POST', body: JSON.stringify(req) })
   if (!res.ok) throw new Error('Failed to remove favorite')
 }
+
+/** Returns stock symbols the user saved as favorites (watchlist). */
+export const getFavoriteStockIds = async (userId: string): Promise<string[]> => {
+  const res = await authFetch(`/user/favoriteStocks/${encodeURIComponent(userId)}`)
+  if (!res.ok) throw new Error('Failed to load watchlist')
+  const json = (await res.json()) as unknown
+  const payload =
+    json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
+      ? (json as Record<string, unknown>).data
+      : json
+  if (!Array.isArray(payload)) return []
+  return payload.map((s) => String(s).trim().toUpperCase()).filter(Boolean)
+}

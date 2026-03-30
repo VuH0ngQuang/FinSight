@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { useWatchlist } from '../contexts/WatchlistContext'
 import { useMarketData } from '../hooks/useMarketData'
 import { getCachedStockDetail, fetchStockDetail, type StockDetailResponse, type StockYearApiRecord } from '../services/stockDetail'
 import { getStockYearData } from '../services/api/stockYearDataApi'
@@ -34,6 +35,7 @@ const StockDetailPage = () => {
   const { symbol } = useParams<{ symbol: string }>()
   const navigate = useNavigate()
   const { userId } = useAuth()
+  const { favoriteIds, refresh: refreshWatchlist } = useWatchlist()
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
 
   const [detail, setDetail] = useState<StockDetailResponse | null>(getCachedStockDetail(symbol))
@@ -43,8 +45,12 @@ const StockDetailPage = () => {
   const [selectedYear, setSelectedYear] = useState<number | null>(null)
   const [yearDataCache, setYearDataCache] = useState<Record<number, StockYearApiRecord>>({})
   const [yearLoading, setYearLoading] = useState(false)
-  const [isFav, setIsFav] = useState(false)
   const [favLoading, setFavLoading] = useState(false)
+
+  const isFav = useMemo(
+    () => Boolean(userId && symbol && favoriteIds.has(symbol.toUpperCase())),
+    [userId, symbol, favoriteIds],
+  )
 
   useEffect(() => {
     if (!symbol) return
@@ -65,11 +71,6 @@ const StockDetailPage = () => {
   }, [symbol])
 
   useEffect(() => {
-    if (!detail || !userId) return
-    setIsFav(detail.favoredByUsers?.includes(userId) ?? false)
-  }, [detail, userId])
-
-  useEffect(() => {
     if (!symbol || !selectedYear || yearDataCache[selectedYear]) return
     setYearLoading(true)
     getStockYearData(symbol, selectedYear)
@@ -84,7 +85,7 @@ const StockDetailPage = () => {
     try {
       if (isFav) await removeFavoriteStock({ userId, stockId: symbol })
       else await addFavoriteStock({ userId, stockId: symbol })
-      setIsFav((v) => !v)
+      await refreshWatchlist()
     } catch { /* ignore */ } finally {
       setFavLoading(false)
     }

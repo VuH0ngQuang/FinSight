@@ -1,12 +1,12 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { useWatchlist } from '../contexts/WatchlistContext'
+import { useAhpWeights } from '../hooks/useAhpWeights'
 import { useStockList } from '../hooks/useStockList'
 import { useMarketData } from '../hooks/useMarketData'
-import { buildMetrics, computeTopsis, DEFAULT_WEIGHTS } from '../utils/topsis'
+import { buildMetrics, computeTopsis } from '../utils/topsis'
 import { addFavoriteStock, removeFavoriteStock } from '../services/api/userApi'
-import { getAhpConfig } from '../services/api/ahpConfigApi'
-import { fetchStockDetail } from '../services/stockDetail'
 import { formatPrice, formatScore } from '../utils/formatters'
 import StatCard from '../components/ui/StatCard'
 import ScoreBar from '../components/ui/ScoreBar'
@@ -16,43 +16,13 @@ import ErrorBanner from '../components/ui/ErrorBanner'
 
 const StockScanner = () => {
   const { userId } = useAuth()
+  const { favoriteIds, refresh: refreshWatchlist } = useWatchlist()
+  const ahpWeights = useAhpWeights(userId)
   const { symbols, details, isLoading, error } = useStockList({ forceRefreshOnMount: true })
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
-  const [ahpWeights, setAhpWeights] = useState<number[]>(DEFAULT_WEIGHTS)
   const [search, setSearch] = useState('')
   const [sectorFilter, setSectorFilter] = useState('')
   const [favLoading, setFavLoading] = useState<Set<string>>(new Set())
-
-  useEffect(() => {
-    if (!userId) {
-      setAhpWeights(DEFAULT_WEIGHTS)
-      return
-    }
-
-    const toWeights = (raw: unknown): number[] | null => {
-      if (!Array.isArray(raw) || raw.length !== 7) return null
-      const values = raw.map((v) => Number(v))
-      if (values.some((v) => !Number.isFinite(v) || v < 0)) return null
-      const sum = values.reduce((s, v) => s + v, 0)
-      if (sum <= 0) return null
-      return values.map((v) => v / sum)
-    }
-
-    getAhpConfig(userId)
-      .then((cfg) => {
-        if (!cfg?.weightsJson) {
-          setAhpWeights(DEFAULT_WEIGHTS)
-          return
-        }
-        try {
-          const parsed = JSON.parse(cfg.weightsJson) as unknown
-          setAhpWeights(toWeights(parsed) ?? DEFAULT_WEIGHTS)
-        } catch {
-          setAhpWeights(DEFAULT_WEIGHTS)
-        }
-      })
-      .catch(() => setAhpWeights(DEFAULT_WEIGHTS))
-  }, [userId])
 
   const topsisScores = useMemo(() => {
     if (!symbols) return new Map<string, number>()
@@ -73,7 +43,7 @@ const StockScanner = () => {
         symbol: s,
         detail: details[s],
         score: topsisScores.get(s) ?? 0,
-        isFav: details[s]?.favoredByUsers?.includes(userId ?? '') ?? false,
+        isFav: userId ? favoriteIds.has(s.toUpperCase()) : false,
       }))
       .filter((r) => {
         const matchSearch = r.symbol.toLowerCase().includes(search.toLowerCase()) ||
@@ -82,7 +52,7 @@ const StockScanner = () => {
         return matchSearch && matchSector
       })
       .sort((a, b) => b.score - a.score)
-  }, [symbols, details, topsisScores, search, sectorFilter, userId])
+  }, [symbols, details, topsisScores, search, sectorFilter, userId, favoriteIds])
 
   const avgScore = useMemo(() => {
     const vals = [...topsisScores.values()]
@@ -99,8 +69,7 @@ const StockScanner = () => {
     try {
       if (isFav) await removeFavoriteStock({ userId, stockId: symbol })
       else await addFavoriteStock({ userId, stockId: symbol })
-      // Refresh stock detail to update favoredByUsers
-      await fetchStockDetail(symbol, undefined, { forceRefresh: true })
+      await refreshWatchlist()
     } catch { /* ignore */ } finally {
       setFavLoading((prev) => { const s = new Set(prev); s.delete(symbol); return s })
     }

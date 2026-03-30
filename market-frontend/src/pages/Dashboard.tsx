@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { useWatchlist } from '../contexts/WatchlistContext'
+import { useAhpWeights } from '../hooks/useAhpWeights'
 import { useStockList } from '../hooks/useStockList'
 import { useMarketData } from '../hooks/useMarketData'
 import { buildMetrics, computeTopsis } from '../utils/topsis'
@@ -13,16 +15,18 @@ import { formatScore, formatRatio } from '../utils/formatters'
 
 const Dashboard = () => {
   const { userId, userDetail, refreshUserDetail } = useAuth()
+  const { favoriteIds, refresh: refreshWatchlist } = useWatchlist()
+  const ahpWeights = useAhpWeights(userId)
   const { symbols, details, isLoading } = useStockList()
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
   const [chartSymbol, setChartSymbol] = useState('VNINDEX')
 
-  // Compute TOPSIS scores
+  // Compute TOPSIS scores (same AHP weights as Stock Scanner)
   const topsisScores = useMemo(() => {
     if (!symbols) return new Map<string, number>()
     const rows = symbols.map((s) => ({ symbol: s, metrics: buildMetrics(details[s]) }))
-    return computeTopsis(rows)
-  }, [symbols, details])
+    return computeTopsis(rows, ahpWeights)
+  }, [symbols, details, ahpWeights])
 
   const avgScore = useMemo(() => {
     if (topsisScores.size === 0) return 0
@@ -37,20 +41,17 @@ const Dashboard = () => {
     return best
   }, [topsisScores])
 
-  // Favorites from userDetail
   const favoriteSymbols: string[] = useMemo(() => {
     if (!userId || !symbols) return []
-    return symbols.filter((s) => {
-      const detail = details[s]
-      return detail?.favoredByUsers?.includes(userId)
-    })
-  }, [userId, symbols, details])
+    return symbols.filter((s) => favoriteIds.has(s.toUpperCase()))
+  }, [userId, symbols, favoriteIds])
 
   const handleRemoveFavorite = async (stockId: string) => {
     if (!userId) return
     try {
       await removeFavoriteStock({ userId, stockId })
       await refreshUserDetail()
+      await refreshWatchlist()
     } catch { /* ignore */ }
   }
 
@@ -59,6 +60,7 @@ const Dashboard = () => {
     try {
       await addFavoriteStock({ userId, stockId })
       await refreshUserDetail()
+      await refreshWatchlist()
     } catch { /* ignore */ }
   }
 

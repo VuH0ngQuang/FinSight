@@ -3,6 +3,23 @@ import { userService } from '../services/userService';
 import { userQueueService } from '../services/userQueueService';
 import type { UserDto } from '../dto/UserDto';
 
+export const getFavoriteStocks = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { userId } = req.params;
+    if (!userId) {
+      res.status(400).json({ message: 'userId is required' });
+      return;
+    }
+
+    const stockIds = await userService.getFavoriteStockIdsByUserId(userId);
+    res.json({ data: stockIds });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to get favorite stocks', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 export const getUserDetail = async (req: Request, res: Response): Promise<void> => {
   try {
     const { userId } = req.params;
@@ -60,6 +77,9 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
     const result = await userQueueService.deleteUser(userPayload);
 
     const statusCode = result.success ? 200 : 400;
+    if (result.success && userPayload.userId) {
+      await userService.invalidateFavoriteStockIdsCache(userPayload.userId);
+    }
     res.status(statusCode).json(result);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -102,6 +122,9 @@ export const addFavoriteStock = async (req: Request, res: Response): Promise<voi
     const result = await userQueueService.addFavoriteStock(userPayload);
 
     const statusCode = result.success ? 200 : 400;
+    if (result.success && userPayload.userId) {
+      await userService.invalidateFavoriteStockIdsCache(userPayload.userId);
+    }
     res.status(statusCode).json(result);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -116,6 +139,9 @@ export const removeFavoriteStock = async (req: Request, res: Response): Promise<
     const result = await userQueueService.removeFavoriteStock(userPayload);
 
     const statusCode = result.success ? 200 : 400;
+    if (result.success && userPayload.userId) {
+      await userService.invalidateFavoriteStockIdsCache(userPayload.userId);
+    }
     res.status(statusCode).json(result);
   } catch (error) {
     // eslint-disable-next-line no-console

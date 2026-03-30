@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { WatchlistProvider } from './contexts/WatchlistContext'
 import AppShell from './components/layout/AppShell'
 import ProtectedRoute from './components/ProtectedRoute'
 import AdminRoute from './components/AdminRoute'
@@ -15,6 +16,7 @@ import AdminPanel from './pages/AdminPanel'
 function App() {
   return (
     <AuthProvider>
+      <WatchlistProvider>
       <Routes>
         <Route path="/login" element={<LoginRegister />} />
 
@@ -41,6 +43,7 @@ function App() {
           />
         </Route>
       </Routes>
+      </WatchlistProvider>
     </AuthProvider>
   )
 }

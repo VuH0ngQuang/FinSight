@@ -6,12 +6,15 @@ import type { AhpConfigEntity } from "../models/AhpConfigEntity";
 import { SubscriptionEnum } from "../models/Subscription";
 import type { SubscriptionPlanEntity } from "../models/SubscriptionPlanEntity";
 import { BillingCycle } from "../models/SubscriptionPlanEntity";
-import {RowDataPacket} from "mysql2";
+import { RowDataPacket } from "mysql2";
 import { cacheService } from "../utils/cacheService";
 import { ahpConfigService } from "./ahpConfigService";
 
 /** Hash field = userId, value = JSON array of full Subscription objects (incl. plan). */
 const USER_SUBSCRIPTIONS_HASH = "USER_SUBSCRIPTIONS";
+
+/** Hash field = userId, value = JSON array of favorite stock symbol strings. */
+const USER_FAVORITE_STOCKS_HASH = "USER_FAVORITE_STOCKS";
 
 interface UserRow extends RowDataPacket {
   userId: string;
@@ -160,6 +163,84 @@ class UserService {
     const subs = await this.querySubscriptions(normalizedUserId);
     await this.persistSubscriptionsToCache(normalizedUserId, subs);
     return subs;
+  }
+
+  /**
+   * Returns null when Redis has no entry for this user (cache miss).
+   * Returns [] when cached as empty watchlist.
+   */
+  private async getFavoriteStockIdsFromCache(normalizedUserId: string): Promise<string[] | null> {
+    const raw = await cacheService.hget<unknown>(USER_FAVORITE_STOCKS_HASH, normalizedUserId);
+    if (raw === null) {
+      return null;
+    }
+    if (!Array.isArray(raw)) {
+      return null;
+    }
+    return raw.map((s) => String(s).trim()).filter(Boolean);
+  }
+
+  /** Join table `user_favorite_stocks`; tries snake_case columns then camelCase. */
+  private async queryFavoriteStockIdsFromDb(normalizedUserId: string): Promise<string[]> {
+    interface FavoriteRow extends RowDataPacket {
+      stockId: string;
+    }
+
+    const snakeSql = `
+      SELECT stock_id AS stockId
+      FROM user_favorite_stocks
+      WHERE user_id = CAST(? AS UNSIGNED)
+    `;
+    const camelSql = `
+      SELECT stockId AS stockId
+      FROM user_favorite_stocks
+      WHERE userId = CAST(? AS UNSIGNED)
+    `;
+
+    try {
+      const [rows] = await pool.query<FavoriteRow[]>(snakeSql, [normalizedUserId]);
+      return rows.map((r) => String(r.stockId).trim());
+    } catch (err: unknown) {
+      const code = typeof err === "object" && err !== null && "code" in err ? String((err as { code: unknown }).code) : "";
+      if (code === "ER_BAD_FIELD_ERROR" || code === "42S22") {
+        const [rows] = await pool.query<FavoriteRow[]>(camelSql, [normalizedUserId]);
+        return rows.map((r) => String(r.stockId).trim());
+      }
+      throw err;
+    }
+  }
+
+  private async persistFavoriteStockIdsToCache(normalizedUserId: string, ids: string[]): Promise<void> {
+    await cacheService.hset(USER_FAVORITE_STOCKS_HASH, normalizedUserId, ids);
+  }
+
+  /**
+   * Stock symbols the user marked as favorites.
+   * Redis hash `USER_FAVORITE_STOCKS` first; on miss loads from DB and backfills cache.
+   */
+  async getFavoriteStockIdsByUserId(userId: string): Promise<string[]> {
+    const normalizedUserId = userId.trim();
+    if (!this.isBigIntString(normalizedUserId)) {
+      return [];
+    }
+
+    const fromCache = await this.getFavoriteStockIdsFromCache(normalizedUserId);
+    if (fromCache !== null) {
+      return fromCache;
+    }
+
+    const fromDb = await this.queryFavoriteStockIdsFromDb(normalizedUserId);
+    await this.persistFavoriteStockIdsToCache(normalizedUserId, fromDb);
+    return fromDb;
+  }
+
+  /** Call after favorite list changes (add/remove/delete user) so next read reloads from DB. */
+  async invalidateFavoriteStockIdsCache(userId: string): Promise<void> {
+    const normalizedUserId = userId.trim();
+    if (!this.isBigIntString(normalizedUserId)) {
+      return;
+    }
+    await cacheService.hdel(USER_FAVORITE_STOCKS_HASH, normalizedUserId);
   }
 
   async getUserById(userId: string): Promise<UserDetailDto | null> {
