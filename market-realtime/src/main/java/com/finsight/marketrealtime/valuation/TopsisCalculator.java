@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution).
@@ -56,6 +57,7 @@ public class TopsisCalculator {
         double[][] matrix = rows.toArray(new double[m][]);
 
         vectorNormalize(matrix);
+        double[][] normalizedOnly = copyMatrix(matrix);
         applyWeights(matrix, ahpWeights);
 
         double[] idealBest = new double[NUM_CRITERIA];
@@ -70,22 +72,30 @@ public class TopsisCalculator {
             }
         }
 
-        List<RankedStockDto> result = new ArrayList<>();
+        int[] criterionOrderByWeight = criterionOrderByDescendingWeight(ahpWeights);
+
+        double[] roundedScores = new double[m];
         for (int i = 0; i < m; i++) {
             double distBest = euclidean(matrix[i], idealBest);
             double distWorst = euclidean(matrix[i], idealWorst);
             double closeness = (distBest + distWorst) == 0 ? 0 : distWorst / (distBest + distWorst);
+            roundedScores[i] = Math.round(closeness * 10000.0) / 10000.0;
+        }
 
-            StockEntity s = eligible.get(i);
+        List<Integer> order = new ArrayList<>(IntStream.range(0, m).boxed().toList());
+        order.sort(compareByTopsisThenCriteria(roundedScores, normalizedOnly, criterionOrderByWeight, eligible));
+
+        List<RankedStockDto> result = new ArrayList<>(m);
+        for (int idx : order) {
+            StockEntity s = eligible.get(idx);
             result.add(RankedStockDto.builder()
                     .stockId(s.getStockId())
                     .stockName(s.getStockName())
-                    .topsisScore(Math.round(closeness * 10000.0) / 10000.0)
+                    .topsisScore(roundedScores[idx])
                     .matchPrice(s.getMatchPrice())
                     .build());
         }
 
-        result.sort(Comparator.comparingDouble(RankedStockDto::getTopsisScore).reversed());
         return result;
     }
 
@@ -164,6 +174,54 @@ public class TopsisCalculator {
         }
 
         return row;
+    }
+
+    private static double[][] copyMatrix(double[][] src) {
+        double[][] copy = new double[src.length][];
+        for (int i = 0; i < src.length; i++) {
+            copy[i] = Arrays.copyOf(src[i], src[i].length);
+        }
+        return copy;
+    }
+
+    /**
+     * Criterion column indices ordered by AHP weight (highest first), then by fixed index for ties.
+     * Used to break TOPSIS score ties: compare normalized (pre-weight) values on the user's top criteria first.
+     */
+    private static int[] criterionOrderByDescendingWeight(double[] weights) {
+        Integer[] ord = IntStream.range(0, NUM_CRITERIA).boxed().toArray(Integer[]::new);
+        Arrays.sort(ord, (a, b) -> {
+            int c = Double.compare(weights[b], weights[a]);
+            if (c != 0) {
+                return c;
+            }
+            return Integer.compare(a, b);
+        });
+        int[] out = new int[NUM_CRITERIA];
+        for (int i = 0; i < NUM_CRITERIA; i++) {
+            out[i] = ord[i];
+        }
+        return out;
+    }
+
+    private static Comparator<Integer> compareByTopsisThenCriteria(
+            double[] roundedScores,
+            double[][] normalizedOnly,
+            int[] criterionOrder,
+            List<StockEntity> eligible) {
+        return (i, j) -> {
+            int c = Double.compare(roundedScores[j], roundedScores[i]);
+            if (c != 0) {
+                return c;
+            }
+            for (int col : criterionOrder) {
+                c = Double.compare(normalizedOnly[j][col], normalizedOnly[i][col]);
+                if (c != 0) {
+                    return c;
+                }
+            }
+            return eligible.get(i).getStockId().compareTo(eligible.get(j).getStockId());
+        };
     }
 
     private void vectorNormalize(double[][] matrix) {

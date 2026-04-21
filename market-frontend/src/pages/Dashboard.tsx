@@ -22,8 +22,8 @@ const Dashboard = () => {
   const [chartSymbol, setChartSymbol] = useState('VNINDEX')
 
   // Compute TOPSIS scores (same AHP weights as Stock Scanner)
-  const topsisScores = useMemo(() => {
-    if (!symbols) return new Map<string, number>()
+  const { scores: topsisScores, compareRank } = useMemo(() => {
+    if (!symbols) return { scores: new Map<string, number>(), compareRank: () => 0 as number }
     const rows = symbols.map((s) => ({ symbol: s, metrics: buildMetrics(details[s]) }))
     return computeTopsis(rows, ahpWeights)
   }, [symbols, details, ahpWeights])
@@ -35,11 +35,9 @@ const Dashboard = () => {
   }, [topsisScores])
 
   const topSymbol = useMemo(() => {
-    let best = ''
-    let bestScore = -1
-    topsisScores.forEach((score, sym) => { if (score > bestScore) { bestScore = score; best = sym } })
-    return best
-  }, [topsisScores])
+    if (topsisScores.size === 0) return ''
+    return [...topsisScores.keys()].sort(compareRank)[0] ?? ''
+  }, [topsisScores, compareRank])
 
   const favoriteSymbols: string[] = useMemo(() => {
     if (!userId || !symbols) return []

@@ -24,8 +24,8 @@ const StockScanner = () => {
   const [sectorFilter, setSectorFilter] = useState('')
   const [favLoading, setFavLoading] = useState<Set<string>>(new Set())
 
-  const topsisScores = useMemo(() => {
-    if (!symbols) return new Map<string, number>()
+  const { scores: topsisScores, compareRank } = useMemo(() => {
+    if (!symbols) return { scores: new Map<string, number>(), compareRank: () => 0 as number }
     const rows = symbols.map((s) => ({ symbol: s, metrics: buildMetrics(details[s]) }))
     return computeTopsis(rows, ahpWeights)
   }, [symbols, details, ahpWeights])
@@ -51,15 +51,18 @@ const StockScanner = () => {
         const matchSector = !sectorFilter || r.detail?.sector === sectorFilter
         return matchSearch && matchSector
       })
-      .sort((a, b) => b.score - a.score)
-  }, [symbols, details, topsisScores, search, sectorFilter, userId, favoriteIds])
+      .sort((a, b) => compareRank(a.symbol, b.symbol))
+  }, [symbols, details, topsisScores, compareRank, search, sectorFilter, userId, favoriteIds])
 
   const avgScore = useMemo(() => {
     const vals = [...topsisScores.values()]
     return vals.length ? vals.reduce((s, v) => s + v, 0) / vals.length : 0
   }, [topsisScores])
 
-  const sortedScores = useMemo(() => [...topsisScores.entries()].sort((a, b) => b[1] - a[1]), [topsisScores])
+  const sortedScores = useMemo(
+    () => [...topsisScores.entries()].sort((a, b) => compareRank(a[0], b[0])),
+    [topsisScores, compareRank],
+  )
   const topEntry = sortedScores[0]
   const bottomEntry = sortedScores[sortedScores.length - 1]
 

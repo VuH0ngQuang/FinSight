@@ -49,23 +49,53 @@ export const buildMetrics = (detail?: StockDetailResponse): Record<Criterion, nu
   }
 }
 
+export interface TopsisResult {
+  scores: Map<string, number>
+  /**
+   * Negative if `a` should rank above `b` (higher TOPSIS score or better tie-break).
+   * Matches backend: ties broken by normalized criteria in descending AHP weight order.
+   */
+  compareRank: (a: string, b: string) => number
+}
+
+/** Criterion indices 0..6 ordered by weight (highest first), then by index for ties. */
+function criterionOrderByWeight(weights: number[]): number[] {
+  const n = CRITERIA.length
+  return Array.from({ length: n }, (_, i) => i).sort((a, b) => {
+    const wa = weights[a] ?? 1 / n
+    const wb = weights[b] ?? 1 / n
+    if (wb !== wa) return wb - wa
+    return a - b
+  })
+}
+
 export const computeTopsis = (
   rows: TopsisRow[],
   weights: number[] = DEFAULT_WEIGHTS,
-): Map<string, number> => {
-  if (rows.length === 0) return new Map()
+): TopsisResult => {
+  if (rows.length === 0) {
+    return { scores: new Map(), compareRank: () => 0 }
+  }
 
   // Match backend eligibility: require at least two populated criteria.
   const eligibleRows = rows.filter((row) =>
     CRITERIA.reduce((count, c) => count + (row.metrics[c] > 0 ? 1 : 0), 0) >= 2,
   )
-  if (eligibleRows.length === 0) return new Map()
+  if (eligibleRows.length === 0) {
+    return { scores: new Map(), compareRank: () => 0 }
+  }
 
   const denominators = CRITERIA.reduce((acc, criterion) => {
     const sumSq = eligibleRows.reduce((s, r) => s + r.metrics[criterion] ** 2, 0)
     acc[criterion] = sumSq > 0 ? Math.sqrt(sumSq) : 1
     return acc
   }, {} as Record<Criterion, number>)
+
+  const normBySymbol = new Map<string, number[]>()
+  eligibleRows.forEach((row) => {
+    const vec = CRITERIA.map((c) => row.metrics[c] / denominators[c])
+    normBySymbol.set(row.symbol, vec)
+  })
 
   const weighted = eligibleRows.map((row) => {
     const w: Record<Criterion, number> = {} as Record<Criterion, number>
@@ -98,5 +128,25 @@ export const computeTopsis = (
     scores.set(symbol, Number.isFinite(score) ? score : 0)
   })
 
-  return scores
+  const critOrder = criterionOrderByWeight(weights)
+
+  const compareRank = (a: string, b: string): number => {
+    const sa = scores.get(a)
+    const sb = scores.get(b)
+    if (sa == null && sb == null) return a.localeCompare(b)
+    if (sa == null) return 1
+    if (sb == null) return -1
+    if (sb !== sa) return sb - sa
+    const va = normBySymbol.get(a)
+    const vb = normBySymbol.get(b)
+    if (!va || !vb) return a.localeCompare(b)
+    for (const idx of critOrder) {
+      const ca = va[idx] ?? 0
+      const cb = vb[idx] ?? 0
+      if (cb !== ca) return cb - ca
+    }
+    return a.localeCompare(b)
+  }
+
+  return { scores, compareRank }
 }
