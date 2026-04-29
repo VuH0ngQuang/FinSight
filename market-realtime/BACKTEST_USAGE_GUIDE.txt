@@ -1,0 +1,128 @@
+AHP-TOPSIS Backtest Harness - Usage Guide
+=========================================
+
+Purpose
+-------
+This file documents how to run the backtest harness in the `market-realtime` service,
+including what each command does and when to use it.
+
+Prerequisites
+-------------
+1) Run commands from the `market-realtime` directory.
+2) Ensure benchmark CSV exists at:
+   src/main/resources/backtest/vnindex.csv
+3) Benchmark CSV format:
+   year,close
+   2019,960.99
+   2020,1103.87
+   ...
+
+Command Format
+--------------
+All runs use Spring profile `backtest`:
+
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="..."
+
+
+1) Data Availability Check
+--------------------------
+Command:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="--mode=data-check"
+
+What it does:
+- Does NOT run trading simulation.
+- Scans historical stock data coverage.
+- Writes data availability report so you can pick a valid backtest window.
+
+When to use:
+- First run before any simulation.
+- Before changing start/end years.
+
+
+2) Single Backtest Run (Main Thesis Run)
+----------------------------------------
+Command:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="--mode=single --start=2019 --end=2024 --topN=10 --userId=144995632409477120"
+
+What it does:
+- Runs one full AHP-TOPSIS backtest.
+- Uses AHP weights for the provided userId (falls back to equal weights if unavailable).
+- Rebalances annually using anti-look-ahead snapshots.
+- Produces core metrics: CAGR, Sharpe, Sortino, Max Drawdown, Hit Rate, Alpha, Beta.
+
+Useful arguments:
+- --start=YYYY
+- --end=YYYY
+- --topN=10
+- --lotSize=100
+- --capital=1000000000
+- --txBps=15
+- --userId=<id>
+
+
+3) Top-N Sweep Experiment
+-------------------------
+Command:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="--mode=topn-sweep"
+
+What it does:
+- Runs multiple backtests with topN in {5, 10, 15, 20}.
+- Helps answer committee question: "How sensitive is performance to portfolio size?"
+- Writes summary CSV comparing CAGR/Sharpe/MDD/HitRate/Alpha/Beta across topN values.
+
+
+4) Weight Sensitivity Experiment
+--------------------------------
+Command:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="--mode=weight-sensitivity --runs=100 --noise=0.2"
+
+What it does:
+- Perturbs base AHP weights using a Dirichlet-based random process.
+- Runs many trials to evaluate robustness of results to moderate weight changes.
+- Reports performance distribution and top-10 overlap vs baseline.
+
+Useful arguments:
+- --runs=100      (number of perturbed trials)
+- --noise=0.2     (larger = more perturbation)
+- --seed=42       (reproducibility)
+
+
+5) Method Comparison Experiment
+-------------------------------
+Command:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=backtest -Dspring-boot.run.arguments="--mode=method-comparison"
+
+What it does:
+- Compares multiple weighting methods:
+  - AHP
+  - Equal weights
+  - PE-only
+  - Random weights
+- Helps answer committee question: "Is AHP-TOPSIS better than simpler alternatives?"
+
+
+Output Location
+---------------
+By default, outputs are written under:
+backtest-out/<mode>/<timestamp>/
+
+You can override root output directory using:
+--out=<path>
+
+Typical files:
+- equity_curve.csv
+- drawdown.csv
+- rebalance_log.csv
+- metrics.csv
+- data_availability.csv (data-check mode)
+- topn_sweep.csv / sensitivity_weights.csv / method_comparison.csv (experiment modes)
+
+
+Quick Recommended Workflow
+--------------------------
+1) Run data-check.
+2) Run single mode for main result.
+3) Run topn-sweep.
+4) Run weight-sensitivity.
+5) Run method-comparison.
+6) Use generated CSVs in thesis tables/figures.

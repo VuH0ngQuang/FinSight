@@ -1,0 +1,6 @@
+﻿stock_id,sector,years_available,years_with_price,min_year,max_year
+ACB,Banks,6,6,2020,2025
+BID,Banks,5,5,2020,2024
+SHB,Banks,4,4,2021,2024
+TCB,Banks,5,5,2020,2024
+VCB,Banks,5,5,2020,2024

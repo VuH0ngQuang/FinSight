@@ -10,6 +10,7 @@ import com.finsight.marketrealtime.repository.AhpConfigRepository;
 import com.finsight.marketrealtime.repository.StockRepository;
 import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.service.PortfolioAllocationService;
+import com.finsight.marketrealtime.backtest.PortfolioAllocator;
 import com.finsight.marketrealtime.valuation.TopsisCalculator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,6 +30,7 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
     private final RedisDao redisDao;
     private final AhpConfigService ahpConfigService;
     private final ObjectMapper objectMapper;
+    private final PortfolioAllocator portfolioAllocator;
 
     @Autowired
     public PortfolioAllocationServiceImpl(
@@ -39,13 +39,15 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
             TopsisCalculator topsisCalculator,
             RedisDao redisDao,
             AhpConfigService ahpConfigService,
-            ObjectMapper objectMapper) {
+            ObjectMapper objectMapper,
+            PortfolioAllocator portfolioAllocator) {
         this.stockRepository = stockRepository;
         this.ahpConfigRepository = ahpConfigRepository;
         this.topsisCalculator = topsisCalculator;
         this.redisDao = redisDao;
         this.ahpConfigService = ahpConfigService;
         this.objectMapper = objectMapper;
+        this.portfolioAllocator = portfolioAllocator;
     }
 
     @Override
@@ -82,128 +84,12 @@ public class PortfolioAllocationServiceImpl implements PortfolioAllocationServic
             return errorResponse(404, "No stocks have sufficient data for ranking");
         }
 
-        PortfolioAllocationResult result = buildAllocation(
+        PortfolioAllocationResult result = portfolioAllocator.allocate(
                 ranked, request.getBudget(), request.getNumberOfStocks(), lotSize);
 
         return ResponseDto.builder()
                 .success(true)
                 .data(result)
-                .build();
-    }
-
-    /**
-     * Core allocation algorithm:
-     *  1. Select top-N stocks
-     *  2. Distribute budget proportional to TOPSIS scores
-     *  3. Floor to nearest lot
-     *  4. Greedily assign residual budget to highest-scored affordable stocks
-     *  5. Remove zero-share entries and back-fill from remaining ranked list
-     */
-    private PortfolioAllocationResult buildAllocation(
-            List<RankedStockDto> ranked, BigDecimal budget, int n, int lotSize) {
-
-        int available = Math.min(n, ranked.size());
-        List<RankedStockDto> selected = new ArrayList<>(ranked.subList(0, available));
-
-        // Price in VND (matchPrice is in thousands of VND on HOSE)
-        BigDecimal thousand = BigDecimal.valueOf(1000);
-
-        // --- Step 1: Score-proportional initial allocation ---
-        double totalScore = selected.stream().mapToDouble(RankedStockDto::getTopsisScore).sum();
-        int[] shares = new int[selected.size()];
-        BigDecimal spent = BigDecimal.ZERO;
-
-        for (int i = 0; i < selected.size(); i++) {
-            RankedStockDto stock = selected.get(i);
-            BigDecimal priceVnd = stock.getMatchPrice().multiply(thousand);
-
-            double proportion = stock.getTopsisScore() / totalScore;
-            BigDecimal allocatedBudget = budget.multiply(BigDecimal.valueOf(proportion));
-
-            int lots = allocatedBudget
-                    .divide(priceVnd.multiply(BigDecimal.valueOf(lotSize)), 0, RoundingMode.DOWN)
-                    .intValue();
-            shares[i] = lots * lotSize;
-            spent = spent.add(priceVnd.multiply(BigDecimal.valueOf(shares[i])));
-        }
-
-        // --- Step 2: Greedy residual allocation ---
-        BigDecimal remaining = budget.subtract(spent);
-        boolean bought = true;
-        while (bought && remaining.compareTo(BigDecimal.ZERO) > 0) {
-            bought = false;
-            for (int i = 0; i < selected.size(); i++) {
-                BigDecimal lotCost = selected.get(i).getMatchPrice()
-                        .multiply(thousand)
-                        .multiply(BigDecimal.valueOf(lotSize));
-                if (remaining.compareTo(lotCost) >= 0) {
-                    shares[i] += lotSize;
-                    remaining = remaining.subtract(lotCost);
-                    bought = true;
-                }
-            }
-        }
-
-        // --- Step 3: Back-fill if any stocks ended with 0 shares ---
-        int nextCandidate = available;
-        for (int i = 0; i < selected.size(); i++) {
-            if (shares[i] == 0 && nextCandidate < ranked.size()) {
-                RankedStockDto replacement = ranked.get(nextCandidate);
-                BigDecimal lotCost = replacement.getMatchPrice()
-                        .multiply(thousand)
-                        .multiply(BigDecimal.valueOf(lotSize));
-                if (remaining.compareTo(lotCost) >= 0) {
-                    selected.set(i, replacement);
-                    shares[i] = lotSize;
-                    remaining = remaining.subtract(lotCost);
-                }
-                nextCandidate++;
-            }
-        }
-
-        // --- Step 4: Build result ---
-        BigDecimal totalInvestment = BigDecimal.ZERO;
-        List<StockAllocationDto> allocations = new ArrayList<>();
-
-        for (int i = 0; i < selected.size(); i++) {
-            if (shares[i] <= 0) continue;
-
-            RankedStockDto stock = selected.get(i);
-            BigDecimal priceVnd = stock.getMatchPrice().multiply(thousand);
-            BigDecimal cost = priceVnd.multiply(BigDecimal.valueOf(shares[i]));
-            totalInvestment = totalInvestment.add(cost);
-
-            allocations.add(StockAllocationDto.builder()
-                    .stockId(stock.getStockId())
-                    .stockName(stock.getStockName())
-                    .shares(shares[i])
-                    .pricePerShare(priceVnd)
-                    .totalCost(cost)
-                    .topsisScore(stock.getTopsisScore())
-                    .build());
-        }
-
-        // Compute allocation percentages
-        for (StockAllocationDto a : allocations) {
-            if (totalInvestment.compareTo(BigDecimal.ZERO) > 0) {
-                double pct = a.getTotalCost()
-                        .divide(totalInvestment, 6, RoundingMode.HALF_UP)
-                        .doubleValue() * 100;
-                a.setAllocationPercentage(Math.round(pct * 100.0) / 100.0);
-            }
-        }
-
-        double utilization = budget.compareTo(BigDecimal.ZERO) > 0
-                ? totalInvestment.divide(budget, 6, RoundingMode.HALF_UP).doubleValue() * 100
-                : 0;
-
-        return PortfolioAllocationResult.builder()
-                .allocations(allocations)
-                .totalInvestment(totalInvestment)
-                .remainingBudget(budget.subtract(totalInvestment))
-                .budget(budget)
-                .numberOfStocks(allocations.size())
-                .budgetUtilizationPercent(Math.round(utilization * 100.0) / 100.0)
                 .build();
     }
 

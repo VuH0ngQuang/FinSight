@@ -69,7 +69,7 @@ public class MailServiceImpl implements MailService {
         context.setVariable("indicators", indicators);
 
         String subject = "\u26A0\uFE0F Overvaluation Alert: " + result.getStockId() + " - " + result.getStockName();
-        sendEmail(to, subject, "mail/overvaluation-alert", context);
+        sendEmail(to, subject, "overvaluation-alert", context);
     }
 
     private void sendEmail(String to, String subject, String template, Context context) throws MessagingException {

@@ -1,0 +1,23 @@
+spring:
+  main:
+    web-application-type: none
+    banner-mode: off
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+# Disable Kafka/MQTT/Redis listeners for offline backtest runs.
+# The backtest only needs JPA + the stock/ahp configuration tables.
+app:
+  kafka:
+    enabled: false
+  mqtt:
+    enabled: false
+
+logging:
+  level:
+    root: WARN
+    com.finsight.marketrealtime.backtest: INFO
+    org.hibernate.SQL: WARN
+    org.springframework: WARN
