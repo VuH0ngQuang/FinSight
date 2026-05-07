@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { updateUser, updatePassword, deleteUser } from '../services/api/userApi'
+import { updateUser, updatePassword, deleteUser, type SubscriptionDto } from '../services/api/userApi'
 import { getAhpConfig, updateAhpConfig } from '../services/api/ahpConfigApi'
 import { computeWeightsFromMatrix, buildDefaultMatrix, syncMatrix, CRITERIA_LABELS } from '../utils/ahp'
+import InvestmentPrioritySurveyModal from '../components/ahp/InvestmentPrioritySurveyModal'
 import { formatDate } from '../utils/formatters'
 import Badge from '../components/ui/Badge'
 import Modal from '../components/ui/Modal'
@@ -11,6 +12,30 @@ import AhpWeightsBarChart from '../components/charts/AhpWeightsBarChart'
 import LoadingSpinner from '../components/ui/LoadingSpinner'
 
 const AHP_VALUES = [1/9, 1/7, 1/5, 1/3, 1, 3, 5, 7, 9]
+
+const PAID_LIKE_STATUSES = new Set(['ACTIVE', 'PAID'])
+
+function isPaidAndCurrent(sub: SubscriptionDto): boolean {
+  const st = (sub.status ?? '').toUpperCase()
+  if (!PAID_LIKE_STATUSES.has(st)) return false
+  if (!sub.endDate) return true
+  const end = Date.parse(sub.endDate)
+  if (!Number.isFinite(end)) return true
+  return end >= Date.now()
+}
+
+function subscriptionBadgeText(sub: SubscriptionDto): string {
+  const raw = (sub.subscriptionPlan?.billingCycle ?? '').toUpperCase()
+  if (raw === 'YEARLY' || raw === 'YEAR' || raw === '1Y') return 'Yearly'
+  if (raw === 'MONTHLY' || raw === 'MONTH' || raw === '1M') return 'Monthly'
+  return sub.subscriptionPlan?.planName?.trim() || 'Subscription'
+}
+
+function pickCurrentSubscription(subscriptions: SubscriptionDto[] | undefined): SubscriptionDto | null {
+  const valid = (subscriptions ?? []).filter(isPaidAndCurrent)
+  if (!valid.length) return null
+  return [...valid].sort((a, b) => Date.parse(b.endDate ?? '') - Date.parse(a.endDate ?? ''))[0]
+}
 
 const ProfileSettings = () => {
   const { userId, userDetail, logout, refreshUserDetail } = useAuth()
@@ -37,6 +62,10 @@ const ProfileSettings = () => {
   const [ahpMsg, setAhpMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [ahpSaving, setAhpSaving] = useState(false)
   const [ahpConfigId, setAhpConfigId] = useState<string>('0')
+
+  // AHP survey + advanced toggle
+  const [surveyOpen, setSurveyOpen] = useState(false)
+  const [showAdvanced, setShowAdvanced] = useState(false)
 
   // Danger zone
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
@@ -182,6 +211,11 @@ const ProfileSettings = () => {
 
   const initials = userDetail?.username?.slice(0, 2).toUpperCase() ?? userDetail?.email?.slice(0, 2).toUpperCase() ?? '?'
 
+  const profileSubscription = useMemo(
+    () => pickCurrentSubscription(userDetail?.subscriptions),
+    [userDetail?.subscriptions]
+  )
+
   return (
     <div className="flex gap-6">
       {/* Left — Identity card */}
@@ -193,12 +227,11 @@ const ProfileSettings = () => {
           <p className="font-semibold text-slate-900">{userDetail?.username}</p>
           <p className="text-sm text-slate-500 mb-3">{userDetail?.email}</p>
           <div className="flex flex-wrap gap-1 justify-center">
-            {userDetail?.subscriptions?.map((s) => (
-              <Badge key={s.subscriptionId ?? s.subscriptionPlan?.planName ?? 'subscription'} variant="blue">
-                {s.subscriptionPlan?.planName ?? s.status ?? 'Subscription'}
-              </Badge>
-            ))}
-            {!userDetail?.subscriptions?.length && <Badge variant="slate">Free</Badge>}
+            {profileSubscription ? (
+              <Badge variant="blue">{subscriptionBadgeText(profileSubscription)}</Badge>
+            ) : (
+              <Badge variant="slate">Free</Badge>
+            )}
             {userDetail?.isAdmin && <Badge variant="violet">Admin</Badge>}
           </div>
           <div className="mt-4 text-xs text-slate-400">
@@ -250,49 +283,85 @@ const ProfileSettings = () => {
           <p className="text-xs text-slate-500 mb-4">Set pairwise importance of valuation criteria. Values &gt; 1 favor the row criterion.</p>
           {ahpLoading ? <LoadingSpinner size="sm" /> : (
             <>
-              <div className="overflow-x-auto mb-4">
-                <table className="text-xs border-collapse">
-                  <thead>
-                    <tr>
-                      <th className="w-12" />
-                      {CRITERIA_LABELS.map((l) => <th key={l} className="px-2 py-1 text-slate-500 font-medium">{l}</th>)}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {matrix.map((row, i) => (
-                      <tr key={i}>
-                        <td className="pr-2 py-1 text-slate-600 font-medium">{CRITERIA_LABELS[i]}</td>
-                        {row.map((val, j) => (
-                          <td key={j} className="px-1 py-1">
-                            {i === j ? (
-                              <div className="w-14 text-center bg-slate-100 rounded px-2 py-1 font-mono text-slate-500">1</div>
-                            ) : j > i ? (
-                              <select
-                                value={val}
-                                onChange={(e) => updateCell(i, j, Number(e.target.value))}
-                                className="w-14 rounded border border-slate-200 bg-white px-1 py-1 text-xs text-slate-700 focus:border-blue-500 focus:outline-none"
-                              >
-                                {AHP_VALUES.map((v) => (
-                                  <option key={v} value={v}>{v < 1 ? `1/${Math.round(1/v)}` : v}</option>
-                                ))}
-                              </select>
-                            ) : (
-                              <div className="w-14 text-center px-2 py-1 font-mono text-slate-400 text-xs">
-                                {val < 1 ? `1/${Math.round(1/val)}` : val.toFixed(0)}
-                              </div>
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              {/* Survey CTA */}
+              <div className="mb-5 rounded-lg border border-blue-100 bg-blue-50 p-4 flex items-start gap-3">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100">
+                  <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-blue-900">Not sure how to configure?</p>
+                  <p className="text-xs text-blue-700 mt-0.5">Answer 6 quick questions and we'll set the weights for you automatically.</p>
+                </div>
+                <button
+                  onClick={() => setSurveyOpen(true)}
+                  className="shrink-0 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition-colors"
+                >
+                  Take Survey
+                </button>
               </div>
 
+              {/* Weights chart — always visible */}
               <div className="mb-4">
                 <p className="text-xs font-medium text-slate-600 mb-2">Computed Weights</p>
                 <AhpWeightsBarChart weights={weights} />
               </div>
+
+              {/* Advanced toggle */}
+              <button
+                onClick={() => setShowAdvanced((v) => !v)}
+                className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-700 mb-3 transition-colors"
+              >
+                <svg
+                  className={`h-3.5 w-3.5 transition-transform ${showAdvanced ? 'rotate-90' : ''}`}
+                  viewBox="0 0 20 20" fill="currentColor"
+                >
+                  <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                </svg>
+                {showAdvanced ? 'Hide' : 'Show'} pairwise matrix
+              </button>
+
+              {showAdvanced && (
+                <div className="overflow-x-auto mb-4">
+                  <table className="text-xs border-collapse">
+                    <thead>
+                      <tr>
+                        <th className="w-12" />
+                        {CRITERIA_LABELS.map((l) => <th key={l} className="px-2 py-1 text-slate-500 font-medium">{l}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {matrix.map((row, i) => (
+                        <tr key={i}>
+                          <td className="pr-2 py-1 text-slate-600 font-medium">{CRITERIA_LABELS[i]}</td>
+                          {row.map((val, j) => (
+                            <td key={j} className="px-1 py-1">
+                              {i === j ? (
+                                <div className="w-14 text-center bg-slate-100 rounded px-2 py-1 font-mono text-slate-500">1</div>
+                              ) : j > i ? (
+                                <select
+                                  value={val}
+                                  onChange={(e) => updateCell(i, j, Number(e.target.value))}
+                                  className="w-14 rounded border border-slate-200 bg-white px-1 py-1 text-xs text-slate-700 focus:border-blue-500 focus:outline-none"
+                                >
+                                  {AHP_VALUES.map((v) => (
+                                    <option key={v} value={v}>{v < 1 ? `1/${Math.round(1/v)}` : v}</option>
+                                  ))}
+                                </select>
+                              ) : (
+                                <div className="w-14 text-center px-2 py-1 font-mono text-slate-400 text-xs">
+                                  {val < 1 ? `1/${Math.round(1/val)}` : val.toFixed(0)}
+                                </div>
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
 
               {ahpMsg && <p className={`text-sm mb-3 ${ahpMsg.type === 'success' ? 'text-emerald-600' : 'text-red-600'}`}>{ahpMsg.text}</p>}
               <button onClick={() => void handleAhpSave()} disabled={ahpSaving} className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60">
@@ -323,6 +392,16 @@ const ProfileSettings = () => {
           </div>
         )}
       </Modal>
+
+      <InvestmentPrioritySurveyModal
+        open={surveyOpen}
+        onClose={() => setSurveyOpen(false)}
+        onComplete={(m) => {
+          setMatrix(m)
+          setSurveyOpen(false)
+          setShowAdvanced(true)
+        }}
+      />
     </div>
   )
 }

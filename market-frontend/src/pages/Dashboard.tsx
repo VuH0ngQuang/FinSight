@@ -16,7 +16,7 @@ import { formatScore, formatRatio } from '../utils/formatters'
 const Dashboard = () => {
   const { userId, userDetail, refreshUserDetail } = useAuth()
   const { favoriteIds, refresh: refreshWatchlist } = useWatchlist()
-  const ahpWeights = useAhpWeights(userId)
+  const ahpWeights = useAhpWeights(userId ?? undefined)
   const { symbols, details, isLoading } = useStockList()
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
   const [chartSymbol, setChartSymbol] = useState('VNINDEX')

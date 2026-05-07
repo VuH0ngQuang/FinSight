@@ -1,7 +1,9 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
+import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
 import {config} from './config/env'
+import { swaggerSpec } from './docs/swagger';
 
 /**
  * Creates and configures the Express application instance.
@@ -24,6 +26,7 @@ export const createApp = (): Application => {
     res.status(200).json({ status: 'ok' });
   });
 
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   app.use('/api', routes);
 
   app.use((_req: Request, res: Response) => {

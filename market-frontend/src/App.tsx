@@ -11,7 +11,9 @@ import StockDetailPage from './pages/StockDetail'
 import PortfolioAllocator from './pages/PortfolioAllocator'
 import ProfileSettings from './pages/ProfileSettings'
 import Payment from './pages/Payment'
+import Checkout from './pages/Checkout'
 import AdminPanel from './pages/AdminPanel'
+import SubscriptionHistory from './pages/SubscriptionHistory'
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/stocks/:symbol" element={<StockDetailPage />} />
           <Route path="/portfolio" element={<PortfolioAllocator />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/payment/checkout" element={<Checkout />} />
+          <Route path="/subscriptions" element={<SubscriptionHistory />} />
           <Route path="/profile" element={<ProfileSettings />} />
           <Route
             path="/admin"

@@ -17,7 +17,7 @@ import ErrorBanner from '../components/ui/ErrorBanner'
 const StockScanner = () => {
   const { userId } = useAuth()
   const { favoriteIds, refresh: refreshWatchlist } = useWatchlist()
-  const ahpWeights = useAhpWeights(userId)
+  const ahpWeights = useAhpWeights(userId ?? undefined)
   const { symbols, details, isLoading, error } = useStockList({ forceRefreshOnMount: true })
   const { getMatchPrice, isRecentlyUpdated } = useMarketData()
   const [search, setSearch] = useState('')

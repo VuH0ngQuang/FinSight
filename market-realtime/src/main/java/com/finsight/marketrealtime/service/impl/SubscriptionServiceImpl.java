@@ -112,7 +112,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             invalidateUserSubscriptionsCache(subscriptionDto.getUserId());
             String ref = String.format("%08d", subscriptionId % 100000000);
             String checkoutUrl = paymentService.createPayment(subscriptionId, ref, subscriptionPlan.getPrice().longValueExact());
-            return ResponseDto.<String>builder().success(true).data(null).build();
+            return ResponseDto.<String>builder().success(true).data(checkoutUrl).build();
         } finally {
             lock.unlock();
         }

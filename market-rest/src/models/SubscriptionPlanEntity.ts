@@ -10,6 +10,6 @@ export interface SubscriptionPlanEntity {
     planName: string;
     price: number;
     billingCycle: BillingCycle;
-    subscriptions: Subscription[];
+    subscriptions?: Subscription[];
 }
 

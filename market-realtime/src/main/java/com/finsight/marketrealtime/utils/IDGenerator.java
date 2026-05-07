@@ -13,7 +13,7 @@ public final class IDGenerator {
      * Number of bits used to hold the per-millisecond sequence.
      * 22 bits -> max 4,194,303 IDs per millisecond.
      */
-    private static final int SEQUENCE_BITS = 22;
+    private static final int SEQUENCE_BITS = 6;
     private static final long MAX_SEQUENCE = (1L << SEQUENCE_BITS) - 1;
 
     /**
