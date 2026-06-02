@@ -59,7 +59,53 @@ const INGESTION_API_BASE_URL = normalizedIngestionBase.endsWith('/api')
   ? normalizedIngestionBase
   : `${normalizedIngestionBase}/api`
 
-export const uploadStockYearDataExcel = async (file: File): Promise<string> => {
+export interface UploadValidationIssue {
+  severity: 'ERROR' | 'WARNING' | string
+  field: string
+  message: string
+}
+
+export interface UploadValidationResult {
+  errors: UploadValidationIssue[]
+  warnings: UploadValidationIssue[]
+}
+
+export interface UploadValidationResponse {
+  status: 'FAILED' | 'WAITING_CONFIRMATION' | 'SUCCESS' | 'CONFIRMED' | string
+  uploadId: string | null
+  message: string
+  validation: UploadValidationResult | null
+}
+
+const parseUploadValidationResponse = (raw: string): UploadValidationResponse => {
+  if (!raw) {
+    return {
+      status: 'SUCCESS',
+      uploadId: null,
+      message: 'Stock data uploaded successfully',
+      validation: { errors: [], warnings: [] },
+    }
+  }
+
+  try {
+    const parsed = JSON.parse(raw) as Partial<UploadValidationResponse>
+    return {
+      status: parsed.status ?? 'SUCCESS',
+      uploadId: parsed.uploadId ?? null,
+      message: parsed.message ?? raw,
+      validation: parsed.validation ?? { errors: [], warnings: [] },
+    }
+  } catch {
+    return {
+      status: 'SUCCESS',
+      uploadId: null,
+      message: raw,
+      validation: { errors: [], warnings: [] },
+    }
+  }
+}
+
+export const uploadStockYearDataExcel = async (file: File): Promise<UploadValidationResponse> => {
   const token = localStorage.getItem('finsight_token')
   const formData = new FormData()
   formData.append('file', file)
@@ -75,10 +121,31 @@ export const uploadStockYearDataExcel = async (file: File): Promise<string> => {
     body: formData,
   })
 
-  const message = await res.text()
+  const response = parseUploadValidationResponse(await res.text())
   if (!res.ok) {
-    throw new Error(message || 'Failed to upload stock year data Excel file')
+    throw new Error(response.message || 'Failed to upload stock year data Excel file')
   }
 
-  return message || 'Stock data uploaded successfully'
+  return response
+}
+
+export const confirmStockYearDataUpload = async (uploadId: string): Promise<UploadValidationResponse> => {
+  const token = localStorage.getItem('finsight_token')
+
+  const headers: Record<string, string> = {}
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+
+  const res = await fetch(`${INGESTION_API_BASE_URL}/stockYearDataUpload/${encodeURIComponent(uploadId)}/confirm`, {
+    method: 'POST',
+    headers,
+  })
+
+  const response = parseUploadValidationResponse(await res.text())
+  if (!res.ok) {
+    throw new Error(response.message || 'Failed to confirm stock year data upload')
+  }
+
+  return response
 }

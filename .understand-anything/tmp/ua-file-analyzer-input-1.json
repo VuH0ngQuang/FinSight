@@ -1,0 +1,241 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-frontend/src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/AdminRoute.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ProtectedRoute.tsx",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/AppShell.tsx",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/Sidebar.tsx",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/TopBar.tsx",
+      "language": "typescript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/Badge.tsx",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/Modal.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/PriceTag.tsx",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/ScoreBar.tsx",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/StatCard.tsx",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/TabGroup.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/config/api.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/contexts/AuthContext.tsx",
+      "language": "typescript",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/contexts/WatchlistContext.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useAhpWeights.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useAuth.ts",
+      "language": "typescript",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-frontend/src/App.tsx": [
+      "market-frontend/src/components/AdminRoute.tsx",
+      "market-frontend/src/components/layout/AppShell.tsx",
+      "market-frontend/src/components/ProtectedRoute.tsx",
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/pages/AdminPanel.tsx",
+      "market-frontend/src/pages/Checkout.tsx",
+      "market-frontend/src/pages/Dashboard.tsx",
+      "market-frontend/src/pages/LoginRegister.tsx",
+      "market-frontend/src/pages/Payment.tsx",
+      "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "market-frontend/src/pages/ProfileSettings.tsx",
+      "market-frontend/src/pages/StockDetail.tsx",
+      "market-frontend/src/pages/StockScanner.tsx",
+      "market-frontend/src/pages/SubscriptionHistory.tsx"
+    ],
+    "market-frontend/src/components/AdminRoute.tsx": [
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ProtectedRoute.tsx": [
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx": [
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/utils/ahp.ts"
+    ],
+    "market-frontend/src/components/charts/AhpWeightsBarChart.tsx": [
+      "market-frontend/src/utils/ahp.ts"
+    ],
+    "market-frontend/src/components/charts/FinancialBarChart.tsx": [
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/components/charts/PortfolioPieChart.tsx": [
+      "market-frontend/src/services/api/portfolioApi.ts"
+    ],
+    "market-frontend/src/components/charts/RatioCompareChart.tsx": [],
+    "market-frontend/src/components/charts/ValuationLineChart.tsx": [
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/components/charts/VietstockIframe.tsx": [],
+    "market-frontend/src/components/layout/AppShell.tsx": [
+      "market-frontend/src/components/layout/Sidebar.tsx",
+      "market-frontend/src/components/layout/TopBar.tsx",
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/components/layout/Sidebar.tsx": [
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/components/layout/TopBar.tsx": [
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ui/Badge.tsx": [],
+    "market-frontend/src/components/ui/ErrorBanner.tsx": [],
+    "market-frontend/src/components/ui/LoadingSpinner.tsx": [],
+    "market-frontend/src/components/ui/Modal.tsx": [],
+    "market-frontend/src/components/ui/PriceTag.tsx": [
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/components/ui/ScoreBar.tsx": [],
+    "market-frontend/src/components/ui/StatCard.tsx": [],
+    "market-frontend/src/components/ui/TabGroup.tsx": [],
+    "market-frontend/src/config/api.ts": [],
+    "market-frontend/src/contexts/AuthContext.tsx": [
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/contexts/WatchlistContext.tsx": [
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/hooks/useAhpWeights.ts": [
+      "market-frontend/src/services/api/ahpConfigApi.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/hooks/useAuth.ts": []
+  }
+}

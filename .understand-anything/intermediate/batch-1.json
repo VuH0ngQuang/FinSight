@@ -1,0 +1,1608 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-frontend/src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "market-frontend/src/App.tsx",
+      "summary": "Defines the top-level React route tree, wrapping authenticated areas with auth and watchlist providers and routing public, protected, and admin pages.",
+      "tags": [
+        "entry-point",
+        "routing",
+        "authentication",
+        "provider",
+        "frontend"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Router nested routes separate the login page from protected application shell routes."
+    },
+    {
+      "id": "file:market-frontend/src/components/AdminRoute.tsx",
+      "type": "file",
+      "name": "AdminRoute.tsx",
+      "filePath": "market-frontend/src/components/AdminRoute.tsx",
+      "summary": "Guards admin-only routes by checking authentication state and admin privileges before rendering child content.",
+      "tags": [
+        "component",
+        "routing",
+        "authorization",
+        "authentication",
+        "guard"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "type": "file",
+      "name": "ProtectedRoute.tsx",
+      "filePath": "market-frontend/src/components/ProtectedRoute.tsx",
+      "summary": "Protects authenticated routes by showing a loading state while auth resolves and redirecting anonymous users to login.",
+      "tags": [
+        "component",
+        "routing",
+        "authentication",
+        "guard",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "type": "file",
+      "name": "InvestmentPrioritySurveyModal.tsx",
+      "filePath": "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "summary": "Presents a multi-step investment priority survey and converts answers into an AHP comparison matrix for downstream scoring.",
+      "tags": [
+        "component",
+        "modal",
+        "ahp",
+        "survey",
+        "state-management"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The component keeps transient wizard state locally and delegates AHP score conversion to utility functions."
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "type": "file",
+      "name": "AhpWeightsBarChart.tsx",
+      "filePath": "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "summary": "Renders AHP criterion weights as a vertical Recharts bar chart using labels from the AHP utility module.",
+      "tags": [
+        "component",
+        "chart",
+        "ahp",
+        "visualization",
+        "recharts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "type": "file",
+      "name": "FinancialBarChart.tsx",
+      "filePath": "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "summary": "Transforms annual stock financial records into a grouped bar chart for revenue, net income, operating cash flow, and free cash flow.",
+      "tags": [
+        "component",
+        "chart",
+        "financial-data",
+        "visualization",
+        "recharts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "type": "file",
+      "name": "PortfolioPieChart.tsx",
+      "filePath": "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "summary": "Displays portfolio allocation percentages as a donut-style pie chart keyed by stock symbol.",
+      "tags": [
+        "component",
+        "chart",
+        "portfolio",
+        "visualization",
+        "recharts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "type": "file",
+      "name": "RatioCompareChart.tsx",
+      "filePath": "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "summary": "Compares stock valuation ratios against industry benchmarks in a grouped Recharts bar chart.",
+      "tags": [
+        "component",
+        "chart",
+        "valuation",
+        "comparison",
+        "recharts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "type": "file",
+      "name": "ValuationLineChart.tsx",
+      "filePath": "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "summary": "Plots DDM, DCF, residual income, and end-year price series over time for stock valuation review.",
+      "tags": [
+        "component",
+        "chart",
+        "valuation",
+        "time-series",
+        "recharts"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/components/charts/VietstockIframe.tsx",
+      "type": "file",
+      "name": "VietstockIframe.tsx",
+      "filePath": "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "summary": "Embeds an external Vietstock technical chart iframe with a local loading overlay keyed by stock symbol.",
+      "tags": [
+        "component",
+        "iframe",
+        "market-data",
+        "technical-chart",
+        "loading-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "type": "file",
+      "name": "AppShell.tsx",
+      "filePath": "market-frontend/src/components/layout/AppShell.tsx",
+      "summary": "Provides the authenticated application layout with sidebar navigation, top bar titles, page outlet, and MQTT connection startup.",
+      "tags": [
+        "component",
+        "layout",
+        "routing",
+        "mqtt",
+        "shell"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "type": "file",
+      "name": "Sidebar.tsx",
+      "filePath": "market-frontend/src/components/layout/Sidebar.tsx",
+      "summary": "Renders primary navigation, admin-only links, live MQTT status, and sign-out control for the app shell.",
+      "tags": [
+        "component",
+        "layout",
+        "navigation",
+        "mqtt",
+        "authentication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "type": "file",
+      "name": "TopBar.tsx",
+      "filePath": "market-frontend/src/components/layout/TopBar.tsx",
+      "summary": "Renders the page title and authenticated user menu with profile navigation and logout behavior.",
+      "tags": [
+        "component",
+        "layout",
+        "navigation",
+        "authentication",
+        "menu"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "file",
+      "name": "Badge.tsx",
+      "filePath": "market-frontend/src/components/ui/Badge.tsx",
+      "summary": "Provides a small variant-driven badge component for status and category labels.",
+      "tags": [
+        "component",
+        "ui",
+        "badge",
+        "presentation",
+        "variant"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "file",
+      "name": "ErrorBanner.tsx",
+      "filePath": "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "summary": "Displays dismissible error messaging with consistent red alert styling and iconography.",
+      "tags": [
+        "component",
+        "ui",
+        "error-state",
+        "alert",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "file",
+      "name": "LoadingSpinner.tsx",
+      "filePath": "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "summary": "Provides reusable inline and full-screen loading indicators with configurable size and optional label.",
+      "tags": [
+        "component",
+        "ui",
+        "loading-state",
+        "spinner",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/Modal.tsx",
+      "type": "file",
+      "name": "Modal.tsx",
+      "filePath": "market-frontend/src/components/ui/Modal.tsx",
+      "summary": "Implements a reusable modal overlay with size variants, optional title, backdrop close, and Escape-key handling.",
+      "tags": [
+        "component",
+        "ui",
+        "modal",
+        "overlay",
+        "event-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "type": "file",
+      "name": "PriceTag.tsx",
+      "filePath": "market-frontend/src/components/ui/PriceTag.tsx",
+      "summary": "Formats and displays stock prices with optional flashing highlight styling for live price changes.",
+      "tags": [
+        "component",
+        "ui",
+        "price",
+        "formatting",
+        "market-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/ScoreBar.tsx",
+      "type": "file",
+      "name": "ScoreBar.tsx",
+      "filePath": "market-frontend/src/components/ui/ScoreBar.tsx",
+      "summary": "Visualizes a normalized score as a colored progress bar with optional numeric label.",
+      "tags": [
+        "component",
+        "ui",
+        "score",
+        "visualization",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "file",
+      "name": "StatCard.tsx",
+      "filePath": "market-frontend/src/components/ui/StatCard.tsx",
+      "summary": "Renders dashboard metric cards with accent color variants, optional supporting text, and optional icon slot.",
+      "tags": [
+        "component",
+        "ui",
+        "dashboard",
+        "metric",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/components/ui/TabGroup.tsx",
+      "type": "file",
+      "name": "TabGroup.tsx",
+      "filePath": "market-frontend/src/components/ui/TabGroup.tsx",
+      "summary": "Provides a compact segmented tab control with active-state styling and optional tab icons.",
+      "tags": [
+        "component",
+        "ui",
+        "tabs",
+        "navigation",
+        "event-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/config/api.ts",
+      "type": "file",
+      "name": "api.ts",
+      "filePath": "market-frontend/src/config/api.ts",
+      "summary": "Normalizes the frontend API base URL from Vite environment configuration and exports profile and stock endpoint URLs.",
+      "tags": [
+        "configuration",
+        "api-client",
+        "environment",
+        "constants",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "type": "file",
+      "name": "AuthContext.tsx",
+      "filePath": "market-frontend/src/contexts/AuthContext.tsx",
+      "summary": "Centralizes frontend authentication state, localStorage persistence, user-detail refresh, login, logout, and auth context access.",
+      "tags": [
+        "context",
+        "authentication",
+        "state-management",
+        "local-storage",
+        "api-client"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React context and callback hooks keep auth state accessible while avoiding repeated user detail fetch logic."
+    },
+    {
+      "id": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "type": "file",
+      "name": "WatchlistContext.tsx",
+      "filePath": "market-frontend/src/contexts/WatchlistContext.tsx",
+      "summary": "Maintains the authenticated user watchlist as a React context and refreshes favorite stock IDs from the user API.",
+      "tags": [
+        "context",
+        "watchlist",
+        "state-management",
+        "api-client",
+        "stocks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "type": "file",
+      "name": "useAhpWeights.ts",
+      "filePath": "market-frontend/src/hooks/useAhpWeights.ts",
+      "summary": "Loads saved AHP weights for a user, normalizes persisted JSON values, and falls back to default TOPSIS weights.",
+      "tags": [
+        "hook",
+        "ahp",
+        "topsis",
+        "api-client",
+        "state-management"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "file",
+      "name": "useAuth.ts",
+      "filePath": "market-frontend/src/hooks/useAuth.ts",
+      "summary": "Re-exports the auth context hook under the shorter useAuth name for components and pages.",
+      "tags": [
+        "hook",
+        "authentication",
+        "barrel",
+        "context",
+        "re-export"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "market-frontend/src/App.tsx",
+      "lineRange": [
+        18,
+        53
+      ],
+      "summary": "Builds the application provider hierarchy and route declarations for public, protected, and admin screens.",
+      "tags": [
+        "component",
+        "routing",
+        "provider",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/AdminRoute.tsx:AdminRoute",
+      "type": "function",
+      "name": "AdminRoute",
+      "filePath": "market-frontend/src/components/AdminRoute.tsx",
+      "lineRange": [
+        5,
+        11
+      ],
+      "summary": "Renders child content only for authenticated admin users, otherwise showing loading or redirect states.",
+      "tags": [
+        "component",
+        "authorization",
+        "routing",
+        "guard"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ProtectedRoute.tsx:ProtectedRoute",
+      "type": "function",
+      "name": "ProtectedRoute",
+      "filePath": "market-frontend/src/components/ProtectedRoute.tsx",
+      "lineRange": [
+        5,
+        10
+      ],
+      "summary": "Renders child content for authenticated users and redirects anonymous users to the login route.",
+      "tags": [
+        "component",
+        "authentication",
+        "routing",
+        "guard"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx:InvestmentPrioritySurveyModal",
+      "type": "function",
+      "name": "InvestmentPrioritySurveyModal",
+      "filePath": "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "lineRange": [
+        11,
+        137
+      ],
+      "summary": "Runs the AHP survey wizard, records answers, handles navigation, and submits a generated pairwise matrix.",
+      "tags": [
+        "component",
+        "modal",
+        "ahp",
+        "survey",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/AhpWeightsBarChart.tsx:AhpWeightsBarChart",
+      "type": "function",
+      "name": "AhpWeightsBarChart",
+      "filePath": "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Maps AHP weights into percentage chart data and renders them as a labeled vertical bar chart.",
+      "tags": [
+        "component",
+        "chart",
+        "ahp",
+        "visualization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/FinancialBarChart.tsx:FinancialBarChart",
+      "type": "function",
+      "name": "FinancialBarChart",
+      "filePath": "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "lineRange": [
+        14,
+        45
+      ],
+      "summary": "Converts yearly financial metrics into sorted chart data and renders grouped bars with formatted tooltips.",
+      "tags": [
+        "component",
+        "chart",
+        "financial-data",
+        "visualization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/PortfolioPieChart.tsx:PortfolioPieChart",
+      "type": "function",
+      "name": "PortfolioPieChart",
+      "filePath": "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "lineRange": [
+        6,
+        35
+      ],
+      "summary": "Transforms portfolio allocation records into percentage slices for a responsive pie chart.",
+      "tags": [
+        "component",
+        "chart",
+        "portfolio",
+        "visualization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/RatioCompareChart.tsx:RatioCompareChart",
+      "type": "function",
+      "name": "RatioCompareChart",
+      "filePath": "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "lineRange": [
+        14,
+        38
+      ],
+      "summary": "Builds stock-versus-industry ratio rows and renders them as a comparison bar chart.",
+      "tags": [
+        "component",
+        "chart",
+        "valuation",
+        "comparison"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/ValuationLineChart.tsx:ValuationLineChart",
+      "type": "function",
+      "name": "ValuationLineChart",
+      "filePath": "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "lineRange": [
+        15,
+        54
+      ],
+      "summary": "Sorts annual valuation records and renders multiple valuation and price lines over time.",
+      "tags": [
+        "component",
+        "chart",
+        "valuation",
+        "time-series"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/components/charts/VietstockIframe.tsx:VietstockIframe",
+      "type": "function",
+      "name": "VietstockIframe",
+      "filePath": "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "lineRange": [
+        3,
+        26
+      ],
+      "summary": "Constructs a Vietstock chart URL for a symbol and manages iframe loading visibility.",
+      "tags": [
+        "component",
+        "iframe",
+        "technical-chart",
+        "loading-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/layout/AppShell.tsx:AppShell",
+      "type": "function",
+      "name": "AppShell",
+      "filePath": "market-frontend/src/components/layout/AppShell.tsx",
+      "lineRange": [
+        16,
+        36
+      ],
+      "summary": "Computes page titles from the route path, starts MQTT connectivity, and composes sidebar, top bar, and outlet layout.",
+      "tags": [
+        "component",
+        "layout",
+        "routing",
+        "mqtt"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/layout/Sidebar.tsx:NavItem",
+      "type": "function",
+      "name": "NavItem",
+      "filePath": "market-frontend/src/components/layout/Sidebar.tsx",
+      "lineRange": [
+        6,
+        21
+      ],
+      "summary": "Wraps React Router NavLink styling for a single sidebar navigation item with active-state presentation.",
+      "tags": [
+        "component",
+        "navigation",
+        "ui",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "function",
+      "name": "Sidebar",
+      "filePath": "market-frontend/src/components/layout/Sidebar.tsx",
+      "lineRange": [
+        23,
+        101
+      ],
+      "summary": "Builds the app navigation rail, tracks MQTT connection status, conditionally shows admin navigation, and triggers logout.",
+      "tags": [
+        "component",
+        "layout",
+        "navigation",
+        "mqtt",
+        "authentication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/components/layout/TopBar.tsx:TopBar",
+      "type": "function",
+      "name": "TopBar",
+      "filePath": "market-frontend/src/components/layout/TopBar.tsx",
+      "lineRange": [
+        5,
+        62
+      ],
+      "summary": "Displays the current page title and user account dropdown, including profile navigation and logout redirection.",
+      "tags": [
+        "component",
+        "layout",
+        "menu",
+        "authentication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/ErrorBanner.tsx:ErrorBanner",
+      "type": "function",
+      "name": "ErrorBanner",
+      "filePath": "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "lineRange": [
+        1,
+        15
+      ],
+      "summary": "Renders an error alert with optional dismiss control and consistent icon styling.",
+      "tags": [
+        "component",
+        "ui",
+        "error-state",
+        "alert"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/LoadingSpinner.tsx:LoadingSpinner",
+      "type": "function",
+      "name": "LoadingSpinner",
+      "filePath": "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "lineRange": [
+        1,
+        21
+      ],
+      "summary": "Builds a configurable spinner and switches between full-screen overlay and inline centered presentation.",
+      "tags": [
+        "component",
+        "ui",
+        "loading-state",
+        "spinner"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/Modal.tsx:Modal",
+      "type": "function",
+      "name": "Modal",
+      "filePath": "market-frontend/src/components/ui/Modal.tsx",
+      "lineRange": [
+        13,
+        40
+      ],
+      "summary": "Controls modal rendering, Escape-key close behavior, backdrop dismissal, size variants, and optional title chrome.",
+      "tags": [
+        "component",
+        "ui",
+        "modal",
+        "event-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/PriceTag.tsx:PriceTag",
+      "type": "function",
+      "name": "PriceTag",
+      "filePath": "market-frontend/src/components/ui/PriceTag.tsx",
+      "lineRange": [
+        3,
+        24
+      ],
+      "summary": "Applies size and flashing variants around a formatted stock price display.",
+      "tags": [
+        "component",
+        "ui",
+        "price",
+        "formatting"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/ScoreBar.tsx:ScoreBar",
+      "type": "function",
+      "name": "ScoreBar",
+      "filePath": "market-frontend/src/components/ui/ScoreBar.tsx",
+      "lineRange": [
+        1,
+        18
+      ],
+      "summary": "Clamps a score to percentage width and assigns color bands for low, medium, and high scores.",
+      "tags": [
+        "component",
+        "ui",
+        "score",
+        "visualization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/StatCard.tsx:StatCard",
+      "type": "function",
+      "name": "StatCard",
+      "filePath": "market-frontend/src/components/ui/StatCard.tsx",
+      "lineRange": [
+        27,
+        42
+      ],
+      "summary": "Displays a labeled metric with accent-specific ring and icon styling for dashboard panels.",
+      "tags": [
+        "component",
+        "ui",
+        "dashboard",
+        "metric"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/components/ui/TabGroup.tsx:TabGroup",
+      "type": "function",
+      "name": "TabGroup",
+      "filePath": "market-frontend/src/components/ui/TabGroup.tsx",
+      "lineRange": [
+        15,
+        32
+      ],
+      "summary": "Renders a set of selectable tabs and forwards tab id changes through a callback.",
+      "tags": [
+        "component",
+        "ui",
+        "tabs",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/contexts/AuthContext.tsx:persistUserDetail",
+      "type": "function",
+      "name": "persistUserDetail",
+      "filePath": "market-frontend/src/contexts/AuthContext.tsx",
+      "lineRange": [
+        16,
+        26
+      ],
+      "summary": "Persists or clears cached user details in localStorage while ignoring storage and serialization failures.",
+      "tags": [
+        "utility",
+        "local-storage",
+        "authentication",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "function",
+      "name": "AuthProvider",
+      "filePath": "market-frontend/src/contexts/AuthContext.tsx",
+      "lineRange": [
+        51,
+        104
+      ],
+      "summary": "Owns auth state initialization, user-detail loading, login persistence, logout cleanup, and context value publication.",
+      "tags": [
+        "context",
+        "authentication",
+        "state-management",
+        "provider"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "function",
+      "name": "useAuthContext",
+      "filePath": "market-frontend/src/contexts/AuthContext.tsx",
+      "lineRange": [
+        106,
+        110
+      ],
+      "summary": "Reads the auth context and throws when used outside the AuthProvider boundary.",
+      "tags": [
+        "hook",
+        "context",
+        "authentication",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/contexts/WatchlistContext.tsx:WatchlistProvider",
+      "type": "function",
+      "name": "WatchlistProvider",
+      "filePath": "market-frontend/src/contexts/WatchlistContext.tsx",
+      "lineRange": [
+        14,
+        45
+      ],
+      "summary": "Loads favorite stock IDs for the current user and publishes watchlist state and refresh behavior through context.",
+      "tags": [
+        "context",
+        "watchlist",
+        "state-management",
+        "provider"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/contexts/WatchlistContext.tsx:useWatchlist",
+      "type": "function",
+      "name": "useWatchlist",
+      "filePath": "market-frontend/src/contexts/WatchlistContext.tsx",
+      "lineRange": [
+        47,
+        51
+      ],
+      "summary": "Reads the watchlist context and enforces use inside WatchlistProvider.",
+      "tags": [
+        "hook",
+        "context",
+        "watchlist",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/hooks/useAhpWeights.ts:useAhpWeights",
+      "type": "function",
+      "name": "useAhpWeights",
+      "filePath": "market-frontend/src/hooks/useAhpWeights.ts",
+      "lineRange": [
+        15,
+        41
+      ],
+      "summary": "Fetches persisted AHP weight configuration for a user and falls back to default weights on missing or invalid data.",
+      "tags": [
+        "hook",
+        "ahp",
+        "topsis",
+        "api-client"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "function:market-frontend/src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "function:market-frontend/src/App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/AdminRoute.tsx",
+      "target": "function:market-frontend/src/components/AdminRoute.tsx:AdminRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/AdminRoute.tsx",
+      "target": "function:market-frontend/src/components/AdminRoute.tsx:AdminRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "target": "function:market-frontend/src/components/ProtectedRoute.tsx:ProtectedRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "target": "function:market-frontend/src/components/ProtectedRoute.tsx:ProtectedRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "target": "function:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx:InvestmentPrioritySurveyModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "target": "function:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx:InvestmentPrioritySurveyModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "target": "function:market-frontend/src/components/charts/AhpWeightsBarChart.tsx:AhpWeightsBarChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "target": "function:market-frontend/src/components/charts/AhpWeightsBarChart.tsx:AhpWeightsBarChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "target": "function:market-frontend/src/components/charts/FinancialBarChart.tsx:FinancialBarChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "target": "function:market-frontend/src/components/charts/FinancialBarChart.tsx:FinancialBarChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "target": "function:market-frontend/src/components/charts/PortfolioPieChart.tsx:PortfolioPieChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "target": "function:market-frontend/src/components/charts/PortfolioPieChart.tsx:PortfolioPieChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "target": "function:market-frontend/src/components/charts/RatioCompareChart.tsx:RatioCompareChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "target": "function:market-frontend/src/components/charts/RatioCompareChart.tsx:RatioCompareChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "target": "function:market-frontend/src/components/charts/ValuationLineChart.tsx:ValuationLineChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "target": "function:market-frontend/src/components/charts/ValuationLineChart.tsx:ValuationLineChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/VietstockIframe.tsx",
+      "target": "function:market-frontend/src/components/charts/VietstockIframe.tsx:VietstockIframe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/VietstockIframe.tsx",
+      "target": "function:market-frontend/src/components/charts/VietstockIframe.tsx:VietstockIframe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "target": "function:market-frontend/src/components/layout/AppShell.tsx:AppShell",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "target": "function:market-frontend/src/components/layout/AppShell.tsx:AppShell",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "function:market-frontend/src/components/layout/Sidebar.tsx:NavItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "function:market-frontend/src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "function:market-frontend/src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "target": "function:market-frontend/src/components/layout/TopBar.tsx:TopBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "target": "function:market-frontend/src/components/layout/TopBar.tsx:TopBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "target": "function:market-frontend/src/components/ui/ErrorBanner.tsx:ErrorBanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "target": "function:market-frontend/src/components/ui/ErrorBanner.tsx:ErrorBanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "target": "function:market-frontend/src/components/ui/LoadingSpinner.tsx:LoadingSpinner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "target": "function:market-frontend/src/components/ui/LoadingSpinner.tsx:LoadingSpinner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/Modal.tsx",
+      "target": "function:market-frontend/src/components/ui/Modal.tsx:Modal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/Modal.tsx",
+      "target": "function:market-frontend/src/components/ui/Modal.tsx:Modal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "target": "function:market-frontend/src/components/ui/PriceTag.tsx:PriceTag",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "target": "function:market-frontend/src/components/ui/PriceTag.tsx:PriceTag",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/ScoreBar.tsx",
+      "target": "function:market-frontend/src/components/ui/ScoreBar.tsx:ScoreBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/ScoreBar.tsx",
+      "target": "function:market-frontend/src/components/ui/ScoreBar.tsx:ScoreBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "target": "function:market-frontend/src/components/ui/StatCard.tsx:StatCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "target": "function:market-frontend/src/components/ui/StatCard.tsx:StatCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/TabGroup.tsx",
+      "target": "function:market-frontend/src/components/ui/TabGroup.tsx:TabGroup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/TabGroup.tsx",
+      "target": "function:market-frontend/src/components/ui/TabGroup.tsx:TabGroup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:persistUserDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "function:market-frontend/src/contexts/WatchlistContext.tsx:WatchlistProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "function:market-frontend/src/contexts/WatchlistContext.tsx:WatchlistProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "function:market-frontend/src/contexts/WatchlistContext.tsx:useWatchlist",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "function:market-frontend/src/contexts/WatchlistContext.tsx:useWatchlist",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "target": "function:market-frontend/src/hooks/useAhpWeights.ts:useAhpWeights",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "target": "function:market-frontend/src/hooks/useAhpWeights.ts:useAhpWeights",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/components/AdminRoute.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/Checkout.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/Dashboard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/Payment.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/StockDetail.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/StockScanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/App.tsx",
+      "target": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/AdminRoute.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/AdminRoute.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "target": "file:market-frontend/src/components/ui/Modal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "target": "file:market-frontend/src/utils/ahp.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "target": "file:market-frontend/src/utils/ahp.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "target": "file:market-frontend/src/services/stockDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "target": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "target": "file:market-frontend/src/services/stockDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "target": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "target": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/AppShell.tsx",
+      "target": "file:market-frontend/src/services/mqtt.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "file:market-frontend/src/services/mqtt.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "target": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "target": "file:market-frontend/src/utils/topsis.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx:InvestmentPrioritySurveyModal",
+      "target": "function:market-frontend/src/utils/ahp.ts:scoresFromAnswers",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx:InvestmentPrioritySurveyModal",
+      "target": "function:market-frontend/src/utils/ahp.ts:matrixFromScores",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/components/layout/AppShell.tsx:AppShell",
+      "target": "function:market-frontend/src/services/mqtt.ts:startMqttConnection",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/components/layout/Sidebar.tsx:Sidebar",
+      "target": "function:market-frontend/src/services/mqtt.ts:getMqttConnectionStatus",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/components/layout/Sidebar.tsx:Sidebar",
+      "target": "function:market-frontend/src/services/mqtt.ts:subscribeToMqttStatus",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/components/ui/PriceTag.tsx:PriceTag",
+      "target": "function:market-frontend/src/utils/formatters.ts:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/contexts/AuthContext.tsx:AuthProvider",
+      "target": "function:market-frontend/src/services/api/userApi.ts:getUserDetail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/contexts/WatchlistContext.tsx:WatchlistProvider",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/contexts/WatchlistContext.tsx:WatchlistProvider",
+      "target": "function:market-frontend/src/services/api/userApi.ts:getFavoriteStockIds",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-frontend/src/hooks/useAhpWeights.ts:useAhpWeights",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:getAhpConfig",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/components/AdminRoute.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-frontend/src/components/ProtectedRoute.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/Sidebar.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-frontend/src/components/layout/TopBar.tsx",
+      "target": "function:market-frontend/src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

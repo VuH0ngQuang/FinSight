@@ -1,0 +1,1200 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "type": "file",
+      "name": "BacktestEngine.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "summary": "Coordinates yearly portfolio backtests by loading the investable universe, building historical snapshots, ranking stocks with TOPSIS, applying allocations, and producing performance results.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "class",
+      "name": "BacktestEngine",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "summary": "Service class that drives the backtest loop from universe loading through ranking, rebalancing, equity recording, and metric computation.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        20,
+        107
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "function",
+      "name": "BacktestEngine",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "summary": "Injects repository, snapshot, ranking, allocation, metrics, and benchmark collaborators required by the backtest engine.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        32,
+        44
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:loadUniverse",
+      "type": "function",
+      "name": "loadUniverse",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "summary": "Loads the full stock universe with yearly financial data for backtest preparation.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        46,
+        48
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:run",
+      "type": "function",
+      "name": "run",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "summary": "Executes the configured backtest across years, performing mark-to-market, ranking, rebalancing, logging, and final metric computation.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        50,
+        52
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "type": "file",
+      "name": "BacktestReporter.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Writes backtest output artifacts, including equity curves, drawdowns, rebalance logs, data availability, and summary metrics as CSV files.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:BacktestReporter",
+      "type": "class",
+      "name": "BacktestReporter",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Reporter class that serializes backtest performance, drawdown, rebalance, and availability data into CSV outputs.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        22,
+        148
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeSingleRun",
+      "type": "function",
+      "name": "writeSingleRun",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Writes all CSV artifacts for one backtest run into an output directory.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        27,
+        33
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDataAvailability",
+      "type": "function",
+      "name": "writeDataAvailability",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Reports yearly data coverage and valid price availability for each stock in the universe.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        35,
+        64
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeEquityCurve",
+      "type": "function",
+      "name": "writeEquityCurve",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Serializes portfolio and benchmark equity values with yearly return columns.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        66,
+        83
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDrawdown",
+      "type": "function",
+      "name": "writeDrawdown",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Serializes portfolio and benchmark drawdown series by year.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        85,
+        99
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeRebalanceLog",
+      "type": "function",
+      "name": "writeRebalanceLog",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Serializes executed allocations and unheld top-ranked candidates for each rebalance year.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        101,
+        121
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeMetrics",
+      "type": "function",
+      "name": "writeMetrics",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "summary": "Serializes headline performance and risk metrics for a backtest result.",
+      "tags": [
+        "reporting",
+        "csv",
+        "backtest"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        123,
+        135
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "type": "file",
+      "name": "HistoricalSnapshot.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "summary": "Defines an immutable yearly snapshot of eligible stock entities used as input to backtest ranking and allocation.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "type": "file",
+      "name": "IndustryMedianCalculator.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "summary": "Computes sector-level median valuation multiples so snapshot preparation can compare each stock against its industry peers.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:IndustryMedianCalculator",
+      "type": "class",
+      "name": "IndustryMedianCalculator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "summary": "Calculator for grouping valuation ratios by sector and deriving robust median benchmarks.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        22,
+        82
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:computeMediansBySector",
+      "type": "function",
+      "name": "computeMediansBySector",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "summary": "Aggregates stock valuation multiples by sector and returns median PE, PB, PCF, and PS benchmarks.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        31,
+        52
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:addMedians",
+      "type": "function",
+      "name": "addMedians",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "summary": "Adds one named median multiple into each sector output bucket.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        59,
+        68
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:median",
+      "type": "function",
+      "name": "median",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "summary": "Sorts BigDecimal values and returns the middle value or even-count average.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        70,
+        81
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "type": "file",
+      "name": "PortfolioAllocator.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "summary": "Converts ranked stock candidates into lot-sized portfolio allocations while respecting budget, top-N, and residual cash constraints.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:PortfolioAllocator",
+      "type": "class",
+      "name": "PortfolioAllocator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "summary": "Allocator that turns ranked stocks into buyable lot allocations while balancing score weights, budget use, and replacement candidates.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        22,
+        148
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:allocate",
+      "type": "function",
+      "name": "allocate",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "summary": "Allocates budget across ranked stocks in lot-sized positions and returns investment, cash, and utilization totals.",
+      "tags": [
+        "allocation",
+        "portfolio",
+        "budgeting"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        33,
+        147
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "type": "file",
+      "name": "PortfolioState.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Tracks cash, holdings, and marked-to-market portfolio value during a backtest, including allocation application and liquidation costs.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:PortfolioState",
+      "type": "class",
+      "name": "PortfolioState",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Mutable backtest portfolio state that maintains cash, positions, and total value across yearly rebalances.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        25,
+        135
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:markToMarket",
+      "type": "function",
+      "name": "markToMarket",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Reprices current holdings from the yearly universe and updates total portfolio value.",
+      "tags": [
+        "portfolio-state",
+        "valuation",
+        "backtest"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        54,
+        65
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:totalValue",
+      "type": "function",
+      "name": "totalValue",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Returns the latest marked portfolio value.",
+      "tags": [
+        "portfolio-state",
+        "valuation",
+        "backtest"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        67,
+        69
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:liquidateAt",
+      "type": "function",
+      "name": "liquidateAt",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Sells all holdings at a target year price, applies transaction cost, and returns proceeds to cash.",
+      "tags": [
+        "portfolio-state",
+        "valuation",
+        "backtest"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        76,
+        89
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:applyAllocation",
+      "type": "function",
+      "name": "applyAllocation",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "summary": "Replaces holdings with a new allocation, debits invested cash and transaction cost, and refreshes market value.",
+      "tags": [
+        "allocation",
+        "portfolio",
+        "budgeting"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        95,
+        111
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "type": "file",
+      "name": "RebalanceLog.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "summary": "Stores yearly rebalance entries containing the executed allocation and the top-ranked candidates considered at that rebalance point.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:RebalanceLog",
+      "type": "class",
+      "name": "RebalanceLog",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "summary": "Append-only holder for yearly allocation decisions and the ranked candidates visible at rebalance time.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        12,
+        26
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:add",
+      "type": "function",
+      "name": "add",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "summary": "Records a rebalance entry with the executed allocation and a capped list of top-ranked candidates.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        17,
+        21
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "type": "file",
+      "name": "SnapshotBuilder.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "summary": "Builds point-in-time historical stock snapshots by cloning entities, pruning future data, calculating valuation ratios, and filtering for usable criteria.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:SnapshotBuilder",
+      "type": "class",
+      "name": "SnapshotBuilder",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "summary": "Snapshot construction service that prepares historical stock states and valuation criteria for ranking.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        33,
+        149
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:build",
+      "type": "function",
+      "name": "build",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "summary": "Creates an eligible historical snapshot for a year by cloning stocks, calculating ratios, computing industry medians, and filtering usable criteria.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        47,
+        130
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:usableCriteriaCount",
+      "type": "function",
+      "name": "usableCriteriaCount",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "summary": "Counts how many positive valuation criteria are available for a stock in a given year.",
+      "tags": [
+        "ranking",
+        "topsis",
+        "valuation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        132,
+        144
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "type": "file",
+      "name": "StockEntityCloner.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "summary": "Creates defensive copies of stock entities and year-data maps so backtest snapshot mutation does not alter repository-loaded domain objects.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:StockEntityCloner",
+      "type": "class",
+      "name": "StockEntityCloner",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "summary": "Utility class for deep-copying stock entities and nested year data used by backtest snapshots.",
+      "tags": [
+        "backtest",
+        "portfolio",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        19,
+        73
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:clone",
+      "type": "function",
+      "name": "clone",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "summary": "Copies stock identity, sector, valuation, industry ratio, match price, and year-data fields into a new entity.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        23,
+        47
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:cloneYearData",
+      "type": "function",
+      "name": "cloneYearData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "summary": "Copies financial and computed valuation fields from one yearly data object to another.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        49,
+        72
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:BacktestEngine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:loadUniverse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:loadUniverse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java:run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:BacktestReporter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:BacktestReporter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeSingleRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeSingleRun",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDataAvailability",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDataAvailability",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeEquityCurve",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeEquityCurve",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDrawdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeDrawdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeRebalanceLog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeRebalanceLog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeMetrics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java:writeMetrics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:IndustryMedianCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:IndustryMedianCalculator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:computeMediansBySector",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:computeMediansBySector",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:addMedians",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:addMedians",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:median",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java:median",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:PortfolioAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:PortfolioAllocator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:allocate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java:allocate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:PortfolioState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:PortfolioState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:markToMarket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:markToMarket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:totalValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:totalValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:liquidateAt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:liquidateAt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:applyAllocation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java:applyAllocation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:RebalanceLog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:RebalanceLog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:add",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java:add",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:SnapshotBuilder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:SnapshotBuilder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:usableCriteriaCount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java:usableCriteriaCount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:StockEntityCloner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:StockEntityCloner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:clone",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:clone",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:cloneYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java:cloneYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

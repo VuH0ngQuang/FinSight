@@ -1,0 +1,273 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "language": "java",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "language": "java",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "language": "java",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "language": "java",
+      "sizeLines": 258,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "language": "java",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "language": "java",
+      "sizeLines": 433,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "language": "java",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "language": "java",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "language": "java",
+      "sizeLines": 384,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "language": "java",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "language": "java",
+      "sizeLines": 232,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java": [],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ]
+  }
+}

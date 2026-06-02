@@ -1,0 +1,535 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "type": "file",
+      "name": "UserService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "summary": "Service contract for account lifecycle, login, password changes, and favorite-stock management. It defines the user-facing operations implemented by the realtime backend.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java:UserService",
+      "type": "class",
+      "name": "UserService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "lineRange": [
+        8,
+        16
+      ],
+      "summary": "Service interface for user lifecycle, login, password, and favorite-stock operations.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "type": "file",
+      "name": "IDGenerator.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "summary": "Thread-safe Snowflake-style ID generator using a custom epoch, millisecond timestamp, and sequence bits. It provides compact unique IDs for user, AHP, and subscription entities.",
+      "tags": [
+        "utility",
+        "id-generation",
+        "concurrency",
+        "snowflake"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "class",
+      "name": "IDGenerator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "lineRange": [
+        11,
+        75
+      ],
+      "summary": "Snowflake-style synchronized generator that combines elapsed milliseconds and a per-millisecond sequence into unique long IDs.",
+      "tags": [
+        "utility",
+        "id-generation",
+        "thread-safe"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "function",
+      "name": "IDGenerator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "lineRange": [
+        27,
+        29
+      ],
+      "summary": "IDGenerator implements part of the IDGenerator service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:nextId",
+      "type": "function",
+      "name": "nextId",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "lineRange": [
+        36,
+        61
+      ],
+      "summary": "Generates a unique long ID by combining current timestamp offset and sequence bits.",
+      "tags": [
+        "utility",
+        "id-generation",
+        "thread-safe"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "file",
+      "name": "LockManager.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "summary": "Shared lock registry that returns per-key reentrant locks for service-level critical sections. It lets services serialize updates by entity or user key without embedding lock storage.",
+      "tags": [
+        "utility",
+        "locking",
+        "concurrency",
+        "service-support"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:LockManager",
+      "type": "class",
+      "name": "LockManager",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "lineRange": [
+        8,
+        16
+      ],
+      "summary": "Component that keeps a concurrent map of named reentrant locks for service operations.",
+      "tags": [
+        "utility",
+        "locking",
+        "concurrency"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:getLock",
+      "type": "function",
+      "name": "getLock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "lineRange": [
+        13,
+        15
+      ],
+      "summary": "getLock implements part of the LockManager service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "type": "file",
+      "name": "AhpConfigServiceImplTest.java",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "summary": "JUnit and Mockito test suite for AHP configuration consistency checks, create/update behavior, invalid matrix handling, and Redis exception tolerance. It directly exercises private consistency-ratio logic through reflection.",
+      "tags": [
+        "test",
+        "service-test",
+        "ahp",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:AhpConfigServiceImplTest",
+      "type": "class",
+      "name": "AhpConfigServiceImplTest",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        28,
+        232
+      ],
+      "summary": "Test class covering AHP matrix consistency and create/update behavior for the AHP configuration service.",
+      "tags": [
+        "test",
+        "junit",
+        "mockito",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_userNotFound_returns404",
+      "type": "function",
+      "name": "create_userNotFound_returns404",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        98,
+        108
+      ],
+      "summary": "create_userNotFound_returns404 implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_consistentMatrix_succeeds",
+      "type": "function",
+      "name": "create_consistentMatrix_succeeds",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        110,
+        121
+      ],
+      "summary": "create_consistentMatrix_succeeds implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_inconsistentMatrix_returns400_noDB",
+      "type": "function",
+      "name": "create_inconsistentMatrix_returns400_noDB",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        123,
+        132
+      ],
+      "summary": "create_inconsistentMatrix_returns400_noDB implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_entityNotFound_returns404",
+      "type": "function",
+      "name": "update_entityNotFound_returns404",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        146,
+        156
+      ],
+      "summary": "update_entityNotFound_returns404 implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_consistentMatrix_updatesWeightsAndSucceeds",
+      "type": "function",
+      "name": "update_consistentMatrix_updatesWeightsAndSucceeds",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        158,
+        170
+      ],
+      "summary": "update_consistentMatrix_updatesWeightsAndSucceeds implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_inconsistentMatrix_returns400_noDB",
+      "type": "function",
+      "name": "update_inconsistentMatrix_returns400_noDB",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        172,
+        184
+      ],
+      "summary": "update_inconsistentMatrix_returns400_noDB implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_redisThrows_doesNotPropagateException",
+      "type": "function",
+      "name": "update_redisThrows_doesNotPropagateException",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        186,
+        198
+      ],
+      "summary": "update_redisThrows_doesNotPropagateException implements part of the AhpConfigServiceImplTest service workflow.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:invokeCR",
+      "type": "function",
+      "name": "invokeCR",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "lineRange": [
+        202,
+        222
+      ],
+      "summary": "Uses reflection to invoke the private consistency-ratio calculation in tests.",
+      "tags": [
+        "test",
+        "junit",
+        "validation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java:UserService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java:UserService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:IDGenerator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:nextId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java:nextId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:LockManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:LockManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:getLock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java:getLock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "class:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:AhpConfigServiceImplTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_userNotFound_returns404",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_consistentMatrix_succeeds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:create_inconsistentMatrix_returns400_noDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_entityNotFound_returns404",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_consistentMatrix_updatesWeightsAndSucceeds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_inconsistentMatrix_returns400_noDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:update_redisThrows_doesNotPropagateException",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java:invokeCR",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

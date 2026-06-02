@@ -1,0 +1,33 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "language": "python",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "language": "python",
+      "sizeLines": 1067,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    ".cursor/skills/ui-ux-pro-max/scripts/core.py": [],
+    ".cursor/skills/ui-ux-pro-max/scripts/design_system.py": [
+      ".cursor/skills/ui-ux-pro-max/scripts/core.py"
+    ],
+    ".cursor/skills/ui-ux-pro-max/scripts/search.py": [
+      ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      ".cursor/skills/ui-ux-pro-max/scripts/design_system.py"
+    ]
+  }
+}

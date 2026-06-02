@@ -1,0 +1,1092 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "type": "file",
+      "name": "AhpConfigService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "summary": "Service contract for creating, updating, and retrieving a user's AHP investment preference configuration. It defines the API used by allocation and configuration controllers.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java:AhpConfigService",
+      "type": "class",
+      "name": "AhpConfigService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "lineRange": [
+        6,
+        10
+      ],
+      "summary": "Service interface for AHP configuration creation, update, and retrieval operations.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "type": "file",
+      "name": "AhpConfigServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "summary": "Implements AHP configuration management by validating pairwise matrices, computing weights and consistency ratios, persisting configs, and caching DTOs in Redis. It protects per-user updates with locks and reports validation failures through response DTOs.",
+      "tags": [
+        "service",
+        "ahp",
+        "validation",
+        "cache"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "class",
+      "name": "AhpConfigServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        24,
+        258
+      ],
+      "summary": "Concrete AHP configuration service that computes AHP weights, validates consistency ratios, persists entities, and writes Redis cache entries.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "function",
+      "name": "AhpConfigServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        39,
+        50
+      ],
+      "summary": "AhpConfigServiceImpl implements part of the AhpConfigServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:createAhpConfig",
+      "type": "function",
+      "name": "createAhpConfig",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        52,
+        107
+      ],
+      "summary": "Validates a new pairwise matrix, computes weights, creates an AHP config entity, persists it, and caches the resulting DTO.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:updateAhpConfig",
+      "type": "function",
+      "name": "updateAhpConfig",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        109,
+        162
+      ],
+      "summary": "Validates and applies updated AHP matrix data to an existing config, then persists and refreshes the cached DTO.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:getAhpConfigByUserId",
+      "type": "function",
+      "name": "getAhpConfigByUserId",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        164,
+        179
+      ],
+      "summary": "Loads a user's AHP configuration and converts it to a response DTO.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:computeWeights",
+      "type": "function",
+      "name": "computeWeights",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        185,
+        219
+      ],
+      "summary": "Parses the pairwise matrix JSON and computes normalized AHP weights from column-normalized values.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:computeConsistencyRatio",
+      "type": "function",
+      "name": "computeConsistencyRatio",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "lineRange": [
+        221,
+        237
+      ],
+      "summary": "Calculates the AHP consistency ratio from the matrix and weight vector using random-index thresholds.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "type": "file",
+      "name": "PortfolioAllocationServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "summary": "Implements portfolio allocation by loading user AHP weights, ranking stocks with TOPSIS, and passing ranked candidates to the allocation engine. It performs request validation and returns consistent response DTOs for allocation errors.",
+      "tags": [
+        "service",
+        "portfolio-allocation",
+        "ranking",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "class",
+      "name": "PortfolioAllocationServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "lineRange": [
+        23,
+        103
+      ],
+      "summary": "Concrete portfolio allocation service combining AHP weights, TOPSIS ranking, and portfolio allocation logic.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "function",
+      "name": "PortfolioAllocationServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "lineRange": [
+        35,
+        51
+      ],
+      "summary": "PortfolioAllocationServiceImpl implements part of the PortfolioAllocationServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:allocate",
+      "type": "function",
+      "name": "allocate",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "lineRange": [
+        53,
+        94
+      ],
+      "summary": "Validates allocation input, loads user weights, ranks stocks, and invokes the portfolio allocator.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "type": "file",
+      "name": "StockServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "summary": "Implements stock CRUD, cache updates, valuation recalculation, industry multiple construction, and overvaluation notifications. It coordinates repositories, Redis, valuation calculators, locking, and email notifications around stock changes.",
+      "tags": [
+        "service",
+        "stock-management",
+        "valuation",
+        "cache"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "class",
+      "name": "StockServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        32,
+        433
+      ],
+      "summary": "Concrete stock service coordinating stock persistence, cache writes, valuation calculators, industry multiples, and overvaluation notifications.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "function",
+      "name": "StockServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        43,
+        59
+      ],
+      "summary": "StockServiceImpl implements part of the StockServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:createStock",
+      "type": "function",
+      "name": "createStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        61,
+        76
+      ],
+      "summary": "Creates a stock entity, persists it, writes the stock DTO to Redis, and returns success.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateStock",
+      "type": "function",
+      "name": "updateStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        78,
+        99
+      ],
+      "summary": "Loads an existing stock, applies name and sector updates, persists it, and refreshes the Redis DTO.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:deleteStock",
+      "type": "function",
+      "name": "deleteStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        101,
+        127
+      ],
+      "summary": "Deletes a stock and clears related cache data while holding a per-stock lock.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateIndustryRatios",
+      "type": "function",
+      "name": "updateIndustryRatios",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        129,
+        147
+      ],
+      "summary": "Updates industry ratio fields for a stock and stores the refreshed stock DTO.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:forceRecalculateValuations",
+      "type": "function",
+      "name": "forceRecalculateValuations",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        149,
+        156
+      ],
+      "summary": "Triggers valuation recalculation for all stocks.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateMatchPrice",
+      "type": "function",
+      "name": "updateMatchPrice",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        158,
+        175
+      ],
+      "summary": "Updates a stock's market price and persists the refreshed entity and cache entry.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForStock",
+      "type": "function",
+      "name": "recalculateValuationsForStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        177,
+        271
+      ],
+      "summary": "Loads one stock with year data, recomputes valuation metrics, persists updates, and checks overvaluation.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForAllStocks",
+      "type": "function",
+      "name": "recalculateValuationsForAllStocks",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        273,
+        295
+      ],
+      "summary": "Iterates all stocks with yearly data and recalculates valuations for each eligible stock.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:checkOvervaluationAndNotify",
+      "type": "function",
+      "name": "checkOvervaluationAndNotify",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        297,
+        336
+      ],
+      "summary": "Evaluates overvaluation and sends notification email when a stock crosses the configured threshold.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuations",
+      "type": "function",
+      "name": "recalculateValuations",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        339,
+        366
+      ],
+      "summary": "Computes DDM, DCF, residual income, market multiples, and composite fair value for a target stock-year record.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:buildIndustryMultiples",
+      "type": "function",
+      "name": "buildIndustryMultiples",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        373,
+        406
+      ],
+      "summary": "Builds industry valuation multiples by combining peer stock data with defaults.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:convertToDto",
+      "type": "function",
+      "name": "convertToDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "lineRange": [
+        417,
+        432
+      ],
+      "summary": "Maps an entity object into its service DTO representation.",
+      "tags": [
+        "mapping",
+        "dto",
+        "serialization"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java:AhpConfigService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java:AhpConfigService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:createAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:createAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:updateAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:updateAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:getAhpConfigByUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:getAhpConfigByUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:computeWeights",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:computeConsistencyRatio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:PortfolioAllocationServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:allocate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:allocate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:StockServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:createStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:createStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:deleteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:deleteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateIndustryRatios",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateIndustryRatios",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:forceRecalculateValuations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:forceRecalculateValuations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateMatchPrice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:updateMatchPrice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForAllStocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuationsForAllStocks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:checkOvervaluationAndNotify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:recalculateValuations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:buildIndustryMultiples",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:convertToDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java:convertToDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:AhpConfigServiceImpl",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java:AhpConfigService",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java:allocate",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java:getAhpConfigByUserId",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "target": "file:market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

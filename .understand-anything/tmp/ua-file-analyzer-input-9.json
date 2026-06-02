@@ -1,0 +1,107 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "language": "java",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "language": "java",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "language": "java",
+      "sizeLines": 214,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "language": "java",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "language": "java",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "language": "java",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "language": "java",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java": [],
+    "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/model/Message.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java": [
+      "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/model/Message.java": [],
+    "market-collector/src/main/java/com/finsight/collector/model/Stock.java": [],
+    "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java": []
+  }
+}

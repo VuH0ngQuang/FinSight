@@ -1,0 +1,4071 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 14,
+          "endLine": 16,
+          "params": [
+            "args"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MarketRealtimeApplication",
+          "startLine": 9,
+          "endLine": 18,
+          "methods": [
+            "main"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "MarketRealtimeApplication",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "SpringApplication.run",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 205,
+      "nonEmptyLines": 176,
+      "functions": [
+        {
+          "name": "logConfig",
+          "startLine": 22,
+          "endLine": 89,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "AppConf",
+          "startLine": 9,
+          "endLine": 205,
+          "methods": [
+            "logConfig"
+          ],
+          "properties": [
+            "logger",
+            "clusterId",
+            "appDomain",
+            "kafka",
+            "database",
+            "redis",
+            "mail",
+            "payOSEnv",
+            "uri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "logConfig",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "AppConf",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 24
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 25
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 26
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 28
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getUrls",
+          "lineNumber": 28
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getGroupId",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 30
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic().getMarketData",
+          "lineNumber": 30
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 30
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 31
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic().getMarketWebhooks",
+          "lineNumber": 31
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 31
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 32
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic().getMarketRest",
+          "lineNumber": 32
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 32
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 33
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic().getMarketIngestion",
+          "lineNumber": 33
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 33
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 37
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getUrl",
+          "lineNumber": 37
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 38
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getUsername",
+          "lineNumber": 38
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 39
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getPassword",
+          "lineNumber": 39
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 43
+        },
+        {
+          "caller": "logConfig",
+          "callee": "redis.getHost",
+          "lineNumber": 43
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 44
+        },
+        {
+          "caller": "logConfig",
+          "callee": "redis.getPort",
+          "lineNumber": 44
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 45
+        },
+        {
+          "caller": "logConfig",
+          "callee": "redis.getPassword",
+          "lineNumber": 45
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 46
+        },
+        {
+          "caller": "logConfig",
+          "callee": "redis.getDatabase",
+          "lineNumber": 46
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 50
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mail.getHost",
+          "lineNumber": 50
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 51
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mail.getPort",
+          "lineNumber": 51
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 52
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mail.getUsername",
+          "lineNumber": 52
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 53
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mail.getPassword",
+          "lineNumber": 53
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 57
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getCreate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 57
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 58
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getUpdate",
+          "lineNumber": 58
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 58
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 59
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getDelete",
+          "lineNumber": 59
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 59
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 60
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getUpdatePassword",
+          "lineNumber": 60
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 60
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 61
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getLogin",
+          "lineNumber": 61
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 61
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 62
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getAddFavoriteStock",
+          "lineNumber": 62
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 62
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 63
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser().getRemoveFavoriteStock",
+          "lineNumber": 63
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getUser",
+          "lineNumber": 63
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 65
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getCreate",
+          "lineNumber": 65
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 65
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 66
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getUpdate",
+          "lineNumber": 66
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 66
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 67
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getDelete",
+          "lineNumber": 67
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 67
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 68
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getUpdateIndustryRatios",
+          "lineNumber": 68
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 68
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 69
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getUpdateMatchPrice",
+          "lineNumber": 69
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 69
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 70
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock().getRecalculateValuations",
+          "lineNumber": 70
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStock",
+          "lineNumber": 70
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 72
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription().getCreate",
+          "lineNumber": 72
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription",
+          "lineNumber": 72
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 73
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription().getUpdate",
+          "lineNumber": 73
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription",
+          "lineNumber": 73
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 74
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription().getDelete",
+          "lineNumber": 74
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getSubscription",
+          "lineNumber": 74
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 76
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getAhpConfig().getCreate",
+          "lineNumber": 76
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getAhpConfig",
+          "lineNumber": 76
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 77
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getAhpConfig().getUpdate",
+          "lineNumber": 77
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getAhpConfig",
+          "lineNumber": 77
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 79
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData().getCreate",
+          "lineNumber": 79
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData",
+          "lineNumber": 79
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 80
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData().getUpdate",
+          "lineNumber": 80
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData",
+          "lineNumber": 80
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 81
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData().getDelete",
+          "lineNumber": 81
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData",
+          "lineNumber": 81
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 82
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData().getValidationHistory",
+          "lineNumber": 82
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getStockYearData",
+          "lineNumber": 82
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 84
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getWebhooks().getPayment",
+          "lineNumber": 84
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getWebhooks",
+          "lineNumber": 84
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 86
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getPortfolio().getAllocate",
+          "lineNumber": 86
+        },
+        {
+          "caller": "logConfig",
+          "callee": "uri.getPortfolio",
+          "lineNumber": 86
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 236,
+      "nonEmptyLines": 203,
+      "functions": [
+        {
+          "name": "KafkaService",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "appConf",
+            "mapper"
+          ]
+        },
+        {
+          "name": "connectProducer",
+          "startLine": 45,
+          "endLine": 67,
+          "params": [
+            "bootstrapServers",
+            "clientId",
+            "groupId"
+          ]
+        },
+        {
+          "name": "createDefaultTopic",
+          "startLine": 69,
+          "endLine": 71,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 73,
+          "endLine": 75,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 77,
+          "endLine": 79,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 81,
+          "endLine": 99,
+          "params": [
+            "topic",
+            "key",
+            "payload"
+          ]
+        },
+        {
+          "name": "sendResponse",
+          "startLine": 101,
+          "endLine": 116,
+          "params": [
+            "targetTopic",
+            "key",
+            "responsePayload",
+            "originalUri"
+          ]
+        },
+        {
+          "name": "startConsumer",
+          "startLine": 118,
+          "endLine": 172,
+          "params": [
+            "bootstrapServers",
+            "groupId",
+            "topics"
+          ]
+        },
+        {
+          "name": "subscribe",
+          "startLine": 174,
+          "endLine": 185,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "shutdown",
+          "startLine": 187,
+          "endLine": 217,
+          "params": []
+        },
+        {
+          "name": "toJson",
+          "startLine": 219,
+          "endLine": 233,
+          "params": [
+            "message",
+            "uri"
+          ]
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 235,
+          "endLine": 235,
+          "params": [
+            "topic",
+            "key",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaService",
+          "startLine": 27,
+          "endLine": 236,
+          "methods": [
+            "KafkaService",
+            "connectProducer",
+            "createDefaultTopic",
+            "send",
+            "send",
+            "send",
+            "sendResponse",
+            "startConsumer",
+            "subscribe",
+            "shutdown",
+            "toJson",
+            "handleIncomingMessage"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf",
+            "producer",
+            "consumer",
+            "defaultTopic",
+            "consumerThread",
+            "running"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaService",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "connectProducer",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "createDefaultTopic",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "sendResponse",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "startConsumer",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "subscribe",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "shutdown",
+          "line": 187,
+          "isDefault": false
+        },
+        {
+          "name": "toJson",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaService",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connectProducer",
+          "callee": "producer.close",
+          "lineNumber": 48
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new Properties",
+          "lineNumber": 55
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 56
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 57
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 58
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new KafkaProducer<>",
+          "lineNumber": 62
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.info",
+          "lineNumber": 63
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 65
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 65
+        },
+        {
+          "caller": "send",
+          "callee": "send",
+          "lineNumber": 74
+        },
+        {
+          "caller": "send",
+          "callee": "send",
+          "lineNumber": 78
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 83
+        },
+        {
+          "caller": "send",
+          "callee": "new ProducerRecord<>",
+          "lineNumber": 88
+        },
+        {
+          "caller": "send",
+          "callee": "producer.send",
+          "lineNumber": 89
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 91
+        },
+        {
+          "caller": "send",
+          "callee": "exception.getMessage",
+          "lineNumber": 91
+        },
+        {
+          "caller": "send",
+          "callee": "logger.debug",
+          "lineNumber": 93
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 97
+        },
+        {
+          "caller": "send",
+          "callee": "e.getMessage",
+          "lineNumber": 97
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder()\n                    .sourceId(appConf.getClusterId())\n                    .eventId(UUID.randomUUID().toString())\n                    .uri(originalUri) // Keep the original URI for reference\n                    .payload(responsePayload).build",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder()\n                    .sourceId(appConf.getClusterId())\n                    .eventId(UUID.randomUUID().toString())\n                    .uri(originalUri).payload",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder()\n                    .sourceId(appConf.getClusterId())\n                    .eventId(UUID.randomUUID().toString()).uri",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder()\n                    .sourceId(appConf.getClusterId()).eventId",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder().sourceId",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "Message.builder",
+          "lineNumber": 103
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 104
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 105
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 105
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "mapper.writeValueAsString",
+          "lineNumber": 110
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "send",
+          "lineNumber": 111
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "logger.info",
+          "lineNumber": 112
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "logger.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "sendResponse",
+          "callee": "e.getMessage",
+          "lineNumber": 114
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 120
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Properties",
+          "lineNumber": 125
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 126
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 127
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 127
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 129
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 129
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 130
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 130
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 131
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 132
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 133
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new KafkaConsumer<>",
+          "lineNumber": 135
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.subscribe",
+          "lineNumber": 136
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 140
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.poll",
+          "lineNumber": 143
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "Duration.ofMillis",
+          "lineNumber": 143
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.topic",
+          "lineNumber": 146
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.key",
+          "lineNumber": 147
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.value",
+          "lineNumber": 148
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread(() -> handleIncomingMessage(topic, key, value)).start",
+          "lineNumber": 150
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 150
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "handleIncomingMessage",
+          "lineNumber": 150
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 154
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 156
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 156
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.close",
+          "lineNumber": 159
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 161
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 161
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumerThread.start",
+          "lineNumber": 166
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 167
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 170
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 170
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 176
+        },
+        {
+          "caller": "subscribe",
+          "callee": "consumer.subscribe",
+          "lineNumber": 180
+        },
+        {
+          "caller": "subscribe",
+          "callee": "Collections.singletonList",
+          "lineNumber": 180
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.info",
+          "lineNumber": 181
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 183
+        },
+        {
+          "caller": "subscribe",
+          "callee": "e.getMessage",
+          "lineNumber": 183
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.info",
+          "lineNumber": 189
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumer.wakeup",
+          "lineNumber": 195
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 198
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 198
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumerThread.join",
+          "lineNumber": 203
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 206
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread",
+          "lineNumber": 206
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.flush",
+          "lineNumber": 211
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.close",
+          "lineNumber": 212
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 215
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 215
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri)\n                .payload(message).build",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri).payload",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString()).uri",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId()).eventId",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder().sourceId",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder",
+          "lineNumber": 220
+        },
+        {
+          "caller": "toJson",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 221
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 222
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 222
+        },
+        {
+          "caller": "toJson",
+          "callee": "mapper.writeValueAsString",
+          "lineNumber": 228
+        },
+        {
+          "caller": "toJson",
+          "callee": "logger.error",
+          "lineNumber": 230
+        },
+        {
+          "caller": "toJson",
+          "callee": "e.getMessage",
+          "lineNumber": 230
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "KafkaListener",
+          "startLine": 27,
+          "endLine": 33,
+          "params": [
+            "appConf",
+            "mapper",
+            "messageRouterService"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 35,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 53,
+          "endLine": 71,
+          "params": [
+            "topic",
+            "key",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaListener",
+          "startLine": 19,
+          "endLine": 72,
+          "methods": [
+            "KafkaListener",
+            "init",
+            "handleIncomingMessage"
+          ],
+          "properties": [
+            "logger",
+            "appConf",
+            "mapper",
+            "messageRouterService"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "logger",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "appConf",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "mapper",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaListener",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaListener",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "createDefaultTopic",
+          "lineNumber": 37
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketData",
+          "lineNumber": 37
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 37
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 37
+        },
+        {
+          "caller": "init",
+          "callee": "new ArrayList<>",
+          "lineNumber": 38
+        },
+        {
+          "caller": "init",
+          "callee": "topics.add",
+          "lineNumber": 39
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketData",
+          "lineNumber": 39
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 39
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 39
+        },
+        {
+          "caller": "init",
+          "callee": "topics.add",
+          "lineNumber": 40
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketRest",
+          "lineNumber": 40
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 40
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 40
+        },
+        {
+          "caller": "init",
+          "callee": "topics.add",
+          "lineNumber": 41
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketWebhooks",
+          "lineNumber": 41
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 41
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 41
+        },
+        {
+          "caller": "init",
+          "callee": "topics.add",
+          "lineNumber": 42
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketIngestion",
+          "lineNumber": 42
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 42
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 42
+        },
+        {
+          "caller": "init",
+          "callee": "connectProducer",
+          "lineNumber": 45
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getUrls",
+          "lineNumber": 46
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 46
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 47
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getGroupId",
+          "lineNumber": 48
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 48
+        },
+        {
+          "caller": "init",
+          "callee": "startConsumer",
+          "lineNumber": 50
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getUrls",
+          "lineNumber": 50
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 50
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getGroupId",
+          "lineNumber": 50
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "logger.info",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "mapper.readValue",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "messageRouterService.routeMessage",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "message.getSourceId",
+          "lineNumber": 65
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "sendResponse",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "message.getSourceId",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "message.getUri",
+          "lineNumber": 66
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "logger.error",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "classes": [
+        {
+          "name": "Message",
+          "startLine": 9,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "sourceId",
+            "eventId",
+            "uri",
+            "timestamp",
+            "payload"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Message",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 8,
+      "classes": [
+        {
+          "name": "MailService",
+          "startLine": 8,
+          "endLine": 11,
+          "methods": [
+            "sendWelcome",
+            "sendOvervaluationAlert"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailService",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 414,
+      "nonEmptyLines": 393,
+      "functions": [
+        {
+          "name": "MessageRouterService",
+          "startLine": 29,
+          "endLine": 48,
+          "params": [
+            "mapper",
+            "userService",
+            "stockService",
+            "subscriptionService",
+            "ahpConfigService",
+            "appConf",
+            "stockYearDataService",
+            "portfolioAllocationService"
+          ]
+        },
+        {
+          "name": "mapPayloadToDto",
+          "startLine": 54,
+          "endLine": 76,
+          "params": [
+            "payload",
+            "dtoClass"
+          ]
+        },
+        {
+          "name": "routeMessage",
+          "startLine": 78,
+          "endLine": 148,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "routeUserMessage",
+          "startLine": 150,
+          "endLine": 198,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeStockMessage",
+          "startLine": 200,
+          "endLine": 237,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeSubscriptionMessage",
+          "startLine": 239,
+          "endLine": 266,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeAhpConfigMessage",
+          "startLine": 268,
+          "endLine": 292,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeYearDataMessage",
+          "startLine": 294,
+          "endLine": 341,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeValidationMessage",
+          "startLine": 343,
+          "endLine": 368,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routePortfolioMessage",
+          "startLine": 370,
+          "endLine": 390,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        },
+        {
+          "name": "routeWebhooksMessages",
+          "startLine": 392,
+          "endLine": 413,
+          "params": [
+            "uri",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MessageRouterService",
+          "startLine": 16,
+          "endLine": 414,
+          "methods": [
+            "MessageRouterService",
+            "mapPayloadToDto",
+            "routeMessage",
+            "routeUserMessage",
+            "routeStockMessage",
+            "routeSubscriptionMessage",
+            "routeAhpConfigMessage",
+            "routeYearDataMessage",
+            "routeValidationMessage",
+            "routePortfolioMessage",
+            "routeWebhooksMessages"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "userService",
+            "stockService",
+            "subscriptionService",
+            "ahpConfigService",
+            "appConf",
+            "stockYearDataService",
+            "portfolioAllocationService"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MessageRouterService",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "routeMessage",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "MessageRouterService",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "dtoClass.isInstance",
+          "lineNumber": 61
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "dtoClass.cast",
+          "lineNumber": 62
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "mapper.readValue",
+          "lineNumber": 67
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "mapper.convertValue",
+          "lineNumber": 71
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "logger.error",
+          "lineNumber": 73
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "dtoClass.getSimpleName",
+          "lineNumber": 73
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "e.getMessage",
+          "lineNumber": 73
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "new RuntimeException",
+          "lineNumber": 74
+        },
+        {
+          "caller": "mapPayloadToDto",
+          "callee": "dtoClass.getSimpleName",
+          "lineNumber": 74
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "message.getUri",
+          "lineNumber": 79
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "logger.error",
+          "lineNumber": 80
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(400)\n                    .errorMessage(\"Message or URI is null\").build",
+          "lineNumber": 81
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(400).errorMessage",
+          "lineNumber": 81
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 81
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 81
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 81
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "message.getUri",
+          "lineNumber": 88
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "message.getPayload",
+          "lineNumber": 89
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 95
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 96
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeUserMessage",
+          "lineNumber": 97
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 100
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeValidationMessage",
+          "lineNumber": 101
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 104
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 105
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeYearDataMessage",
+          "lineNumber": 106
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 109
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 110
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeStockMessage",
+          "lineNumber": 111
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 114
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 115
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeSubscriptionMessage",
+          "lineNumber": 116
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 119
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 120
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeAhpConfigMessage",
+          "lineNumber": 121
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 124
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 125
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routePortfolioMessage",
+          "lineNumber": 126
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 129
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "mapPayloadToDto",
+          "lineNumber": 130
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "routeWebhooksMessages",
+          "lineNumber": 131
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "logger.warn",
+          "lineNumber": 133
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown URI pattern: \" + uri).build",
+          "lineNumber": 134
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 134
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 134
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 134
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 134
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "logger.error",
+          "lineNumber": 141
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 141
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing message: \" + e.getMessage()).build",
+          "lineNumber": 142
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 142
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 142
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 142
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 142
+        },
+        {
+          "caller": "routeMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 145
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.equals",
+          "lineNumber": 152
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getCreate",
+          "lineNumber": 152
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 152
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 152
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.createUser",
+          "lineNumber": 153
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.equals",
+          "lineNumber": 155
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getUpdate",
+          "lineNumber": 155
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 155
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 155
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.updateUser",
+          "lineNumber": 156
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 158
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getDelete",
+          "lineNumber": 158
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 158
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 158
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.deleteUser",
+          "lineNumber": 159
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 161
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getUpdatePassword",
+          "lineNumber": 161
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 161
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 161
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.updatePassword",
+          "lineNumber": 163
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "logger.warn",
+          "lineNumber": 165
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(404)\n                            .errorMessage(\"User DTO is required for updatePassword operation\").build",
+          "lineNumber": 166
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(404).errorMessage",
+          "lineNumber": 166
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false).errorCode",
+          "lineNumber": 166
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 166
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 166
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.equals",
+          "lineNumber": 173
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getLogin",
+          "lineNumber": 173
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 173
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 173
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.login",
+          "lineNumber": 174
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.equals",
+          "lineNumber": 176
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getAddFavoriteStock",
+          "lineNumber": 176
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 176
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 176
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.addFavoriteStock",
+          "lineNumber": 177
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "uri.equals",
+          "lineNumber": 179
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser().getRemoveFavoriteStock",
+          "lineNumber": 179
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri().getUser",
+          "lineNumber": 179
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 179
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "userService.removeFavoriteStock",
+          "lineNumber": 180
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "logger.warn",
+          "lineNumber": 183
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown user URI: \" + uri).build",
+          "lineNumber": 184
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 184
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 184
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 184
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 184
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "logger.error",
+          "lineNumber": 191
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 191
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing user message: \" + e.getMessage()).build",
+          "lineNumber": 192
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 192
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 192
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 192
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 192
+        },
+        {
+          "caller": "routeUserMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 195
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.equals",
+          "lineNumber": 202
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getCreate",
+          "lineNumber": 202
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 202
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 202
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.createStock",
+          "lineNumber": 203
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.equals",
+          "lineNumber": 205
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getUpdate",
+          "lineNumber": 205
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 205
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 205
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.updateStock",
+          "lineNumber": 206
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.equals",
+          "lineNumber": 208
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getDelete",
+          "lineNumber": 208
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 208
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 208
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.deleteStock",
+          "lineNumber": 209
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.equals",
+          "lineNumber": 211
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getUpdateIndustryRatios",
+          "lineNumber": 211
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 211
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 211
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.updateIndustryRatios",
+          "lineNumber": 212
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.equals",
+          "lineNumber": 214
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getRecalculateValuations",
+          "lineNumber": 214
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 214
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 214
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.forceRecalculateValuations",
+          "lineNumber": 215
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 217
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock().getUpdateMatchPrice",
+          "lineNumber": 217
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri().getStock",
+          "lineNumber": 217
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 217
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "stockService.updateMatchPrice",
+          "lineNumber": 218
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "payload.getStockId",
+          "lineNumber": 218
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "payload.getMatchPrice",
+          "lineNumber": 218
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "logger.warn",
+          "lineNumber": 222
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown stock URI: \" + uri).build",
+          "lineNumber": 223
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 223
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 223
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 223
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 223
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "logger.error",
+          "lineNumber": 230
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 230
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing stock message: \" + e.getMessage()).build",
+          "lineNumber": 231
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 231
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 231
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 231
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 231
+        },
+        {
+          "caller": "routeStockMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 234
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "uri.equals",
+          "lineNumber": 241
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription().getCreate",
+          "lineNumber": 241
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription",
+          "lineNumber": 241
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 241
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "subscriptionService.createSubscription",
+          "lineNumber": 242
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "uri.equals",
+          "lineNumber": 244
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription().getUpdate",
+          "lineNumber": 244
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription",
+          "lineNumber": 244
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 244
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "subscriptionService.updateSubscription",
+          "lineNumber": 245
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 247
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription().getDelete",
+          "lineNumber": 247
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri().getSubscription",
+          "lineNumber": 247
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 247
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "subscriptionService.deleteSubscription",
+          "lineNumber": 248
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "payload.getSubscriptionId",
+          "lineNumber": 248
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "logger.warn",
+          "lineNumber": 251
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown subscription URI: \" + uri).build",
+          "lineNumber": 252
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 252
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 252
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 252
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 252
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "logger.error",
+          "lineNumber": 259
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 259
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing subscription message: \" + e.getMessage()).build",
+          "lineNumber": 260
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 260
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 260
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 260
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 260
+        },
+        {
+          "caller": "routeSubscriptionMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 263
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "uri.equals",
+          "lineNumber": 270
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri().getAhpConfig().getCreate",
+          "lineNumber": 270
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri().getAhpConfig",
+          "lineNumber": 270
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 270
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ahpConfigService.createAhpConfig",
+          "lineNumber": 271
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "uri.equals",
+          "lineNumber": 273
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri().getAhpConfig().getUpdate",
+          "lineNumber": 273
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri().getAhpConfig",
+          "lineNumber": 273
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 273
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ahpConfigService.updateAhpConfig",
+          "lineNumber": 274
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "logger.warn",
+          "lineNumber": 277
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown AHP config URI: \" + uri).build",
+          "lineNumber": 278
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 278
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 278
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 278
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 278
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "logger.error",
+          "lineNumber": 285
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 285
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing AHP config message: \" + e.getMessage()).build",
+          "lineNumber": 286
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 286
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 286
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 286
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 286
+        },
+        {
+          "caller": "routeAhpConfigMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 289
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 296
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getCreate",
+          "lineNumber": 296
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 296
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 296
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "uri.substring",
+          "lineNumber": 297
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getCreate().length",
+          "lineNumber": 297
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getCreate",
+          "lineNumber": 297
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 297
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 297
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "yearPart.isEmpty",
+          "lineNumber": 298
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "Integer.parseInt",
+          "lineNumber": 299
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "stockYearDataService.createStockYearData",
+          "lineNumber": 300
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "payload.getStockId",
+          "lineNumber": 300
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(400)\n                            .errorMessage(\"Invalid URI format. Expected: /stockYearData/create/{year}\").build",
+          "lineNumber": 302
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(400).errorMessage",
+          "lineNumber": 302
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false).errorCode",
+          "lineNumber": 302
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 302
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 302
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "uri.startsWith",
+          "lineNumber": 309
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getUpdate",
+          "lineNumber": 309
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 309
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 309
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "uri.substring",
+          "lineNumber": 310
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getUpdate().length",
+          "lineNumber": 310
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getUpdate",
+          "lineNumber": 310
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 310
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 310
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "yearPart.isEmpty",
+          "lineNumber": 311
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "Integer.parseInt",
+          "lineNumber": 312
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "stockYearDataService.updateStockYearData",
+          "lineNumber": 313
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "payload.getStockId",
+          "lineNumber": 313
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(400)\n                            .errorMessage(\"Invalid URI format. Expected: /stockYearData/update/{year}\").build",
+          "lineNumber": 315
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false)\n                            .errorCode(400).errorMessage",
+          "lineNumber": 315
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                            .success(false).errorCode",
+          "lineNumber": 315
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 315
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 315
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "uri.equals",
+          "lineNumber": 322
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData().getDelete",
+          "lineNumber": 322
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 322
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 322
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "stockYearDataService.deleteStockYearData",
+          "lineNumber": 323
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "logger.warn",
+          "lineNumber": 326
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown year data URI: \" + uri).build",
+          "lineNumber": 327
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 327
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 327
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 327
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 327
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "logger.error",
+          "lineNumber": 334
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 334
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing year data message: \" + e.getMessage()).build",
+          "lineNumber": 335
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 335
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 335
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 335
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 335
+        },
+        {
+          "caller": "routeYearDataMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 338
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "uri.equals",
+          "lineNumber": 345
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "appConf.getUri().getStockYearData().getValidationHistory",
+          "lineNumber": 345
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "appConf.getUri().getStockYearData",
+          "lineNumber": 345
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 345
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "mapper.convertValue",
+          "lineNumber": 346
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "new TypeReference<List<StockYearDataHistoryRequestDto>>",
+          "lineNumber": 348
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "stockYearDataService.getValidationHistory",
+          "lineNumber": 350
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "logger.warn",
+          "lineNumber": 353
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown validation URI: \" + uri).build",
+          "lineNumber": 354
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 354
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 354
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 354
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 354
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "logger.error",
+          "lineNumber": 361
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 361
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing validation message: \" + e.getMessage()).build",
+          "lineNumber": 362
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 362
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 362
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 362
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 362
+        },
+        {
+          "caller": "routeValidationMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 365
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "uri.equals",
+          "lineNumber": 372
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "appConf.getUri().getPortfolio().getAllocate",
+          "lineNumber": 372
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "appConf.getUri().getPortfolio",
+          "lineNumber": 372
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "appConf.getUri",
+          "lineNumber": 372
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "portfolioAllocationService.allocate",
+          "lineNumber": 373
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "logger.warn",
+          "lineNumber": 375
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown portfolio URI: \" + uri).build",
+          "lineNumber": 376
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 376
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 376
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 376
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 376
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "logger.error",
+          "lineNumber": 383
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 383
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing portfolio message: \" + e.getMessage()).build",
+          "lineNumber": 384
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 384
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 384
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 384
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 384
+        },
+        {
+          "caller": "routePortfolioMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 387
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "uri.startsWith",
+          "lineNumber": 394
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "appConf.getUri().getWebhooks().getPayment",
+          "lineNumber": 394
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "appConf.getUri().getWebhooks",
+          "lineNumber": 394
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "appConf.getUri",
+          "lineNumber": 394
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "subscriptionService.paymentSubscription",
+          "lineNumber": 395
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "logger.warn",
+          "lineNumber": 398
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404)\n                        .errorMessage(\"Unknown webhooks URI: \" + uri).build",
+          "lineNumber": 399
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                        .success(false)\n                        .errorCode(404).errorMessage",
+          "lineNumber": 399
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                        .success(false).errorCode",
+          "lineNumber": 399
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 399
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 399
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "logger.error",
+          "lineNumber": 406
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "e.getMessage",
+          "lineNumber": 406
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500)\n                    .errorMessage(\"Error processing webhooks message: \" + e.getMessage()).build",
+          "lineNumber": 407
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                    .success(false)\n                    .errorCode(500).errorMessage",
+          "lineNumber": 407
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder()\n                    .success(false).errorCode",
+          "lineNumber": 407
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder().success",
+          "lineNumber": 407
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "ResponseDto.builder",
+          "lineNumber": 407
+        },
+        {
+          "caller": "routeWebhooksMessages",
+          "callee": "e.getMessage",
+          "lineNumber": 410
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "MailServiceImpl",
+          "startLine": 27,
+          "endLine": 32,
+          "params": [
+            "appConf",
+            "javaMailSender",
+            "templateEngine"
+          ]
+        },
+        {
+          "name": "sendWelcome",
+          "startLine": 34,
+          "endLine": 41,
+          "params": [
+            "to",
+            "username"
+          ]
+        },
+        {
+          "name": "sendOvervaluationAlert",
+          "startLine": 43,
+          "endLine": 73,
+          "params": [
+            "to",
+            "result",
+            "currentPrice"
+          ]
+        },
+        {
+          "name": "sendEmail",
+          "startLine": 75,
+          "endLine": 86,
+          "params": [
+            "to",
+            "subject",
+            "template",
+            "context"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MailServiceImpl",
+          "startLine": 21,
+          "endLine": 87,
+          "methods": [
+            "MailServiceImpl",
+            "sendWelcome",
+            "sendOvervaluationAlert",
+            "sendEmail"
+          ],
+          "properties": [
+            "appConf",
+            "javaMailSender",
+            "templateEngine"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MailServiceImpl",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "sendWelcome",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "sendOvervaluationAlert",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "MailServiceImpl",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sendWelcome",
+          "callee": "new Context",
+          "lineNumber": 36
+        },
+        {
+          "caller": "sendWelcome",
+          "callee": "context.setVariable",
+          "lineNumber": 37
+        },
+        {
+          "caller": "sendWelcome",
+          "callee": "context.setVariable",
+          "lineNumber": 38
+        },
+        {
+          "caller": "sendWelcome",
+          "callee": "context.setVariable",
+          "lineNumber": 39
+        },
+        {
+          "caller": "sendWelcome",
+          "callee": "appConf.getAppDomain",
+          "lineNumber": 39
+        },
+        {
+          "caller": "sendWelcome",
+          "callee": "sendEmail",
+          "lineNumber": 40
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "new Context",
+          "lineNumber": 45
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 46
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getStockId",
+          "lineNumber": 46
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 47
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getStockName",
+          "lineNumber": 47
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 48
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 49
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getOvervaluedCount",
+          "lineNumber": 49
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 50
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getTotalIndicators",
+          "lineNumber": 50
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 51
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "Math.round",
+          "lineNumber": 51
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getOvervaluePercent",
+          "lineNumber": 51
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "new ArrayList<>",
+          "lineNumber": 53
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getIndicatorResults().entrySet",
+          "lineNumber": 54
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getIndicatorResults",
+          "lineNumber": 54
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "new HashMap<>",
+          "lineNumber": 55
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 56
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "entry.getKey",
+          "lineNumber": 56
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "entry.getValue",
+          "lineNumber": 57
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 58
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 59
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "entry.getValue",
+          "lineNumber": 60
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 61
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 62
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 64
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "row.put",
+          "lineNumber": 65
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "indicators.add",
+          "lineNumber": 67
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "context.setVariable",
+          "lineNumber": 69
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getStockId",
+          "lineNumber": 71
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "result.getStockName",
+          "lineNumber": 71
+        },
+        {
+          "caller": "sendOvervaluationAlert",
+          "callee": "sendEmail",
+          "lineNumber": 72
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "javaMailSender.createMimeMessage",
+          "lineNumber": 76
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "new MimeMessageHelper",
+          "lineNumber": 77
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "templateEngine.process",
+          "lineNumber": 79
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "helper.setFrom",
+          "lineNumber": 81
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "appConf.getMail().getUsername",
+          "lineNumber": 81
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "appConf.getMail",
+          "lineNumber": 81
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "helper.setTo",
+          "lineNumber": 82
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "helper.setSubject",
+          "lineNumber": 83
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "helper.setText",
+          "lineNumber": 84
+        },
+        {
+          "caller": "sendEmail",
+          "callee": "javaMailSender.send",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "PaymentServiceImpl",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "payOS",
+            "appConf"
+          ]
+        },
+        {
+          "name": "createPayment",
+          "startLine": 30,
+          "endLine": 44,
+          "params": [
+            "id",
+            "ref",
+            "amount"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PaymentServiceImpl",
+          "startLine": 13,
+          "endLine": 45,
+          "methods": [
+            "PaymentServiceImpl",
+            "createPayment"
+          ],
+          "properties": [
+            "log",
+            "payOS",
+            "appConf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PaymentServiceImpl",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "createPayment",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "PaymentServiceImpl",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createPayment",
+          "callee": "log.info",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createPayment",
+          "callee": "appConf.getAppDomain",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder()\n                .orderCode(id)\n                .amount(amount)\n                .description(\"FinSight Sub Ref: \" + ref)\n                .cancelUrl(\"http://103.162.20.119:5173/payment/checkout\")\n                .returnUrl(\"http://103.162.20.119:5173/payment/checkout\").build",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder()\n                .orderCode(id)\n                .amount(amount)\n                .description(\"FinSight Sub Ref: \" + ref)\n                .cancelUrl(\"http://103.162.20.119:5173/payment/checkout\").returnUrl",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder()\n                .orderCode(id)\n                .amount(amount)\n                .description(\"FinSight Sub Ref: \" + ref).cancelUrl",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder()\n                .orderCode(id)\n                .amount(amount).description",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder()\n                .orderCode(id).amount",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder().orderCode",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "CreatePaymentLinkRequest.builder",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createPayment",
+          "callee": "payOS.paymentRequests().create",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createPayment",
+          "callee": "payOS.paymentRequests",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createPayment",
+          "callee": "paymentLink.getCheckoutUrl",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "classes": [
+        {
+          "name": "OvervaluationResult",
+          "startLine": 10,
+          "endLine": 22,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "stockName",
+            "totalIndicators",
+            "overvaluedCount",
+            "overvaluePercent",
+            "overvalued",
+            "indicatorResults"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "OvervaluationResult",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    }
+  ]
+}

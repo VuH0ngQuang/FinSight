@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { getMqttConnectionStatus } from '../../services/mqtt'
+import { getMqttConnectionStatus, subscribeToMqttStatus } from '../../services/mqtt'
 import { useState, useEffect } from 'react'
 
 const NavItem = ({ to, icon, label }: { to: string; icon: React.ReactNode; label: string }) => (
@@ -25,8 +25,7 @@ const Sidebar = () => {
   const [mqttConnected, setMqttConnected] = useState(getMqttConnectionStatus())
 
   useEffect(() => {
-    const interval = setInterval(() => setMqttConnected(getMqttConnectionStatus()), 2000)
-    return () => clearInterval(interval)
+    return subscribeToMqttStatus(setMqttConnected)
   }, [])
 
   return (

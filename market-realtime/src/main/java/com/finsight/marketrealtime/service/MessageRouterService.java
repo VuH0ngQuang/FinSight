@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.List;
 import com.finsight.marketrealtime.dto.ResponseDto;
 
 @Service
@@ -95,6 +95,10 @@ public class MessageRouterService {
             if (uri.startsWith("/user")) {
                 UserDto userDto = mapPayloadToDto(payload, UserDto.class);
                 return routeUserMessage(uri, userDto);
+            }
+            // Validation support routes
+            else if (uri.startsWith("/validation")) {
+                return routeValidationMessage(uri, payload);
             }
             // StockYearData service routes (check before /stock since /stockYearData starts with /stock)
             else if (uri.startsWith("/stockYearData")) {
@@ -332,6 +336,33 @@ public class MessageRouterService {
                     .success(false)
                     .errorCode(500)
                     .errorMessage("Error processing year data message: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    private ResponseDto routeValidationMessage(String uri, Object payload) {
+        try {
+            if (uri.equals(appConf.getUri().getStockYearData().getValidationHistory())) {
+                List<StockYearDataHistoryRequestDto> requests = mapper.convertValue(
+                        payload,
+                        new TypeReference<List<StockYearDataHistoryRequestDto>>() {}
+                );
+                return stockYearDataService.getValidationHistory(requests);
+            }
+            else {
+                logger.warn("Unknown validation URI: {}", uri);
+                return ResponseDto.builder()
+                        .success(false)
+                        .errorCode(404)
+                        .errorMessage("Unknown validation URI: " + uri)
+                        .build();
+            }
+        } catch (Exception e) {
+            logger.error("Error processing validation message with URI {}: {}", uri, e.getMessage(), e);
+            return ResponseDto.builder()
+                    .success(false)
+                    .errorCode(500)
+                    .errorMessage("Error processing validation message: " + e.getMessage())
                     .build();
         }
     }

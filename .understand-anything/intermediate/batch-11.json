@@ -1,0 +1,615 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "type": "file",
+      "name": "MarketWebhooksApplication.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "summary": "Spring Boot entry point for the market-webhooks service, bootstrapping the application with the webhook configuration properties enabled.",
+      "tags": ["entry-point", "spring-boot", "webhook-service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:MarketWebhooksApplication",
+      "type": "class",
+      "name": "MarketWebhooksApplication",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "lineRange": [8, 15],
+      "summary": "Application bootstrap class that starts the Spring context for the market-webhooks service.",
+      "tags": ["entry-point", "spring-boot", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "lineRange": [11, 13],
+      "summary": "Starts the market-webhooks Spring Boot application by delegating to SpringApplication.",
+      "tags": ["entry-point", "spring-boot", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "type": "file",
+      "name": "AppConf.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "summary": "Defines app-prefixed configuration properties for cluster identity, Kafka settings, webhook URIs, and PayOS credentials, with startup logging for key runtime values.",
+      "tags": ["configuration", "spring-properties", "runtime-settings"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Lombok @Data with nested static property classes for Spring Boot configuration binding."
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java:AppConf",
+      "type": "class",
+      "name": "AppConf",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "lineRange": [9, 62],
+      "summary": "Configuration properties holder for Kafka, webhook route, cluster ID, and PayOS environment settings used by the webhook service.",
+      "tags": ["configuration", "spring-properties", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "lineRange": [18, 31],
+      "summary": "Logs selected application configuration values after Spring has bound the app properties.",
+      "tags": ["configuration", "startup-logging", "lifecycle"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "type": "file",
+      "name": "WebhookController.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "summary": "REST controller that receives PayOS payment webhook callbacks, verifies payload authenticity, converts outcomes to PaymentDto messages, and publishes them to Kafka.",
+      "tags": ["api-handler", "webhook", "payment", "kafka"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:WebhookController",
+      "type": "class",
+      "name": "WebhookController",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "lineRange": [18, 68],
+      "summary": "Spring REST controller coordinating PayOS webhook verification and Kafka publication of payment status events.",
+      "tags": ["api-handler", "webhook", "payment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:WebhookController",
+      "type": "function",
+      "name": "WebhookController",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "lineRange": [26, 35],
+      "summary": "Injects the Kafka publisher, PayOS client, and JSON mapper required by the webhook endpoint.",
+      "tags": ["constructor", "dependency-injection", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:handleWebhook",
+      "type": "function",
+      "name": "handleWebhook",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "lineRange": [37, 67],
+      "summary": "Handles POST webhook callbacks by verifying PayOS data, building a payment result payload, publishing it to Kafka, and returning an empty OK response.",
+      "tags": ["api-handler", "webhook", "payment", "event-publishing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "type": "file",
+      "name": "PaymentDto.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "summary": "Payment webhook transfer object carrying the order ID, success flag, and optional error message for Kafka publication.",
+      "tags": ["data-model", "dto", "payment"],
+      "complexity": "simple",
+      "languageNotes": "Lombok generates constructors, accessors, and builder methods for the DTO."
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java:PaymentDto",
+      "type": "class",
+      "name": "PaymentDto",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "lineRange": [8, 16],
+      "summary": "DTO representing the normalized payment result emitted after webhook verification.",
+      "tags": ["data-model", "dto", "payment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "type": "file",
+      "name": "KafkaService.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "summary": "Kafka service abstraction that manages producer setup, optional consumer polling, topic subscription, graceful shutdown, and wrapping outbound messages with service metadata.",
+      "tags": ["service", "kafka", "event-publishing", "lifecycle"],
+      "complexity": "complex",
+      "languageNotes": "Combines producer and consumer lifecycle management with @PreDestroy cleanup and a volatile flag for the polling thread."
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "class",
+      "name": "KafkaService",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [27, 214],
+      "summary": "Reusable Spring service that owns Kafka producer and consumer clients and provides message serialization for webhook events.",
+      "tags": ["service", "kafka", "event-publishing", "lifecycle"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "function",
+      "name": "KafkaService",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [39, 43],
+      "summary": "Stores injected application configuration and ObjectMapper dependencies for Kafka operations.",
+      "tags": ["constructor", "dependency-injection", "kafka"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:connectProducer",
+      "type": "function",
+      "name": "connectProducer",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [45, 67],
+      "summary": "Initializes a Kafka producer with string serializers, replacing any existing producer before connecting to the configured bootstrap servers.",
+      "tags": ["kafka", "producer", "connection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:createDefaultTopic",
+      "type": "function",
+      "name": "createDefaultTopic",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [69, 71],
+      "summary": "Stores the default Kafka topic used by the single-argument send overload.",
+      "tags": ["kafka", "topic", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:send",
+      "type": "function",
+      "name": "send",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [77, 94],
+      "summary": "Publishes a string payload to Kafka with a generated UUID key and logs producer or send failures.",
+      "tags": ["kafka", "producer", "event-publishing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:startConsumer",
+      "type": "function",
+      "name": "startConsumer",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [96, 150],
+      "summary": "Starts a Kafka consumer on a background thread, polls subscribed topics, and dispatches each consumed record to a handler thread.",
+      "tags": ["kafka", "consumer", "threading", "event-handling"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:subscribe",
+      "type": "function",
+      "name": "subscribe",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [152, 163],
+      "summary": "Subscribes an already-started Kafka consumer to a single topic and logs invalid or failed subscription attempts.",
+      "tags": ["kafka", "consumer", "subscription"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:shutdown",
+      "type": "function",
+      "name": "shutdown",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [165, 195],
+      "summary": "Stops Kafka polling, wakes and joins the consumer thread, then flushes and closes the producer during bean destruction.",
+      "tags": ["kafka", "lifecycle", "cleanup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:toJson",
+      "type": "function",
+      "name": "toJson",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "lineRange": [197, 211],
+      "summary": "Wraps a message with cluster ID, event ID, URI, timestamp-backed metadata, and serializes it to JSON for Kafka.",
+      "tags": ["serialization", "kafka", "event-publishing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "type": "file",
+      "name": "Message.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "summary": "Event envelope model used to attach source, event, URI, timestamp, and payload metadata to Kafka messages.",
+      "tags": ["data-model", "event-envelope", "serialization"],
+      "complexity": "simple",
+      "languageNotes": "Initializes timestamp at object creation while Lombok supplies builder and accessors."
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java:Message",
+      "type": "class",
+      "name": "Message",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "lineRange": [9, 18],
+      "summary": "Kafka event envelope containing metadata and the serialized business payload.",
+      "tags": ["data-model", "event-envelope", "serialization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "type": "file",
+      "name": "KafkaProducer.java",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "summary": "Webhook-specific Kafka producer service that extends the shared KafkaService, initializes the market-webhooks topic, and publishes payment messages with route metadata.",
+      "tags": ["service", "kafka", "producer", "webhook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "type": "class",
+      "name": "KafkaProducer",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "lineRange": [12, 42],
+      "summary": "Spring service specialization of KafkaService for publishing market webhook payment events.",
+      "tags": ["service", "kafka", "producer", "webhook"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "type": "function",
+      "name": "KafkaProducer",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "lineRange": [18, 23],
+      "summary": "Initializes the webhook producer with app configuration and JSON mapping dependencies while passing them to KafkaService.",
+      "tags": ["constructor", "dependency-injection", "kafka"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "lineRange": [25, 29],
+      "summary": "Configures the default market-webhooks topic and connects the Kafka producer after Spring constructs the bean.",
+      "tags": ["kafka", "lifecycle", "producer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:publish",
+      "type": "function",
+      "name": "publish",
+      "filePath": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "lineRange": [31, 41],
+      "summary": "Wraps webhook messages in the shared event envelope and sends them either to the configured market-webhooks topic or an explicit topic.",
+      "tags": ["kafka", "producer", "event-publishing"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:MarketWebhooksApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:MarketWebhooksApplication",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java:AppConf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java:AppConf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:WebhookController",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:WebhookController",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:handleWebhook",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:WebhookController",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:handleWebhook",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:handleWebhook",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:publish",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java:handleWebhook",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java:PaymentDto",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java:PaymentDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java:PaymentDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:connectProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:createDefaultTopic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:startConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:subscribe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:shutdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:toJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:toJson",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java:Message",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java:Message",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java:Message",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:publish",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:KafkaProducer",
+      "target": "class:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:KafkaService",
+      "type": "inherits",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:init",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:createDefaultTopic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:init",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:connectProducer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:publish",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:toJson",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java:publish",
+      "target": "function:market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java:send",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

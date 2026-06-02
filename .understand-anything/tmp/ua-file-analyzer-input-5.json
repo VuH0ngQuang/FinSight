@@ -1,0 +1,210 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "language": "java",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "language": "java",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "language": "java",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "language": "java",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "language": "java",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "language": "java",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "language": "java",
+      "sizeLines": 221,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "language": "java",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "language": "java",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "language": "java",
+      "sizeLines": 377,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "language": "java",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "language": "java",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "language": "java",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "language": "java",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java"
+    ]
+  }
+}

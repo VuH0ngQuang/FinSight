@@ -3,6 +3,8 @@ package com.finsight.marketrealtime.service.impl;
 import com.finsight.marketrealtime.configurations.AppConf;
 import com.finsight.marketrealtime.daos.RedisDao;
 import com.finsight.marketrealtime.dto.ResponseDto;
+import com.finsight.marketrealtime.dto.StockYearDataHistoryRequestDto;
+import com.finsight.marketrealtime.dto.StockYearDataHistoryResponseDto;
 import com.finsight.marketrealtime.dto.StockYearDataDto;
 import com.finsight.marketrealtime.enums.RedisEnum;
 import com.finsight.marketrealtime.model.StockEntity;
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Service
@@ -140,6 +144,47 @@ public class StockYearDataServiceImpl implements StockYearDataService {
         } finally {
             lock.unlock();
         }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ResponseDto<List<StockYearDataHistoryResponseDto>> getValidationHistory(
+            List<StockYearDataHistoryRequestDto> requests
+    ) {
+        if (requests == null || requests.isEmpty()) {
+            return ResponseDto.<List<StockYearDataHistoryResponseDto>>builder()
+                    .success(false)
+                    .errorCode(400)
+                    .errorMessage("validation history request is required")
+                    .data(List.of())
+                    .build();
+        }
+
+        List<StockYearDataHistoryResponseDto> records = new ArrayList<>();
+        for (StockYearDataHistoryRequestDto request : requests) {
+            if (request == null || request.getStockId() == null || request.getYear() == null) {
+                continue;
+            }
+
+            StockEntity stockEntity = stockRepository.findByIdWithYearData(request.getStockId()).orElse(null);
+            if (stockEntity == null || stockEntity.getYearData() == null) {
+                continue;
+            }
+
+            StockEntity.StockYearData yearData = stockEntity.getYearData().get(request.getYear());
+            if (yearData == null) {
+                continue;
+            }
+
+            StockYearDataDto dto = convertToDto(yearData);
+            dto.setStockId(request.getStockId());
+            records.add(new StockYearDataHistoryResponseDto(request.getStockId(), request.getYear(), dto));
+        }
+
+        return ResponseDto.<List<StockYearDataHistoryResponseDto>>builder()
+                .success(true)
+                .data(records)
+                .build();
     }
 
     private void applyDtoToYearData(StockYearDataDto dto, StockEntity.StockYearData yearData) {

@@ -1,0 +1,100 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "language": "java",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "language": "java",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "language": "java",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "language": "java",
+      "sizeLines": 414,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "language": "java",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "language": "java",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java": []
+  }
+}

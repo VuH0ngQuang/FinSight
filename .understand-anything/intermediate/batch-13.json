@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "type": "file",
+      "name": "core.py",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "summary": "Provides the UI/UX Pro Max CSV search core, including BM25 ranking, domain detection, and search helpers for style-guide datasets.",
+      "tags": ["search-engine", "utility", "bm25", "csv-data"],
+      "complexity": "complex",
+      "languageNotes": "Implements a lightweight BM25 ranker in pure Python and applies it to multiple CSV-backed design guidance domains."
+    },
+    {
+      "id": "class:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "class",
+      "name": "BM25",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [99, 158],
+      "summary": "Ranks text documents using BM25 scoring with tokenization, document-frequency indexing, and sorted relevance scores.",
+      "tags": ["search-engine", "ranking", "text-processing"],
+      "complexity": "moderate",
+      "languageNotes": "Uses dictionaries and per-document token counts to compute inverse document frequency and normalized BM25 scores."
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "function",
+      "name": "_load_csv",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [162, 165],
+      "summary": "Loads a CSV file into a list of dictionaries using UTF-8 encoding.",
+      "tags": ["csv-data", "io", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "function",
+      "name": "_search_csv",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [168, 190],
+      "summary": "Searches one CSV dataset by building searchable text from selected columns, ranking rows with BM25, and returning trimmed result fields.",
+      "tags": ["search-engine", "csv-data", "ranking"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "function",
+      "name": "detect_domain",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [193, 213],
+      "summary": "Infers the most relevant search domain for a query by scoring keyword matches across design, color, chart, product, UX, and typography categories.",
+      "tags": ["classification", "search-engine", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search",
+      "type": "function",
+      "name": "search",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [216, 235],
+      "summary": "Runs a domain-specific UI/UX guidance search, auto-detecting the domain when needed and returning source metadata plus ranked rows.",
+      "tags": ["search-engine", "api", "csv-data"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "function",
+      "name": "search_stack",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [238, 257],
+      "summary": "Searches stack-specific implementation guidance CSVs and returns ranked results for a selected frontend stack.",
+      "tags": ["search-engine", "frontend-stack", "csv-data"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "type": "file",
+      "name": "design_system.py",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "summary": "Generates UI design-system recommendations by combining product, style, color, landing, and typography searches with CSV-based reasoning rules.",
+      "tags": ["service", "design-system", "recommendation", "csv-data"],
+      "complexity": "complex",
+      "languageNotes": "Combines a stateful generator class with formatter functions that render the generated recommendation as ASCII or Markdown."
+    },
+    {
+      "id": "class:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "class",
+      "name": "DesignSystemGenerator",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [31, 230],
+      "summary": "Loads UI reasoning rules, searches multiple design domains, selects best matches, and assembles a complete design-system recommendation object.",
+      "tags": ["service", "design-system", "recommendation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "function",
+      "name": "format_ascii_box",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [236, 358],
+      "summary": "Formats a generated design-system recommendation into a fixed-width ASCII report with pattern, style, color, typography, effects, and checklist sections.",
+      "tags": ["serialization", "reporting", "design-system"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "function",
+      "name": "format_markdown",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [361, 451],
+      "summary": "Formats a generated design-system recommendation as Markdown with structured sections for layout pattern, visual style, palette, typography, and implementation checklist.",
+      "tags": ["serialization", "markdown", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "function",
+      "name": "generate_design_system",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [455, 472],
+      "summary": "Creates a design-system recommendation for a query and returns it in Markdown or ASCII format.",
+      "tags": ["factory", "design-system", "serialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "type": "file",
+      "name": "search.py",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "summary": "Provides the command-line interface for UI/UX Pro Max searches, stack guidance lookup, JSON output, and full design-system generation.",
+      "tags": ["entry-point", "cli", "search-engine", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/.shared/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "function",
+      "name": "format_output",
+      "filePath": "market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "lineRange": [17, 40],
+      "summary": "Formats search results into compact Markdown suitable for command-line or assistant consumption.",
+      "tags": ["serialization", "markdown", "cli"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "class:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "class:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "class:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "class:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "file:market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "file:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "target": "function:market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

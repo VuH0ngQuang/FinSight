@@ -1,0 +1,174 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "language": "java",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "language": "java",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "language": "java",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "language": "java",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "language": "java",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "language": "java",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "language": "java",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "language": "java",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "language": "java",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "language": "java",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "language": "java",
+      "sizeLines": 375,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "language": "java",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "language": "java",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "language": "java",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ]
+  }
+}

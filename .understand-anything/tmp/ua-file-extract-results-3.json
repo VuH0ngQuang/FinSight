@@ -1,0 +1,2093 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-rest/src/app.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "createApp",
+          "startLine": 11,
+          "endLine": 37,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "createApp",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createApp",
+          "callee": "express",
+          "lineNumber": 12
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 16
+        },
+        {
+          "caller": "createApp",
+          "callee": "cors",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 22
+        },
+        {
+          "caller": "createApp",
+          "callee": "express.json",
+          "lineNumber": 22
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 23
+        },
+        {
+          "caller": "createApp",
+          "callee": "express.urlencoded",
+          "lineNumber": 23
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "createApp",
+          "callee": "res.status(200).json",
+          "lineNumber": 26
+        },
+        {
+          "caller": "createApp",
+          "callee": "res.status",
+          "lineNumber": 26
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 29
+        },
+        {
+          "caller": "createApp",
+          "callee": "swaggerUi.setup",
+          "lineNumber": 29
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 30
+        },
+        {
+          "caller": "createApp",
+          "callee": "app.use",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createApp",
+          "callee": "res.status(404).json",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createApp",
+          "callee": "res.status",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/config/database.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "initDatabase",
+          "startLine": 16,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "pool",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "initDatabase",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "initDatabase",
+          "callee": "pool.getConnection",
+          "lineNumber": 17
+        },
+        {
+          "caller": "initDatabase",
+          "callee": "connection.ping",
+          "lineNumber": 19
+        },
+        {
+          "caller": "initDatabase",
+          "callee": "console.log",
+          "lineNumber": 20
+        },
+        {
+          "caller": "initDatabase",
+          "callee": "connection.release",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/config/env.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "requireEnv",
+          "startLine": 11,
+          "endLine": 17,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "optionalEnv",
+          "startLine": 19,
+          "endLine": 21,
+          "params": [
+            "key",
+            "fallback"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "config",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/config/kafka.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "buildKafkaConfig",
+          "startLine": 6,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "getKafka",
+          "startLine": 14,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "createProducer",
+          "startLine": 21,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "createConsumer",
+          "startLine": 25,
+          "endLine": 29,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "getKafka",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "createProducer",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "createConsumer",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getKafka",
+          "callee": "buildKafkaConfig",
+          "lineNumber": 16
+        },
+        {
+          "caller": "createProducer",
+          "callee": "getKafka().producer",
+          "lineNumber": 22
+        },
+        {
+          "caller": "createProducer",
+          "callee": "getKafka",
+          "lineNumber": 22
+        },
+        {
+          "caller": "createConsumer",
+          "callee": "getKafka().consumer",
+          "lineNumber": 26
+        },
+        {
+          "caller": "createConsumer",
+          "callee": "getKafka",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/config/redis.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "getRedisUrl",
+          "startLine": 4,
+          "endLine": 7,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "redisClient",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/consumer/KafkaConsumer.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 32,
+      "classes": [
+        {
+          "name": "KafkaConsumer",
+          "startLine": 6,
+          "endLine": 36,
+          "methods": [
+            "constructor",
+            "waitUntilReady",
+            "run",
+            "disconnect"
+          ],
+          "properties": [
+            "consumer",
+            "ready"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaConsumer",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "kafkaConsumer",
+          "line": 38,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "createConsumer",
+          "lineNumber": 11
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.consumer\n      .connect()\n      .then",
+          "lineNumber": 12
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.consumer\n      .connect",
+          "lineNumber": 12
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.consumer.subscribe",
+          "lineNumber": 15
+        },
+        {
+          "caller": "run",
+          "callee": "this.waitUntilReady",
+          "lineNumber": 27
+        },
+        {
+          "caller": "run",
+          "callee": "this.consumer.run",
+          "lineNumber": 28
+        },
+        {
+          "caller": "disconnect",
+          "callee": "this.consumer.disconnect",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/ahpConfigController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 47,
+      "functions": [
+        {
+          "name": "getAhpConfigByUserId",
+          "startLine": 6,
+          "endLine": 28,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "createAhpConfig",
+          "startLine": 30,
+          "endLine": 41,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updateAhpConfig",
+          "startLine": 43,
+          "endLine": 54,
+          "params": [
+            "req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getAhpConfigByUserId",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "createAhpConfig",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "updateAhpConfig",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status(400).json",
+          "lineNumber": 11
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status",
+          "lineNumber": 11
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "ahpConfigService.getByUserId",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status(404).json",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.json",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "console.error",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status(500).json",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getAhpConfigByUserId",
+          "callee": "res.status",
+          "lineNumber": 26
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "ahpConfigQueueService.createAhpConfig",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 35
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "res.status",
+          "lineNumber": 35
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "console.error",
+          "lineNumber": 38
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "res.status(500).json",
+          "lineNumber": 39
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "res.status",
+          "lineNumber": 39
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "ahpConfigQueueService.updateAhpConfig",
+          "lineNumber": 46
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 48
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "res.status",
+          "lineNumber": 48
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "console.error",
+          "lineNumber": 51
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "res.status(500).json",
+          "lineNumber": 52
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "res.status",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/portfolioController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "allocatePortfolio",
+          "startLine": 5,
+          "endLine": 21,
+          "params": [
+            "req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "allocatePortfolio",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status(400).json",
+          "lineNumber": 10
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status",
+          "lineNumber": 10
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "portfolioQueueService.allocate",
+          "lineNumber": 14
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 16
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status",
+          "lineNumber": 16
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "console.error",
+          "lineNumber": 18
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status(500).json",
+          "lineNumber": 19
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.status",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/stockController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 92,
+      "functions": [
+        {
+          "name": "getStockById",
+          "startLine": 6,
+          "endLine": 27,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "getAllStocksId",
+          "startLine": 29,
+          "endLine": 38,
+          "params": [
+            "_req",
+            "res"
+          ]
+        },
+        {
+          "name": "createStock",
+          "startLine": 40,
+          "endLine": 52,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updateStock",
+          "startLine": 54,
+          "endLine": 66,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "deleteStock",
+          "startLine": 68,
+          "endLine": 80,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updateIndustryRatios",
+          "startLine": 82,
+          "endLine": 94,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "forceRecalculateValuations",
+          "startLine": 96,
+          "endLine": 106,
+          "params": [
+            "_req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getStockById",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "getAllStocksId",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "createStock",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "updateStock",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "deleteStock",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "updateIndustryRatios",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "forceRecalculateValuations",
+          "line": 96,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getStockById",
+          "callee": "res.status(400).json",
+          "lineNumber": 10
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.status",
+          "lineNumber": 10
+        },
+        {
+          "caller": "getStockById",
+          "callee": "stockService.getStockById",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.status(404).json",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.status",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.json",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getStockById",
+          "callee": "console.error",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.status(500).json",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getStockById",
+          "callee": "res.status",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "stockService.getAllStocksId",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "res.json",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "console.error",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "res.status(500).json",
+          "lineNumber": 36
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "res.status",
+          "lineNumber": 36
+        },
+        {
+          "caller": "createStock",
+          "callee": "stockQueueService.createStock",
+          "lineNumber": 43
+        },
+        {
+          "caller": "createStock",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 46
+        },
+        {
+          "caller": "createStock",
+          "callee": "res.status",
+          "lineNumber": 46
+        },
+        {
+          "caller": "createStock",
+          "callee": "console.error",
+          "lineNumber": 49
+        },
+        {
+          "caller": "createStock",
+          "callee": "res.status(500).json",
+          "lineNumber": 50
+        },
+        {
+          "caller": "createStock",
+          "callee": "res.status",
+          "lineNumber": 50
+        },
+        {
+          "caller": "updateStock",
+          "callee": "stockQueueService.updateStock",
+          "lineNumber": 57
+        },
+        {
+          "caller": "updateStock",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 60
+        },
+        {
+          "caller": "updateStock",
+          "callee": "res.status",
+          "lineNumber": 60
+        },
+        {
+          "caller": "updateStock",
+          "callee": "console.error",
+          "lineNumber": 63
+        },
+        {
+          "caller": "updateStock",
+          "callee": "res.status(500).json",
+          "lineNumber": 64
+        },
+        {
+          "caller": "updateStock",
+          "callee": "res.status",
+          "lineNumber": 64
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "stockQueueService.deleteStock",
+          "lineNumber": 71
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 74
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "res.status",
+          "lineNumber": 74
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "console.error",
+          "lineNumber": 77
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "res.status(500).json",
+          "lineNumber": 78
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "res.status",
+          "lineNumber": 78
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "stockQueueService.updateIndustryRatios",
+          "lineNumber": 85
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 88
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "res.status",
+          "lineNumber": 88
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "console.error",
+          "lineNumber": 91
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "res.status(500).json",
+          "lineNumber": 92
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "res.status",
+          "lineNumber": 92
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "stockQueueService.recalculateValuations",
+          "lineNumber": 98
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 100
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "res.status",
+          "lineNumber": 100
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "console.error",
+          "lineNumber": 103
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "res.status(500).json",
+          "lineNumber": 104
+        },
+        {
+          "caller": "forceRecalculateValuations",
+          "callee": "res.status",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/stockYearDataController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "getStockYearData",
+          "startLine": 6,
+          "endLine": 34,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "createStockYearData",
+          "startLine": 36,
+          "endLine": 55,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updateStockYearData",
+          "startLine": 57,
+          "endLine": 76,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "deleteStockYearData",
+          "startLine": 78,
+          "endLine": 89,
+          "params": [
+            "req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getStockYearData",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "createStockYearData",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "updateStockYearData",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "deleteStockYearData",
+          "line": 78,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status(400).json",
+          "lineNumber": 11
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status",
+          "lineNumber": 11
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "Number",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "Number.isNaN",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status(400).json",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "stockYearDataService.getByStockAndYear",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status(404).json",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.json",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "console.error",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status(500).json",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.status",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "Number",
+          "lineNumber": 40
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "Number.isNaN",
+          "lineNumber": 42
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status(400).json",
+          "lineNumber": 43
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status",
+          "lineNumber": 43
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "stockYearDataQueueService.createStockYearData",
+          "lineNumber": 47
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 49
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status",
+          "lineNumber": 49
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "console.error",
+          "lineNumber": 52
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status(500).json",
+          "lineNumber": 53
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "res.status",
+          "lineNumber": 53
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "Number",
+          "lineNumber": 61
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "Number.isNaN",
+          "lineNumber": 63
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status(400).json",
+          "lineNumber": 64
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status",
+          "lineNumber": 64
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "stockYearDataQueueService.updateStockYearData",
+          "lineNumber": 68
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 70
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status",
+          "lineNumber": 70
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "console.error",
+          "lineNumber": 73
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status(500).json",
+          "lineNumber": 74
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "res.status",
+          "lineNumber": 74
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "stockYearDataQueueService.deleteStockYearData",
+          "lineNumber": 81
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 83
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "res.status",
+          "lineNumber": 83
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "console.error",
+          "lineNumber": 86
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "res.status(500).json",
+          "lineNumber": 87
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "res.status",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/subscriptionController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "createSubscription",
+          "startLine": 6,
+          "endLine": 20,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "getSubscriptionPlans",
+          "startLine": 22,
+          "endLine": 34,
+          "params": [
+            "_req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createSubscription",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "getSubscriptionPlans",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createSubscription",
+          "callee": "subscriptionQueueService.createSubscription",
+          "lineNumber": 12
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 14
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "res.status",
+          "lineNumber": 14
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "console.error",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "res.status(500).json",
+          "lineNumber": 18
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "res.status",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "subscriptionPlanService.getAllPlans",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "res.json",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "console.error",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "res.status(500).json",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "res.status",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/controllers/userController.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 131,
+      "functions": [
+        {
+          "name": "getFavoriteStocks",
+          "startLine": 6,
+          "endLine": 21,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "getUserDetail",
+          "startLine": 23,
+          "endLine": 44,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "createUser",
+          "startLine": 46,
+          "endLine": 58,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updateUser",
+          "startLine": 60,
+          "endLine": 72,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "deleteUser",
+          "startLine": 74,
+          "endLine": 89,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "updatePassword",
+          "startLine": 91,
+          "endLine": 103,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "loginUser",
+          "startLine": 105,
+          "endLine": 117,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "addFavoriteStock",
+          "startLine": 119,
+          "endLine": 134,
+          "params": [
+            "req",
+            "res"
+          ]
+        },
+        {
+          "name": "removeFavoriteStock",
+          "startLine": 136,
+          "endLine": 151,
+          "params": [
+            "req",
+            "res"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getFavoriteStocks",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "getUserDetail",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "createUser",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "updateUser",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "deleteUser",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "updatePassword",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "loginUser",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "addFavoriteStock",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "removeFavoriteStock",
+          "line": 136,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "res.status(400).json",
+          "lineNumber": 10
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "res.status",
+          "lineNumber": 10
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "userService.getFavoriteStockIdsByUserId",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "res.json",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "console.error",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "res.status(500).json",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getFavoriteStocks",
+          "callee": "res.status",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status(400).json",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "userService.getUserById",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status(404).json",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.json",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "console.error",
+          "lineNumber": 41
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status(500).json",
+          "lineNumber": 42
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.status",
+          "lineNumber": 42
+        },
+        {
+          "caller": "createUser",
+          "callee": "userQueueService.createUser",
+          "lineNumber": 49
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 52
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.status",
+          "lineNumber": 52
+        },
+        {
+          "caller": "createUser",
+          "callee": "console.error",
+          "lineNumber": 55
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.status(500).json",
+          "lineNumber": 56
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.status",
+          "lineNumber": 56
+        },
+        {
+          "caller": "updateUser",
+          "callee": "userQueueService.updateUser",
+          "lineNumber": 63
+        },
+        {
+          "caller": "updateUser",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 66
+        },
+        {
+          "caller": "updateUser",
+          "callee": "res.status",
+          "lineNumber": 66
+        },
+        {
+          "caller": "updateUser",
+          "callee": "console.error",
+          "lineNumber": 69
+        },
+        {
+          "caller": "updateUser",
+          "callee": "res.status(500).json",
+          "lineNumber": 70
+        },
+        {
+          "caller": "updateUser",
+          "callee": "res.status",
+          "lineNumber": 70
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "userQueueService.deleteUser",
+          "lineNumber": 77
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "userService.invalidateFavoriteStockIdsCache",
+          "lineNumber": 81
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 83
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "res.status",
+          "lineNumber": 83
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "console.error",
+          "lineNumber": 86
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "res.status(500).json",
+          "lineNumber": 87
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "res.status",
+          "lineNumber": 87
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "userQueueService.updatePassword",
+          "lineNumber": 94
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 97
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "res.status",
+          "lineNumber": 97
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "console.error",
+          "lineNumber": 100
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "res.status(500).json",
+          "lineNumber": 101
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "res.status",
+          "lineNumber": 101
+        },
+        {
+          "caller": "loginUser",
+          "callee": "userQueueService.login",
+          "lineNumber": 108
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 111
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.status",
+          "lineNumber": 111
+        },
+        {
+          "caller": "loginUser",
+          "callee": "console.error",
+          "lineNumber": 114
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.status(500).json",
+          "lineNumber": 115
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.status",
+          "lineNumber": 115
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "userQueueService.addFavoriteStock",
+          "lineNumber": 122
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "userService.invalidateFavoriteStockIdsCache",
+          "lineNumber": 126
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 128
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "res.status",
+          "lineNumber": 128
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "console.error",
+          "lineNumber": 131
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "res.status(500).json",
+          "lineNumber": 132
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "res.status",
+          "lineNumber": 132
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "userQueueService.removeFavoriteStock",
+          "lineNumber": 139
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "userService.invalidateFavoriteStockIdsCache",
+          "lineNumber": 143
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "res.status(statusCode).json",
+          "lineNumber": 145
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "res.status",
+          "lineNumber": 145
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "console.error",
+          "lineNumber": 148
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "res.status(500).json",
+          "lineNumber": 149
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "res.status",
+          "lineNumber": 149
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/docs/swagger.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 616,
+      "nonEmptyLines": 614,
+      "exports": [
+        {
+          "name": "swaggerSpec",
+          "line": 616,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/AhpConfigDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/ResponseDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/StockDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/StockYearDataDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/SubscriptionDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/UserDetailDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/UserDto.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/dto/message.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 22,
+      "classes": [
+        {
+          "name": "Message",
+          "startLine": 3,
+          "endLine": 27,
+          "methods": [
+            "constructor",
+            "generateUtc7Timestamp"
+          ],
+          "properties": [
+            "sourceId",
+            "eventId",
+            "uri",
+            "timestamp",
+            "payload"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Message",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "Object.assign",
+          "lineNumber": 11
+        },
+        {
+          "caller": "constructor",
+          "callee": "Message.generateUtc7Timestamp",
+          "lineNumber": 15
+        },
+        {
+          "caller": "generateUtc7Timestamp",
+          "callee": "now.getTime",
+          "lineNumber": 21
+        },
+        {
+          "caller": "generateUtc7Timestamp",
+          "callee": "now.getTimezoneOffset",
+          "lineNumber": 21
+        },
+        {
+          "caller": "generateUtc7Timestamp",
+          "callee": "utc7.toISOString().replace",
+          "lineNumber": 25
+        },
+        {
+          "caller": "generateUtc7Timestamp",
+          "callee": "utc7.toISOString",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "startServer",
+          "startLine": 8,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "shutdown",
+          "startLine": 23,
+          "endLine": 31,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "startServer",
+          "callee": "initDatabase",
+          "lineNumber": 10
+        },
+        {
+          "caller": "startServer",
+          "callee": "redisClient.connect",
+          "lineNumber": 11
+        },
+        {
+          "caller": "startServer",
+          "callee": "app.listen",
+          "lineNumber": 13
+        },
+        {
+          "caller": "startServer",
+          "callee": "console.log",
+          "lineNumber": 14
+        },
+        {
+          "caller": "startServer",
+          "callee": "console.log",
+          "lineNumber": 15
+        },
+        {
+          "caller": "startServer",
+          "callee": "console.error",
+          "lineNumber": 18
+        },
+        {
+          "caller": "startServer",
+          "callee": "process.exit",
+          "lineNumber": 19
+        },
+        {
+          "caller": "shutdown",
+          "callee": "redisClient.quit",
+          "lineNumber": 26
+        },
+        {
+          "caller": "shutdown",
+          "callee": "process.exit",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/models/AhpConfigEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

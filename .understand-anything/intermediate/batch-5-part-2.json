@@ -1,0 +1,1322 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "type": "file",
+      "name": "Message.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "summary": "Kafka message envelope carrying source, event, URI, timestamp, and payload metadata.",
+      "tags": [
+        "data-model",
+        "messaging",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java:Message",
+      "type": "class",
+      "name": "Message",
+      "lineRange": [
+        9,
+        18
+      ],
+      "summary": "Envelope model for Kafka event metadata and payload content.",
+      "tags": [
+        "data-model",
+        "messaging",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "type": "file",
+      "name": "StockYearData.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "summary": "Financial data model for annual stock metrics, valuation fields, cash-flow values, and ratio calculations.",
+      "tags": [
+        "data-model",
+        "finance",
+        "valuation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java:StockYearData",
+      "type": "class",
+      "name": "StockYearData",
+      "lineRange": [
+        10,
+        34
+      ],
+      "summary": "Annual financial metric model used by upload parsing and validation.",
+      "tags": [
+        "data-model",
+        "finance",
+        "valuation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "type": "file",
+      "name": "KafkaProducer.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "summary": "Higher-level producer facade that initializes Kafka publishing and sends ingestion messages with service URI metadata.",
+      "tags": [
+        "service",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:KafkaProducer",
+      "type": "class",
+      "name": "KafkaProducer",
+      "lineRange": [
+        12,
+        42
+      ],
+      "summary": "Producer facade that publishes ingestion messages through KafkaService.",
+      "tags": [
+        "service",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:init",
+      "type": "function",
+      "name": "init",
+      "lineRange": [
+        25,
+        29
+      ],
+      "summary": "Initializes Kafka producer or request-response infrastructure after dependency injection.",
+      "tags": [
+        "lifecycle",
+        "kafka",
+        "startup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:publish",
+      "type": "function",
+      "name": "publish",
+      "lineRange": [
+        31,
+        35
+      ],
+      "summary": "Publishes stock-year ingestion messages through KafkaService.",
+      "tags": [
+        "kafka",
+        "producer",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "type": "file",
+      "name": "StagedUpload.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "summary": "Record that stores staged upload metadata, original filename, parsed records, and validation result before confirmation.",
+      "tags": [
+        "data-model",
+        "record",
+        "upload"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "type": "file",
+      "name": "StockYearDataValidationRecord.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "summary": "Record pairing a parsed stock-year data row with its source sheet and row location for validation reporting.",
+      "tags": [
+        "data-model",
+        "record",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "type": "file",
+      "name": "UploadValidationIssue.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "summary": "Record describing a validation issue field and message for upload errors or warnings.",
+      "tags": [
+        "data-model",
+        "record",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "type": "file",
+      "name": "StockYearDataUploadService.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "summary": "Coordinates the complete stock-year upload workflow: file checks, workbook parsing, history lookup, validation, Redis staging, and Kafka publishing.",
+      "tags": [
+        "service",
+        "upload",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:StockYearDataUploadService",
+      "type": "class",
+      "name": "StockYearDataUploadService",
+      "lineRange": [
+        45,
+        377
+      ],
+      "summary": "Central service orchestrating stock-year data upload parsing, validation, staging, and publish confirmation.",
+      "tags": [
+        "service",
+        "upload",
+        "orchestration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:uploadStockData",
+      "type": "function",
+      "name": "uploadStockData",
+      "lineRange": [
+        81,
+        110
+      ],
+      "summary": "Accepts an uploaded spreadsheet and delegates validation and staging to the upload service.",
+      "tags": [
+        "api-handler",
+        "file-upload",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:confirmUpload",
+      "type": "function",
+      "name": "confirmUpload",
+      "lineRange": [
+        112,
+        121
+      ],
+      "summary": "Confirms a staged upload and triggers publishing of the parsed records.",
+      "tags": [
+        "api-handler",
+        "upload",
+        "confirmation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:parseStockData",
+      "type": "function",
+      "name": "parseStockData",
+      "lineRange": [
+        123,
+        135
+      ],
+      "summary": "Parses workbook or sheet contents into stock-year validation records.",
+      "tags": [
+        "excel",
+        "parsing",
+        "upload"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:fetchHistoryRecords",
+      "type": "function",
+      "name": "fetchHistoryRecords",
+      "lineRange": [
+        215,
+        239
+      ],
+      "summary": "Fetches historical stock-year records and merges lookup failures into the validation result.",
+      "tags": [
+        "validation",
+        "history",
+        "kafka"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:buildHistoryRequests",
+      "type": "function",
+      "name": "buildHistoryRequests",
+      "lineRange": [
+        241,
+        257
+      ],
+      "summary": "Builds unique stock-year history lookup requests from parsed upload records.",
+      "tags": [
+        "validation",
+        "history",
+        "mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:stageUpload",
+      "type": "function",
+      "name": "stageUpload",
+      "lineRange": [
+        259,
+        277
+      ],
+      "summary": "Stores parsed upload data and validation result in Redis with a generated upload ID.",
+      "tags": [
+        "upload",
+        "redis",
+        "staging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:publishRecords",
+      "type": "function",
+      "name": "publishRecords",
+      "lineRange": [
+        279,
+        289
+      ],
+      "summary": "Publishes confirmed upload records to Kafka for downstream ingestion.",
+      "tags": [
+        "upload",
+        "kafka",
+        "publishing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:setMetricValue",
+      "type": "function",
+      "name": "setMetricValue",
+      "lineRange": [
+        291,
+        330
+      ],
+      "summary": "Maps spreadsheet metric names to StockYearData financial fields.",
+      "tags": [
+        "excel",
+        "mapping",
+        "finance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:getCellBigDecimalValue",
+      "type": "function",
+      "name": "getCellBigDecimalValue",
+      "lineRange": [
+        332,
+        355
+      ],
+      "summary": "Converts spreadsheet cells into BigDecimal values when possible.",
+      "tags": [
+        "excel",
+        "parsing",
+        "numeric"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:getCellNumericValue",
+      "type": "function",
+      "name": "getCellNumericValue",
+      "lineRange": [
+        357,
+        376
+      ],
+      "summary": "Extracts numeric values from numeric or formula spreadsheet cells.",
+      "tags": [
+        "excel",
+        "parsing",
+        "numeric"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "type": "file",
+      "name": "BusinessValidation.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "summary": "Applies business rules to stock-year records, including required fields, metric ranges, and year-over-year change warnings.",
+      "tags": [
+        "validation",
+        "business-rules",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:BusinessValidation",
+      "type": "class",
+      "name": "BusinessValidation",
+      "lineRange": [
+        13,
+        153
+      ],
+      "summary": "Business validation component for finance metric sanity checks and historical comparisons.",
+      "tags": [
+        "validation",
+        "business-rules",
+        "finance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validate",
+      "type": "function",
+      "name": "validate",
+      "lineRange": [
+        23,
+        46
+      ],
+      "summary": "Runs validation rules for the file, workbook, or business data represented by the method parameters.",
+      "tags": [
+        "validation",
+        "rules",
+        "workflow"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:buildHistoryMap",
+      "type": "function",
+      "name": "buildHistoryMap",
+      "lineRange": [
+        48,
+        62
+      ],
+      "summary": "Indexes historical stock-year responses by stock and year for efficient comparisons.",
+      "tags": [
+        "validation",
+        "history",
+        "mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validateMetricRange",
+      "type": "function",
+      "name": "validateMetricRange",
+      "lineRange": [
+        81,
+        95
+      ],
+      "summary": "Checks finance metrics against accepted business ranges.",
+      "tags": [
+        "validation",
+        "business-rules",
+        "finance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validateYoY",
+      "type": "function",
+      "name": "validateYoY",
+      "lineRange": [
+        97,
+        136
+      ],
+      "summary": "Compares uploaded records with historical data and flags large year-over-year changes.",
+      "tags": [
+        "validation",
+        "history",
+        "finance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:warnLargeYoYChange",
+      "type": "function",
+      "name": "warnLargeYoYChange",
+      "lineRange": [
+        138,
+        152
+      ],
+      "summary": "Adds a warning when a metric changes beyond the configured year-over-year threshold.",
+      "tags": [
+        "validation",
+        "warning",
+        "finance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "type": "file",
+      "name": "FileValidation.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "summary": "Validates uploaded files before parsing, including presence, emptiness, and expected Excel MIME type.",
+      "tags": [
+        "validation",
+        "file-upload",
+        "excel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:FileValidation",
+      "type": "class",
+      "name": "FileValidation",
+      "lineRange": [
+        8,
+        37
+      ],
+      "summary": "File-level upload validator for Excel content-type and empty file checks.",
+      "tags": [
+        "validation",
+        "file-upload",
+        "excel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:validate",
+      "type": "function",
+      "name": "validate",
+      "lineRange": [
+        15,
+        36
+      ],
+      "summary": "Runs validation rules for the file, workbook, or business data represented by the method parameters.",
+      "tags": [
+        "validation",
+        "rules",
+        "workflow"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "type": "file",
+      "name": "StructureValidation.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "summary": "Validates workbook and sheet structure for stock-year upload files, including required metrics, year headers, and numeric cells.",
+      "tags": [
+        "validation",
+        "excel",
+        "schema"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:StructureValidation",
+      "type": "class",
+      "name": "StructureValidation",
+      "lineRange": [
+        13,
+        147
+      ],
+      "summary": "Workbook structure validator for required sheets, metric rows, year headers, and numeric values.",
+      "tags": [
+        "validation",
+        "excel",
+        "schema"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:validateWorkbook",
+      "type": "function",
+      "name": "validateWorkbook",
+      "lineRange": [
+        35,
+        47
+      ],
+      "summary": "Checks workbook-level structure before sheet parsing proceeds.",
+      "tags": [
+        "validation",
+        "excel",
+        "workbook"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:validateSheet",
+      "type": "function",
+      "name": "validateSheet",
+      "lineRange": [
+        49,
+        109
+      ],
+      "summary": "Validates sheet layout, required metric rows, year headers, and numeric cells.",
+      "tags": [
+        "validation",
+        "excel",
+        "schema"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:readYear",
+      "type": "function",
+      "name": "readYear",
+      "lineRange": [
+        111,
+        124
+      ],
+      "summary": "Parses a year header from a spreadsheet cell.",
+      "tags": [
+        "excel",
+        "parsing",
+        "date"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:isNumericLike",
+      "type": "function",
+      "name": "isNumericLike",
+      "lineRange": [
+        130,
+        146
+      ],
+      "summary": "Determines whether a spreadsheet cell can be treated as numeric input.",
+      "tags": [
+        "excel",
+        "validation",
+        "numeric"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "type": "file",
+      "name": "UploadValidationResult.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "summary": "Accumulates upload validation errors and warnings and supports merging results across validation phases.",
+      "tags": [
+        "validation",
+        "result",
+        "aggregation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:UploadValidationResult",
+      "type": "class",
+      "name": "UploadValidationResult",
+      "lineRange": [
+        8,
+        40
+      ],
+      "summary": "Mutable validation result collector for errors and warnings.",
+      "tags": [
+        "validation",
+        "result",
+        "aggregation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addError",
+      "type": "function",
+      "name": "addError",
+      "lineRange": [
+        12,
+        14
+      ],
+      "summary": "Adds a validation error issue to the result.",
+      "tags": [
+        "validation",
+        "error",
+        "aggregation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addWarning",
+      "type": "function",
+      "name": "addWarning",
+      "lineRange": [
+        16,
+        18
+      ],
+      "summary": "Adds a validation warning issue to the result.",
+      "tags": [
+        "validation",
+        "warning",
+        "aggregation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:merge",
+      "type": "function",
+      "name": "merge",
+      "lineRange": [
+        20,
+        24
+      ],
+      "summary": "Combines another validation result into this result.",
+      "tags": [
+        "validation",
+        "aggregation",
+        "merge"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasErrors",
+      "type": "function",
+      "name": "hasErrors",
+      "lineRange": [
+        26,
+        28
+      ],
+      "summary": "Reports whether validation errors have been collected.",
+      "tags": [
+        "validation",
+        "query",
+        "result"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasWarnings",
+      "type": "function",
+      "name": "hasWarnings",
+      "lineRange": [
+        29,
+        31
+      ],
+      "summary": "Reports whether validation warnings have been collected.",
+      "tags": [
+        "validation",
+        "query",
+        "result"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getErrors",
+      "type": "function",
+      "name": "getErrors",
+      "lineRange": [
+        33,
+        35
+      ],
+      "summary": "Returns collected validation errors.",
+      "tags": [
+        "validation",
+        "result",
+        "accessor"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getWarnings",
+      "type": "function",
+      "name": "getWarnings",
+      "lineRange": [
+        37,
+        39
+      ],
+      "summary": "Returns collected validation warnings.",
+      "tags": [
+        "validation",
+        "result",
+        "accessor"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java:Message",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java:Message",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java:StockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java:StockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:KafkaProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:KafkaProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:publish",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java:publish",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:StockYearDataUploadService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:StockYearDataUploadService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:uploadStockData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:uploadStockData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:confirmUpload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:confirmUpload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:parseStockData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:fetchHistoryRecords",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:buildHistoryRequests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:stageUpload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:publishRecords",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:setMetricValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:getCellBigDecimalValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java:getCellNumericValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:BusinessValidation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:BusinessValidation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:buildHistoryMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validateMetricRange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:validateYoY",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java:warnLargeYoYChange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:FileValidation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:FileValidation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:validate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java:validate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:StructureValidation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:StructureValidation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:validateWorkbook",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:validateWorkbook",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:validateSheet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:readYear",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java:isNumericLike",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:UploadValidationResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:UploadValidationResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addWarning",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:addWarning",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:merge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:merge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasErrors",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasErrors",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasWarnings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:hasWarnings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getErrors",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getErrors",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getWarnings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java:getWarnings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

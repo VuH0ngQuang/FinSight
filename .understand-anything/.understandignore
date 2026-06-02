@@ -1,0 +1,52 @@
+# .understandignore - patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions - uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+
+.claude/
+.idea/
+.gitnexus/
+.understand-anything/tmp/
+.understand-anything/intermediate/
+.env
+*.env
+*.iml
+*.log
+
+# --- From .gitignore (uncomment to exclude) ---
+
+# .mvn/wrapper/maven-wrapper.jar
+# !**/src/main/**/target/
+# !**/src/test/**/target/
+# .apt_generated
+# .classpath
+# .factorypath
+# .project
+# .settings
+# .springBeans
+# .sts4-cache
+# *.iws
+# *.iml
+# *.ipr
+# /nbproject/private/
+# /nbbuild/
+# /nbdist/
+# /.nb-gradle/
+# !**/src/main/**/build/
+# !**/src/test/**/build/
+# .env
+# market-realtime/backtest-out/
+
+# --- Detected directories (uncomment to exclude) ---
+
+# k6-test/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# *.test.*
+# *.spec.*
+# *.snap

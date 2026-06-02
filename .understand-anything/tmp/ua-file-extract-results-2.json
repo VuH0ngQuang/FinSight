@@ -1,0 +1,6255 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-frontend/src/hooks/useMarketData.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "useMarketData",
+          "startLine": 4,
+          "endLine": 40,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "useMarketData",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useMarketData",
+          "callee": "useState",
+          "lineNumber": 5
+        },
+        {
+          "caller": "useMarketData",
+          "callee": "useState",
+          "lineNumber": 6
+        },
+        {
+          "caller": "useMarketData",
+          "callee": "useEffect",
+          "lineNumber": 8
+        },
+        {
+          "caller": "handleMarketData",
+          "callee": "data.stockId.toUpperCase",
+          "lineNumber": 10
+        },
+        {
+          "caller": "handleMarketData",
+          "callee": "Date.now",
+          "lineNumber": 11
+        },
+        {
+          "caller": "handleMarketData",
+          "callee": "setPrices",
+          "lineNumber": 12
+        },
+        {
+          "caller": "handleMarketData",
+          "callee": "setRecentUpdates",
+          "lineNumber": 16
+        },
+        {
+          "caller": "useMarketData",
+          "callee": "subscribeToMarketData",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useMarketData",
+          "callee": "unsubscribe",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getMatchPrice",
+          "callee": "stockId.toUpperCase",
+          "lineNumber": 30
+        },
+        {
+          "caller": "isRecentlyUpdated",
+          "callee": "stockId.toUpperCase",
+          "lineNumber": 34
+        },
+        {
+          "caller": "isRecentlyUpdated",
+          "callee": "Date.now",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/hooks/useStockList.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "useStockList",
+          "startLine": 5,
+          "endLine": 57,
+          "params": [
+            "options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "useStockList",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "useStockList",
+          "callee": "useState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "useStockList",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "useStockList",
+          "callee": "useState",
+          "lineNumber": 9
+        },
+        {
+          "caller": "useStockList",
+          "callee": "useRef",
+          "lineNumber": 10
+        },
+        {
+          "caller": "useStockList",
+          "callee": "useEffect",
+          "lineNumber": 12
+        },
+        {
+          "caller": "useStockList",
+          "callee": "getAllStockIds()\n      .then((ids) => {\n        if (!mounted) return\n        setSymbols(ids)\n      })\n      .catch",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useStockList",
+          "callee": "getAllStockIds()\n      .then",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useStockList",
+          "callee": "getAllStockIds",
+          "lineNumber": 15
+        },
+        {
+          "caller": "useStockList",
+          "callee": "setSymbols",
+          "lineNumber": 18
+        },
+        {
+          "caller": "useStockList",
+          "callee": "setError",
+          "lineNumber": 22
+        },
+        {
+          "caller": "useStockList",
+          "callee": "controller.abort",
+          "lineNumber": 24
+        },
+        {
+          "caller": "useStockList",
+          "callee": "useEffect",
+          "lineNumber": 27
+        },
+        {
+          "caller": "useStockList",
+          "callee": "symbols.filter",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useStockList",
+          "callee": "loadingRef.current.has",
+          "lineNumber": 32
+        },
+        {
+          "caller": "useStockList",
+          "callee": "toLoad.forEach",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useStockList",
+          "callee": "loadingRef.current.add",
+          "lineNumber": 35
+        },
+        {
+          "caller": "useStockList",
+          "callee": "Promise.all",
+          "lineNumber": 37
+        },
+        {
+          "caller": "useStockList",
+          "callee": "toLoad.map",
+          "lineNumber": 38
+        },
+        {
+          "caller": "useStockList",
+          "callee": "fetchStockDetail",
+          "lineNumber": 40
+        },
+        {
+          "caller": "useStockList",
+          "callee": "setDetails",
+          "lineNumber": 44
+        },
+        {
+          "caller": "useStockList",
+          "callee": "loadingRef.current.delete",
+          "lineNumber": 48
+        },
+        {
+          "caller": "useStockList",
+          "callee": "controller.abort",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/AdminPanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 538,
+      "nonEmptyLines": 501,
+      "functions": [
+        {
+          "name": "defaultStockForm",
+          "startLine": 22,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "AdminPanel",
+          "startLine": 28,
+          "endLine": 536,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 29
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useStockList",
+          "lineNumber": 30
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "defaultStockForm",
+          "lineNumber": 33
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 34
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 35
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 38
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 39
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 40
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 43
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 44
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 45
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 50
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 51
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 52
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 53
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 56
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 57
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 58
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 59
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 60
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 63
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 64
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 67
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 68
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 69
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "useState",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockMsg",
+          "lineNumber": 73
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockErr",
+          "lineNumber": 73
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "updateStock",
+          "lineNumber": 75
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "createStock",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockModalOpen",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setEditingStock",
+          "lineNumber": 78
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockForm",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "defaultStockForm",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockMsg",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handleStockSubmit",
+          "callee": "setStockErr",
+          "lineNumber": 82
+        },
+        {
+          "caller": "handleDeleteStock",
+          "callee": "deleteStock",
+          "lineNumber": 88
+        },
+        {
+          "caller": "handleDeleteStock",
+          "callee": "setDeleteStockTarget",
+          "lineNumber": 89
+        },
+        {
+          "caller": "handleDeleteStock",
+          "callee": "setStockMsg",
+          "lineNumber": 90
+        },
+        {
+          "caller": "handleDeleteStock",
+          "callee": "setStockErr",
+          "lineNumber": 92
+        },
+        {
+          "caller": "handleUpdateIndustry",
+          "callee": "updateIndustryRatios",
+          "lineNumber": 98
+        },
+        {
+          "caller": "handleUpdateIndustry",
+          "callee": "setIndustryModalStock",
+          "lineNumber": 99
+        },
+        {
+          "caller": "handleUpdateIndustry",
+          "callee": "setStockMsg",
+          "lineNumber": 100
+        },
+        {
+          "caller": "handleUpdateIndustry",
+          "callee": "setStockErr",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "userSearchId.trim",
+          "lineNumber": 108
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setUserSearchLoading",
+          "lineNumber": 109
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setUserSearchErr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setLoadedUser",
+          "lineNumber": 111
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setUserMsg",
+          "lineNumber": 112
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "getUserDetail",
+          "lineNumber": 114
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "userSearchId.trim",
+          "lineNumber": 114
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setLoadedUser",
+          "lineNumber": 115
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setUserSearchErr",
+          "lineNumber": 117
+        },
+        {
+          "caller": "handleUserSearch",
+          "callee": "setUserSearchLoading",
+          "lineNumber": 119
+        },
+        {
+          "caller": "openEditUser",
+          "callee": "setEditUserForm",
+          "lineNumber": 125
+        },
+        {
+          "caller": "openEditUser",
+          "callee": "setEditUserErr",
+          "lineNumber": 130
+        },
+        {
+          "caller": "openEditUser",
+          "callee": "setEditUserOpen",
+          "lineNumber": 131
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setEditUserLoading",
+          "lineNumber": 136
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setEditUserErr",
+          "lineNumber": 137
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "updateUser",
+          "lineNumber": 139
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "getUserDetail",
+          "lineNumber": 140
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setLoadedUser",
+          "lineNumber": 141
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setEditUserOpen",
+          "lineNumber": 142
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setUserMsg",
+          "lineNumber": 143
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setEditUserErr",
+          "lineNumber": 145
+        },
+        {
+          "caller": "handleEditUserSave",
+          "callee": "setEditUserLoading",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwErr",
+          "lineNumber": 154
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwErr",
+          "lineNumber": 158
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwLoading",
+          "lineNumber": 161
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwErr",
+          "lineNumber": 162
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "adminResetPassword",
+          "lineNumber": 164
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwOpen",
+          "lineNumber": 165
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setNewPassword",
+          "lineNumber": 166
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setConfirmPassword",
+          "lineNumber": 167
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setUserMsg",
+          "lineNumber": 168
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwErr",
+          "lineNumber": 170
+        },
+        {
+          "caller": "handleResetPassword",
+          "callee": "setResetPwLoading",
+          "lineNumber": 172
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setDeleteUserLoading",
+          "lineNumber": 178
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "deleteUser",
+          "lineNumber": 180
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setDeleteUserOpen",
+          "lineNumber": 181
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setLoadedUser",
+          "lineNumber": 182
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setUserSearchId",
+          "lineNumber": 183
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setUserMsg",
+          "lineNumber": 184
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setUserSearchErr",
+          "lineNumber": 186
+        },
+        {
+          "caller": "handleDeleteUser",
+          "callee": "setDeleteUserLoading",
+          "lineNumber": 188
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdMsg",
+          "lineNumber": 194
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdErr",
+          "lineNumber": 194
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdUploading",
+          "lineNumber": 195
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "uploadStockYearDataExcel",
+          "lineNumber": 197
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdMsg",
+          "lineNumber": 198
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdFile",
+          "lineNumber": 199
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdErr",
+          "lineNumber": 201
+        },
+        {
+          "caller": "handleYdUpload",
+          "callee": "setYdUploading",
+          "lineNumber": 203
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockErr",
+          "lineNumber": 224
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditingStock",
+          "lineNumber": 230
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 230
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "defaultStockForm",
+          "lineNumber": 230
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockModalOpen",
+          "lineNumber": 230
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "['ID', 'Name', 'Sector', 'P/E', 'P/B', 'P/CF', 'P/S', 'Actions'].map",
+          "lineNumber": 242
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "symbols?.map",
+          "lineNumber": 248
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "formatPrice",
+          "lineNumber": 255
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "formatPrice",
+          "lineNumber": 256
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "formatPrice",
+          "lineNumber": 257
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "formatPrice",
+          "lineNumber": 258
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditingStock",
+          "lineNumber": 263
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 264
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockModalOpen",
+          "lineNumber": 265
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setIndustryModalStock",
+          "lineNumber": 271
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setIndustryForm",
+          "lineNumber": 272
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteStockTarget",
+          "lineNumber": 276
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setYdFile",
+          "lineNumber": 300
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleYdUpload",
+          "lineNumber": 304
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setYdErr",
+          "lineNumber": 314
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setUserSearchId",
+          "lineNumber": 329
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleUserSearch",
+          "lineNumber": 330
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleUserSearch",
+          "lineNumber": 335
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "userSearchId.trim",
+          "lineNumber": 336
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "(loadedUser.username ?? loadedUser.email ?? '?').slice(0, 2).toUpperCase",
+          "lineNumber": 351
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "(loadedUser.username ?? loadedUser.email ?? '?').slice",
+          "lineNumber": 351
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "loadedUser.subscriptions?.map",
+          "lineNumber": 360
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "formatDate",
+          "lineNumber": 380
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setResetPwErr",
+          "lineNumber": 396
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setNewPassword",
+          "lineNumber": 396
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setConfirmPassword",
+          "lineNumber": 396
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setResetPwOpen",
+          "lineNumber": 396
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteUserOpen",
+          "lineNumber": 402
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockModalOpen",
+          "lineNumber": 414
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 416
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "e.target.value.toUpperCase",
+          "lineNumber": 416
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 417
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 418
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "(['peRatio', 'pbRatio', 'pcfRatio', 'psRatio'] as const).map",
+          "lineNumber": 419
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockForm",
+          "lineNumber": 420
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "Number",
+          "lineNumber": 420
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setStockModalOpen",
+          "lineNumber": 424
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleStockSubmit",
+          "lineNumber": 425
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteStockTarget",
+          "lineNumber": 430
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteStockTarget",
+          "lineNumber": 433
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleDeleteStock",
+          "lineNumber": 434
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setIndustryModalStock",
+          "lineNumber": 439
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "(['industryPeRatio', 'industryPbRatio', 'industryPcfRatio', 'industryPsRatio'] as const).map",
+          "lineNumber": 441
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setIndustryForm",
+          "lineNumber": 442
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "Number",
+          "lineNumber": 442
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setIndustryModalStock",
+          "lineNumber": 446
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleUpdateIndustry",
+          "lineNumber": 447
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditUserOpen",
+          "lineNumber": 452
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditUserForm",
+          "lineNumber": 456
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditUserForm",
+          "lineNumber": 460
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditUserForm",
+          "lineNumber": 464
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setEditUserOpen",
+          "lineNumber": 469
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleEditUserSave",
+          "lineNumber": 471
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setResetPwOpen",
+          "lineNumber": 481
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setNewPassword",
+          "lineNumber": 489
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setConfirmPassword",
+          "lineNumber": 500
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setResetPwOpen",
+          "lineNumber": 509
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleResetPassword",
+          "lineNumber": 511
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteUserOpen",
+          "lineNumber": 521
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "setDeleteUserOpen",
+          "lineNumber": 529
+        },
+        {
+          "caller": "AdminPanel",
+          "callee": "handleDeleteUser",
+          "lineNumber": 530
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/Checkout.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 185,
+      "functions": [
+        {
+          "name": "PaymentPanel",
+          "startLine": 32,
+          "endLine": 83,
+          "params": [
+            "{ checkoutUrl, onSuccess }"
+          ]
+        },
+        {
+          "name": "OrderSummaryPanel",
+          "startLine": 87,
+          "endLine": 135,
+          "params": [
+            "{ plan, onBack }"
+          ]
+        },
+        {
+          "name": "SuccessOverlay",
+          "startLine": 139,
+          "endLine": 159,
+          "params": [
+            "{ onContinue }"
+          ]
+        },
+        {
+          "name": "Checkout",
+          "startLine": 163,
+          "endLine": 207,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PaymentPanel",
+          "callee": "useState",
+          "lineNumber": 33
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "usePayOS",
+          "lineNumber": 34
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "setIsOpen",
+          "lineNumber": 40
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "onSuccess",
+          "lineNumber": 41
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "setIsOpen",
+          "lineNumber": 44
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "setIsOpen",
+          "lineNumber": 47
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "useEffect",
+          "lineNumber": 51
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "requestAnimationFrame",
+          "lineNumber": 52
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "open",
+          "lineNumber": 53
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "setIsOpen",
+          "lineNumber": 54
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "cancelAnimationFrame",
+          "lineNumber": 57
+        },
+        {
+          "caller": "PaymentPanel",
+          "callee": "exit",
+          "lineNumber": 58
+        },
+        {
+          "caller": "OrderSummaryPanel",
+          "callee": "plan.features.map",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Checkout",
+          "callee": "useNavigate",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Checkout",
+          "callee": "useLocation",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Checkout",
+          "callee": "useState",
+          "lineNumber": 168
+        },
+        {
+          "caller": "Checkout",
+          "callee": "useEffect",
+          "lineNumber": 170
+        },
+        {
+          "caller": "Checkout",
+          "callee": "navigate",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Checkout",
+          "callee": "navigate",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Checkout",
+          "callee": "setConfirmed",
+          "lineNumber": 192
+        },
+        {
+          "caller": "Checkout",
+          "callee": "navigate",
+          "lineNumber": 202
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/Dashboard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 212,
+      "nonEmptyLines": 198,
+      "functions": [
+        {
+          "name": "Dashboard",
+          "startLine": 16,
+          "endLine": 210,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Dashboard",
+          "callee": "useAuth",
+          "lineNumber": 17
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useWatchlist",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useAhpWeights",
+          "lineNumber": 19
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useStockList",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useMarketData",
+          "lineNumber": 21
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useMemo",
+          "lineNumber": 25
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "symbols.map",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "buildMetrics",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "computeTopsis",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useMemo",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "topsisScores.values",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "vals.reduce",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useMemo",
+          "lineNumber": 37
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "[...topsisScores.keys()].sort",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "topsisScores.keys",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "useMemo",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "symbols.filter",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "favoriteIds.has",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "s.toUpperCase",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleRemoveFavorite",
+          "callee": "removeFavoriteStock",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleRemoveFavorite",
+          "callee": "refreshUserDetail",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleRemoveFavorite",
+          "callee": "refreshWatchlist",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleAddFavorite",
+          "callee": "addFavoriteStock",
+          "lineNumber": 59
+        },
+        {
+          "caller": "handleAddFavorite",
+          "callee": "refreshUserDetail",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handleAddFavorite",
+          "callee": "refreshWatchlist",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatScore",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatScore",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "topsisScores.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "setChartSymbol",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "e.target.value.toUpperCase",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "favoriteSymbols.slice(0, 6).map",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "favoriteSymbols.slice",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "topsisScores.get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "getMatchPrice",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "isRecentlyUpdated",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatRatio",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatRatio",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "formatScore",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "favoriteSymbols.map",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "getMatchPrice",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "isRecentlyUpdated",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "handleRemoveFavorite",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "symbols.filter((s) => !favoriteSymbols.includes(s)).slice(0, 10).map",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "symbols.filter((s) => !favoriteSymbols.includes(s)).slice",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "symbols.filter",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "favoriteSymbols.includes",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Dashboard",
+          "callee": "handleAddFavorite",
+          "lineNumber": 194
+        }
+      ],
+      "metrics": {
+        "importCount": 12,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/LoginRegister.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 161,
+      "nonEmptyLines": 148,
+      "functions": [
+        {
+          "name": "LoginRegister",
+          "startLine": 10,
+          "endLine": 159,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "LoginRegister",
+          "callee": "useAuth",
+          "lineNumber": 11
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useNavigate",
+          "lineNumber": 12
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 13
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 14
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 18
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 19
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "useState",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "e.preventDefault",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "setError",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "setLoading",
+          "lineNumber": 33
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "loginUser",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "Boolean",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "login",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "String",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "navigate",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "setError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleSignIn",
+          "callee": "setLoading",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "e.preventDefault",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "setError",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "setLoading",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "createUser",
+          "lineNumber": 55
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "Boolean",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "login",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "String",
+          "lineNumber": 61
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "navigate",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "setError",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handleRegister",
+          "callee": "setLoading",
+          "lineNumber": 66
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "(['signin', 'register'] as Tab[]).map",
+          "lineNumber": 86
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setTab",
+          "lineNumber": 89
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setError",
+          "lineNumber": 89
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setError",
+          "lineNumber": 99
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "handleSignIn",
+          "lineNumber": 102
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setEmail",
+          "lineNumber": 105
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setPassword",
+          "lineNumber": 114
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setShowPw",
+          "lineNumber": 118
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "handleRegister",
+          "lineNumber": 133
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setRegUsername",
+          "lineNumber": 136
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setRegEmail",
+          "lineNumber": 140
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setRegPassword",
+          "lineNumber": 144
+        },
+        {
+          "caller": "LoginRegister",
+          "callee": "setRegPhone",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/Payment.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 260,
+      "nonEmptyLines": 238,
+      "functions": [
+        {
+          "name": "Payment",
+          "startLine": 40,
+          "endLine": 258,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Payment",
+          "callee": "useNavigate",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Payment",
+          "callee": "useAuthContext",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Payment",
+          "callee": "useState",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Payment",
+          "callee": "useEffect",
+          "lineNumber": 52
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "getSubscriptionPlans",
+          "lineNumber": 56
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "plans.filter",
+          "lineNumber": 57
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "plan.planName.toLowerCase().includes",
+          "lineNumber": 57
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "plan.planName.toLowerCase",
+          "lineNumber": 57
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "source.find",
+          "lineNumber": 59
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "source.find",
+          "lineNumber": 60
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "Number.isFinite",
+          "lineNumber": 63
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "setMonthlyPlanId",
+          "lineNumber": 64
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "setMonthlyPlanAmount",
+          "lineNumber": 65
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "Number.isFinite",
+          "lineNumber": 67
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "setYearlyPlanId",
+          "lineNumber": 68
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "setYearlyPlanAmount",
+          "lineNumber": 69
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "console.error",
+          "lineNumber": 74
+        },
+        {
+          "caller": "loadPlans",
+          "callee": "setIsPricingLoaded",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Payment",
+          "callee": "loadPlans",
+          "lineNumber": 80
+        },
+        {
+          "caller": "formatCurrency",
+          "callee": "new Intl.NumberFormat('vi-VN').format",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Payment",
+          "callee": "useMemo",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Payment",
+          "callee": "formatCurrency",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Payment",
+          "callee": "useMemo",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Payment",
+          "callee": "Math.round",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Payment",
+          "callee": "formatCurrency",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handleCta",
+          "callee": "setCreateError",
+          "lineNumber": 103
+        },
+        {
+          "caller": "handleCta",
+          "callee": "setIsCreating",
+          "lineNumber": 104
+        },
+        {
+          "caller": "handleCta",
+          "callee": "createSubscription",
+          "lineNumber": 107
+        },
+        {
+          "caller": "handleCta",
+          "callee": "navigate",
+          "lineNumber": 112
+        },
+        {
+          "caller": "handleCta",
+          "callee": "setCreateError",
+          "lineNumber": 125
+        },
+        {
+          "caller": "handleCta",
+          "callee": "setIsCreating",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Payment",
+          "callee": "setBilling",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Payment",
+          "callee": "setBilling",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Payment",
+          "callee": "TIERS.map",
+          "lineNumber": 170
+        },
+        {
+          "caller": "Payment",
+          "callee": "tier.features.map",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Payment",
+          "callee": "handleCta",
+          "lineNumber": 221
+        },
+        {
+          "caller": "Payment",
+          "callee": "FAQ.map",
+          "lineNumber": 244
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 167,
+      "nonEmptyLines": 158,
+      "functions": [
+        {
+          "name": "PortfolioAllocator",
+          "startLine": 11,
+          "endLine": 165,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useAuth",
+          "lineNumber": 12
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 13
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 14
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 15
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 17
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "useState",
+          "lineNumber": 18
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "e.preventDefault",
+          "lineNumber": 21
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setError",
+          "lineNumber": 23
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setLoading",
+          "lineNumber": 24
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "allocatePortfolio",
+          "lineNumber": 26
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "Number",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "Number",
+          "lineNumber": 29
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "Number",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setResult",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setError",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handleSubmit",
+          "callee": "setLoading",
+          "lineNumber": 36
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "handleSubmit",
+          "lineNumber": 48
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "setBudget",
+          "lineNumber": 56
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "setNumStocks",
+          "lineNumber": 69
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "setLotSize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "setError",
+          "lineNumber": 92
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatPrice",
+          "lineNumber": 113
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatPrice",
+          "lineNumber": 118
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatPercent",
+          "lineNumber": 123
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "['Stock', 'TOPSIS Score', 'Shares', 'Price/Share', 'Total Cost', '%'].map",
+          "lineNumber": 139
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "(result.allocations ?? []).map",
+          "lineNumber": 145
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatScore",
+          "lineNumber": 150
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "a.numberOfShares.toLocaleString",
+          "lineNumber": 151
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatPrice",
+          "lineNumber": 152
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "formatPrice",
+          "lineNumber": 153
+        },
+        {
+          "caller": "PortfolioAllocator",
+          "callee": "a.allocationPercentage.toFixed",
+          "lineNumber": 154
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/ProfileSettings.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 409,
+      "nonEmptyLines": 371,
+      "functions": [
+        {
+          "name": "isPaidAndCurrent",
+          "startLine": 18,
+          "endLine": 25,
+          "params": [
+            "sub"
+          ]
+        },
+        {
+          "name": "subscriptionBadgeText",
+          "startLine": 27,
+          "endLine": 32,
+          "params": [
+            "sub"
+          ]
+        },
+        {
+          "name": "pickCurrentSubscription",
+          "startLine": 34,
+          "endLine": 38,
+          "params": [
+            "subscriptions"
+          ]
+        },
+        {
+          "name": "ProfileSettings",
+          "startLine": 40,
+          "endLine": 407,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isPaidAndCurrent",
+          "callee": "(sub.status ?? '').toUpperCase",
+          "lineNumber": 19
+        },
+        {
+          "caller": "isPaidAndCurrent",
+          "callee": "PAID_LIKE_STATUSES.has",
+          "lineNumber": 20
+        },
+        {
+          "caller": "isPaidAndCurrent",
+          "callee": "Date.parse",
+          "lineNumber": 22
+        },
+        {
+          "caller": "isPaidAndCurrent",
+          "callee": "Number.isFinite",
+          "lineNumber": 23
+        },
+        {
+          "caller": "isPaidAndCurrent",
+          "callee": "Date.now",
+          "lineNumber": 24
+        },
+        {
+          "caller": "subscriptionBadgeText",
+          "callee": "(sub.subscriptionPlan?.billingCycle ?? '').toUpperCase",
+          "lineNumber": 28
+        },
+        {
+          "caller": "subscriptionBadgeText",
+          "callee": "sub.subscriptionPlan?.planName?.trim",
+          "lineNumber": 31
+        },
+        {
+          "caller": "pickCurrentSubscription",
+          "callee": "(subscriptions ?? []).filter",
+          "lineNumber": 35
+        },
+        {
+          "caller": "pickCurrentSubscription",
+          "callee": "[...valid].sort",
+          "lineNumber": 37
+        },
+        {
+          "caller": "pickCurrentSubscription",
+          "callee": "Date.parse",
+          "lineNumber": 37
+        },
+        {
+          "caller": "pickCurrentSubscription",
+          "callee": "Date.parse",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useAuth",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useNavigate",
+          "lineNumber": 42
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 45
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 48
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 49
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 52
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 53
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 55
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 56
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 59
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "buildDefaultMatrix",
+          "lineNumber": 59
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 60
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 63
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 64
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 68
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useState",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useEffect",
+          "lineNumber": 74
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setUsername",
+          "lineNumber": 76
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setEmail",
+          "lineNumber": 77
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setPhone",
+          "lineNumber": 78
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useEffect",
+          "lineNumber": 83
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpConfigId",
+          "lineNumber": 86
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpExists",
+          "lineNumber": 87
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useEffect",
+          "lineNumber": 91
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "getAhpConfig(userId)\n      .then((cfg) => {\n        if (cfg) {\n          setAhpExists(true)\n          setAhpConfigId(cfg.ahpConfigId ?? '0')\n          if (cfg.pairwiseMatrixJson) {\n            try {\n              const parsed = JSON.parse(cfg.pairwiseMatrixJson) as unknown\n              if (Array.isArray(parsed) && parsed.every((row) => Array.isArray(row))) {\n                setMatrix(parsed as number[][])\n              }\n            } catch {\n              // ignore parse errors\n            }\n          }\n        } else {\n          setAhpExists(false)\n          setAhpConfigId('0')\n          setMatrix(buildDefaultMatrix())\n        }\n      })\n      .catch(() => { /* no config yet */ })\n      .finally",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "getAhpConfig(userId)\n      .then((cfg) => {\n        if (cfg) {\n          setAhpExists(true)\n          setAhpConfigId(cfg.ahpConfigId ?? '0')\n          if (cfg.pairwiseMatrixJson) {\n            try {\n              const parsed = JSON.parse(cfg.pairwiseMatrixJson) as unknown\n              if (Array.isArray(parsed) && parsed.every((row) => Array.isArray(row))) {\n                setMatrix(parsed as number[][])\n              }\n            } catch {\n              // ignore parse errors\n            }\n          }\n        } else {\n          setAhpExists(false)\n          setAhpConfigId('0')\n          setMatrix(buildDefaultMatrix())\n        }\n      })\n      .catch",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "getAhpConfig(userId)\n      .then",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "getAhpConfig",
+          "lineNumber": 93
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpExists",
+          "lineNumber": 96
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpConfigId",
+          "lineNumber": 97
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "JSON.parse",
+          "lineNumber": 100
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "Array.isArray",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "parsed.every",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "Array.isArray",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setMatrix",
+          "lineNumber": 102
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpExists",
+          "lineNumber": 109
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpConfigId",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setMatrix",
+          "lineNumber": 111
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "buildDefaultMatrix",
+          "lineNumber": 111
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setAhpLoading",
+          "lineNumber": 115
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "computeWeightsFromMatrix",
+          "lineNumber": 118
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "e.preventDefault",
+          "lineNumber": 121
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "setProfileLoading",
+          "lineNumber": 123
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "setProfileMsg",
+          "lineNumber": 124
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "updateUser",
+          "lineNumber": 126
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "refreshUserDetail",
+          "lineNumber": 127
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "setProfileMsg",
+          "lineNumber": 128
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "setProfileMsg",
+          "lineNumber": 130
+        },
+        {
+          "caller": "handleProfileSave",
+          "callee": "setProfileLoading",
+          "lineNumber": 132
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "e.preventDefault",
+          "lineNumber": 137
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwMsg",
+          "lineNumber": 140
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwLoading",
+          "lineNumber": 143
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwMsg",
+          "lineNumber": 144
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "updatePassword",
+          "lineNumber": 146
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setCurrentPw",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setNewPw",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setConfirmPw",
+          "lineNumber": 147
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwMsg",
+          "lineNumber": 148
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwMsg",
+          "lineNumber": 150
+        },
+        {
+          "caller": "handlePasswordSave",
+          "callee": "setPwLoading",
+          "lineNumber": 152
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "syncMatrix",
+          "lineNumber": 158
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "computeWeightsFromMatrix",
+          "lineNumber": 159
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpSaving",
+          "lineNumber": 160
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpMsg",
+          "lineNumber": 161
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "JSON.stringify",
+          "lineNumber": 172
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "JSON.stringify",
+          "lineNumber": 173
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "JSON.stringify",
+          "lineNumber": 174
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "updateAhpConfig",
+          "lineNumber": 177
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpExists",
+          "lineNumber": 178
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpMsg",
+          "lineNumber": 179
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpMsg",
+          "lineNumber": 181
+        },
+        {
+          "caller": "handleAhpSave",
+          "callee": "setAhpSaving",
+          "lineNumber": 183
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "setDeleteLoading",
+          "lineNumber": 189
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "deleteUser",
+          "lineNumber": 191
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "logout",
+          "lineNumber": 192
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "navigate",
+          "lineNumber": 193
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "setDeleteLoading",
+          "lineNumber": 195
+        },
+        {
+          "caller": "updateCell",
+          "callee": "setMatrix",
+          "lineNumber": 200
+        },
+        {
+          "caller": "updateCell",
+          "callee": "prev.map",
+          "lineNumber": 201
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "userDetail?.username?.slice(0, 2).toUpperCase",
+          "lineNumber": 212
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "userDetail?.username?.slice",
+          "lineNumber": 212
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "userDetail?.email?.slice(0, 2).toUpperCase",
+          "lineNumber": 212
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "userDetail?.email?.slice",
+          "lineNumber": 212
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "useMemo",
+          "lineNumber": 214
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "pickCurrentSubscription",
+          "lineNumber": 215
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "subscriptionBadgeText",
+          "lineNumber": 231
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "formatDate",
+          "lineNumber": 238
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "handleProfileSave",
+          "lineNumber": 249
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setUsername",
+          "lineNumber": 251
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setEmail",
+          "lineNumber": 252
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setPhone",
+          "lineNumber": 253
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "handlePasswordSave",
+          "lineNumber": 267
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setCurrentPw",
+          "lineNumber": 269
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setNewPw",
+          "lineNumber": 270
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setConfirmPw",
+          "lineNumber": 271
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setSurveyOpen",
+          "lineNumber": 298
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setShowAdvanced",
+          "lineNumber": 313
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "CRITERIA_LABELS.map",
+          "lineNumber": 331
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "matrix.map",
+          "lineNumber": 335
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "row.map",
+          "lineNumber": 338
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "updateCell",
+          "lineNumber": 345
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "Number",
+          "lineNumber": 345
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "AHP_VALUES.map",
+          "lineNumber": 348
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "Math.round",
+          "lineNumber": 349
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "Math.round",
+          "lineNumber": 354
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "val.toFixed",
+          "lineNumber": 354
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "handleAhpSave",
+          "lineNumber": 367
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setDeleteModalOpen",
+          "lineNumber": 378
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setDeleteModalOpen",
+          "lineNumber": 385
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setDeleteModalOpen",
+          "lineNumber": 390
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "handleDelete",
+          "lineNumber": 391
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setSurveyOpen",
+          "lineNumber": 398
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setMatrix",
+          "lineNumber": 400
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setSurveyOpen",
+          "lineNumber": 401
+        },
+        {
+          "caller": "ProfileSettings",
+          "callee": "setShowAdvanced",
+          "lineNumber": 402
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/StockDetail.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 252,
+      "nonEmptyLines": 230,
+      "functions": [
+        {
+          "name": "FinRow",
+          "startLine": 27,
+          "endLine": 32,
+          "params": [
+            "{ label, value }"
+          ]
+        },
+        {
+          "name": "StockDetailPage",
+          "startLine": 34,
+          "endLine": 250,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FinRow",
+          "callee": "formatPrice",
+          "lineNumber": 30
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useParams",
+          "lineNumber": 35
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useNavigate",
+          "lineNumber": 36
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useAuth",
+          "lineNumber": 37
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useWatchlist",
+          "lineNumber": 38
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useMarketData",
+          "lineNumber": 39
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 41
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getCachedStockDetail",
+          "lineNumber": 41
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 42
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 43
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 44
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 45
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 46
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 47
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useState",
+          "lineNumber": 48
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useMemo",
+          "lineNumber": 50
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Boolean",
+          "lineNumber": 51
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "favoriteIds.has",
+          "lineNumber": 51
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "symbol.toUpperCase",
+          "lineNumber": 51
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useEffect",
+          "lineNumber": 55
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setLoading",
+          "lineNumber": 58
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "fetchStockDetail(symbol, controller.signal, { forceRefresh: true })\n      .then((d) => {\n        setDetail(d)\n        const years = Object.keys(d.yearData ?? {}).map(Number).sort((a, b) => b - a)\n        if (years.length > 0) setSelectedYear(years[0])\n      })\n      .catch((e: unknown) => {\n        if (e instanceof DOMException && e.name === 'AbortError') return\n        setError(e instanceof Error ? e.message : 'Failed to load stock')\n      })\n      .finally",
+          "lineNumber": 59
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "fetchStockDetail(symbol, controller.signal, { forceRefresh: true })\n      .then((d) => {\n        setDetail(d)\n        const years = Object.keys(d.yearData ?? {}).map(Number).sort((a, b) => b - a)\n        if (years.length > 0) setSelectedYear(years[0])\n      })\n      .catch",
+          "lineNumber": 59
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "fetchStockDetail(symbol, controller.signal, { forceRefresh: true })\n      .then",
+          "lineNumber": 59
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "fetchStockDetail",
+          "lineNumber": 59
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setDetail",
+          "lineNumber": 61
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys(d.yearData ?? {}).map(Number).sort",
+          "lineNumber": 62
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys(d.yearData ?? {}).map",
+          "lineNumber": 62
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys",
+          "lineNumber": 62
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setSelectedYear",
+          "lineNumber": 63
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setError",
+          "lineNumber": 67
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setLoading",
+          "lineNumber": 69
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "controller.abort",
+          "lineNumber": 70
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "useEffect",
+          "lineNumber": 73
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setYearLoading",
+          "lineNumber": 75
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getStockYearData(symbol, selectedYear)\n      .then((d) => setYearDataCache((prev) => ({ ...prev, [selectedYear]: d })))\n      .catch(() => { /* use yearData from detail */ })\n      .finally",
+          "lineNumber": 76
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getStockYearData(symbol, selectedYear)\n      .then((d) => setYearDataCache((prev) => ({ ...prev, [selectedYear]: d })))\n      .catch",
+          "lineNumber": 76
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getStockYearData(symbol, selectedYear)\n      .then",
+          "lineNumber": 76
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getStockYearData",
+          "lineNumber": 76
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setYearDataCache",
+          "lineNumber": 77
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setYearLoading",
+          "lineNumber": 79
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "setFavLoading",
+          "lineNumber": 84
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "removeFavoriteStock",
+          "lineNumber": 86
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "addFavoriteStock",
+          "lineNumber": 87
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "refreshWatchlist",
+          "lineNumber": 88
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "setFavLoading",
+          "lineNumber": 90
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getMatchPrice",
+          "lineNumber": 98
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "isRecentlyUpdated",
+          "lineNumber": 99
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys(detail.yearData ?? {}).map(Number).sort",
+          "lineNumber": 100
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys(detail.yearData ?? {}).map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys",
+          "lineNumber": 100
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "String",
+          "lineNumber": 102
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "navigate",
+          "lineNumber": 115
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "toggleFavorite",
+          "lineNumber": 125
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "years.map",
+          "lineNumber": 145
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "setSelectedYear",
+          "lineNumber": 148
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys",
+          "lineNumber": 159
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "Object.keys",
+          "lineNumber": 194
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "[\n                        { label: 'vs DDM', value: currentYearData.ddm },\n                        { label: 'vs DCF', value: currentYearData.dcf },\n                        { label: 'vs RI', value: currentYearData.ri },\n                      ].map",
+          "lineNumber": 205
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "getSignal",
+          "lineNumber": 210
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatPrice",
+          "lineNumber": 214
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 243
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 243
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 244
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 244
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 245
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 245
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 246
+        },
+        {
+          "caller": "StockDetailPage",
+          "callee": "formatRatio",
+          "lineNumber": 246
+        }
+      ],
+      "metrics": {
+        "importCount": 17,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/StockScanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 176,
+      "nonEmptyLines": 164,
+      "functions": [
+        {
+          "name": "StockScanner",
+          "startLine": 17,
+          "endLine": 174,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "StockScanner",
+          "callee": "useAuth",
+          "lineNumber": 18
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useWatchlist",
+          "lineNumber": 19
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useAhpWeights",
+          "lineNumber": 20
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useStockList",
+          "lineNumber": 21
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMarketData",
+          "lineNumber": 22
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useState",
+          "lineNumber": 25
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMemo",
+          "lineNumber": 27
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "symbols.map",
+          "lineNumber": 29
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "buildMetrics",
+          "lineNumber": 29
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "computeTopsis",
+          "lineNumber": 30
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMemo",
+          "lineNumber": 33
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "Object.values(details).forEach",
+          "lineNumber": 35
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "Object.values",
+          "lineNumber": 35
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "set.add",
+          "lineNumber": 35
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "[...set].sort",
+          "lineNumber": 36
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMemo",
+          "lineNumber": 39
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "symbols\n      .map((s) => ({\n        symbol: s,\n        detail: details[s],\n        score: topsisScores.get(s) ?? 0,\n        isFav: userId ? favoriteIds.has(s.toUpperCase()) : false,\n      }))\n      .filter((r) => {\n        const matchSearch = r.symbol.toLowerCase().includes(search.toLowerCase()) ||\n          (r.detail?.stockName ?? '').toLowerCase().includes(search.toLowerCase())\n        const matchSector = !sectorFilter || r.detail?.sector === sectorFilter\n        return matchSearch && matchSector\n      })\n      .sort",
+          "lineNumber": 41
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "symbols\n      .map((s) => ({\n        symbol: s,\n        detail: details[s],\n        score: topsisScores.get(s) ?? 0,\n        isFav: userId ? favoriteIds.has(s.toUpperCase()) : false,\n      }))\n      .filter",
+          "lineNumber": 41
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "symbols\n      .map",
+          "lineNumber": 41
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "topsisScores.get",
+          "lineNumber": 45
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "favoriteIds.has",
+          "lineNumber": 46
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "s.toUpperCase",
+          "lineNumber": 46
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "r.symbol.toLowerCase().includes",
+          "lineNumber": 49
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "r.symbol.toLowerCase",
+          "lineNumber": 49
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "search.toLowerCase",
+          "lineNumber": 49
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "(r.detail?.stockName ?? '').toLowerCase().includes",
+          "lineNumber": 50
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "(r.detail?.stockName ?? '').toLowerCase",
+          "lineNumber": 50
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "search.toLowerCase",
+          "lineNumber": 50
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "compareRank",
+          "lineNumber": 54
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMemo",
+          "lineNumber": 57
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "topsisScores.values",
+          "lineNumber": 58
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "vals.reduce",
+          "lineNumber": 59
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "useMemo",
+          "lineNumber": 62
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "[...topsisScores.entries()].sort",
+          "lineNumber": 63
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "topsisScores.entries",
+          "lineNumber": 63
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "compareRank",
+          "lineNumber": 63
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "setFavLoading",
+          "lineNumber": 71
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "new Set(prev).add",
+          "lineNumber": 71
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "removeFavoriteStock",
+          "lineNumber": 73
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "addFavoriteStock",
+          "lineNumber": 74
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "refreshWatchlist",
+          "lineNumber": 75
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "setFavLoading",
+          "lineNumber": 77
+        },
+        {
+          "caller": "toggleFavorite",
+          "callee": "s.delete",
+          "lineNumber": 77
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "setSearch",
+          "lineNumber": 99
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "setSectorFilter",
+          "lineNumber": 105
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "sectors.map",
+          "lineNumber": 108
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatScore",
+          "lineNumber": 115
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatScore",
+          "lineNumber": 116
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatScore",
+          "lineNumber": 117
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "['Symbol', 'Company', 'Sector', 'Live Price', 'P/E', 'P/B', 'P/CF', 'P/S', 'TOPSIS Score', '★'].map",
+          "lineNumber": 125
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "rows.map",
+          "lineNumber": 134
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "getMatchPrice",
+          "lineNumber": 135
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "isRecentlyUpdated",
+          "lineNumber": 136
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatPrice",
+          "lineNumber": 148
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatPrice",
+          "lineNumber": 149
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatPrice",
+          "lineNumber": 150
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "formatPrice",
+          "lineNumber": 151
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "favLoading.has",
+          "lineNumber": 157
+        },
+        {
+          "caller": "StockScanner",
+          "callee": "toggleFavorite",
+          "lineNumber": 158
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/pages/SubscriptionHistory.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 184,
+      "nonEmptyLines": 168,
+      "functions": [
+        {
+          "name": "formatCurrency",
+          "startLine": 24,
+          "endLine": 27,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "formatBillingCycle",
+          "startLine": 29,
+          "endLine": 34,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "getTimestamp",
+          "startLine": 36,
+          "endLine": 40,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "getStatusMeta",
+          "startLine": 42,
+          "endLine": 42,
+          "params": [
+            "status"
+          ]
+        },
+        {
+          "name": "SubscriptionHistory",
+          "startLine": 44,
+          "endLine": 182,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatCurrency",
+          "callee": "Number.isFinite",
+          "lineNumber": 25
+        },
+        {
+          "caller": "formatCurrency",
+          "callee": "new Intl.NumberFormat('vi-VN').format",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getTimestamp",
+          "callee": "Date.parse",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getTimestamp",
+          "callee": "Number.isFinite",
+          "lineNumber": 39
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "useAuthContext",
+          "lineNumber": 45
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "useNavigate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "useMemo",
+          "lineNumber": 48
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "[...(userDetail?.subscriptions ?? [])].sort",
+          "lineNumber": 50
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "getTimestamp",
+          "lineNumber": 51
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "getTimestamp",
+          "lineNumber": 51
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "useMemo",
+          "lineNumber": 56
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "subscriptions.find",
+          "lineNumber": 57
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatDate",
+          "lineNumber": 65
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatDate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "getStatusMeta",
+          "lineNumber": 70
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "navigate",
+          "lineNumber": 129
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "subscriptions.map",
+          "lineNumber": 150
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "getStatusMeta",
+          "lineNumber": 151
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatBillingCycle",
+          "lineNumber": 158
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatCurrency",
+          "lineNumber": 161
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatDate",
+          "lineNumber": 163
+        },
+        {
+          "caller": "SubscriptionHistory",
+          "callee": "formatDate",
+          "lineNumber": 164
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "getAhpConfig",
+          "startLine": 19,
+          "endLine": 29,
+          "params": [
+            "userId"
+          ]
+        },
+        {
+          "name": "createAhpConfig",
+          "startLine": 31,
+          "endLine": 34,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "updateAhpConfig",
+          "startLine": 36,
+          "endLine": 39,
+          "params": [
+            "req"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getAhpConfig",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "createAhpConfig",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "updateAhpConfig",
+          "line": 36,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAhpConfig",
+          "callee": "authFetch",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getAhpConfig",
+          "callee": "res.json",
+          "lineNumber": 23
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "authFetch",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createAhpConfig",
+          "callee": "JSON.stringify",
+          "lineNumber": 32
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "authFetch",
+          "lineNumber": 37
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "JSON.stringify",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "apiFetch",
+          "startLine": 5,
+          "endLine": 14,
+          "params": [
+            "path",
+            "options",
+            "token"
+          ]
+        },
+        {
+          "name": "getToken",
+          "startLine": 16,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "getUserId",
+          "startLine": 17,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "getIsAdmin",
+          "startLine": 18,
+          "endLine": 18,
+          "params": []
+        },
+        {
+          "name": "authFetch",
+          "startLine": 20,
+          "endLine": 21,
+          "params": [
+            "path",
+            "options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "API_BASE_URL",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "apiFetch",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "getToken",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "getUserId",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "getIsAdmin",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "authFetch",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "apiFetch",
+          "callee": "fetch",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getToken",
+          "callee": "localStorage.getItem",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getUserId",
+          "callee": "localStorage.getItem",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getIsAdmin",
+          "callee": "localStorage.getItem",
+          "lineNumber": 18
+        },
+        {
+          "caller": "authFetch",
+          "callee": "apiFetch",
+          "lineNumber": 21
+        },
+        {
+          "caller": "authFetch",
+          "callee": "getToken",
+          "lineNumber": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/portfolioApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "allocatePortfolio",
+          "startLine": 41,
+          "endLine": 63,
+          "params": [
+            "req"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "allocatePortfolio",
+          "line": 41,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "allocatePortfolio",
+          "callee": "authFetch",
+          "lineNumber": 42
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "JSON.stringify",
+          "lineNumber": 42
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "res.json",
+          "lineNumber": 45
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Array.isArray",
+          "lineNumber": 47
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "rawAllocations.map",
+          "lineNumber": 50
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "String",
+          "lineNumber": 51
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 53
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 54
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 55
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 56
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 57
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 59
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 60
+        },
+        {
+          "caller": "allocatePortfolio",
+          "callee": "Number",
+          "lineNumber": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/stockApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "getAllStockIds",
+          "startLine": 25,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "createStock",
+          "startLine": 31,
+          "endLine": 34,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "updateStock",
+          "startLine": 36,
+          "endLine": 39,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "deleteStock",
+          "startLine": 41,
+          "endLine": 44,
+          "params": [
+            "stockId"
+          ]
+        },
+        {
+          "name": "updateIndustryRatios",
+          "startLine": 46,
+          "endLine": 49,
+          "params": [
+            "req"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getAllStockIds",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "createStock",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "updateStock",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "deleteStock",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "updateIndustryRatios",
+          "line": 46,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAllStockIds",
+          "callee": "authFetch",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getAllStockIds",
+          "callee": "res.json",
+          "lineNumber": 28
+        },
+        {
+          "caller": "createStock",
+          "callee": "authFetch",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createStock",
+          "callee": "JSON.stringify",
+          "lineNumber": 32
+        },
+        {
+          "caller": "updateStock",
+          "callee": "authFetch",
+          "lineNumber": 37
+        },
+        {
+          "caller": "updateStock",
+          "callee": "JSON.stringify",
+          "lineNumber": 37
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "authFetch",
+          "lineNumber": 42
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "JSON.stringify",
+          "lineNumber": 42
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "authFetch",
+          "lineNumber": 47
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "JSON.stringify",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "getStockYearData",
+          "startLine": 21,
+          "endLine": 30,
+          "params": [
+            "stockId",
+            "year"
+          ]
+        },
+        {
+          "name": "createStockYearData",
+          "startLine": 32,
+          "endLine": 38,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "updateStockYearData",
+          "startLine": 40,
+          "endLine": 46,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "deleteStockYearData",
+          "startLine": 48,
+          "endLine": 54,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "uploadStockYearDataExcel",
+          "startLine": 62,
+          "endLine": 84,
+          "params": [
+            "file"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getStockYearData",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "createStockYearData",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "updateStockYearData",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "deleteStockYearData",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "uploadStockYearDataExcel",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getStockYearData",
+          "callee": "authFetch",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "encodeURIComponent",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getStockYearData",
+          "callee": "res.json",
+          "lineNumber": 24
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "authFetch",
+          "lineNumber": 33
+        },
+        {
+          "caller": "createStockYearData",
+          "callee": "JSON.stringify",
+          "lineNumber": 35
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "authFetch",
+          "lineNumber": 41
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "JSON.stringify",
+          "lineNumber": 43
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "authFetch",
+          "lineNumber": 49
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "JSON.stringify",
+          "lineNumber": 51
+        },
+        {
+          "caller": "uploadStockYearDataExcel",
+          "callee": "localStorage.getItem",
+          "lineNumber": 63
+        },
+        {
+          "caller": "uploadStockYearDataExcel",
+          "callee": "formData.append",
+          "lineNumber": 65
+        },
+        {
+          "caller": "uploadStockYearDataExcel",
+          "callee": "fetch",
+          "lineNumber": 72
+        },
+        {
+          "caller": "uploadStockYearDataExcel",
+          "callee": "res.text",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/subscriptionApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 41,
+      "functions": [
+        {
+          "name": "getSubscriptionPlans",
+          "startLine": 10,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "createSubscription",
+          "startLine": 38,
+          "endLine": 48,
+          "params": [
+            "payload"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getSubscriptionPlans",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "createSubscription",
+          "line": 38,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "apiFetch",
+          "lineNumber": 11
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "res.json",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "Array.isArray",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "payload\n    .filter((item): item is Record<string, unknown> => !!item && typeof item === 'object')\n    .map",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "payload\n    .filter",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "Number",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "String",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "Number",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "String(item.billingCycle ?? '').toUpperCase",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getSubscriptionPlans",
+          "callee": "String",
+          "lineNumber": 28
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "authFetch",
+          "lineNumber": 39
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "JSON.stringify",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "res.json",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/api/userApi.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 183,
+      "nonEmptyLines": 159,
+      "functions": [
+        {
+          "name": "loginUser",
+          "startLine": 72,
+          "endLine": 79,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "createUser",
+          "startLine": 81,
+          "endLine": 88,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "getUserDetail",
+          "startLine": 90,
+          "endLine": 139,
+          "params": [
+            "userId"
+          ]
+        },
+        {
+          "name": "updateUser",
+          "startLine": 141,
+          "endLine": 144,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "updatePassword",
+          "startLine": 146,
+          "endLine": 149,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "deleteUser",
+          "startLine": 151,
+          "endLine": 154,
+          "params": [
+            "userId"
+          ]
+        },
+        {
+          "name": "adminResetPassword",
+          "startLine": 157,
+          "endLine": 160,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "addFavoriteStock",
+          "startLine": 162,
+          "endLine": 165,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "removeFavoriteStock",
+          "startLine": 167,
+          "endLine": 170,
+          "params": [
+            "req"
+          ]
+        },
+        {
+          "name": "getFavoriteStockIds",
+          "startLine": 173,
+          "endLine": 183,
+          "params": [
+            "userId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "loginUser",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "createUser",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "getUserDetail",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "updateUser",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "updatePassword",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "deleteUser",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "adminResetPassword",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "addFavoriteStock",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "removeFavoriteStock",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "getFavoriteStockIds",
+          "line": 173,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loginUser",
+          "callee": "apiFetch",
+          "lineNumber": 73
+        },
+        {
+          "caller": "loginUser",
+          "callee": "JSON.stringify",
+          "lineNumber": 73
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.text().catch",
+          "lineNumber": 75
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.text",
+          "lineNumber": 75
+        },
+        {
+          "caller": "loginUser",
+          "callee": "res.json",
+          "lineNumber": 78
+        },
+        {
+          "caller": "createUser",
+          "callee": "apiFetch",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createUser",
+          "callee": "JSON.stringify",
+          "lineNumber": 82
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.text().catch",
+          "lineNumber": 84
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.text",
+          "lineNumber": 84
+        },
+        {
+          "caller": "createUser",
+          "callee": "res.json",
+          "lineNumber": 87
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "authFetch",
+          "lineNumber": 91
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "res.json",
+          "lineNumber": 93
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 106
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 107
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 108
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 109
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "Array.isArray",
+          "lineNumber": 116
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "rawSubs\n      .filter((s): s is Record<string, unknown> => !!s && typeof s === 'object')\n      .map",
+          "lineNumber": 117
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "rawSubs\n      .filter",
+          "lineNumber": 117
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 122
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 123
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 124
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 125
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "Number",
+          "lineNumber": 128
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 129
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "Number",
+          "lineNumber": 130
+        },
+        {
+          "caller": "getUserDetail",
+          "callee": "String",
+          "lineNumber": 131
+        },
+        {
+          "caller": "updateUser",
+          "callee": "authFetch",
+          "lineNumber": 142
+        },
+        {
+          "caller": "updateUser",
+          "callee": "JSON.stringify",
+          "lineNumber": 142
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "authFetch",
+          "lineNumber": 147
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "JSON.stringify",
+          "lineNumber": 147
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "authFetch",
+          "lineNumber": 152
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "JSON.stringify",
+          "lineNumber": 152
+        },
+        {
+          "caller": "adminResetPassword",
+          "callee": "authFetch",
+          "lineNumber": 158
+        },
+        {
+          "caller": "adminResetPassword",
+          "callee": "JSON.stringify",
+          "lineNumber": 158
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "authFetch",
+          "lineNumber": 163
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "JSON.stringify",
+          "lineNumber": 163
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "authFetch",
+          "lineNumber": 168
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "JSON.stringify",
+          "lineNumber": 168
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "authFetch",
+          "lineNumber": 174
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "encodeURIComponent",
+          "lineNumber": 174
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "res.json",
+          "lineNumber": 176
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "Array.isArray",
+          "lineNumber": 181
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "payload.map((s) => String(s).trim().toUpperCase()).filter",
+          "lineNumber": 182
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "payload.map",
+          "lineNumber": 182
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "String(s).trim().toUpperCase",
+          "lineNumber": 182
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "String(s).trim",
+          "lineNumber": 182
+        },
+        {
+          "caller": "getFavoriteStockIds",
+          "callee": "String",
+          "lineNumber": 182
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/mqtt.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 178,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "generateClientId",
+          "startLine": 21,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "setConnectionStatus",
+          "startLine": 25,
+          "endLine": 29,
+          "params": [
+            "status"
+          ]
+        },
+        {
+          "name": "shouldKeepConnectionAlive",
+          "startLine": 31,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "disconnectIfIdle",
+          "startLine": 33,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "connectMqtt",
+          "startLine": 39,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "disconnectMqtt",
+          "startLine": 135,
+          "endLine": 141,
+          "params": []
+        },
+        {
+          "name": "startMqttConnection",
+          "startLine": 143,
+          "endLine": 151,
+          "params": []
+        },
+        {
+          "name": "subscribeToMarketData",
+          "startLine": 153,
+          "endLine": 163,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "getMqttConnectionStatus",
+          "startLine": 165,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "subscribeToMqttStatus",
+          "startLine": 169,
+          "endLine": 178,
+          "params": [
+            "callback"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "connectMqtt",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "disconnectMqtt",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "startMqttConnection",
+          "line": 143,
+          "isDefault": false
+        },
+        {
+          "name": "subscribeToMarketData",
+          "line": 153,
+          "isDefault": false
+        },
+        {
+          "name": "getMqttConnectionStatus",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "subscribeToMqttStatus",
+          "line": 169,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generateClientId",
+          "callee": "Math.random().toString(36).substring",
+          "lineNumber": 22
+        },
+        {
+          "caller": "generateClientId",
+          "callee": "Math.random().toString",
+          "lineNumber": 22
+        },
+        {
+          "caller": "generateClientId",
+          "callee": "Math.random",
+          "lineNumber": 22
+        },
+        {
+          "caller": "generateClientId",
+          "callee": "Date.now",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setConnectionStatus",
+          "callee": "statusSubscribers.forEach",
+          "lineNumber": 28
+        },
+        {
+          "caller": "setConnectionStatus",
+          "callee": "callback",
+          "lineNumber": 28
+        },
+        {
+          "caller": "disconnectIfIdle",
+          "callee": "shouldKeepConnectionAlive",
+          "lineNumber": 34
+        },
+        {
+          "caller": "disconnectIfIdle",
+          "callee": "disconnectMqtt",
+          "lineNumber": 35
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "generateClientId",
+          "lineNumber": 44
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 45
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "mqtt.connect",
+          "lineNumber": 47
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 58
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client?.subscribe",
+          "lineNumber": 61
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 63
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 65
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 70
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "JSON.parse",
+          "lineNumber": 73
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "message.toString",
+          "lineNumber": 73
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "subscribers.forEach",
+          "lineNumber": 83
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "callback",
+          "lineNumber": 83
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.warn",
+          "lineNumber": 85
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 88
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 93
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 94
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 95
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 96
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 97
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.error",
+          "lineNumber": 98
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 101
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 104
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 105
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 107
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 108
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 113
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 115
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 118
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 119
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 120
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 123
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 124
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 125
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "client.on",
+          "lineNumber": 128
+        },
+        {
+          "caller": "connectMqtt",
+          "callee": "console.log",
+          "lineNumber": 129
+        },
+        {
+          "caller": "disconnectMqtt",
+          "callee": "client.end",
+          "lineNumber": 137
+        },
+        {
+          "caller": "disconnectMqtt",
+          "callee": "setConnectionStatus",
+          "lineNumber": 139
+        },
+        {
+          "caller": "startMqttConnection",
+          "callee": "connectMqtt",
+          "lineNumber": 145
+        },
+        {
+          "caller": "startMqttConnection",
+          "callee": "Math.max",
+          "lineNumber": 148
+        },
+        {
+          "caller": "startMqttConnection",
+          "callee": "setTimeout",
+          "lineNumber": 149
+        },
+        {
+          "caller": "subscribeToMarketData",
+          "callee": "subscribers.add",
+          "lineNumber": 156
+        },
+        {
+          "caller": "subscribeToMarketData",
+          "callee": "connectMqtt",
+          "lineNumber": 157
+        },
+        {
+          "caller": "subscribeToMarketData",
+          "callee": "subscribers.delete",
+          "lineNumber": 160
+        },
+        {
+          "caller": "subscribeToMarketData",
+          "callee": "setTimeout",
+          "lineNumber": 161
+        },
+        {
+          "caller": "subscribeToMqttStatus",
+          "callee": "statusSubscribers.add",
+          "lineNumber": 172
+        },
+        {
+          "caller": "subscribeToMqttStatus",
+          "callee": "callback",
+          "lineNumber": 173
+        },
+        {
+          "caller": "subscribeToMqttStatus",
+          "callee": "getMqttConnectionStatus",
+          "lineNumber": 173
+        },
+        {
+          "caller": "subscribeToMqttStatus",
+          "callee": "statusSubscribers.delete",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/services/stockDetail.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 184,
+      "nonEmptyLines": 152,
+      "functions": [
+        {
+          "name": "normalizeSymbol",
+          "startLine": 50,
+          "endLine": 50,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "hydrateCache",
+          "startLine": 52,
+          "endLine": 86,
+          "params": []
+        },
+        {
+          "name": "persistCache",
+          "startLine": 88,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "isString",
+          "startLine": 101,
+          "endLine": 101,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "isMaybeString",
+          "startLine": 102,
+          "endLine": 103,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "isNumber",
+          "startLine": 104,
+          "endLine": 105,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "isStockDetailResponse",
+          "startLine": 107,
+          "endLine": 133,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "stockDetailEndpoint",
+          "startLine": 135,
+          "endLine": 136,
+          "params": [
+            "symbol"
+          ]
+        },
+        {
+          "name": "getCachedStockDetail",
+          "startLine": 138,
+          "endLine": 146,
+          "params": [
+            "symbol"
+          ]
+        },
+        {
+          "name": "fetchStockDetail",
+          "startLine": 148,
+          "endLine": 183,
+          "params": [
+            "symbol",
+            "signal",
+            "options"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getCachedStockDetail",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "fetchStockDetail",
+          "line": 148,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "normalizeSymbol",
+          "callee": "value.trim().toUpperCase",
+          "lineNumber": 50
+        },
+        {
+          "caller": "normalizeSymbol",
+          "callee": "value.trim",
+          "lineNumber": 50
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "storage.getItem",
+          "lineNumber": 64
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "JSON.parse",
+          "lineNumber": 68
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "Object.entries(parsed).forEach",
+          "lineNumber": 74
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "Object.entries",
+          "lineNumber": 74
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "isStockDetailResponse",
+          "lineNumber": 79
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "symbolCache.set",
+          "lineNumber": 80
+        },
+        {
+          "caller": "hydrateCache",
+          "callee": "normalizeSymbol",
+          "lineNumber": 80
+        },
+        {
+          "caller": "persistCache",
+          "callee": "Object.fromEntries",
+          "lineNumber": 94
+        },
+        {
+          "caller": "persistCache",
+          "callee": "symbolCache.entries",
+          "lineNumber": 94
+        },
+        {
+          "caller": "persistCache",
+          "callee": "storage.setItem",
+          "lineNumber": 95
+        },
+        {
+          "caller": "persistCache",
+          "callee": "JSON.stringify",
+          "lineNumber": 95
+        },
+        {
+          "caller": "isNumber",
+          "callee": "Number.isFinite",
+          "lineNumber": 105
+        },
+        {
+          "caller": "isStockDetailResponse",
+          "callee": "isString",
+          "lineNumber": 127
+        },
+        {
+          "caller": "isStockDetailResponse",
+          "callee": "isMaybeString",
+          "lineNumber": 128
+        },
+        {
+          "caller": "isStockDetailResponse",
+          "callee": "isString",
+          "lineNumber": 129
+        },
+        {
+          "caller": "isStockDetailResponse",
+          "callee": "requiredNumbers.every",
+          "lineNumber": 130
+        },
+        {
+          "caller": "stockDetailEndpoint",
+          "callee": "encodeURIComponent",
+          "lineNumber": 136
+        },
+        {
+          "caller": "getCachedStockDetail",
+          "callee": "hydrateCache",
+          "lineNumber": 143
+        },
+        {
+          "caller": "getCachedStockDetail",
+          "callee": "symbolCache.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "getCachedStockDetail",
+          "callee": "normalizeSymbol",
+          "lineNumber": 145
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "normalizeSymbol",
+          "lineNumber": 153
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "hydrateCache",
+          "lineNumber": 158
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "symbolCache.get",
+          "lineNumber": 160
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "fetch",
+          "lineNumber": 165
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "stockDetailEndpoint",
+          "lineNumber": 165
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "response.json",
+          "lineNumber": 174
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "isStockDetailResponse",
+          "lineNumber": 175
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "symbolCache.set",
+          "lineNumber": 179
+        },
+        {
+          "caller": "fetchStockDetail",
+          "callee": "persistCache",
+          "lineNumber": 180
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/utils/ahp.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 162,
+      "nonEmptyLines": 146,
+      "functions": [
+        {
+          "name": "scoresFromAnswers",
+          "startLine": 88,
+          "endLine": 109,
+          "params": [
+            "answers"
+          ]
+        },
+        {
+          "name": "snapToSaaty",
+          "startLine": 113,
+          "endLine": 119,
+          "params": [
+            "r"
+          ]
+        },
+        {
+          "name": "matrixFromScores",
+          "startLine": 122,
+          "endLine": 133,
+          "params": [
+            "scores"
+          ]
+        },
+        {
+          "name": "computeWeightsFromMatrix",
+          "startLine": 136,
+          "endLine": 146,
+          "params": [
+            "matrix"
+          ]
+        },
+        {
+          "name": "buildDefaultMatrix",
+          "startLine": 149,
+          "endLine": 152,
+          "params": []
+        },
+        {
+          "name": "syncMatrix",
+          "startLine": 155,
+          "endLine": 162,
+          "params": [
+            "matrix"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CRITERIA_LABELS",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "SURVEY_QUESTIONS",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "scoresFromAnswers",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "matrixFromScores",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "computeWeightsFromMatrix",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "buildDefaultMatrix",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "syncMatrix",
+          "line": 155,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "scoresFromAnswers",
+          "callee": "answers.forEach",
+          "lineNumber": 93
+        },
+        {
+          "caller": "scoresFromAnswers",
+          "callee": "opt.tilts.forEach",
+          "lineNumber": 97
+        },
+        {
+          "caller": "scoresFromAnswers",
+          "callee": "Math.max",
+          "lineNumber": 103
+        },
+        {
+          "caller": "scoresFromAnswers",
+          "callee": "Math.max",
+          "lineNumber": 104
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "Math.log",
+          "lineNumber": 115
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "SAATY_SCALE.reduce",
+          "lineNumber": 116
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "Math.abs",
+          "lineNumber": 117
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "Math.log",
+          "lineNumber": 117
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "Math.abs",
+          "lineNumber": 117
+        },
+        {
+          "caller": "snapToSaaty",
+          "callee": "Math.log",
+          "lineNumber": 117
+        },
+        {
+          "caller": "matrixFromScores",
+          "callee": "Array.from",
+          "lineNumber": 124
+        },
+        {
+          "caller": "matrixFromScores",
+          "callee": "Array(n).fill",
+          "lineNumber": 124
+        },
+        {
+          "caller": "matrixFromScores",
+          "callee": "Array",
+          "lineNumber": 124
+        },
+        {
+          "caller": "matrixFromScores",
+          "callee": "snapToSaaty",
+          "lineNumber": 127
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "matrix.some",
+          "lineNumber": 137
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "Array(N).fill",
+          "lineNumber": 138
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "Array",
+          "lineNumber": 138
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "matrix.map",
+          "lineNumber": 140
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "row.reduce",
+          "lineNumber": 141
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "Math.pow",
+          "lineNumber": 142
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "geoMeans.reduce",
+          "lineNumber": 144
+        },
+        {
+          "caller": "computeWeightsFromMatrix",
+          "callee": "geoMeans.map",
+          "lineNumber": 145
+        },
+        {
+          "caller": "buildDefaultMatrix",
+          "callee": "Array.from",
+          "lineNumber": 150
+        },
+        {
+          "caller": "buildDefaultMatrix",
+          "callee": "Array.from",
+          "lineNumber": 151
+        },
+        {
+          "caller": "syncMatrix",
+          "callee": "matrix.map",
+          "lineNumber": 156
+        },
+        {
+          "caller": "syncMatrix",
+          "callee": "row.map",
+          "lineNumber": 157
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/utils/formatters.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "formatPrice",
+          "startLine": 1,
+          "endLine": 7,
+          "params": [
+            "value",
+            "digits"
+          ]
+        },
+        {
+          "name": "formatPercent",
+          "startLine": 9,
+          "endLine": 12,
+          "params": [
+            "value",
+            "digits"
+          ]
+        },
+        {
+          "name": "formatBillions",
+          "startLine": 14,
+          "endLine": 22,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "formatRatio",
+          "startLine": 24,
+          "endLine": 27,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "formatScore",
+          "startLine": 29,
+          "endLine": 32,
+          "params": [
+            "value",
+            "digits"
+          ]
+        },
+        {
+          "name": "formatDate",
+          "startLine": 34,
+          "endLine": 41,
+          "params": [
+            "dateStr"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "formatPrice",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "formatPercent",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "formatBillions",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "formatRatio",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "formatScore",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "formatDate",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatPrice",
+          "callee": "Number.isFinite",
+          "lineNumber": 2
+        },
+        {
+          "caller": "formatPrice",
+          "callee": "value.toLocaleString",
+          "lineNumber": 3
+        },
+        {
+          "caller": "formatPercent",
+          "callee": "Number.isFinite",
+          "lineNumber": 10
+        },
+        {
+          "caller": "formatPercent",
+          "callee": "(value * 100).toFixed",
+          "lineNumber": 11
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "Number.isFinite",
+          "lineNumber": 15
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "Math.abs",
+          "lineNumber": 16
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "(value / 1e12).toFixed",
+          "lineNumber": 17
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "(value / 1e9).toFixed",
+          "lineNumber": 18
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "(value / 1e6).toFixed",
+          "lineNumber": 19
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "(value / 1e3).toFixed",
+          "lineNumber": 20
+        },
+        {
+          "caller": "formatBillions",
+          "callee": "value.toFixed",
+          "lineNumber": 21
+        },
+        {
+          "caller": "formatRatio",
+          "callee": "Number.isFinite",
+          "lineNumber": 25
+        },
+        {
+          "caller": "formatRatio",
+          "callee": "value.toFixed",
+          "lineNumber": 26
+        },
+        {
+          "caller": "formatScore",
+          "callee": "Number.isFinite",
+          "lineNumber": 30
+        },
+        {
+          "caller": "formatScore",
+          "callee": "value.toFixed",
+          "lineNumber": 31
+        },
+        {
+          "caller": "formatDate",
+          "callee": "new Date(dateStr).toLocaleDateString",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-frontend/src/utils/topsis.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 152,
+      "nonEmptyLines": 132,
+      "functions": [
+        {
+          "name": "sanitize",
+          "startLine": 12,
+          "endLine": 13,
+          "params": [
+            "v"
+          ]
+        },
+        {
+          "name": "buildMetrics",
+          "startLine": 15,
+          "endLine": 50,
+          "params": [
+            "detail"
+          ]
+        },
+        {
+          "name": "criterionOrderByWeight",
+          "startLine": 62,
+          "endLine": 70,
+          "params": [
+            "weights"
+          ]
+        },
+        {
+          "name": "computeTopsis",
+          "startLine": 72,
+          "endLine": 152,
+          "params": [
+            "rows",
+            "weights"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CRITERIA",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "DEFAULT_WEIGHTS",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "buildMetrics",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "computeTopsis",
+          "line": 72,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sanitize",
+          "callee": "Number.isFinite",
+          "lineNumber": 13
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 16
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Object.entries(detail.yearData)\n        .map(([y, d]) => ({ year: Number(y), d }))\n        .filter(({ year }) => Number.isFinite(year))\n        .sort",
+          "lineNumber": 18
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Object.entries(detail.yearData)\n        .map(([y, d]) => ({ year: Number(y), d }))\n        .filter",
+          "lineNumber": 18
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Object.entries(detail.yearData)\n        .map",
+          "lineNumber": 18
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Object.entries",
+          "lineNumber": 18
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Number",
+          "lineNumber": 19
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "Number.isFinite",
+          "lineNumber": 20
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 24
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 25
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 26
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 29
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 30
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 31
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 33
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 34
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 35
+        },
+        {
+          "caller": "buildMetrics",
+          "callee": "sanitize",
+          "lineNumber": 36
+        },
+        {
+          "caller": "criterionOrderByWeight",
+          "callee": "Array.from({ length: n }, (_, i) => i).sort",
+          "lineNumber": 64
+        },
+        {
+          "caller": "criterionOrderByWeight",
+          "callee": "Array.from",
+          "lineNumber": 64
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "rows.filter",
+          "lineNumber": 81
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.reduce",
+          "lineNumber": 82
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.reduce",
+          "lineNumber": 88
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "eligibleRows.reduce",
+          "lineNumber": 89
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.sqrt",
+          "lineNumber": 90
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "eligibleRows.forEach",
+          "lineNumber": 95
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.map",
+          "lineNumber": 96
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "normBySymbol.set",
+          "lineNumber": 97
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "eligibleRows.map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.forEach",
+          "lineNumber": 102
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.forEach",
+          "lineNumber": 110
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "weighted.map",
+          "lineNumber": 111
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.max",
+          "lineNumber": 113
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.min",
+          "lineNumber": 114
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "weighted.forEach",
+          "lineNumber": 118
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "CRITERIA.forEach",
+          "lineNumber": 120
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.sqrt",
+          "lineNumber": 124
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.sqrt",
+          "lineNumber": 124
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Math.round",
+          "lineNumber": 127
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "scores.set",
+          "lineNumber": 128
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "Number.isFinite",
+          "lineNumber": 128
+        },
+        {
+          "caller": "computeTopsis",
+          "callee": "criterionOrderByWeight",
+          "lineNumber": 131
+        },
+        {
+          "caller": "compareRank",
+          "callee": "scores.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "compareRank",
+          "callee": "scores.get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "compareRank",
+          "callee": "a.localeCompare",
+          "lineNumber": 136
+        },
+        {
+          "caller": "compareRank",
+          "callee": "normBySymbol.get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "compareRank",
+          "callee": "normBySymbol.get",
+          "lineNumber": 141
+        },
+        {
+          "caller": "compareRank",
+          "callee": "a.localeCompare",
+          "lineNumber": 142
+        },
+        {
+          "caller": "compareRank",
+          "callee": "a.localeCompare",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    }
+  ]
+}

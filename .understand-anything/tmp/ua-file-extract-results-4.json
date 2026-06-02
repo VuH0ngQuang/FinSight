@@ -1,0 +1,1882 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-rest/src/models/StockEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 38,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/models/Subscription.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/models/UserEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/producer/KafkaProducer.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 35,
+      "classes": [
+        {
+          "name": "KafkaProducer",
+          "startLine": 12,
+          "endLine": 42,
+          "methods": [
+            "constructor",
+            "send",
+            "disconnect"
+          ],
+          "properties": [
+            "producer",
+            "ready"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaProducer",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "kafkaProducer",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "createProducer",
+          "lineNumber": 17
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.producer.connect",
+          "lineNumber": 18
+        },
+        {
+          "caller": "send",
+          "callee": "randomUUID",
+          "lineNumber": 22
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 27
+        },
+        {
+          "caller": "send",
+          "callee": "this.producer.send",
+          "lineNumber": 31
+        },
+        {
+          "caller": "disconnect",
+          "callee": "this.producer.disconnect",
+          "lineNumber": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/routes/ahpConfigRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/portfolioRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/stockRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/stockYearDataRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/subscriptionRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/routes/userRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 35,
+      "classes": [
+        {
+          "name": "AhpConfigQueueService",
+          "startLine": 6,
+          "endLine": 43,
+          "methods": [
+            "createAhpConfig",
+            "updateAhpConfig"
+          ],
+          "properties": [
+            "createAhpConfigUri",
+            "updateAhpConfigUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ahpConfigQueueService",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createAhpConfig",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 11
+        },
+        {
+          "caller": "updateAhpConfig",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 63,
+      "classes": [
+        {
+          "name": "AhpConfigService",
+          "startLine": 14,
+          "endLine": 66,
+          "methods": [
+            "isBigIntString",
+            "getByUserId"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ahpConfigService",
+          "line": 68,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isBigIntString",
+          "callee": "/^[0-9]+$/.test",
+          "lineNumber": 16
+        },
+        {
+          "caller": "isBigIntString",
+          "callee": "value.trim",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "userId.trim",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "this.isBigIntString",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "await cacheService.hget",
+          "lineNumber": 24
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "String",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "String",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "await pool.query",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "Promise.all",
+          "lineNumber": 60
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "cacheService.hset",
+          "lineNumber": 61
+        },
+        {
+          "caller": "getByUserId",
+          "callee": "cacheService.hset",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/kafkaRequestResponseService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 111,
+      "nonEmptyLines": 93,
+      "classes": [
+        {
+          "name": "KafkaRequestResponseService",
+          "startLine": 20,
+          "endLine": 108,
+          "methods": [
+            "constructor",
+            "sendAndWait"
+          ],
+          "properties": [
+            "pendingResponses",
+            "consumerReady",
+            "defaultTimeoutMs",
+            "handleIncomingMessage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "kafkaRequestResponseService",
+          "line": 110,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "kafkaConsumer.waitUntilReady",
+          "lineNumber": 26
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.consumerReady\n      .then(() => {\n        void kafkaConsumer.run(this.handleIncomingMessage).catch((error) => {\n          // eslint-disable-next-line no-console\n          console.error('Kafka consumer stopped unexpectedly', error);\n        });\n      })\n      .catch",
+          "lineNumber": 28
+        },
+        {
+          "caller": "constructor",
+          "callee": "this.consumerReady\n      .then",
+          "lineNumber": 28
+        },
+        {
+          "caller": "constructor",
+          "callee": "kafkaConsumer.run(this.handleIncomingMessage).catch",
+          "lineNumber": 30
+        },
+        {
+          "caller": "constructor",
+          "callee": "kafkaConsumer.run",
+          "lineNumber": 30
+        },
+        {
+          "caller": "constructor",
+          "callee": "console.error",
+          "lineNumber": 32
+        },
+        {
+          "caller": "constructor",
+          "callee": "console.error",
+          "lineNumber": 37
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "randomUUID",
+          "lineNumber": 71
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "randomUUID",
+          "lineNumber": 76
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "setTimeout",
+          "lineNumber": 82
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "this.pendingResponses.delete",
+          "lineNumber": 83
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "reject",
+          "lineNumber": 84
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "this.pendingResponses.set",
+          "lineNumber": 87
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "resolve",
+          "lineNumber": 88
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "kafkaProducer.send",
+          "lineNumber": 95
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "this.pendingResponses.get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "clearTimeout",
+          "lineNumber": 99
+        },
+        {
+          "caller": "sendAndWait",
+          "callee": "this.pendingResponses.delete",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/portfolioQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 21,
+      "classes": [
+        {
+          "name": "PortfolioQueueService",
+          "startLine": 6,
+          "endLine": 25,
+          "methods": [
+            "allocate"
+          ],
+          "properties": [
+            "allocateUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "portfolioQueueService",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "allocate",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/stockQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 82,
+      "classes": [
+        {
+          "name": "StockQueueService",
+          "startLine": 6,
+          "endLine": 102,
+          "methods": [
+            "createStock",
+            "updateStock",
+            "deleteStock",
+            "updateIndustryRatios",
+            "recalculateValuations"
+          ],
+          "properties": [
+            "createStockUri",
+            "updateStockUri",
+            "deleteStockUri",
+            "updateIndustryRatiosUri",
+            "recalculateValuationsUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "stockQueueService",
+          "line": 104,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createStock",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 15
+        },
+        {
+          "caller": "updateStock",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 33
+        },
+        {
+          "caller": "deleteStock",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 51
+        },
+        {
+          "caller": "updateIndustryRatios",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 69
+        },
+        {
+          "caller": "recalculateValuations",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/stockService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 220,
+      "nonEmptyLines": 205,
+      "functions": [
+        {
+          "name": "toNumber",
+          "startLine": 45,
+          "endLine": 50,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StockService",
+          "startLine": 69,
+          "endLine": 217,
+          "methods": [
+            "persistStockScalarsToCache",
+            "queryYearData",
+            "getStockById",
+            "getAllStocksId"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "stockService",
+          "line": 219,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "toNumber",
+          "callee": "Number",
+          "lineNumber": 49
+        },
+        {
+          "caller": "persistStockScalarsToCache",
+          "callee": "cacheService.hset",
+          "lineNumber": 85
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "await pool.query",
+          "lineNumber": 89
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "yearRows.reduce",
+          "lineNumber": 119
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 121
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 122
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 123
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 124
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 125
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 126
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 127
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 128
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 129
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 130
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 131
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 132
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 133
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 134
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 135
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 136
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 137
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 138
+        },
+        {
+          "caller": "queryYearData",
+          "callee": "toNumber",
+          "lineNumber": 139
+        },
+        {
+          "caller": "getStockById",
+          "callee": "await cacheService.hget",
+          "lineNumber": 146
+        },
+        {
+          "caller": "getStockById",
+          "callee": "stockYearDataService.getYearDataRecordFromRedis",
+          "lineNumber": 148
+        },
+        {
+          "caller": "getStockById",
+          "callee": "this.queryYearData",
+          "lineNumber": 150
+        },
+        {
+          "caller": "getStockById",
+          "callee": "Object.keys",
+          "lineNumber": 151
+        },
+        {
+          "caller": "getStockById",
+          "callee": "stockYearDataService.persistAllForStock",
+          "lineNumber": 152
+        },
+        {
+          "caller": "getStockById",
+          "callee": "await pool.query",
+          "lineNumber": 158
+        },
+        {
+          "caller": "getStockById",
+          "callee": "this.queryYearData",
+          "lineNumber": 185
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 191
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 192
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 193
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 194
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 195
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 196
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 197
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 198
+        },
+        {
+          "caller": "getStockById",
+          "callee": "toNumber",
+          "lineNumber": 199
+        },
+        {
+          "caller": "getStockById",
+          "callee": "this.persistStockScalarsToCache",
+          "lineNumber": 203
+        },
+        {
+          "caller": "getStockById",
+          "callee": "stockYearDataService.persistAllForStock",
+          "lineNumber": 204
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "await pool.query",
+          "lineNumber": 209
+        },
+        {
+          "caller": "getAllStocksId",
+          "callee": "stockRows.map",
+          "lineNumber": 215
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 49,
+      "classes": [
+        {
+          "name": "StockYearDataQueueService",
+          "startLine": 6,
+          "endLine": 61,
+          "methods": [
+            "createStockYearData",
+            "updateStockYearData",
+            "deleteStockYearData"
+          ],
+          "properties": [
+            "createStockYearDataUri",
+            "updateStockYearDataUri",
+            "deleteStockYearDataUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "stockYearDataQueueService",
+          "line": 63,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createStockYearData",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 12
+        },
+        {
+          "caller": "updateStockYearData",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 29
+        },
+        {
+          "caller": "deleteStockYearData",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 168,
+      "nonEmptyLines": 157,
+      "functions": [
+        {
+          "name": "toNumber",
+          "startLine": 31,
+          "endLine": 36,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StockYearDataService",
+          "startLine": 38,
+          "endLine": 165,
+          "methods": [
+            "getByStockAndYear",
+            "getYearDataRecordFromRedis",
+            "persistAllForStock"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "stockYearDataService",
+          "line": 167,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "toNumber",
+          "callee": "Number",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "await cacheService.hget",
+          "lineNumber": 41
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "await pool.query",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 82
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 83
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 84
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 85
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 86
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 87
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 88
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 89
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 90
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 91
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 92
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 93
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 94
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 95
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 96
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 97
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 98
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 99
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "toNumber",
+          "lineNumber": 100
+        },
+        {
+          "caller": "getByStockAndYear",
+          "callee": "cacheService.hset",
+          "lineNumber": 103
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "cacheService.hScanMatch",
+          "lineNumber": 112
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "field.split",
+          "lineNumber": 118
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "Number",
+          "lineNumber": 119
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "Number.isFinite",
+          "lineNumber": 120
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "JSON.parse",
+          "lineNumber": 124
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 126
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 127
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 128
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 129
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 130
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 131
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 132
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 133
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 134
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 135
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 136
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 137
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 138
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 139
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 140
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 141
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 142
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 143
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "toNumber",
+          "lineNumber": 144
+        },
+        {
+          "caller": "getYearDataRecordFromRedis",
+          "callee": "Object.keys",
+          "lineNumber": 150
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Object.entries(yearData).map",
+          "lineNumber": 155
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Object.entries",
+          "lineNumber": 155
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Number",
+          "lineNumber": 156
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Number.isFinite",
+          "lineNumber": 157
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Promise.resolve",
+          "lineNumber": 158
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "cacheService.hset",
+          "lineNumber": 161
+        },
+        {
+          "caller": "persistAllForStock",
+          "callee": "Promise.all",
+          "lineNumber": 163
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/subscriptionPlanService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 33,
+      "classes": [
+        {
+          "name": "SubscriptionPlanService",
+          "startLine": 13,
+          "endLine": 35,
+          "methods": [
+            "getAllPlans"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "subscriptionPlanService",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAllPlans",
+          "callee": "await pool.query",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getAllPlans",
+          "callee": "rows.map",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getAllPlans",
+          "callee": "Number",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/subscriptionQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 21,
+      "classes": [
+        {
+          "name": "SubscriptionQueueService",
+          "startLine": 6,
+          "endLine": 25,
+          "methods": [
+            "createSubscription"
+          ],
+          "properties": [
+            "createUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "subscriptionQueueService",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createSubscription",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/userQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 135,
+      "nonEmptyLines": 104,
+      "classes": [
+        {
+          "name": "UserQueueService",
+          "startLine": 6,
+          "endLine": 133,
+          "methods": [
+            "createUser",
+            "updateUser",
+            "updatePassword",
+            "deleteUser",
+            "login",
+            "addFavoriteStock",
+            "removeFavoriteStock"
+          ],
+          "properties": [
+            "createUserUri",
+            "updateUserUri",
+            "deleteUserUri",
+            "updatePasswordUri",
+            "loginUri",
+            "addFavoriteStockUri",
+            "removeFavoriteStockUri"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "userQueueService",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createUser",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 16
+        },
+        {
+          "caller": "updateUser",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 32
+        },
+        {
+          "caller": "updatePassword",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 50
+        },
+        {
+          "caller": "deleteUser",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 67
+        },
+        {
+          "caller": "login",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 84
+        },
+        {
+          "caller": "addFavoriteStock",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 101
+        },
+        {
+          "caller": "removeFavoriteStock",
+          "callee": "await kafkaRequestResponseService.sendAndWait",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/services/userService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 313,
+      "classes": [
+        {
+          "name": "UserService",
+          "startLine": 40,
+          "endLine": 339,
+          "methods": [
+            "isBigIntString",
+            "toBoolean",
+            "querySubscriptions",
+            "getSubscriptionsFromUserCache",
+            "normalizeSubscriptionFromCache",
+            "persistSubscriptionsToCache",
+            "loadSubscriptionsWithCacheBackfill",
+            "getFavoriteStockIdsFromCache",
+            "queryFavoriteStockIdsFromDb",
+            "persistFavoriteStockIdsToCache",
+            "getFavoriteStockIdsByUserId",
+            "invalidateFavoriteStockIdsCache",
+            "getUserById"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "userService",
+          "line": 341,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isBigIntString",
+          "callee": "/^[0-9]+$/.test",
+          "lineNumber": 42
+        },
+        {
+          "caller": "isBigIntString",
+          "callee": "value.trim",
+          "lineNumber": 42
+        },
+        {
+          "caller": "toBoolean",
+          "callee": "Buffer.isBuffer",
+          "lineNumber": 48
+        },
+        {
+          "caller": "toBoolean",
+          "callee": "value.trim().toLowerCase",
+          "lineNumber": 50
+        },
+        {
+          "caller": "toBoolean",
+          "callee": "value.trim",
+          "lineNumber": 50
+        },
+        {
+          "caller": "querySubscriptions",
+          "callee": "await pool.query",
+          "lineNumber": 57
+        },
+        {
+          "caller": "querySubscriptions",
+          "callee": "subscriptionRows.map",
+          "lineNumber": 76
+        },
+        {
+          "caller": "querySubscriptions",
+          "callee": "Number",
+          "lineNumber": 85
+        },
+        {
+          "caller": "getSubscriptionsFromUserCache",
+          "callee": "await cacheService.hget",
+          "lineNumber": 96
+        },
+        {
+          "caller": "getSubscriptionsFromUserCache",
+          "callee": "Array.isArray",
+          "lineNumber": 100
+        },
+        {
+          "caller": "getSubscriptionsFromUserCache",
+          "callee": "raw.map",
+          "lineNumber": 103
+        },
+        {
+          "caller": "getSubscriptionsFromUserCache",
+          "callee": "this.normalizeSubscriptionFromCache",
+          "lineNumber": 103
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "Number",
+          "lineNumber": 109
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "Number.isFinite",
+          "lineNumber": 111
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "String",
+          "lineNumber": 112
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "Number",
+          "lineNumber": 113
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "String",
+          "lineNumber": 118
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "String",
+          "lineNumber": 119
+        },
+        {
+          "caller": "normalizeSubscriptionFromCache",
+          "callee": "String",
+          "lineNumber": 120
+        },
+        {
+          "caller": "persistSubscriptionsToCache",
+          "callee": "subs.map",
+          "lineNumber": 129
+        },
+        {
+          "caller": "persistSubscriptionsToCache",
+          "callee": "cacheService.hset",
+          "lineNumber": 143
+        },
+        {
+          "caller": "persistSubscriptionsToCache",
+          "callee": "Promise.all",
+          "lineNumber": 144
+        },
+        {
+          "caller": "persistSubscriptionsToCache",
+          "callee": "subs.map",
+          "lineNumber": 145
+        },
+        {
+          "caller": "persistSubscriptionsToCache",
+          "callee": "cacheService.hset",
+          "lineNumber": 146
+        },
+        {
+          "caller": "loadSubscriptionsWithCacheBackfill",
+          "callee": "this.getSubscriptionsFromUserCache",
+          "lineNumber": 159
+        },
+        {
+          "caller": "loadSubscriptionsWithCacheBackfill",
+          "callee": "this.querySubscriptions",
+          "lineNumber": 163
+        },
+        {
+          "caller": "loadSubscriptionsWithCacheBackfill",
+          "callee": "this.persistSubscriptionsToCache",
+          "lineNumber": 164
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "await cacheService.hget",
+          "lineNumber": 173
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "Array.isArray",
+          "lineNumber": 177
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "raw.map((s) => String(s).trim()).filter",
+          "lineNumber": 180
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "raw.map",
+          "lineNumber": 180
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "String(s).trim",
+          "lineNumber": 180
+        },
+        {
+          "caller": "getFavoriteStockIdsFromCache",
+          "callee": "String",
+          "lineNumber": 180
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "await pool.query",
+          "lineNumber": 201
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "rows.map",
+          "lineNumber": 202
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "String(r.stockId).trim",
+          "lineNumber": 202
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "String",
+          "lineNumber": 202
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "String",
+          "lineNumber": 204
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "await pool.query",
+          "lineNumber": 206
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "rows.map",
+          "lineNumber": 207
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "String(r.stockId).trim",
+          "lineNumber": 207
+        },
+        {
+          "caller": "queryFavoriteStockIdsFromDb",
+          "callee": "String",
+          "lineNumber": 207
+        },
+        {
+          "caller": "persistFavoriteStockIdsToCache",
+          "callee": "cacheService.hset",
+          "lineNumber": 214
+        },
+        {
+          "caller": "getFavoriteStockIdsByUserId",
+          "callee": "userId.trim",
+          "lineNumber": 222
+        },
+        {
+          "caller": "getFavoriteStockIdsByUserId",
+          "callee": "this.isBigIntString",
+          "lineNumber": 223
+        },
+        {
+          "caller": "getFavoriteStockIdsByUserId",
+          "callee": "this.getFavoriteStockIdsFromCache",
+          "lineNumber": 227
+        },
+        {
+          "caller": "getFavoriteStockIdsByUserId",
+          "callee": "this.queryFavoriteStockIdsFromDb",
+          "lineNumber": 232
+        },
+        {
+          "caller": "getFavoriteStockIdsByUserId",
+          "callee": "this.persistFavoriteStockIdsToCache",
+          "lineNumber": 233
+        },
+        {
+          "caller": "invalidateFavoriteStockIdsCache",
+          "callee": "userId.trim",
+          "lineNumber": 239
+        },
+        {
+          "caller": "invalidateFavoriteStockIdsCache",
+          "callee": "this.isBigIntString",
+          "lineNumber": 240
+        },
+        {
+          "caller": "invalidateFavoriteStockIdsCache",
+          "callee": "cacheService.hdel",
+          "lineNumber": 243
+        },
+        {
+          "caller": "getUserById",
+          "callee": "userId.trim",
+          "lineNumber": 247
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.isBigIntString",
+          "lineNumber": 248
+        },
+        {
+          "caller": "getUserById",
+          "callee": "await cacheService.hget",
+          "lineNumber": 261
+        },
+        {
+          "caller": "getUserById",
+          "callee": "Promise.all",
+          "lineNumber": 263
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.loadSubscriptionsWithCacheBackfill",
+          "lineNumber": 264
+        },
+        {
+          "caller": "getUserById",
+          "callee": "ahpConfigService.getByUserId",
+          "lineNumber": 265
+        },
+        {
+          "caller": "getUserById",
+          "callee": "String(cached.userId).trim",
+          "lineNumber": 277
+        },
+        {
+          "caller": "getUserById",
+          "callee": "String",
+          "lineNumber": 277
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.toBoolean",
+          "lineNumber": 282
+        },
+        {
+          "caller": "getUserById",
+          "callee": "await pool.query",
+          "lineNumber": 288
+        },
+        {
+          "caller": "getUserById",
+          "callee": "Promise.all",
+          "lineNumber": 306
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.loadSubscriptionsWithCacheBackfill",
+          "lineNumber": 307
+        },
+        {
+          "caller": "getUserById",
+          "callee": "ahpConfigService.getByUserId",
+          "lineNumber": 308
+        },
+        {
+          "caller": "getUserById",
+          "callee": "cacheService.hset",
+          "lineNumber": 320
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.toBoolean",
+          "lineNumber": 325
+        },
+        {
+          "caller": "getUserById",
+          "callee": "this.toBoolean",
+          "lineNumber": 334
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-rest/src/utils/cacheService.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 47,
+      "classes": [
+        {
+          "name": "CacheService",
+          "startLine": 3,
+          "endLine": 50,
+          "methods": [
+            "hScanMatch",
+            "hget",
+            "hset",
+            "hdel"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "cacheService",
+          "line": 52,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "hScanMatch",
+          "callee": "redisClient.hScanIterator",
+          "lineNumber": 10
+        },
+        {
+          "caller": "hScanMatch",
+          "callee": "results.push",
+          "lineNumber": 12
+        },
+        {
+          "caller": "hScanMatch",
+          "callee": "String",
+          "lineNumber": 13
+        },
+        {
+          "caller": "hScanMatch",
+          "callee": "String",
+          "lineNumber": 14
+        },
+        {
+          "caller": "hScanMatch",
+          "callee": "console.error",
+          "lineNumber": 19
+        },
+        {
+          "caller": "hget",
+          "callee": "redisClient.hGet",
+          "lineNumber": 26
+        },
+        {
+          "caller": "hget",
+          "callee": "JSON.parse",
+          "lineNumber": 28
+        },
+        {
+          "caller": "hget",
+          "callee": "console.error",
+          "lineNumber": 30
+        },
+        {
+          "caller": "hset",
+          "callee": "redisClient.hSet",
+          "lineNumber": 37
+        },
+        {
+          "caller": "hset",
+          "callee": "JSON.stringify",
+          "lineNumber": 37
+        },
+        {
+          "caller": "hset",
+          "callee": "console.error",
+          "lineNumber": 39
+        },
+        {
+          "caller": "hdel",
+          "callee": "redisClient.hDel",
+          "lineNumber": 45
+        },
+        {
+          "caller": "hdel",
+          "callee": "console.error",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    }
+  ]
+}

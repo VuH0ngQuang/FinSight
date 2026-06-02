@@ -1,0 +1,1158 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "type": "file",
+      "name": "StockYearDataServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "summary": "Implements yearly stock financial data maintenance and validation history responses. It mutates embedded year-data maps, triggers stock valuation recalculation, and updates Redis cache entries.",
+      "tags": [
+        "service",
+        "financial-data",
+        "valuation",
+        "cache"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "class",
+      "name": "StockYearDataServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        27,
+        228
+      ],
+      "summary": "Concrete yearly stock data service that mutates embedded financial data and recalculates valuations.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "function",
+      "name": "StockYearDataServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        36,
+        48
+      ],
+      "summary": "StockYearDataServiceImpl implements part of the StockYearDataServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:createStockYearData",
+      "type": "function",
+      "name": "createStockYearData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        50,
+        85
+      ],
+      "summary": "Adds new yearly financial data to a stock, recalculates valuations, persists, and refreshes cache.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:updateStockYearData",
+      "type": "function",
+      "name": "updateStockYearData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        87,
+        114
+      ],
+      "summary": "Updates or creates yearly financial data for a stock and recalculates valuations.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:deleteStockYearData",
+      "type": "function",
+      "name": "deleteStockYearData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        116,
+        147
+      ],
+      "summary": "Removes yearly financial data for a stock and refreshes persistence and cache state.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:getValidationHistory",
+      "type": "function",
+      "name": "getValidationHistory",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        149,
+        188
+      ],
+      "summary": "Builds validation-history responses for requested stock/year pairs using repository data.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:applyDtoToYearData",
+      "type": "function",
+      "name": "applyDtoToYearData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        190,
+        203
+      ],
+      "summary": "Copies financial metrics from a DTO into an embedded stock year-data record.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:convertToDto",
+      "type": "function",
+      "name": "convertToDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "lineRange": [
+        205,
+        227
+      ],
+      "summary": "Maps an entity object into its service DTO representation.",
+      "tags": [
+        "mapping",
+        "dto",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "type": "file",
+      "name": "SubscriptionServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "summary": "Implements subscription creation, update, deletion, payment initiation, DTO conversion, and cache invalidation. It joins user, plan, subscription, Redis, payment, and locking dependencies into the subscription lifecycle.",
+      "tags": [
+        "service",
+        "subscription",
+        "payment",
+        "cache"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "class",
+      "name": "SubscriptionServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        30,
+        234
+      ],
+      "summary": "Concrete subscription service coordinating plans, users, payment creation, persistence, and Redis invalidation.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "function",
+      "name": "SubscriptionServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        41,
+        55
+      ],
+      "summary": "SubscriptionServiceImpl implements part of the SubscriptionServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:createSubscription",
+      "type": "function",
+      "name": "createSubscription",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        66,
+        119
+      ],
+      "summary": "Creates a subscription with generated ID, date range, user and plan associations, persistence, and cache invalidation.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:updateSubscription",
+      "type": "function",
+      "name": "updateSubscription",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        121,
+        152
+      ],
+      "summary": "Updates subscription status and fields, persists the change, and invalidates user subscription cache.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:deleteSubscription",
+      "type": "function",
+      "name": "deleteSubscription",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        154,
+        180
+      ],
+      "summary": "Deletes a subscription and invalidates the owning user's subscription cache.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:paymentSubscription",
+      "type": "function",
+      "name": "paymentSubscription",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        182,
+        217
+      ],
+      "summary": "Loads a subscription and delegates payment creation for the requested payment DTO.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:convertToDto",
+      "type": "function",
+      "name": "convertToDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "lineRange": [
+        223,
+        233
+      ],
+      "summary": "Maps an entity object into its service DTO representation.",
+      "tags": [
+        "mapping",
+        "dto",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "type": "file",
+      "name": "UserServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "summary": "Implements account creation, updates, deletion, password changes, login cache management, and favorite-stock changes. It combines repository checks, password encoding, Redis login/favorite caches, locking, and welcome email delivery.",
+      "tags": [
+        "service",
+        "user-management",
+        "authentication",
+        "cache"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "class",
+      "name": "UserServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        30,
+        384
+      ],
+      "summary": "Concrete user service implementing registration, login, profile mutation, favorite-stock changes, cache maintenance, and email sending.",
+      "tags": [
+        "service",
+        "implementation",
+        "spring",
+        "business-logic"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "function",
+      "name": "UserServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        40,
+        51
+      ],
+      "summary": "Constructor wiring user repository, stock repository, lock manager, Redis DAO, and mail service.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        53,
+        92
+      ],
+      "summary": "Validates uniqueness, creates a user and default AHP config, persists both, caches login data, and sends a welcome email.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updateUser",
+      "type": "function",
+      "name": "updateUser",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        94,
+        131
+      ],
+      "summary": "Updates mutable user profile fields after duplicate checks and refreshes login cache state.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:deleteUser",
+      "type": "function",
+      "name": "deleteUser",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        133,
+        163
+      ],
+      "summary": "deleteUser implements part of the UserServiceImpl service workflow.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updatePassword",
+      "type": "function",
+      "name": "updatePassword",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        165,
+        186
+      ],
+      "summary": "Updates a user's encoded password and clears cached login state.",
+      "tags": [
+        "service",
+        "mutation",
+        "persistence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        188,
+        252
+      ],
+      "summary": "Authenticates by username or email and returns a login response while maintaining Redis login cache data.",
+      "tags": [
+        "authentication",
+        "user-management",
+        "security"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:addFavoriteStock",
+      "type": "function",
+      "name": "addFavoriteStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        254,
+        297
+      ],
+      "summary": "Adds a stock to the user's favorites, persists the user, and invalidates favorite cache data.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:removeFavoriteStock",
+      "type": "function",
+      "name": "removeFavoriteStock",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        299,
+        333
+      ],
+      "summary": "Removes a stock from the user's favorites, persists the user, and invalidates favorite cache data.",
+      "tags": [
+        "service",
+        "business-logic",
+        "java"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:cacheLoginData",
+      "type": "function",
+      "name": "cacheLoginData",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "lineRange": [
+        348,
+        364
+      ],
+      "summary": "Stores login identity metadata in Redis under username and email keys.",
+      "tags": [
+        "cache",
+        "redis",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "type": "file",
+      "name": "PaymentService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "summary": "Service contract for creating payment records or payment responses from a payment DTO. It is consumed by subscription processing.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java:PaymentService",
+      "type": "class",
+      "name": "PaymentService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "lineRange": [
+        5,
+        7
+      ],
+      "summary": "Service interface for creating payment responses from payment DTO input.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:StockYearDataServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:createStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:createStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:updateStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:updateStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:deleteStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:deleteStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:getValidationHistory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:getValidationHistory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:applyDtoToYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java:convertToDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:SubscriptionServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:createSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:createSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:updateSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:updateSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:deleteSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:deleteSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:paymentSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:paymentSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java:convertToDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:UserServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:createUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updateUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:deleteUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:deleteUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updatePassword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:updatePassword",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:login",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:addFavoriteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:addFavoriteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:removeFavoriteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:removeFavoriteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:cacheLoginData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java:PaymentService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java:PaymentService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:login",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java:cacheLoginData",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "nodes": [
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/charts.csv:charts",
+      "type": "table",
+      "name": "charts.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/charts.csv",
+      "summary": "Chart recommendation reference data mapping data-visualization needs to chart types, color guidance, accessibility notes, library choices, and interaction levels.",
+      "tags": [
+        "data-reference",
+        "charting",
+        "visualization",
+        "accessibility"
+      ],
+      "complexity": "simple",
+      "languageNotes": "CSV rows encode chart-selection heuristics for UI generation prompts."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/colors.csv:colors",
+      "type": "table",
+      "name": "colors.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/colors.csv",
+      "summary": "Color palette reference data for product categories, including primary, secondary, CTA, background, text, and border hex values with usage notes.",
+      "tags": [
+        "data-reference",
+        "color-system",
+        "product-design",
+        "design-tokens"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Rows act as palette presets keyed by product type for downstream design-system selection."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/icons.csv:icons",
+      "type": "table",
+      "name": "icons.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/icons.csv",
+      "summary": "Icon lookup data mapping UI categories and keywords to Lucide icon names, imports, usage guidance, best-fit contexts, and style metadata.",
+      "tags": [
+        "data-reference",
+        "icon-system",
+        "lucide",
+        "ui-components"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The dataset bridges natural-language UI intent to concrete Lucide React imports."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/landing.csv:landing",
+      "type": "table",
+      "name": "landing.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/landing.csv",
+      "summary": "Landing-page pattern data describing section order, CTA placement, color strategy, effects, and conversion guidance for common page archetypes.",
+      "tags": [
+        "data-reference",
+        "landing-pages",
+        "conversion",
+        "layout-patterns"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Rows combine content sequencing with conversion-focused UI heuristics."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/products.csv:products",
+      "type": "table",
+      "name": "products.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/products.csv",
+      "summary": "Product-type design guidance linking product categories and keywords to style recommendations, landing patterns, dashboard styles, palettes, and implementation considerations.",
+      "tags": [
+        "data-reference",
+        "product-design",
+        "style-selection",
+        "dashboard-design"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "This CSV serves as a product taxonomy for choosing visual systems and page patterns."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/react-performance.csv:react-performance",
+      "type": "table",
+      "name": "react-performance.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/react-performance.csv",
+      "summary": "React and Next.js performance guidance data covering common issue categories, severity, recommended practices, anti-patterns, and good versus bad code examples.",
+      "tags": [
+        "data-reference",
+        "react",
+        "performance",
+        "best-practices"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Rows pair performance smells with concrete remediation examples for prompt retrieval."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/styles.csv:styles",
+      "type": "table",
+      "name": "styles.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/styles.csv",
+      "summary": "UI style taxonomy data detailing visual style categories, colors, animation effects, suitability, accessibility, framework compatibility, prompt keywords, and design variables.",
+      "tags": [
+        "data-reference",
+        "visual-style",
+        "design-system",
+        "accessibility"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The wide CSV schema captures both design guidance and implementation tokens for each style family."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/typography.csv:typography",
+      "type": "table",
+      "name": "typography.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/typography.csv",
+      "summary": "Typography pairing reference data listing heading and body font combinations, moods, best-fit use cases, Google Fonts URLs, CSS imports, Tailwind config snippets, and notes.",
+      "tags": [
+        "data-reference",
+        "typography",
+        "font-pairing",
+        "design-tokens"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Rows provide ready-to-apply font pairing metadata for generated UI systems."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/ui-reasoning.csv:ui-reasoning",
+      "type": "table",
+      "name": "ui-reasoning.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "summary": "UI reasoning decision data connecting product categories to recommended patterns, style priorities, color and typography moods, effects, decision rules, anti-patterns, and severity.",
+      "tags": [
+        "data-reference",
+        "ui-reasoning",
+        "decision-rules",
+        "product-design"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Several rows include structured decision-rule payloads embedded in CSV fields."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/ux-guidelines.csv:ux-guidelines",
+      "type": "table",
+      "name": "ux-guidelines.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "summary": "UX guideline reference data cataloging interface issues by category and platform with recommended fixes, anti-patterns, examples, and severity ratings.",
+      "tags": [
+        "data-reference",
+        "ux-guidelines",
+        "accessibility",
+        "interaction-design"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The dataset is organized as actionable UX lint rules with good and bad implementation examples."
+    },
+    {
+      "id": "table:.cursor/skills/ui-ux-pro-max/data/web-interface.csv:web-interface",
+      "type": "table",
+      "name": "web-interface.csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/data/web-interface.csv",
+      "summary": "Web interface quality guidance covering accessibility, forms, keyboard behavior, responsive layout, and implementation examples with severity levels.",
+      "tags": [
+        "data-reference",
+        "web-interface",
+        "accessibility",
+        "quality-rules"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Rows capture high-priority web UI checks suitable for retrieval during frontend implementation."
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,1299 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 12,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 11,
+          "endLine": 13,
+          "params": [
+            "args"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MarketWebhooksApplication",
+          "startLine": 8,
+          "endLine": 15,
+          "methods": [
+            "main"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "MarketWebhooksApplication",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "SpringApplication.run",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "init",
+          "startLine": 18,
+          "endLine": 31,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "AppConf",
+          "startLine": 9,
+          "endLine": 62,
+          "methods": [
+            "init"
+          ],
+          "properties": [
+            "logger",
+            "clusterId",
+            "uri",
+            "kafka",
+            "payOSEnv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AppConf",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 20
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 21
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 23
+        },
+        {
+          "caller": "init",
+          "callee": "kafka.getUrls",
+          "lineNumber": 23
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 24
+        },
+        {
+          "caller": "init",
+          "callee": "kafka.getTopic().getMarketWebhooks",
+          "lineNumber": 24
+        },
+        {
+          "caller": "init",
+          "callee": "kafka.getTopic",
+          "lineNumber": 24
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 25
+        },
+        {
+          "caller": "init",
+          "callee": "kafka.getGroupId",
+          "lineNumber": 25
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "uri.getWebhooks().getPayment",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "uri.getWebhooks",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "logger.info",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 63,
+      "functions": [
+        {
+          "name": "WebhookController",
+          "startLine": 26,
+          "endLine": 35,
+          "params": [
+            "kafkaProducer",
+            "payOS",
+            "objectMapper"
+          ]
+        },
+        {
+          "name": "handleWebhook",
+          "startLine": 37,
+          "endLine": 67,
+          "params": [
+            "payload",
+            "headers"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "WebhookController",
+          "startLine": 18,
+          "endLine": 68,
+          "methods": [
+            "WebhookController",
+            "handleWebhook"
+          ],
+          "properties": [
+            "logger",
+            "objectMapper",
+            "kafkaProducer",
+            "payOS"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "WebhookController",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "handleWebhook",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "WebhookController",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "handleWebhook",
+          "callee": "logger.info",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "payOS.webhooks().verify",
+          "lineNumber": 43
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "payOS.webhooks",
+          "lineNumber": 43
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "logger.info",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "new PaymentDto",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "paymentDto.setId",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "data.getOrderCode",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "data.getDesc().equals",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "data.getDesc",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "paymentDto.setSuccess",
+          "lineNumber": 48
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "paymentDto.setSuccess",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "paymentDto.setErrorMessage",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "data.getDesc",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "kafkaProducer.publish",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "objectMapper.writeValueAsString",
+          "lineNumber": 53
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "logger.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "e.getMessage",
+          "lineNumber": 56
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "PaymentDto.builder()\n                    .id(payload.getData().getOrderCode())\n                    .success(false)\n                    .errorMessage(e.getMessage()).build",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "PaymentDto.builder()\n                    .id(payload.getData().getOrderCode())\n                    .success(false).errorMessage",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "PaymentDto.builder()\n                    .id(payload.getData().getOrderCode()).success",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "PaymentDto.builder().id",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "PaymentDto.builder",
+          "lineNumber": 57
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "payload.getData().getOrderCode",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "payload.getData",
+          "lineNumber": 58
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "e.getMessage",
+          "lineNumber": 60
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "kafkaProducer.publish",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "paymentDto.toString",
+          "lineNumber": 62
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "new RuntimeException",
+          "lineNumber": 64
+        },
+        {
+          "caller": "handleWebhook",
+          "callee": "ResponseEntity.ok",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "classes": [
+        {
+          "name": "PaymentDto",
+          "startLine": 8,
+          "endLine": 16,
+          "methods": [],
+          "properties": [
+            "id",
+            "success",
+            "errorMessage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PaymentDto",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 214,
+      "nonEmptyLines": 184,
+      "functions": [
+        {
+          "name": "KafkaService",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "appConf",
+            "mapper"
+          ]
+        },
+        {
+          "name": "connectProducer",
+          "startLine": 45,
+          "endLine": 67,
+          "params": [
+            "bootstrapServers",
+            "clientId",
+            "groupId"
+          ]
+        },
+        {
+          "name": "createDefaultTopic",
+          "startLine": 69,
+          "endLine": 71,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 73,
+          "endLine": 75,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 77,
+          "endLine": 94,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        },
+        {
+          "name": "startConsumer",
+          "startLine": 96,
+          "endLine": 150,
+          "params": [
+            "bootstrapServers",
+            "groupId",
+            "topics"
+          ]
+        },
+        {
+          "name": "subscribe",
+          "startLine": 152,
+          "endLine": 163,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "shutdown",
+          "startLine": 165,
+          "endLine": 195,
+          "params": []
+        },
+        {
+          "name": "toJson",
+          "startLine": 197,
+          "endLine": 211,
+          "params": [
+            "message",
+            "uri"
+          ]
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 213,
+          "endLine": 213,
+          "params": [
+            "topic",
+            "key",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaService",
+          "startLine": 27,
+          "endLine": 214,
+          "methods": [
+            "KafkaService",
+            "connectProducer",
+            "createDefaultTopic",
+            "send",
+            "send",
+            "startConsumer",
+            "subscribe",
+            "shutdown",
+            "toJson",
+            "handleIncomingMessage"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf",
+            "producer",
+            "consumer",
+            "defaultTopic",
+            "consumerThread",
+            "running"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaService",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "connectProducer",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "createDefaultTopic",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "startConsumer",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "subscribe",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "shutdown",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "toJson",
+          "line": 197,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaService",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connectProducer",
+          "callee": "producer.close",
+          "lineNumber": 48
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new Properties",
+          "lineNumber": 55
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 56
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 57
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 58
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new KafkaProducer<>",
+          "lineNumber": 62
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.info",
+          "lineNumber": 63
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 65
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 65
+        },
+        {
+          "caller": "send",
+          "callee": "send",
+          "lineNumber": 74
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 79
+        },
+        {
+          "caller": "send",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 84
+        },
+        {
+          "caller": "send",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 84
+        },
+        {
+          "caller": "send",
+          "callee": "new ProducerRecord<>",
+          "lineNumber": 85
+        },
+        {
+          "caller": "send",
+          "callee": "producer.send",
+          "lineNumber": 86
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 88
+        },
+        {
+          "caller": "send",
+          "callee": "exception.getMessage",
+          "lineNumber": 88
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 92
+        },
+        {
+          "caller": "send",
+          "callee": "e.getMessage",
+          "lineNumber": 92
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 98
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Properties",
+          "lineNumber": 103
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 104
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 105
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 105
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 106
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 107
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 107
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 108
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 108
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 109
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 110
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 111
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new KafkaConsumer<>",
+          "lineNumber": 113
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.subscribe",
+          "lineNumber": 114
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 118
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.poll",
+          "lineNumber": 121
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "Duration.ofMillis",
+          "lineNumber": 121
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.topic",
+          "lineNumber": 124
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.key",
+          "lineNumber": 125
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.value",
+          "lineNumber": 126
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread(() -> handleIncomingMessage(topic, key, value)).start",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "handleIncomingMessage",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 132
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 134
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 134
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.close",
+          "lineNumber": 137
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 139
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 139
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumerThread.start",
+          "lineNumber": 144
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 145
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 148
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 148
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 154
+        },
+        {
+          "caller": "subscribe",
+          "callee": "consumer.subscribe",
+          "lineNumber": 158
+        },
+        {
+          "caller": "subscribe",
+          "callee": "Collections.singletonList",
+          "lineNumber": 158
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.info",
+          "lineNumber": 159
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 161
+        },
+        {
+          "caller": "subscribe",
+          "callee": "e.getMessage",
+          "lineNumber": 161
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.info",
+          "lineNumber": 167
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumer.wakeup",
+          "lineNumber": 173
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 176
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 176
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumerThread.join",
+          "lineNumber": 181
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 184
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread",
+          "lineNumber": 184
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.flush",
+          "lineNumber": 189
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.close",
+          "lineNumber": 190
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 193
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 193
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri)\n                .payload(message).build",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri).payload",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString()).uri",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId()).eventId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder().sourceId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 199
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 200
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 200
+        },
+        {
+          "caller": "toJson",
+          "callee": "mapper.writeValueAsString",
+          "lineNumber": 206
+        },
+        {
+          "caller": "toJson",
+          "callee": "logger.error",
+          "lineNumber": 208
+        },
+        {
+          "caller": "toJson",
+          "callee": "e.getMessage",
+          "lineNumber": 208
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "classes": [
+        {
+          "name": "Message",
+          "startLine": 9,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "sourceId",
+            "eventId",
+            "uri",
+            "timestamp",
+            "payload"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Message",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "KafkaProducer",
+          "startLine": 18,
+          "endLine": 23,
+          "params": [
+            "appConf",
+            "mapper"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 25,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "publish",
+          "startLine": 31,
+          "endLine": 35,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "publish",
+          "startLine": 37,
+          "endLine": 41,
+          "params": [
+            "topic",
+            "message"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaProducer",
+          "startLine": 12,
+          "endLine": 42,
+          "methods": [
+            "KafkaProducer",
+            "init",
+            "publish",
+            "publish"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaProducer",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaProducer",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "createDefaultTopic",
+          "lineNumber": 27
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketWebhooks",
+          "lineNumber": 27
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 27
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 27
+        },
+        {
+          "caller": "init",
+          "callee": "connectProducer",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getUrls",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getGroupId",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 28
+        },
+        {
+          "caller": "publish",
+          "callee": "toJson",
+          "lineNumber": 32
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getUri().getWebhooks().getPayment",
+          "lineNumber": 32
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getUri().getWebhooks",
+          "lineNumber": 32
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getUri",
+          "lineNumber": 32
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 33
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic().getMarketWebhooks",
+          "lineNumber": 33
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 33
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka",
+          "lineNumber": 33
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 34
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic().getMarketWebhooks",
+          "lineNumber": 34
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 34
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka",
+          "lineNumber": 34
+        },
+        {
+          "caller": "publish",
+          "callee": "toJson",
+          "lineNumber": 38
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 39
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    }
+  ]
+}

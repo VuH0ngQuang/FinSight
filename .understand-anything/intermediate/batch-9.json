@@ -1,0 +1,1687 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "type": "file",
+      "name": "MarketCollectorApplication.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "summary": "Spring Boot entry point for the market collector service, enabling AppConf configuration properties before bootstrapping the application context.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "configuration",
+        "collector"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:MarketCollectorApplication",
+      "type": "class",
+      "name": "MarketCollectorApplication",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "lineRange": [
+        9,
+        18
+      ],
+      "summary": "Application bootstrap class for the market collector Spring Boot service.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "bootstrap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "lineRange": [
+        14,
+        16
+      ],
+      "summary": "Starts the Spring Boot market collector application with AppConf properties enabled.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "bootstrap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "type": "file",
+      "name": "TokenClient.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "summary": "HTTP client component that authenticates against the configured data-feed API and retrieves investor identifiers for MQTT websocket login.",
+      "tags": [
+        "service",
+        "authentication",
+        "http-client",
+        "data-feed"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:TokenClient",
+      "type": "class",
+      "name": "TokenClient",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "lineRange": [
+        19,
+        70
+      ],
+      "summary": "Spring component that exchanges configured data-feed credentials for access token and investor identity values.",
+      "tags": [
+        "service",
+        "authentication",
+        "http-client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getToken",
+      "type": "function",
+      "name": "getToken",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "lineRange": [
+        30,
+        51
+      ],
+      "summary": "Builds a credential request, calls the configured token endpoint, and extracts the returned bearer token.",
+      "tags": [
+        "authentication",
+        "http-client",
+        "data-feed"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getInvestorId",
+      "type": "function",
+      "name": "getInvestorId",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "lineRange": [
+        53,
+        69
+      ],
+      "summary": "Calls the configured investor endpoint with a bearer token and returns the investorId field from the response.",
+      "tags": [
+        "authentication",
+        "http-client",
+        "data-feed"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "file",
+      "name": "AppConf.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "summary": "Typed Spring configuration properties for cluster, Kafka, MQTT, data-feed, and database settings, with startup logging of the resolved configuration.",
+      "tags": [
+        "configuration",
+        "spring-boot",
+        "properties",
+        "runtime-settings"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:AppConf",
+      "type": "class",
+      "name": "AppConf",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "lineRange": [
+        9,
+        92
+      ],
+      "summary": "Configuration properties holder for runtime integration settings used by the collector.",
+      "tags": [
+        "configuration",
+        "spring-properties",
+        "runtime-settings"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:logConfig",
+      "type": "function",
+      "name": "logConfig",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "lineRange": [
+        19,
+        48
+      ],
+      "summary": "Logs resolved cluster, Kafka, MQTT, data-feed, and database configuration values after property binding.",
+      "tags": [
+        "configuration",
+        "logging",
+        "startup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "type": "file",
+      "name": "KafkaService.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "summary": "Reusable Kafka service that manages producer and consumer lifecycle, topic publishing, consumer polling, shutdown, and message envelope serialization.",
+      "tags": [
+        "service",
+        "kafka",
+        "messaging",
+        "lifecycle"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:KafkaService",
+      "type": "class",
+      "name": "KafkaService",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        27,
+        214
+      ],
+      "summary": "Shared Kafka messaging base class that owns producer, consumer, serialization, and shutdown behavior.",
+      "tags": [
+        "service",
+        "kafka",
+        "messaging"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:connectProducer",
+      "type": "function",
+      "name": "connectProducer",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        45,
+        67
+      ],
+      "summary": "Creates or replaces the Kafka producer using configured bootstrap servers, client id, group id, and string serializers.",
+      "tags": [
+        "kafka",
+        "producer",
+        "connection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:createDefaultTopic",
+      "type": "function",
+      "name": "createDefaultTopic",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        69,
+        71
+      ],
+      "summary": "Stores the default Kafka topic used by convenience send operations.",
+      "tags": [
+        "kafka",
+        "configuration",
+        "topic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:send",
+      "type": "function",
+      "name": "send",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        73,
+        94
+      ],
+      "summary": "Publishes payloads to Kafka with generated keys and callback error logging.",
+      "tags": [
+        "kafka",
+        "producer",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:startConsumer",
+      "type": "function",
+      "name": "startConsumer",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        96,
+        150
+      ],
+      "summary": "Creates a Kafka consumer, subscribes to topics, and runs a polling loop on a dedicated thread.",
+      "tags": [
+        "kafka",
+        "consumer",
+        "threading"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:subscribe",
+      "type": "function",
+      "name": "subscribe",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        152,
+        163
+      ],
+      "summary": "Replaces the active Kafka consumer subscription with a single topic.",
+      "tags": [
+        "kafka",
+        "consumer",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:shutdown",
+      "type": "function",
+      "name": "shutdown",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        165,
+        195
+      ],
+      "summary": "Stops consumer polling, wakes and joins the consumer thread, then flushes and closes the producer.",
+      "tags": [
+        "kafka",
+        "lifecycle",
+        "shutdown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:toJson",
+      "type": "function",
+      "name": "toJson",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "lineRange": [
+        197,
+        211
+      ],
+      "summary": "Wraps a raw payload in a Message envelope and serializes it to JSON.",
+      "tags": [
+        "serialization",
+        "messaging",
+        "kafka"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "type": "file",
+      "name": "MqttListener.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "summary": "Spring service that connects to the market data MQTT websocket, subscribes to all stock symbols from the database, converts incoming ticks to Stock payloads, and republishes them to Kafka and MQTT producers.",
+      "tags": [
+        "service",
+        "mqtt",
+        "market-data",
+        "event-handler"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:MqttListener",
+      "type": "class",
+      "name": "MqttListener",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "lineRange": [
+        22,
+        122
+      ],
+      "summary": "MQTT market data listener that subscribes to stock quote topics and forwards parsed updates.",
+      "tags": [
+        "service",
+        "mqtt",
+        "event-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "lineRange": [
+        50,
+        57
+      ],
+      "summary": "Initializes the listener connection after Spring constructs the service.",
+      "tags": [
+        "startup",
+        "mqtt",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "type": "function",
+      "name": "initConnection",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "lineRange": [
+        59,
+        78
+      ],
+      "summary": "Fetches stock ids and data-feed credentials, connects to the websocket broker, and subscribes to each stock quote topic.",
+      "tags": [
+        "mqtt",
+        "market-data",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:connectionLost",
+      "type": "function",
+      "name": "connectionLost",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "lineRange": [
+        80,
+        87
+      ],
+      "summary": "Reconnects the market data listener after MQTT connection loss.",
+      "tags": [
+        "mqtt",
+        "reconnect",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:handleIncomingMessage",
+      "type": "function",
+      "name": "handleIncomingMessage",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "lineRange": [
+        89,
+        104
+      ],
+      "summary": "Parses an incoming quote message into a Stock payload and forwards it to Kafka and MQTT producers.",
+      "tags": [
+        "event-handler",
+        "market-data",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "type": "file",
+      "name": "Message.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "summary": "Lombok-backed message envelope model carrying source, event, URI, timestamp, and payload fields for Kafka publication.",
+      "tags": [
+        "data-model",
+        "messaging",
+        "lombok",
+        "serialization"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/model/Message.java:Message",
+      "type": "class",
+      "name": "Message",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "lineRange": [
+        9,
+        18
+      ],
+      "summary": "Message envelope value object serialized before publishing to Kafka.",
+      "tags": [
+        "data-model",
+        "serialization",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "type": "file",
+      "name": "Stock.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "summary": "Simple market tick model containing stock identifier and matched price fields used when forwarding live price updates.",
+      "tags": [
+        "data-model",
+        "market-data",
+        "lombok",
+        "stock"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/model/Stock.java:Stock",
+      "type": "class",
+      "name": "Stock",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "lineRange": [
+        7,
+        11
+      ],
+      "summary": "Value object for a stock symbol and current matched price.",
+      "tags": [
+        "data-model",
+        "market-data",
+        "stock"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "type": "file",
+      "name": "MqttService.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "summary": "Base MQTT service built on Eclipse Paho that handles authenticated TLS-capable connections, publish/subscribe operations, callbacks, and asynchronous message dispatch.",
+      "tags": [
+        "service",
+        "mqtt",
+        "messaging",
+        "event-handler"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:MqttService",
+      "type": "class",
+      "name": "MqttService",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        13,
+        141
+      ],
+      "summary": "Reusable MQTT callback service for connections, publishing, subscriptions, and async incoming-message handling.",
+      "tags": [
+        "service",
+        "mqtt",
+        "messaging"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connect",
+      "type": "function",
+      "name": "connect",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        26,
+        71
+      ],
+      "summary": "Creates a Paho MQTT client, configures reconnect, TLS and credentials, then opens the broker connection.",
+      "tags": [
+        "mqtt",
+        "connection",
+        "tls"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:disconnect",
+      "type": "function",
+      "name": "disconnect",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        73,
+        84
+      ],
+      "summary": "Disconnects the active MQTT client and records the disconnected state.",
+      "tags": [
+        "mqtt",
+        "lifecycle",
+        "shutdown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:createDefaultTopic",
+      "type": "function",
+      "name": "createDefaultTopic",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        86,
+        88
+      ],
+      "summary": "Stores the default MQTT topic used by convenience send operations.",
+      "tags": [
+        "mqtt",
+        "configuration",
+        "topic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:send",
+      "type": "function",
+      "name": "send",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        90,
+        106
+      ],
+      "summary": "Publishes payload bytes to an MQTT topic when the client is connected.",
+      "tags": [
+        "mqtt",
+        "producer",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:subscribe",
+      "type": "function",
+      "name": "subscribe",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        108,
+        122
+      ],
+      "summary": "Subscribes the connected MQTT client to a topic with error logging.",
+      "tags": [
+        "mqtt",
+        "consumer",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connectionLost",
+      "type": "function",
+      "name": "connectionLost",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        124,
+        128
+      ],
+      "summary": "Marks the MQTT service disconnected and logs callback failures from Paho.",
+      "tags": [
+        "mqtt",
+        "callback",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:messageArrived",
+      "type": "function",
+      "name": "messageArrived",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        130,
+        135
+      ],
+      "summary": "Converts an incoming MQTT message to text and dispatches handling on a new thread.",
+      "tags": [
+        "mqtt",
+        "callback",
+        "threading"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:deliveryComplete",
+      "type": "function",
+      "name": "deliveryComplete",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "lineRange": [
+        137,
+        138
+      ],
+      "summary": "Paho delivery completion callback implemented as a no-op.",
+      "tags": [
+        "mqtt",
+        "callback",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "type": "file",
+      "name": "KafkaProducer.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "summary": "Spring Kafka producer wrapper that initializes the shared KafkaService with configured topics and publishes stock update payloads as message envelopes.",
+      "tags": [
+        "service",
+        "kafka",
+        "producer",
+        "market-data"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:KafkaProducer",
+      "type": "class",
+      "name": "KafkaProducer",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "lineRange": [
+        14,
+        44
+      ],
+      "summary": "Concrete stock update producer backed by the shared Kafka service.",
+      "tags": [
+        "service",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "lineRange": [
+        27,
+        31
+      ],
+      "summary": "Initializes the default Kafka topic and connects the producer after Spring construction.",
+      "tags": [
+        "startup",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "type": "function",
+      "name": "publish",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "lineRange": [
+        33,
+        43
+      ],
+      "summary": "Serializes a stock update message envelope and sends it to Kafka.",
+      "tags": [
+        "kafka",
+        "producer",
+        "market-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "type": "file",
+      "name": "MqttProducer.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "summary": "Spring MQTT producer wrapper that initializes a configured outbound MQTT connection and publishes stock update payloads to default or explicit topics.",
+      "tags": [
+        "service",
+        "mqtt",
+        "producer",
+        "market-data"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:MqttProducer",
+      "type": "class",
+      "name": "MqttProducer",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "lineRange": [
+        14,
+        63
+      ],
+      "summary": "Concrete stock update producer backed by the shared MQTT service.",
+      "tags": [
+        "service",
+        "mqtt",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "lineRange": [
+        25,
+        32
+      ],
+      "summary": "Initializes the outbound MQTT producer after Spring construction.",
+      "tags": [
+        "startup",
+        "mqtt",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "type": "function",
+      "name": "initConnection",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "lineRange": [
+        34,
+        38
+      ],
+      "summary": "Creates the default outbound MQTT topic and connects with configured broker credentials.",
+      "tags": [
+        "mqtt",
+        "connection",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:connectionLost",
+      "type": "function",
+      "name": "connectionLost",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "lineRange": [
+        40,
+        47
+      ],
+      "summary": "Reconnects the outbound MQTT producer after connection loss.",
+      "tags": [
+        "mqtt",
+        "reconnect",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:publish",
+      "type": "function",
+      "name": "publish",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "lineRange": [
+        49,
+        62
+      ],
+      "summary": "Publishes stock update payloads to the configured or supplied MQTT topic.",
+      "tags": [
+        "mqtt",
+        "producer",
+        "market-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "type": "file",
+      "name": "StockIdRepository.java",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "summary": "JdbcTemplate repository that reads the configured stock universe from the stock_entity table for MQTT subscription setup.",
+      "tags": [
+        "repository",
+        "database",
+        "jdbc",
+        "market-data"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring annotations and Lombok reduce boilerplate while keeping dependency injection and configuration binding explicit."
+    },
+    {
+      "id": "class:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:StockIdRepository",
+      "type": "class",
+      "name": "StockIdRepository",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "lineRange": [
+        9,
+        22
+      ],
+      "summary": "Repository class that queries stock identifiers for subscription fan-out.",
+      "tags": [
+        "repository",
+        "database",
+        "jdbc"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:getAllStockIds",
+      "type": "function",
+      "name": "getAllStockIds",
+      "filePath": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "lineRange": [
+        18,
+        21
+      ],
+      "summary": "Queries stock_entity for all stock_id values used to build live quote subscriptions.",
+      "tags": [
+        "repository",
+        "database",
+        "jdbc"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:MarketCollectorApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:MarketCollectorApplication",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:TokenClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:TokenClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getInvestorId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getInvestorId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:AppConf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:AppConf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:logConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java:logConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:KafkaService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:KafkaService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:connectProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:connectProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:createDefaultTopic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:createDefaultTopic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:startConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:startConsumer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:subscribe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:subscribe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:shutdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:shutdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:toJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:toJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:MqttListener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:MqttListener",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:connectionLost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:connectionLost",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:handleIncomingMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:handleIncomingMessage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/model/Message.java:Message",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/model/Message.java:Message",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/model/Stock.java:Stock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/model/Stock.java:Stock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:MqttService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:MqttService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:disconnect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:disconnect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:createDefaultTopic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:createDefaultTopic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:subscribe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:subscribe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connectionLost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connectionLost",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:messageArrived",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:messageArrived",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:deliveryComplete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:deliveryComplete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:KafkaProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:KafkaProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:MqttProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:MqttProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:connectionLost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:connectionLost",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:publish",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:publish",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:StockIdRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:StockIdRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:getAllStockIds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:getAllStockIds",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "target": "file:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:MqttListener",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:MqttService",
+      "type": "inherits",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:KafkaProducer",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:KafkaService",
+      "type": "inherits",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:MqttProducer",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:MqttService",
+      "type": "inherits",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java:getAllStockIds",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java:getInvestorId",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:subscribe",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:handleIncomingMessage",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java:handleIncomingMessage",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:publish",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:init",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:createDefaultTopic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:init",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:connectProducer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:toJson",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java:publish",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:send",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:init",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:createDefaultTopic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:initConnection",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:connect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java:publish",
+      "target": "function:market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java:send",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java:toJson",
+      "target": "class:market-collector/src/main/java/com/finsight/collector/model/Message.java:Message",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

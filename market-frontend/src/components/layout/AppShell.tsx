@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Sidebar from './Sidebar'
 import TopBar from './TopBar'
+import { startMqttConnection } from '../../services/mqtt'
 
 const PAGE_TITLES: Record<string, string> = {
   '/': 'Dashboard',
@@ -15,6 +17,10 @@ const AppShell = () => {
   const location = useLocation()
   const pathBase = '/' + location.pathname.split('/')[1]
   const title = PAGE_TITLES[pathBase] ?? 'FinSight'
+
+  useEffect(() => {
+    return startMqttConnection()
+  }, [])
 
   return (
     <div className="flex h-screen bg-slate-50">

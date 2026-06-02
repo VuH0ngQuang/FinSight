@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useStockList } from '../hooks/useStockList'
 import { createStock, updateStock, deleteStock, updateIndustryRatios, type CreateStockRequest, type UpdateIndustryRatiosRequest } from '../services/api/stockApi'
-import { uploadStockYearDataExcel } from '../services/api/stockYearDataApi'
+import { confirmStockYearDataUpload, uploadStockYearDataExcel, type UploadValidationIssue, type UploadValidationResponse } from '../services/api/stockYearDataApi'
 import { getUserDetail, updateUser, adminResetPassword, deleteUser, type UserDetailDto } from '../services/api/userApi'
 import { formatPrice, formatDate } from '../utils/formatters'
 import TabGroup from '../components/ui/TabGroup'
@@ -68,6 +68,8 @@ const AdminPanel = () => {
   const [ydUploading, setYdUploading] = useState(false)
   const [ydErr, setYdErr] = useState<string | null>(null)
   const [ydMsg, setYdMsg] = useState<string | null>(null)
+  const [ydValidation, setYdValidation] = useState<UploadValidationResponse | null>(null)
+  const [ydConfirming, setYdConfirming] = useState(false)
 
   const handleStockSubmit = async () => {
     setStockMsg(null); setStockErr(null)
@@ -191,17 +193,61 @@ const AdminPanel = () => {
 
   const handleYdUpload = async () => {
     if (!ydFile) return
-    setYdMsg(null); setYdErr(null)
+    setYdMsg(null); setYdErr(null); setYdValidation(null)
     setYdUploading(true)
     try {
-      const message = await uploadStockYearDataExcel(ydFile)
-      setYdMsg(message)
-      setYdFile(null)
+      const response = await uploadStockYearDataExcel(ydFile)
+      setYdValidation(response)
+      if (response.status === 'WAITING_CONFIRMATION') {
+        setYdMsg(null)
+      } else if (response.status === 'FAILED') {
+        setYdErr(response.message || 'Upload validation failed')
+      } else {
+        setYdMsg(response.message || 'Stock data uploaded successfully')
+        setYdFile(null)
+      }
     } catch (err) {
       setYdErr(err instanceof Error ? err.message : 'Upload failed')
     } finally {
       setYdUploading(false)
     }
+  }
+
+  const handleYdConfirm = async () => {
+    if (!ydValidation?.uploadId) return
+    setYdMsg(null); setYdErr(null)
+    setYdConfirming(true)
+    try {
+      const response = await confirmStockYearDataUpload(ydValidation.uploadId)
+      setYdValidation(response)
+      setYdMsg(response.message || 'Stock data confirmed and sent to Kafka')
+      setYdFile(null)
+    } catch (err) {
+      setYdErr(err instanceof Error ? err.message : 'Confirm failed')
+    } finally {
+      setYdConfirming(false)
+    }
+  }
+
+  const renderValidationIssues = (title: string, issues: UploadValidationIssue[] | undefined, tone: 'red' | 'amber') => {
+    if (!issues?.length) return null
+    const cls = tone === 'red'
+      ? 'border-red-200 bg-red-50 text-red-700'
+      : 'border-amber-200 bg-amber-50 text-amber-700'
+    return (
+      <div className={`rounded-lg border px-4 py-3 text-sm ${cls}`}>
+        <p className="mb-2 font-semibold">{title} ({issues.length})</p>
+        <ul className="max-h-56 space-y-1 overflow-y-auto">
+          {issues.map((issue, index) => (
+            <li key={`${issue.field}-${index}`} className="break-words">
+              <span className="font-mono text-xs">{issue.field}</span>
+              <span className="mx-2">-</span>
+              <span>{issue.message}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
   }
 
   return (
@@ -311,6 +357,25 @@ const AdminPanel = () => {
             {ydFile && <p className="mt-2 text-xs text-slate-500">Selected file: {ydFile.name}</p>}
           </div>
 
+          {ydValidation?.status === 'WAITING_CONFIRMATION' && (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="font-semibold">{ydValidation.message}</p>
+                  <p className="text-xs text-amber-700">Upload ID: {ydValidation.uploadId}</p>
+                </div>
+                <button
+                  onClick={() => void handleYdConfirm()}
+                  disabled={ydConfirming}
+                  className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700 disabled:opacity-60"
+                >
+                  {ydConfirming ? 'Confirming...' : 'Confirm upload'}
+                </button>
+              </div>
+            </div>
+          )}
+          {renderValidationIssues('Validation errors', ydValidation?.validation?.errors, 'red')}
+          {renderValidationIssues('Validation warnings', ydValidation?.validation?.warnings, 'amber')}
           {ydErr && <ErrorBanner message={ydErr} onDismiss={() => setYdErr(null)} />}
           {ydMsg && <div className="rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 text-sm">{ydMsg}</div>}
         </div>

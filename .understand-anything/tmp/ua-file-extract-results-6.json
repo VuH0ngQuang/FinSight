@@ -1,0 +1,2087 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 21,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 311,
+      "functions": [
+        {
+          "name": "BacktestRunner",
+          "startLine": 52,
+          "endLine": 62,
+          "params": [
+            "engine",
+            "reporter",
+            "ahpConfigService",
+            "objectMapper",
+            "context"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 64,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "runDataCheck",
+          "startLine": 101,
+          "endLine": 105,
+          "params": [
+            "outDir"
+          ]
+        },
+        {
+          "name": "runSingle",
+          "startLine": 107,
+          "endLine": 113,
+          "params": [
+            "a",
+            "outDir"
+          ]
+        },
+        {
+          "name": "runTopNSweep",
+          "startLine": 115,
+          "endLine": 136,
+          "params": [
+            "a",
+            "outDir"
+          ]
+        },
+        {
+          "name": "runWeightSensitivity",
+          "startLine": 138,
+          "endLine": 176,
+          "params": [
+            "a",
+            "outDir"
+          ]
+        },
+        {
+          "name": "runMethodComparison",
+          "startLine": 178,
+          "endLine": 213,
+          "params": [
+            "a",
+            "outDir"
+          ]
+        },
+        {
+          "name": "buildConfig",
+          "startLine": 217,
+          "endLine": 226,
+          "params": [
+            "a",
+            "outDir",
+            "mode"
+          ]
+        },
+        {
+          "name": "resolveWeights",
+          "startLine": 228,
+          "endLine": 251,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "parseArgs",
+          "startLine": 255,
+          "endLine": 265,
+          "params": [
+            "args"
+          ]
+        },
+        {
+          "name": "timestamp",
+          "startLine": 267,
+          "endLine": 269,
+          "params": []
+        },
+        {
+          "name": "normalize",
+          "startLine": 271,
+          "endLine": 278,
+          "params": [
+            "w"
+          ]
+        },
+        {
+          "name": "perturbDirichlet",
+          "startLine": 280,
+          "endLine": 294,
+          "params": [
+            "base",
+            "noise",
+            "rng"
+          ]
+        },
+        {
+          "name": "gamma",
+          "startLine": 297,
+          "endLine": 312,
+          "params": [
+            "shape",
+            "rng"
+          ]
+        },
+        {
+          "name": "topTickersFromLastYear",
+          "startLine": 314,
+          "endLine": 321,
+          "params": [
+            "r"
+          ]
+        },
+        {
+          "name": "overlapPct",
+          "startLine": 323,
+          "endLine": 328,
+          "params": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "logSummary",
+          "startLine": 330,
+          "endLine": 340,
+          "params": [
+            "label",
+            "r"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BacktestRunner",
+          "startLine": 40,
+          "endLine": 341,
+          "methods": [
+            "BacktestRunner",
+            "run",
+            "runDataCheck",
+            "runSingle",
+            "runTopNSweep",
+            "runWeightSensitivity",
+            "runMethodComparison",
+            "buildConfig",
+            "resolveWeights",
+            "parseArgs",
+            "timestamp",
+            "normalize",
+            "perturbDirichlet",
+            "gamma",
+            "topTickersFromLastYear",
+            "overlapPct",
+            "logSummary"
+          ],
+          "properties": [
+            "logger",
+            "engine",
+            "reporter",
+            "ahpConfigService",
+            "objectMapper",
+            "context"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BacktestRunner",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "BacktestRunner",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "parseArgs",
+          "lineNumber": 68
+        },
+        {
+          "caller": "run",
+          "callee": "a.getOrDefault",
+          "lineNumber": 69
+        },
+        {
+          "caller": "run",
+          "callee": "Paths.get",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run",
+          "callee": "a.getOrDefault",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run",
+          "callee": "outRoot.resolve(mode).resolve",
+          "lineNumber": 71
+        },
+        {
+          "caller": "run",
+          "callee": "outRoot.resolve",
+          "lineNumber": 71
+        },
+        {
+          "caller": "run",
+          "callee": "timestamp",
+          "lineNumber": 71
+        },
+        {
+          "caller": "run",
+          "callee": "logger.info",
+          "lineNumber": 72
+        },
+        {
+          "caller": "run",
+          "callee": "outDir.toAbsolutePath",
+          "lineNumber": 72
+        },
+        {
+          "caller": "run",
+          "callee": "runDataCheck",
+          "lineNumber": 75
+        },
+        {
+          "caller": "run",
+          "callee": "runSingle",
+          "lineNumber": 76
+        },
+        {
+          "caller": "run",
+          "callee": "runTopNSweep",
+          "lineNumber": 77
+        },
+        {
+          "caller": "run",
+          "callee": "runWeightSensitivity",
+          "lineNumber": 78
+        },
+        {
+          "caller": "run",
+          "callee": "runMethodComparison",
+          "lineNumber": 79
+        },
+        {
+          "caller": "run",
+          "callee": "logger.error",
+          "lineNumber": 81
+        },
+        {
+          "caller": "run",
+          "callee": "logger.error",
+          "lineNumber": 86
+        },
+        {
+          "caller": "run",
+          "callee": "new Thread(() -> {\n                try { Thread.sleep(200); } catch (InterruptedException ignored) {}\n                int spring = org.springframework.boot.SpringApplication.exit(context, () -> code);\n                System.exit(spring);\n            }, \"backtest-shutdown\").start",
+          "lineNumber": 91
+        },
+        {
+          "caller": "run",
+          "callee": "new Thread",
+          "lineNumber": 91
+        },
+        {
+          "caller": "run",
+          "callee": "Thread.sleep",
+          "lineNumber": 92
+        },
+        {
+          "caller": "run",
+          "callee": "org.springframework.boot.SpringApplication.exit",
+          "lineNumber": 93
+        },
+        {
+          "caller": "run",
+          "callee": "System.exit",
+          "lineNumber": 94
+        },
+        {
+          "caller": "runDataCheck",
+          "callee": "engine.loadUniverse",
+          "lineNumber": 102
+        },
+        {
+          "caller": "runDataCheck",
+          "callee": "java.nio.file.Files.createDirectories",
+          "lineNumber": 103
+        },
+        {
+          "caller": "runDataCheck",
+          "callee": "reporter.writeDataAvailability",
+          "lineNumber": 104
+        },
+        {
+          "caller": "runSingle",
+          "callee": "buildConfig",
+          "lineNumber": 108
+        },
+        {
+          "caller": "runSingle",
+          "callee": "engine.run",
+          "lineNumber": 109
+        },
+        {
+          "caller": "runSingle",
+          "callee": "java.nio.file.Files.createDirectories",
+          "lineNumber": 110
+        },
+        {
+          "caller": "runSingle",
+          "callee": "reporter.writeSingleRun",
+          "lineNumber": 111
+        },
+        {
+          "caller": "runSingle",
+          "callee": "logSummary",
+          "lineNumber": 112
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "java.nio.file.Files.createDirectories",
+          "lineNumber": 116
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "outDir.resolve",
+          "lineNumber": 118
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "new CsvWriter",
+          "lineNumber": 119
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "w.writeHeader",
+          "lineNumber": 120
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "buildConfig(a, outDir, \"topn-sweep\").withTopN",
+          "lineNumber": 122
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "buildConfig",
+          "lineNumber": 122
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "engine.run",
+          "lineNumber": 123
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "r.metrics",
+          "lineNumber": 124
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "w.writeRow",
+          "lineNumber": 125
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.cagr",
+          "lineNumber": 126
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.sharpe",
+          "lineNumber": 127
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.maxDrawdown",
+          "lineNumber": 128
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.hitRate",
+          "lineNumber": 129
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.alpha",
+          "lineNumber": 130
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "m.beta",
+          "lineNumber": 131
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "logSummary",
+          "lineNumber": 132
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "logger.info",
+          "lineNumber": 135
+        },
+        {
+          "caller": "runTopNSweep",
+          "callee": "out.toAbsolutePath",
+          "lineNumber": 135
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "java.nio.file.Files.createDirectories",
+          "lineNumber": 139
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "Integer.parseInt",
+          "lineNumber": 140
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "a.getOrDefault",
+          "lineNumber": 140
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "Double.parseDouble",
+          "lineNumber": 141
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "a.getOrDefault",
+          "lineNumber": 141
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "Long.parseLong",
+          "lineNumber": 142
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "a.getOrDefault",
+          "lineNumber": 142
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "new Random",
+          "lineNumber": 143
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "buildConfig",
+          "lineNumber": 145
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "engine.run",
+          "lineNumber": 146
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "topTickersFromLastYear",
+          "lineNumber": 147
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "outDir.resolve",
+          "lineNumber": 149
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "new CsvWriter",
+          "lineNumber": 150
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "w.writeHeader",
+          "lineNumber": 151
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "w.writeRow",
+          "lineNumber": 154
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics().cagr",
+          "lineNumber": 155
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics",
+          "lineNumber": 155
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics().sharpe",
+          "lineNumber": 156
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics",
+          "lineNumber": 156
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics().maxDrawdown",
+          "lineNumber": 157
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "baseResult.metrics",
+          "lineNumber": 157
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 159
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 159
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 159
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 159
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 160
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 160
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 160
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "perturbDirichlet",
+          "lineNumber": 162
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.weights",
+          "lineNumber": 162
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "base.withWeights",
+          "lineNumber": 163
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "engine.run",
+          "lineNumber": 164
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "topTickersFromLastYear",
+          "lineNumber": 165
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "overlapPct",
+          "lineNumber": 166
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "w.writeRow",
+          "lineNumber": 167
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics().cagr",
+          "lineNumber": 168
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics",
+          "lineNumber": 168
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics().sharpe",
+          "lineNumber": 169
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics",
+          "lineNumber": 169
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics().maxDrawdown",
+          "lineNumber": 170
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "r.metrics",
+          "lineNumber": 170
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "logger.info",
+          "lineNumber": 175
+        },
+        {
+          "caller": "runWeightSensitivity",
+          "callee": "out.toAbsolutePath",
+          "lineNumber": 175
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "java.nio.file.Files.createDirectories",
+          "lineNumber": 179
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "buildConfig",
+          "lineNumber": 180
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "new HashMap<>",
+          "lineNumber": 182
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "methods.put",
+          "lineNumber": 183
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "base.weights",
+          "lineNumber": 183
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "methods.put",
+          "lineNumber": 184
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "methods.put",
+          "lineNumber": 185
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "new Random",
+          "lineNumber": 187
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "r.nextDouble",
+          "lineNumber": 189
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "methods.put",
+          "lineNumber": 191
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "outDir.resolve",
+          "lineNumber": 193
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "new CsvWriter",
+          "lineNumber": 194
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "w.writeHeader",
+          "lineNumber": 195
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "methods.entrySet",
+          "lineNumber": 197
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "base.withWeights",
+          "lineNumber": 198
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "e.getValue",
+          "lineNumber": 198
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "engine.run",
+          "lineNumber": 199
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "res.metrics",
+          "lineNumber": 200
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "w.writeRow",
+          "lineNumber": 201
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "e.getKey",
+          "lineNumber": 201
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.cagr",
+          "lineNumber": 202
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.sharpe",
+          "lineNumber": 203
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.sortino",
+          "lineNumber": 204
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.maxDrawdown",
+          "lineNumber": 205
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.hitRate",
+          "lineNumber": 206
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.alpha",
+          "lineNumber": 207
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "m.beta",
+          "lineNumber": 208
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "logSummary",
+          "lineNumber": 209
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "e.getKey",
+          "lineNumber": 209
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "logger.info",
+          "lineNumber": 212
+        },
+        {
+          "caller": "runMethodComparison",
+          "callee": "out.toAbsolutePath",
+          "lineNumber": 212
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "Integer.parseInt",
+          "lineNumber": 218
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 218
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "Integer.parseInt",
+          "lineNumber": 219
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 219
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "Integer.parseInt",
+          "lineNumber": 220
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 220
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "Integer.parseInt",
+          "lineNumber": 221
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 221
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "new BigDecimal",
+          "lineNumber": 222
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 222
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "Integer.parseInt",
+          "lineNumber": 223
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "a.getOrDefault",
+          "lineNumber": 223
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "resolveWeights",
+          "lineNumber": 224
+        },
+        {
+          "caller": "buildConfig",
+          "callee": "new BacktestConfig",
+          "lineNumber": 225
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "a.get",
+          "lineNumber": 229
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "explicit.isBlank",
+          "lineNumber": 230
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "explicit.split",
+          "lineNumber": 231
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "new IllegalArgumentException",
+          "lineNumber": 233
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "Double.parseDouble",
+          "lineNumber": 236
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "parts[i].trim",
+          "lineNumber": 236
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "normalize",
+          "lineNumber": 237
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "Long.parseLong",
+          "lineNumber": 239
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "a.getOrDefault",
+          "lineNumber": 239
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "ahpConfigService.getAhpConfigByUserId",
+          "lineNumber": 241
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "cfg.getWeightsJson",
+          "lineNumber": 242
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "objectMapper.readValue",
+          "lineNumber": 243
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "cfg.getWeightsJson",
+          "lineNumber": 243
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "logger.warn",
+          "lineNumber": 247
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "e.getMessage",
+          "lineNumber": 247
+        },
+        {
+          "caller": "resolveWeights",
+          "callee": "logger.warn",
+          "lineNumber": 249
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "new HashMap<>",
+          "lineNumber": 256
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "s.startsWith",
+          "lineNumber": 258
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "s.substring",
+          "lineNumber": 259
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "body.indexOf",
+          "lineNumber": 260
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "m.put",
+          "lineNumber": 261
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "body.substring",
+          "lineNumber": 261
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "body.substring",
+          "lineNumber": 261
+        },
+        {
+          "caller": "parseArgs",
+          "callee": "m.put",
+          "lineNumber": 262
+        },
+        {
+          "caller": "timestamp",
+          "callee": "LocalDateTime.now().format",
+          "lineNumber": 268
+        },
+        {
+          "caller": "timestamp",
+          "callee": "LocalDateTime.now",
+          "lineNumber": 268
+        },
+        {
+          "caller": "timestamp",
+          "callee": "DateTimeFormatter.ofPattern",
+          "lineNumber": 268
+        },
+        {
+          "caller": "perturbDirichlet",
+          "callee": "Math.max",
+          "lineNumber": 284
+        },
+        {
+          "caller": "perturbDirichlet",
+          "callee": "gamma",
+          "lineNumber": 288
+        },
+        {
+          "caller": "gamma",
+          "callee": "gamma",
+          "lineNumber": 299
+        },
+        {
+          "caller": "gamma",
+          "callee": "Math.pow",
+          "lineNumber": 299
+        },
+        {
+          "caller": "gamma",
+          "callee": "rng.nextDouble",
+          "lineNumber": 299
+        },
+        {
+          "caller": "gamma",
+          "callee": "Math.sqrt",
+          "lineNumber": 302
+        },
+        {
+          "caller": "gamma",
+          "callee": "rng.nextGaussian",
+          "lineNumber": 304
+        },
+        {
+          "caller": "gamma",
+          "callee": "rng.nextDouble",
+          "lineNumber": 308
+        },
+        {
+          "caller": "gamma",
+          "callee": "Math.log",
+          "lineNumber": 310
+        },
+        {
+          "caller": "gamma",
+          "callee": "Math.log",
+          "lineNumber": 310
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "r.rebalanceLog().entries",
+          "lineNumber": 315
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "r.rebalanceLog",
+          "lineNumber": 315
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.isEmpty",
+          "lineNumber": 316
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "List.of",
+          "lineNumber": 316
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "new ArrayList<>",
+          "lineNumber": 317
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "Math.min",
+          "lineNumber": 318
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get(es.size() - 1).topRanked().size",
+          "lineNumber": 318
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get(es.size() - 1).topRanked",
+          "lineNumber": 318
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get",
+          "lineNumber": 318
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.size",
+          "lineNumber": 318
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "out.add",
+          "lineNumber": 319
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get(es.size() - 1).topRanked().get(i).getStockId",
+          "lineNumber": 319
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get(es.size() - 1).topRanked().get",
+          "lineNumber": 319
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get(es.size() - 1).topRanked",
+          "lineNumber": 319
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.get",
+          "lineNumber": 319
+        },
+        {
+          "caller": "topTickersFromLastYear",
+          "callee": "es.size",
+          "lineNumber": 319
+        },
+        {
+          "caller": "overlapPct",
+          "callee": "a.isEmpty",
+          "lineNumber": 324
+        },
+        {
+          "caller": "overlapPct",
+          "callee": "b.isEmpty",
+          "lineNumber": 324
+        },
+        {
+          "caller": "overlapPct",
+          "callee": "b.contains",
+          "lineNumber": 326
+        },
+        {
+          "caller": "overlapPct",
+          "callee": "a.size",
+          "lineNumber": 327
+        },
+        {
+          "caller": "logSummary",
+          "callee": "r.metrics",
+          "lineNumber": 331
+        },
+        {
+          "caller": "logSummary",
+          "callee": "logger.info",
+          "lineNumber": 332
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 334
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.cagr",
+          "lineNumber": 334
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 335
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.sharpe",
+          "lineNumber": 335
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 336
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.maxDrawdown",
+          "lineNumber": 336
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 337
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.hitRate",
+          "lineNumber": 337
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 338
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.alpha",
+          "lineNumber": 338
+        },
+        {
+          "caller": "logSummary",
+          "callee": "String.format",
+          "lineNumber": 339
+        },
+        {
+          "caller": "logSummary",
+          "callee": "m.beta",
+          "lineNumber": 339
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 17,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "RedisDao",
+          "startLine": 25,
+          "endLine": 35,
+          "params": [
+            "redisTemplate",
+            "objectMapper",
+            "appConf"
+          ]
+        },
+        {
+          "name": "save",
+          "startLine": 37,
+          "endLine": 48,
+          "params": [
+            "keyEntity",
+            "id",
+            "entity",
+            "duration"
+          ]
+        },
+        {
+          "name": "save",
+          "startLine": 50,
+          "endLine": 52,
+          "params": [
+            "keyEntity",
+            "id",
+            "entity"
+          ]
+        },
+        {
+          "name": "find",
+          "startLine": 54,
+          "endLine": 63,
+          "params": [
+            "keyEntity",
+            "field",
+            "clazz"
+          ]
+        },
+        {
+          "name": "delete",
+          "startLine": 65,
+          "endLine": 67,
+          "params": [
+            "keyEntity",
+            "id"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RedisDao",
+          "startLine": 15,
+          "endLine": 68,
+          "methods": [
+            "RedisDao",
+            "save",
+            "save",
+            "find",
+            "delete"
+          ],
+          "properties": [
+            "log",
+            "objectMapper",
+            "appConf",
+            "redisTemplate",
+            "hashOperations"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RedisDao",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "save",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "save",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "find",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "delete",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "RedisDao",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RedisDao",
+          "callee": "redisTemplate.opsForHash",
+          "lineNumber": 34
+        },
+        {
+          "caller": "save",
+          "callee": "objectMapper.writeValueAsString",
+          "lineNumber": 39
+        },
+        {
+          "caller": "save",
+          "callee": "hashOperations.put",
+          "lineNumber": 40
+        },
+        {
+          "caller": "save",
+          "callee": "String.valueOf",
+          "lineNumber": 40
+        },
+        {
+          "caller": "save",
+          "callee": "redisTemplate.expire",
+          "lineNumber": 43
+        },
+        {
+          "caller": "save",
+          "callee": "log.error",
+          "lineNumber": 46
+        },
+        {
+          "caller": "save",
+          "callee": "save",
+          "lineNumber": 51
+        },
+        {
+          "caller": "find",
+          "callee": "hashOperations.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "find",
+          "callee": "objectMapper.readValue",
+          "lineNumber": 58
+        },
+        {
+          "caller": "find",
+          "callee": "log.error",
+          "lineNumber": 60
+        },
+        {
+          "caller": "delete",
+          "callee": "hashOperations.delete",
+          "lineNumber": 66
+        },
+        {
+          "caller": "delete",
+          "callee": "String.valueOf",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 13,
+      "classes": [
+        {
+          "name": "AhpConfigDto",
+          "startLine": 8,
+          "endLine": 16,
+          "methods": [],
+          "properties": [
+            "ahpConfigId",
+            "userId",
+            "criteriaJson",
+            "pairwiseMatrixJson",
+            "weightsJson"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AhpConfigDto",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 17,
+      "classes": [
+        {
+          "name": "LoginCacheDto",
+          "startLine": 8,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "userId",
+            "username",
+            "email",
+            "phoneNumber",
+            "passwordHash",
+            "admin"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "LoginCacheDto",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "classes": [
+        {
+          "name": "LoginDto",
+          "startLine": 5,
+          "endLine": 14,
+          "methods": [],
+          "properties": [
+            "userId",
+            "username",
+            "email",
+            "password",
+            "phoneNumber",
+            "isAdmin",
+            "stockId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "LoginDto",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "classes": [
+        {
+          "name": "PaymentDto",
+          "startLine": 8,
+          "endLine": 16,
+          "methods": [],
+          "properties": [
+            "id",
+            "success",
+            "errorMessage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PaymentDto",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 17,
+      "classes": [
+        {
+          "name": "PortfolioAllocationRequest",
+          "startLine": 10,
+          "endLine": 20,
+          "methods": [],
+          "properties": [
+            "userId",
+            "budget",
+            "numberOfStocks",
+            "lotSize"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PortfolioAllocationRequest",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 15,
+      "classes": [
+        {
+          "name": "ResponseDto",
+          "startLine": 8,
+          "endLine": 17,
+          "methods": [],
+          "properties": [
+            "success",
+            "errorCode",
+            "errorMessage",
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ResponseDto",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "classes": [
+        {
+          "name": "StockDto",
+          "startLine": 7,
+          "endLine": 21,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "stockName",
+            "sector",
+            "matchPrice",
+            "peRatio",
+            "pbRatio",
+            "pcfRatio",
+            "psRatio",
+            "industryPeRatio",
+            "industryPbRatio",
+            "industryPcfRatio",
+            "industryPsRatio"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockDto",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "classes": [
+        {
+          "name": "StockYearDataDto",
+          "startLine": 7,
+          "endLine": 29,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "netIncome",
+            "totalEquity",
+            "intangibles",
+            "operatingCashFlow",
+            "freeCashFlow",
+            "revenue",
+            "dividendPerShare",
+            "sharesOutstanding",
+            "priceEndYear",
+            "costOfEquity",
+            "wacc",
+            "dividendGrowthRate",
+            "ddm",
+            "dcf",
+            "ri",
+            "pe",
+            "pbv",
+            "pcf",
+            "ps"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockYearDataDto",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 7,
+      "classes": [
+        {
+          "name": "StockYearDataHistoryRequestDto",
+          "startLine": 5,
+          "endLine": 9,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "year"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockYearDataHistoryRequestDto",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "classes": [
+        {
+          "name": "StockYearDataHistoryResponseDto",
+          "startLine": 7,
+          "endLine": 14,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "year",
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockYearDataHistoryResponseDto",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "classes": [
+        {
+          "name": "SubscriptionDto",
+          "startLine": 9,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "subscriptionId",
+            "userId",
+            "subscriptionPlanId",
+            "startDate",
+            "endDate",
+            "errorMessage",
+            "type",
+            "status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "status",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "SubscriptionDto",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 13,
+      "classes": [
+        {
+          "name": "UserDto",
+          "startLine": 6,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "userId",
+            "username",
+            "email",
+            "password",
+            "phoneNumber",
+            "isAdmin",
+            "stockId"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "UserDto",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 49,
+      "classes": [
+        {
+          "name": "AhpConfigEntity",
+          "startLine": 14,
+          "endLine": 57,
+          "methods": [],
+          "properties": [
+            "ahpConfigId",
+            "criteriaJson",
+            "pairwiseMatrixJson",
+            "weightsJson",
+            "user"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AhpConfigEntity",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 26,
+      "classes": [
+        {
+          "name": "Subscription",
+          "startLine": 12,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "subscriptionId",
+            "startDate",
+            "endDate",
+            "errorMessage",
+            "status",
+            "user",
+            "subscriptionPlan"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "status",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "Subscription",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 24,
+      "classes": [
+        {
+          "name": "SubscriptionPlanEntity",
+          "startLine": 12,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "planId",
+            "planName",
+            "price",
+            "billingCycle",
+            "subscriptions"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SubscriptionPlanEntity",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 48,
+      "classes": [
+        {
+          "name": "UserEntity",
+          "startLine": 18,
+          "endLine": 54,
+          "methods": [],
+          "properties": [
+            "userId",
+            "username",
+            "email",
+            "password",
+            "phoneNumber",
+            "createdAt",
+            "isAdmin",
+            "favoriteStocks",
+            "subscriptions",
+            "ahpConfig"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "UserEntity",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 12,
+      "classes": [
+        {
+          "name": "AhpConfigRepository",
+          "startLine": 11,
+          "endLine": 15,
+          "methods": [
+            "findByUserUserId"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AhpConfigRepository",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    }
+  ]
+}

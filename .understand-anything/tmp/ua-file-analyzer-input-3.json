@@ -1,0 +1,232 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-rest/src/app.ts",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/database.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/env.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/kafka.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/redis.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/consumer/KafkaConsumer.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/ahpConfigController.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/portfolioController.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/stockController.ts",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/stockYearDataController.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/subscriptionController.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/userController.ts",
+      "language": "typescript",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/docs/swagger.ts",
+      "language": "typescript",
+      "sizeLines": 616,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/AhpConfigDto.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/ResponseDto.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/StockDto.ts",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/StockYearDataDto.ts",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/SubscriptionDto.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/UserDetailDto.ts",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/UserDto.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/message.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/AhpConfigEntity.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-rest/src/app.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/docs/swagger.ts",
+      "market-rest/src/routes/index.ts"
+    ],
+    "market-rest/src/config/database.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/config/env.ts": [],
+    "market-rest/src/config/kafka.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/config/redis.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/consumer/KafkaConsumer.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/kafka.ts"
+    ],
+    "market-rest/src/controllers/ahpConfigController.ts": [
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/services/ahpConfigQueueService.ts",
+      "market-rest/src/services/ahpConfigService.ts"
+    ],
+    "market-rest/src/controllers/portfolioController.ts": [
+      "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "market-rest/src/services/portfolioQueueService.ts"
+    ],
+    "market-rest/src/controllers/stockController.ts": [
+      "market-rest/src/dto/StockDto.ts",
+      "market-rest/src/services/stockQueueService.ts",
+      "market-rest/src/services/stockService.ts"
+    ],
+    "market-rest/src/controllers/stockYearDataController.ts": [
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/services/stockYearDataQueueService.ts",
+      "market-rest/src/services/stockYearDataService.ts"
+    ],
+    "market-rest/src/controllers/subscriptionController.ts": [
+      "market-rest/src/dto/SubscriptionDto.ts",
+      "market-rest/src/services/subscriptionPlanService.ts",
+      "market-rest/src/services/subscriptionQueueService.ts"
+    ],
+    "market-rest/src/controllers/userController.ts": [
+      "market-rest/src/dto/UserDto.ts",
+      "market-rest/src/services/userQueueService.ts",
+      "market-rest/src/services/userService.ts"
+    ],
+    "market-rest/src/docs/swagger.ts": [],
+    "market-rest/src/dto/AhpConfigDto.ts": [],
+    "market-rest/src/dto/PortfolioAllocationRequest.ts": [],
+    "market-rest/src/dto/ResponseDto.ts": [],
+    "market-rest/src/dto/StockDto.ts": [
+      "market-rest/src/dto/StockYearDataDto.ts"
+    ],
+    "market-rest/src/dto/StockYearDataDto.ts": [],
+    "market-rest/src/dto/SubscriptionDto.ts": [],
+    "market-rest/src/dto/UserDetailDto.ts": [
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/dto/UserDto.ts": [],
+    "market-rest/src/dto/message.ts": [
+      "market-rest/src/interfaces/KafkaEnvelope.ts"
+    ],
+    "market-rest/src/index.ts": [
+      "market-rest/src/app.ts",
+      "market-rest/src/config/database.ts",
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/redis.ts"
+    ],
+    "market-rest/src/interfaces/KafkaEnvelope.ts": [],
+    "market-rest/src/models/AhpConfigEntity.ts": [
+      "market-rest/src/models/UserEntity.ts"
+    ]
+  }
+}

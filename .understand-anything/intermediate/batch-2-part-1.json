@@ -1,0 +1,688 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-frontend/src/hooks/useMarketData.ts",
+      "type": "file",
+      "name": "useMarketData.ts",
+      "filePath": "market-frontend/src/hooks/useMarketData.ts",
+      "summary": "Provides a React hook that subscribes to MQTT market-data updates and exposes live match prices with recent-update state for stock views.",
+      "tags": [
+        "hook",
+        "market-data",
+        "state-management"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/hooks/useMarketData.ts:useMarketData",
+      "type": "function",
+      "name": "useMarketData",
+      "filePath": "market-frontend/src/hooks/useMarketData.ts",
+      "lineRange": [
+        4,
+        40
+      ],
+      "summary": "Subscribes to live market-data payloads and returns helpers for current match prices and recent update detection.",
+      "tags": [
+        "hook",
+        "state-management",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/hooks/useStockList.ts",
+      "type": "file",
+      "name": "useStockList.ts",
+      "filePath": "market-frontend/src/hooks/useStockList.ts",
+      "summary": "Provides a React hook that loads the stock universe and incrementally fetches stock detail records with abortable requests and cached detail state.",
+      "tags": [
+        "hook",
+        "market-data",
+        "state-management"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/hooks/useStockList.ts:useStockList",
+      "type": "function",
+      "name": "useStockList",
+      "filePath": "market-frontend/src/hooks/useStockList.ts",
+      "lineRange": [
+        5,
+        57
+      ],
+      "summary": "Loads stock symbols and fetches missing detail records while tracking loading and error state.",
+      "tags": [
+        "hook",
+        "state-management",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "market-frontend/src/main.tsx",
+      "summary": "Bootstraps the React frontend by mounting the application root and loading the global stylesheet.",
+      "tags": [
+        "entry-point",
+        "react",
+        "bootstrap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "type": "file",
+      "name": "AdminPanel.tsx",
+      "filePath": "market-frontend/src/pages/AdminPanel.tsx",
+      "summary": "Implements the admin console for stock CRUD, industry-ratio updates, yearly-data Excel upload, and administrative user management.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/src/pages/AdminPanel.tsx:AdminPanel",
+      "type": "function",
+      "name": "AdminPanel",
+      "filePath": "market-frontend/src/pages/AdminPanel.tsx",
+      "lineRange": [
+        28,
+        536
+      ],
+      "summary": "Coordinates admin tabs and handlers for managing stocks, year data uploads, user profiles, password resets, and deletions.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-frontend/src/pages/Checkout.tsx",
+      "type": "file",
+      "name": "Checkout.tsx",
+      "filePath": "market-frontend/src/pages/Checkout.tsx",
+      "summary": "Renders the hosted payment checkout flow with order details, payment iframe state, and success handling after a subscription purchase.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Checkout.tsx:PaymentPanel",
+      "type": "function",
+      "name": "PaymentPanel",
+      "filePath": "market-frontend/src/pages/Checkout.tsx",
+      "lineRange": [
+        32,
+        83
+      ],
+      "summary": "Embeds the checkout URL and surfaces loading, error, and manual-open states for the payment provider page.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Checkout.tsx:OrderSummaryPanel",
+      "type": "function",
+      "name": "OrderSummaryPanel",
+      "filePath": "market-frontend/src/pages/Checkout.tsx",
+      "lineRange": [
+        87,
+        135
+      ],
+      "summary": "Displays selected plan details, included features, and pricing for the pending checkout.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Checkout.tsx:SuccessOverlay",
+      "type": "function",
+      "name": "SuccessOverlay",
+      "filePath": "market-frontend/src/pages/Checkout.tsx",
+      "lineRange": [
+        139,
+        159
+      ],
+      "summary": "Shows the successful payment state and navigation actions after checkout completion.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Checkout.tsx:Checkout",
+      "type": "function",
+      "name": "Checkout",
+      "filePath": "market-frontend/src/pages/Checkout.tsx",
+      "lineRange": [
+        163,
+        207
+      ],
+      "summary": "Composes the checkout page from payment state, order summary data, and completion handling.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/pages/Dashboard.tsx",
+      "type": "file",
+      "name": "Dashboard.tsx",
+      "filePath": "market-frontend/src/pages/Dashboard.tsx",
+      "summary": "Builds the investor dashboard with watchlist data, live market prices, TOPSIS ranking, and summary cards for portfolio scanning.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Dashboard.tsx:Dashboard",
+      "type": "function",
+      "name": "Dashboard",
+      "filePath": "market-frontend/src/pages/Dashboard.tsx",
+      "lineRange": [
+        16,
+        210
+      ],
+      "summary": "Assembles dashboard statistics and ranked stock insight from watchlist, live market data, AHP weights, and TOPSIS scores.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "type": "file",
+      "name": "LoginRegister.tsx",
+      "filePath": "market-frontend/src/pages/LoginRegister.tsx",
+      "summary": "Implements the combined login and registration page with authentication form state, validation feedback, and API calls.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/LoginRegister.tsx:LoginRegister",
+      "type": "function",
+      "name": "LoginRegister",
+      "filePath": "market-frontend/src/pages/LoginRegister.tsx",
+      "lineRange": [
+        10,
+        159
+      ],
+      "summary": "Manages login and registration form modes, submits credentials, and renders authentication feedback.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/pages/Payment.tsx",
+      "type": "file",
+      "name": "Payment.tsx",
+      "filePath": "market-frontend/src/pages/Payment.tsx",
+      "summary": "Renders pricing tiers, loads subscription plan pricing from the API, and starts Pro subscription checkout for the selected billing period.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/src/pages/Payment.tsx:Payment",
+      "type": "function",
+      "name": "Payment",
+      "filePath": "market-frontend/src/pages/Payment.tsx",
+      "lineRange": [
+        40,
+        258
+      ],
+      "summary": "Loads subscription plans, computes monthly/yearly Pro pricing, and creates checkout sessions for upgrades.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "type": "file",
+      "name": "PortfolioAllocator.tsx",
+      "filePath": "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "summary": "Provides the portfolio allocation page that calls the allocation API, displays allocation statistics, and visualizes suggested weights.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/PortfolioAllocator.tsx:PortfolioAllocator",
+      "type": "function",
+      "name": "PortfolioAllocator",
+      "filePath": "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "lineRange": [
+        11,
+        165
+      ],
+      "summary": "Submits budget and constraints to the allocation API and renders the resulting stock allocation guidance.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-frontend/src/hooks/useMarketData.ts",
+      "target": "function:market-frontend/src/hooks/useMarketData.ts:useMarketData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useMarketData.ts",
+      "target": "function:market-frontend/src/hooks/useMarketData.ts:useMarketData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useStockList.ts",
+      "target": "function:market-frontend/src/hooks/useStockList.ts:useStockList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useStockList.ts",
+      "target": "function:market-frontend/src/hooks/useStockList.ts:useStockList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "function:market-frontend/src/pages/AdminPanel.tsx:AdminPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Checkout.tsx",
+      "target": "function:market-frontend/src/pages/Checkout.tsx:PaymentPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Checkout.tsx",
+      "target": "function:market-frontend/src/pages/Checkout.tsx:OrderSummaryPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Checkout.tsx",
+      "target": "function:market-frontend/src/pages/Checkout.tsx:SuccessOverlay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Checkout.tsx",
+      "target": "function:market-frontend/src/pages/Checkout.tsx:Checkout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "function:market-frontend/src/pages/Dashboard.tsx:Dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "target": "function:market-frontend/src/pages/LoginRegister.tsx:LoginRegister",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/Payment.tsx",
+      "target": "function:market-frontend/src/pages/Payment.tsx:Payment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "function:market-frontend/src/pages/PortfolioAllocator.tsx:PortfolioAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useMarketData.ts",
+      "target": "file:market-frontend/src/services/mqtt.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useStockList.ts",
+      "target": "file:market-frontend/src/services/api/stockApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/hooks/useStockList.ts",
+      "target": "file:market-frontend/src/services/stockDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/main.tsx",
+      "target": "file:market-frontend/src/App.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/main.tsx",
+      "target": "file:market-frontend/src/index.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/components/ui/Modal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/components/ui/TabGroup.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/hooks/useStockList.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/services/api/stockApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/AdminPanel.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Checkout.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/components/charts/VietstockIframe.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/hooks/useMarketData.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/hooks/useStockList.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Dashboard.tsx",
+      "target": "file:market-frontend/src/utils/topsis.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "target": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/LoginRegister.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Payment.tsx",
+      "target": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/Payment.tsx",
+      "target": "file:market-frontend/src/services/api/subscriptionApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/PortfolioAllocator.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

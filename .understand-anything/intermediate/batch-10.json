@@ -1,0 +1,1067 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "type": "file",
+      "name": "MarketRealtimeApplication.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "summary": "Spring Boot entry point for the market-realtime service, enabling application configuration binding and starting the runtime context.",
+      "tags": ["entry-point", "spring-boot", "configuration", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:MarketRealtimeApplication",
+      "type": "class",
+      "name": "MarketRealtimeApplication",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "lineRange": [9, 18],
+      "summary": "Application bootstrap class that registers AppConf as configuration properties and delegates startup to SpringApplication.",
+      "tags": ["entry-point", "spring-boot", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "lineRange": [14, 16],
+      "summary": "Launches the market-realtime Spring Boot application from the command line.",
+      "tags": ["entry-point", "spring-boot", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "file",
+      "name": "AppConf.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "summary": "Defines application configuration properties for Kafka, database, Redis, mail, PayOS, and service URI routing, with startup logging of configured values.",
+      "tags": ["configuration", "spring-boot", "properties", "routing"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Lombok @Data and nested static classes to bind hierarchical Spring @ConfigurationProperties under the app prefix."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:AppConf",
+      "type": "class",
+      "name": "AppConf",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "lineRange": [9, 205],
+      "summary": "Configuration holder for market-realtime runtime settings, including nested groups for Kafka topics, persistence, mail, payment credentials, and internal URI routes.",
+      "tags": ["configuration", "spring-boot", "properties", "lombok"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:logConfig",
+      "type": "function",
+      "name": "logConfig",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "lineRange": [22, 89],
+      "summary": "Logs the loaded application configuration after construction so Kafka, persistence, mail, payment, and route settings are visible at startup.",
+      "tags": ["configuration", "logging", "startup", "diagnostics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "type": "file",
+      "name": "KafkaService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "summary": "Provides Kafka producer and consumer lifecycle management, message sending helpers, response serialization, and a protected hook for inbound message handling.",
+      "tags": ["service", "kafka", "messaging", "lifecycle"],
+      "complexity": "complex",
+      "languageNotes": "Combines Spring service injection with Apache Kafka producer/consumer APIs and a volatile flag for consumer-thread shutdown."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:KafkaService",
+      "type": "class",
+      "name": "KafkaService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [27, 236],
+      "summary": "Spring service encapsulating Kafka producer setup, asynchronous consumer polling, response publishing, JSON wrapping, and graceful shutdown.",
+      "tags": ["service", "kafka", "messaging", "lifecycle"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:connectProducer",
+      "type": "function",
+      "name": "connectProducer",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [45, 67],
+      "summary": "Closes any existing producer and creates a new KafkaProducer with the configured bootstrap servers, client id, group id, and string serializers.",
+      "tags": ["kafka", "producer", "connection", "lifecycle"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:createDefaultTopic",
+      "type": "function",
+      "name": "createDefaultTopic",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [69, 71],
+      "summary": "Stores the default Kafka topic used by the single-argument send helper.",
+      "tags": ["kafka", "configuration", "topic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:send",
+      "type": "function",
+      "name": "send",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [81, 99],
+      "summary": "Publishes payloads to Kafka, with overloads for default topic, explicit topic, and keyed records plus asynchronous send logging.",
+      "tags": ["kafka", "producer", "messaging", "overload"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:sendResponse",
+      "type": "function",
+      "name": "sendResponse",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [101, 116],
+      "summary": "Wraps a response payload in a Message envelope, serializes it to JSON, and publishes it to the target Kafka topic.",
+      "tags": ["kafka", "response", "serialization", "messaging"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:startConsumer",
+      "type": "function",
+      "name": "startConsumer",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [118, 172],
+      "summary": "Starts a Kafka consumer subscribed to the provided topics and runs a polling thread that dispatches each record to handleIncomingMessage.",
+      "tags": ["kafka", "consumer", "threading", "messaging"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:subscribe",
+      "type": "function",
+      "name": "subscribe",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [174, 185],
+      "summary": "Resubscribes an active Kafka consumer to a single topic and logs subscription failures.",
+      "tags": ["kafka", "consumer", "topic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:shutdown",
+      "type": "function",
+      "name": "shutdown",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [187, 217],
+      "summary": "Stops the consumer loop, wakes and joins the consumer thread, then flushes and closes the Kafka producer during bean destruction.",
+      "tags": ["kafka", "lifecycle", "shutdown", "cleanup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:toJson",
+      "type": "function",
+      "name": "toJson",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "lineRange": [219, 233],
+      "summary": "Builds a Message envelope from a raw message and URI, then serializes it to JSON for Kafka publication.",
+      "tags": ["serialization", "kafka", "message-envelope"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "type": "file",
+      "name": "KafkaListener.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "summary": "Specializes KafkaService for the market-realtime application by subscribing to configured topics, routing inbound messages, and sending responses.",
+      "tags": ["service", "kafka", "listener", "message-routing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:KafkaListener",
+      "type": "class",
+      "name": "KafkaListener",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "lineRange": [19, 72],
+      "summary": "Kafka listener service that extends the base KafkaService and connects incoming Kafka payloads to MessageRouterService.",
+      "tags": ["service", "kafka", "listener", "message-routing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "lineRange": [35, 51],
+      "summary": "Initializes Kafka topics, connects the producer, and starts the consumer after the Spring bean is constructed.",
+      "tags": ["kafka", "startup", "consumer", "producer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:handleIncomingMessage",
+      "type": "function",
+      "name": "handleIncomingMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "lineRange": [53, 71],
+      "summary": "Parses an inbound Kafka payload into a Message, routes it through MessageRouterService, and replies to the source topic when a response is produced.",
+      "tags": ["kafka", "message-routing", "serialization", "response"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "type": "file",
+      "name": "Message.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "summary": "Defines the Kafka message envelope used by market-realtime routing, including source id, event id, URI, timestamp, and payload.",
+      "tags": ["data-model", "messaging", "kafka", "lombok"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java:Message",
+      "type": "class",
+      "name": "Message",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "lineRange": [9, 18],
+      "summary": "Lombok-backed message envelope carrying routing metadata and arbitrary payload content with a UTC+7 default timestamp.",
+      "tags": ["data-model", "messaging", "kafka", "lombok"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "type": "file",
+      "name": "MailService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "summary": "Declares the mail service contract for welcome emails and overvaluation alert emails.",
+      "tags": ["service", "interface", "mail", "notification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java:MailService",
+      "type": "class",
+      "name": "MailService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "lineRange": [8, 11],
+      "summary": "Mail notification contract exposing operations for onboarding messages and stock overvaluation alerts.",
+      "tags": ["service", "interface", "mail", "notification"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "type": "file",
+      "name": "MessageRouterService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "summary": "Routes Kafka message envelopes to user, stock, subscription, AHP config, stock-year-data, validation, portfolio, and webhook services based on configured URI prefixes.",
+      "tags": ["service", "message-routing", "validation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:MessageRouterService",
+      "type": "class",
+      "name": "MessageRouterService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [16, 414],
+      "summary": "Central routing service that deserializes message payloads into DTOs and delegates each configured URI family to the matching domain service.",
+      "tags": ["service", "message-routing", "api-handler", "dto-mapping"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:mapPayloadToDto",
+      "type": "function",
+      "name": "mapPayloadToDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [54, 76],
+      "summary": "Converts a message payload into a requested DTO type, accepting nulls, existing instances, JSON strings, and map-like deserialized objects.",
+      "tags": ["serialization", "dto-mapping", "validation", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "type": "function",
+      "name": "routeMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [78, 148],
+      "summary": "Validates a Message envelope, selects the appropriate URI family, maps the payload to a DTO, and dispatches to a route-specific helper.",
+      "tags": ["message-routing", "validation", "dto-mapping", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeUserMessage",
+      "type": "function",
+      "name": "routeUserMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [150, 198],
+      "summary": "Routes configured user URIs to create, update, delete, password update, login, and favorite-stock user service operations.",
+      "tags": ["message-routing", "user-service", "api-handler", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeStockMessage",
+      "type": "function",
+      "name": "routeStockMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [200, 237],
+      "summary": "Routes stock URIs to create, update, delete, industry ratio updates, valuation recalculation, and match-price update operations.",
+      "tags": ["message-routing", "stock-service", "valuation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeSubscriptionMessage",
+      "type": "function",
+      "name": "routeSubscriptionMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [239, 266],
+      "summary": "Routes subscription create, update, and delete URIs to the subscription service with consistent error responses.",
+      "tags": ["message-routing", "subscription", "api-handler", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeAhpConfigMessage",
+      "type": "function",
+      "name": "routeAhpConfigMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [268, 292],
+      "summary": "Routes AHP configuration create and update URIs to the AHP config service and returns structured failures for unknown routes.",
+      "tags": ["message-routing", "ahp-config", "api-handler", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeYearDataMessage",
+      "type": "function",
+      "name": "routeYearDataMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [294, 341],
+      "summary": "Routes stock-year-data create, update, and delete requests, extracting year path suffixes before delegating to StockYearDataService.",
+      "tags": ["message-routing", "stock-year-data", "validation", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeValidationMessage",
+      "type": "function",
+      "name": "routeValidationMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [343, 368],
+      "summary": "Routes validation-history requests by converting the payload to a list of StockYearDataHistoryRequestDto objects.",
+      "tags": ["message-routing", "validation", "stock-year-data", "dto-mapping"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routePortfolioMessage",
+      "type": "function",
+      "name": "routePortfolioMessage",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [370, 390],
+      "summary": "Routes portfolio allocation requests to the portfolio allocation service and formats unknown-route or processing errors.",
+      "tags": ["message-routing", "portfolio", "api-handler", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeWebhooksMessages",
+      "type": "function",
+      "name": "routeWebhooksMessages",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "lineRange": [392, 413],
+      "summary": "Routes payment webhook messages to subscription payment handling and suppresses responses when processing succeeds.",
+      "tags": ["message-routing", "webhooks", "payment", "subscription"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "type": "file",
+      "name": "MailServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "summary": "Implements email notifications using JavaMailSender and Thymeleaf templates for welcome messages and stock overvaluation alerts.",
+      "tags": ["service", "mail", "notification", "template-rendering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:MailServiceImpl",
+      "type": "class",
+      "name": "MailServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "lineRange": [21, 87],
+      "summary": "Spring mail service implementation that prepares Thymeleaf contexts for notification templates and sends HTML emails.",
+      "tags": ["service", "mail", "notification", "template-rendering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendWelcome",
+      "type": "function",
+      "name": "sendWelcome",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "lineRange": [34, 41],
+      "summary": "Builds a welcome-email template context with username, email, and login URL before sending the onboarding message.",
+      "tags": ["mail", "notification", "template-rendering", "onboarding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendOvervaluationAlert",
+      "type": "function",
+      "name": "sendOvervaluationAlert",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "lineRange": [43, 73],
+      "summary": "Builds an overvaluation alert email context from valuation indicators, current price, and stock metadata, then sends the alert template.",
+      "tags": ["mail", "notification", "valuation", "template-rendering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendEmail",
+      "type": "function",
+      "name": "sendEmail",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "lineRange": [75, 86],
+      "summary": "Renders a Thymeleaf template to HTML, fills MIME message headers, and sends the email through JavaMailSender.",
+      "tags": ["mail", "template-rendering", "notification", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "type": "file",
+      "name": "PaymentServiceImpl.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "summary": "Implements payment-link creation through the PayOS SDK using subscription reference data and checkout return URLs.",
+      "tags": ["service", "payment", "payos", "integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:PaymentServiceImpl",
+      "type": "class",
+      "name": "PaymentServiceImpl",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "lineRange": [13, 45],
+      "summary": "Spring payment service implementation that creates PayOS payment requests and returns hosted checkout URLs.",
+      "tags": ["service", "payment", "payos", "integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:createPayment",
+      "type": "function",
+      "name": "createPayment",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "lineRange": [30, 44],
+      "summary": "Builds a PayOS payment-link request for a subscription reference and returns the generated checkout URL.",
+      "tags": ["payment", "payos", "integration", "checkout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "type": "file",
+      "name": "OvervaluationResult.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "summary": "Defines the valuation result data model used to summarize overvaluation status and per-indicator outcomes for a stock.",
+      "tags": ["data-model", "valuation", "notification", "lombok"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java:OvervaluationResult",
+      "type": "class",
+      "name": "OvervaluationResult",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "lineRange": [10, 22],
+      "summary": "Lombok data model describing a stock's overvaluation aggregate counts, percentage, boolean status, and indicator-level results.",
+      "tags": ["data-model", "valuation", "lombok", "notification"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:MarketRealtimeApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:MarketRealtimeApplication",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:AppConf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:logConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:AppConf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:logConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:KafkaService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:connectProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:createDefaultTopic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:sendResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:startConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:subscribe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:shutdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:toJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:KafkaService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:sendResponse",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:send",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:KafkaListener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:handleIncomingMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:KafkaListener",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:KafkaService",
+      "type": "inherits",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:init",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:createDefaultTopic",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:init",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:connectProducer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:init",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:startConsumer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:handleIncomingMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java:handleIncomingMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java:sendResponse",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java:Message",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java:Message",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java:MailService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java:MailService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:MessageRouterService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:mapPayloadToDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeUserMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeStockMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeSubscriptionMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeAhpConfigMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeYearDataMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeValidationMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routePortfolioMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeWebhooksMessages",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:MessageRouterService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:mapPayloadToDto",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeUserMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeValidationMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeYearDataMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeStockMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeSubscriptionMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeAhpConfigMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routePortfolioMessage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeMessage",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java:routeWebhooksMessages",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:MailServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendWelcome",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendOvervaluationAlert",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:MailServiceImpl",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java:MailService",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:MailServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendWelcome",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendOvervaluationAlert",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendWelcome",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendEmail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendOvervaluationAlert",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java:sendEmail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:PaymentServiceImpl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:createPayment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:PaymentServiceImpl",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java:PaymentService",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:PaymentServiceImpl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java:createPayment",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java:OvervaluationResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java:OvervaluationResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

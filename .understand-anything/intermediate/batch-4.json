@@ -1,0 +1,1358 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-rest/src/models/StockEntity.ts",
+      "type": "file",
+      "name": "StockEntity.ts",
+      "filePath": "market-rest/src/models/StockEntity.ts",
+      "summary": "Defines stock and yearly financial metric shapes used by the REST service, including valuation ratios, cash-flow inputs, and user favorite relationships.",
+      "tags": [
+        "data-model",
+        "type-definition",
+        "stocks",
+        "valuation"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Type-only imports avoid runtime coupling while preserving entity relationships."
+    },
+    {
+      "id": "file:market-rest/src/models/Subscription.ts",
+      "type": "file",
+      "name": "Subscription.ts",
+      "filePath": "market-rest/src/models/Subscription.ts",
+      "summary": "Defines subscription status values and the subscription entity shape that links users to paid subscription plans.",
+      "tags": [
+        "data-model",
+        "type-definition",
+        "subscription",
+        "billing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/models/SubscriptionPlanEntity.ts",
+      "type": "file",
+      "name": "SubscriptionPlanEntity.ts",
+      "filePath": "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "summary": "Defines billing-cycle values and subscription plan fields, including plan price, cadence, and optional subscriptions tied to the plan.",
+      "tags": [
+        "data-model",
+        "type-definition",
+        "subscription",
+        "billing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/models/UserEntity.ts",
+      "type": "file",
+      "name": "UserEntity.ts",
+      "filePath": "market-rest/src/models/UserEntity.ts",
+      "summary": "Defines the user entity shape used by the REST API, including profile fields, admin status, favorite stocks, subscriptions, and AHP configuration.",
+      "tags": [
+        "data-model",
+        "type-definition",
+        "user-profile",
+        "relationships"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/producer/KafkaProducer.ts",
+      "type": "file",
+      "name": "KafkaProducer.ts",
+      "filePath": "market-rest/src/producer/KafkaProducer.ts",
+      "summary": "Wraps a KafkaJS producer with connection readiness, default REST topic selection, JSON serialization, and generated message keys.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/ahpConfigRoutes.ts",
+      "type": "file",
+      "name": "ahpConfigRoutes.ts",
+      "filePath": "market-rest/src/routes/ahpConfigRoutes.ts",
+      "summary": "Registers Express routes for reading, creating, and updating AHP configuration records through the AHP config controller.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "ahp-config",
+        "express"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "market-rest/src/routes/index.ts",
+      "summary": "Composes the Market REST API router, exposes a root welcome endpoint, and mounts stock, user, AHP, year-data, portfolio, and subscription route groups.",
+      "tags": [
+        "entry-point",
+        "routing",
+        "api-handler",
+        "express"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/portfolioRoutes.ts",
+      "type": "file",
+      "name": "portfolioRoutes.ts",
+      "filePath": "market-rest/src/routes/portfolioRoutes.ts",
+      "summary": "Registers the portfolio allocation endpoint and delegates allocation requests to the portfolio controller.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "portfolio",
+        "express"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/stockRoutes.ts",
+      "type": "file",
+      "name": "stockRoutes.ts",
+      "filePath": "market-rest/src/routes/stockRoutes.ts",
+      "summary": "Registers stock endpoints for lookup, listing IDs, create/update/delete operations, industry ratio updates, and valuation recalculation.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "stocks",
+        "valuation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/stockYearDataRoutes.ts",
+      "type": "file",
+      "name": "stockYearDataRoutes.ts",
+      "filePath": "market-rest/src/routes/stockYearDataRoutes.ts",
+      "summary": "Registers endpoints for retrieving and mutating yearly financial data for a stock.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "stock-year-data",
+        "financial-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/subscriptionRoutes.ts",
+      "type": "file",
+      "name": "subscriptionRoutes.ts",
+      "filePath": "market-rest/src/routes/subscriptionRoutes.ts",
+      "summary": "Registers subscription endpoints for plan listing and subscription creation.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "subscription",
+        "billing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/routes/userRoutes.ts",
+      "type": "file",
+      "name": "userRoutes.ts",
+      "filePath": "market-rest/src/routes/userRoutes.ts",
+      "summary": "Registers user endpoints for profile lookup, favorite stocks, account changes, password updates, login, and favorite-stock mutation.",
+      "tags": [
+        "api-handler",
+        "routing",
+        "user-profile",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "type": "file",
+      "name": "ahpConfigQueueService.ts",
+      "filePath": "market-rest/src/services/ahpConfigQueueService.ts",
+      "summary": "Sends AHP configuration create and update requests through the shared Kafka request-response layer using configured backend worker URIs.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "ahp-config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/services/ahpConfigService.ts",
+      "type": "file",
+      "name": "ahpConfigService.ts",
+      "filePath": "market-rest/src/services/ahpConfigService.ts",
+      "summary": "Loads AHP configuration by user ID with BigInt-safe validation, Redis cache reads/writes, and database fallback.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "ahp-config"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "file",
+      "name": "kafkaRequestResponseService.ts",
+      "filePath": "market-rest/src/services/kafkaRequestResponseService.ts",
+      "summary": "Implements request-response messaging over Kafka by correlating outbound requests with consumer replies, timeouts, and pending promise resolution.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "request-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/portfolioQueueService.ts",
+      "type": "file",
+      "name": "portfolioQueueService.ts",
+      "filePath": "market-rest/src/services/portfolioQueueService.ts",
+      "summary": "Dispatches portfolio allocation requests to the Kafka request-response layer using the configured allocation worker URI.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "portfolio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/services/stockQueueService.ts",
+      "type": "file",
+      "name": "stockQueueService.ts",
+      "filePath": "market-rest/src/services/stockQueueService.ts",
+      "summary": "Dispatches stock mutation, ratio update, and valuation recalculation commands to backend workers through Kafka request-response messaging.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "stocks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/stockService.ts",
+      "type": "file",
+      "name": "stockService.ts",
+      "filePath": "market-rest/src/services/stockService.ts",
+      "summary": "Provides stock detail and stock-ID lookup services backed by Redis caching, SQL queries, valuation field normalization, and yearly data hydration.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "stocks"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "type": "file",
+      "name": "stockYearDataQueueService.ts",
+      "filePath": "market-rest/src/services/stockYearDataQueueService.ts",
+      "summary": "Dispatches yearly stock data create, update, and delete commands to backend workers through the Kafka request-response service.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "stock-year-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/stockYearDataService.ts",
+      "type": "file",
+      "name": "stockYearDataService.ts",
+      "filePath": "market-rest/src/services/stockYearDataService.ts",
+      "summary": "Retrieves and caches yearly financial data for stocks, including Redis scan reconstruction and numeric normalization of valuation inputs.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "stock-year-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/subscriptionPlanService.ts",
+      "type": "file",
+      "name": "subscriptionPlanService.ts",
+      "filePath": "market-rest/src/services/subscriptionPlanService.ts",
+      "summary": "Loads subscription plans from the database and maps persistence rows into REST-facing plan entities.",
+      "tags": [
+        "service",
+        "database",
+        "subscription",
+        "billing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "type": "file",
+      "name": "subscriptionQueueService.ts",
+      "filePath": "market-rest/src/services/subscriptionQueueService.ts",
+      "summary": "Dispatches subscription creation requests to backend workers via the Kafka request-response layer.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/services/userQueueService.ts",
+      "type": "file",
+      "name": "userQueueService.ts",
+      "filePath": "market-rest/src/services/userQueueService.ts",
+      "summary": "Dispatches user account, authentication, password, deletion, and favorite-stock commands through Kafka request-response messaging.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "user-profile"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/services/userService.ts",
+      "type": "file",
+      "name": "userService.ts",
+      "filePath": "market-rest/src/services/userService.ts",
+      "summary": "Provides user detail and favorite-stock read services with BigInt validation, Redis cache backfill, subscription normalization, AHP enrichment, and SQL fallback.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "user-profile"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-rest/src/utils/cacheService.ts",
+      "type": "file",
+      "name": "cacheService.ts",
+      "filePath": "market-rest/src/utils/cacheService.ts",
+      "summary": "Provides typed Redis hash helpers for scanning, reading, writing, and deleting JSON-serialized cached values.",
+      "tags": [
+        "utility",
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/producer/KafkaProducer.ts:KafkaProducer",
+      "type": "class",
+      "name": "KafkaProducer",
+      "filePath": "market-rest/src/producer/KafkaProducer.ts",
+      "lineRange": [
+        12,
+        42
+      ],
+      "summary": "Maintains a KafkaJS producer connection and sends JSON payloads to either a configured topic or the REST topic by default.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/services/ahpConfigQueueService.ts:AhpConfigQueueService",
+      "type": "class",
+      "name": "AhpConfigQueueService",
+      "filePath": "market-rest/src/services/ahpConfigQueueService.ts",
+      "lineRange": [
+        6,
+        43
+      ],
+      "summary": "Packages AHP config create and update commands for delivery to Kafka-backed worker endpoints.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "ahp-config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/services/ahpConfigService.ts:AhpConfigService",
+      "type": "class",
+      "name": "AhpConfigService",
+      "filePath": "market-rest/src/services/ahpConfigService.ts",
+      "lineRange": [
+        14,
+        66
+      ],
+      "summary": "Validates user IDs and resolves AHP configuration through Redis cache lookup, database query, and cache backfill.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "ahp-config"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/kafkaRequestResponseService.ts:KafkaRequestResponseService",
+      "type": "class",
+      "name": "KafkaRequestResponseService",
+      "filePath": "market-rest/src/services/kafkaRequestResponseService.ts",
+      "lineRange": [
+        20,
+        108
+      ],
+      "summary": "Coordinates Kafka request dispatch and asynchronous response handling with correlation IDs, timeout cleanup, and consumer startup.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "request-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/portfolioQueueService.ts:PortfolioQueueService",
+      "type": "class",
+      "name": "PortfolioQueueService",
+      "filePath": "market-rest/src/services/portfolioQueueService.ts",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Sends portfolio allocation payloads to the configured worker route through Kafka request-response messaging.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "portfolio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/services/stockQueueService.ts:StockQueueService",
+      "type": "class",
+      "name": "StockQueueService",
+      "filePath": "market-rest/src/services/stockQueueService.ts",
+      "lineRange": [
+        6,
+        102
+      ],
+      "summary": "Sends stock lifecycle, industry-ratio, and valuation recalculation commands to configured worker routes.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "stocks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/stockService.ts:StockService",
+      "type": "class",
+      "name": "StockService",
+      "filePath": "market-rest/src/services/stockService.ts",
+      "lineRange": [
+        69,
+        217
+      ],
+      "summary": "Builds stock detail responses from Redis and SQL data, normalizes numeric valuation fields, and coordinates yearly data cache hydration.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "stocks"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-rest/src/services/stockYearDataQueueService.ts:StockYearDataQueueService",
+      "type": "class",
+      "name": "StockYearDataQueueService",
+      "filePath": "market-rest/src/services/stockYearDataQueueService.ts",
+      "lineRange": [
+        6,
+        61
+      ],
+      "summary": "Sends create, update, and delete commands for yearly stock data to configured Kafka worker routes.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "stock-year-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/stockYearDataService.ts:StockYearDataService",
+      "type": "class",
+      "name": "StockYearDataService",
+      "filePath": "market-rest/src/services/stockYearDataService.ts",
+      "lineRange": [
+        38,
+        165
+      ],
+      "summary": "Loads yearly stock metrics from cache or database and persists per-year records into Redis hash fields.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "stock-year-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/subscriptionPlanService.ts:SubscriptionPlanService",
+      "type": "class",
+      "name": "SubscriptionPlanService",
+      "filePath": "market-rest/src/services/subscriptionPlanService.ts",
+      "lineRange": [
+        13,
+        35
+      ],
+      "summary": "Queries available subscription plans and converts rows into API entities with numeric prices.",
+      "tags": [
+        "service",
+        "database",
+        "subscription",
+        "billing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/services/subscriptionQueueService.ts:SubscriptionQueueService",
+      "type": "class",
+      "name": "SubscriptionQueueService",
+      "filePath": "market-rest/src/services/subscriptionQueueService.ts",
+      "lineRange": [
+        6,
+        25
+      ],
+      "summary": "Sends subscription creation payloads to the configured Kafka worker route.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/services/userQueueService.ts:UserQueueService",
+      "type": "class",
+      "name": "UserQueueService",
+      "filePath": "market-rest/src/services/userQueueService.ts",
+      "lineRange": [
+        6,
+        133
+      ],
+      "summary": "Sends user command payloads for account lifecycle, login, password changes, and favorite-stock changes to Kafka worker routes.",
+      "tags": [
+        "service",
+        "messaging",
+        "kafka",
+        "user-profile"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-rest/src/services/userService.ts:UserService",
+      "type": "class",
+      "name": "UserService",
+      "filePath": "market-rest/src/services/userService.ts",
+      "lineRange": [
+        40,
+        339
+      ],
+      "summary": "Builds user detail and favorite-stock read models by combining Redis cache, SQL queries, subscriptions, and AHP configuration.",
+      "tags": [
+        "service",
+        "cache",
+        "database",
+        "user-profile"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-rest/src/utils/cacheService.ts:CacheService",
+      "type": "class",
+      "name": "CacheService",
+      "filePath": "market-rest/src/utils/cacheService.ts",
+      "lineRange": [
+        3,
+        50
+      ],
+      "summary": "Centralizes Redis hash scan, get, set, and delete operations with JSON serialization and error logging.",
+      "tags": [
+        "utility",
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-rest/src/producer/KafkaProducer.ts",
+      "target": "class:market-rest/src/producer/KafkaProducer.ts:KafkaProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/producer/KafkaProducer.ts",
+      "target": "class:market-rest/src/producer/KafkaProducer.ts:KafkaProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "class:market-rest/src/services/ahpConfigQueueService.ts:AhpConfigQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigService.ts",
+      "target": "class:market-rest/src/services/ahpConfigService.ts:AhpConfigService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "class:market-rest/src/services/kafkaRequestResponseService.ts:KafkaRequestResponseService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "class:market-rest/src/services/portfolioQueueService.ts:PortfolioQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "class:market-rest/src/services/stockQueueService.ts:StockQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "class:market-rest/src/services/stockService.ts:StockService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "class:market-rest/src/services/stockYearDataQueueService.ts:StockYearDataQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "class:market-rest/src/services/stockYearDataService.ts:StockYearDataService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionPlanService.ts",
+      "target": "class:market-rest/src/services/subscriptionPlanService.ts:SubscriptionPlanService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "class:market-rest/src/services/subscriptionQueueService.ts:SubscriptionQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "class:market-rest/src/services/userQueueService.ts:UserQueueService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "class:market-rest/src/services/userService.ts:UserService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/utils/cacheService.ts",
+      "target": "class:market-rest/src/utils/cacheService.ts:CacheService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/models/StockEntity.ts",
+      "target": "file:market-rest/src/models/UserEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/Subscription.ts",
+      "target": "file:market-rest/src/models/SubscriptionPlanEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/Subscription.ts",
+      "target": "file:market-rest/src/models/UserEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/SubscriptionPlanEntity.ts",
+      "target": "file:market-rest/src/models/Subscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/UserEntity.ts",
+      "target": "file:market-rest/src/models/AhpConfigEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/UserEntity.ts",
+      "target": "file:market-rest/src/models/StockEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/UserEntity.ts",
+      "target": "file:market-rest/src/models/Subscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/producer/KafkaProducer.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/producer/KafkaProducer.ts",
+      "target": "file:market-rest/src/config/kafka.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/ahpConfigRoutes.ts",
+      "target": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/ahpConfigRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/portfolioRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/stockRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/stockYearDataRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/subscriptionRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/index.ts",
+      "target": "file:market-rest/src/routes/userRoutes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/portfolioRoutes.ts",
+      "target": "file:market-rest/src/controllers/portfolioController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/stockRoutes.ts",
+      "target": "file:market-rest/src/controllers/stockController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/stockYearDataRoutes.ts",
+      "target": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/subscriptionRoutes.ts",
+      "target": "file:market-rest/src/controllers/subscriptionController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/routes/userRoutes.ts",
+      "target": "file:market-rest/src/controllers/userController.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "file:market-rest/src/dto/AhpConfigDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigService.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigService.ts",
+      "target": "file:market-rest/src/dto/AhpConfigDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/dto/message.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/interfaces/KafkaEnvelope.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/producer/KafkaProducer.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "file:market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "file:market-rest/src/dto/StockDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/models/StockEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/services/stockYearDataService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "file:market-rest/src/dto/StockYearDataDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "file:market-rest/src/dto/StockYearDataDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "file:market-rest/src/models/StockEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionPlanService.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionPlanService.ts",
+      "target": "file:market-rest/src/models/SubscriptionPlanEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "file:market-rest/src/dto/SubscriptionDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "file:market-rest/src/dto/UserDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/dto/UserDetailDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/models/AhpConfigEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/models/Subscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/models/SubscriptionPlanEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/models/UserEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/services/ahpConfigService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/utils/cacheService.ts",
+      "target": "file:market-rest/src/config/redis.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/portfolioQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/stockQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/userQueueService.ts",
+      "target": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/kafkaRequestResponseService.ts",
+      "target": "file:market-rest/src/producer/KafkaProducer.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/ahpConfigService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/stockService.ts",
+      "target": "file:market-rest/src/services/stockYearDataService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/stockYearDataService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/utils/cacheService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/services/userService.ts",
+      "target": "file:market-rest/src/services/ahpConfigService.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/utils/cacheService.ts",
+      "target": "file:market-rest/src/config/redis.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/ahpConfigRoutes.ts",
+      "target": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/portfolioRoutes.ts",
+      "target": "file:market-rest/src/controllers/portfolioController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/stockRoutes.ts",
+      "target": "file:market-rest/src/controllers/stockController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/stockYearDataRoutes.ts",
+      "target": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/subscriptionRoutes.ts",
+      "target": "file:market-rest/src/controllers/subscriptionController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-rest/src/routes/userRoutes.ts",
+      "target": "file:market-rest/src/controllers/userController.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,2613 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 14,
+          "endLine": 16,
+          "params": [
+            "args"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MarketCollectorApplication",
+          "startLine": 9,
+          "endLine": 18,
+          "methods": [
+            "main"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "MarketCollectorApplication",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "SpringApplication.run",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "TokenClient",
+          "startLine": 25,
+          "endLine": 28,
+          "params": [
+            "appConf"
+          ]
+        },
+        {
+          "name": "getToken",
+          "startLine": 30,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "getInvestorId",
+          "startLine": 53,
+          "endLine": 69,
+          "params": [
+            "token"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TokenClient",
+          "startLine": 19,
+          "endLine": 70,
+          "methods": [
+            "TokenClient",
+            "getToken",
+            "getInvestorId"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TokenClient",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "getToken",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "getInvestorId",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "TokenClient",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getToken",
+          "callee": "new HashMap<>",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getToken",
+          "callee": "body.put",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed().getUsername",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed",
+          "lineNumber": 32
+        },
+        {
+          "caller": "getToken",
+          "callee": "body.put",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed().getPassword",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getToken",
+          "callee": "mapper.writeValueAsString",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpClient.newHttpClient",
+          "lineNumber": 36
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getTokenUrl()))\n                .header(\"Content-Type\", \"application/json\")\n                .POST(HttpRequest.BodyPublishers.ofString(bodyString)).build",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getTokenUrl()))\n                .header(\"Content-Type\", \"application/json\").POST",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getTokenUrl())).header",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.newBuilder().uri",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.newBuilder",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getToken",
+          "callee": "java.net.URI.create",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed().getTokenUrl",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getToken",
+          "callee": "appConf.getDataFeed",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpRequest.BodyPublishers.ofString",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getToken",
+          "callee": "client.send",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getToken",
+          "callee": "HttpResponse.BodyHandlers.ofString",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getToken",
+          "callee": "mapper.readTree",
+          "lineNumber": 45
+        },
+        {
+          "caller": "getToken",
+          "callee": "response.body",
+          "lineNumber": 45
+        },
+        {
+          "caller": "getToken",
+          "callee": "json.get(\"token\").asText",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getToken",
+          "callee": "json.get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getToken",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getToken",
+          "callee": "Thread.currentThread",
+          "lineNumber": 48
+        },
+        {
+          "caller": "getToken",
+          "callee": "new IOException",
+          "lineNumber": 49
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpClient.newHttpClient",
+          "lineNumber": 54
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getInvestorUrl()))\n                .header(\"Authorization\", \"Bearer \" + token)\n                .GET().build",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getInvestorUrl()))\n                .header(\"Authorization\", \"Bearer \" + token).GET",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpRequest.newBuilder()\n                .uri(java.net.URI.create(appConf.getDataFeed().getInvestorUrl())).header",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpRequest.newBuilder().uri",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpRequest.newBuilder",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "java.net.URI.create",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "appConf.getDataFeed().getInvestorUrl",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "appConf.getDataFeed",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "client.send",
+          "lineNumber": 62
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "HttpResponse.BodyHandlers.ofString",
+          "lineNumber": 62
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "mapper.readTree",
+          "lineNumber": 63
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "response.body",
+          "lineNumber": 63
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "json.get(\"investorId\").asText",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "json.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 66
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "Thread.currentThread",
+          "lineNumber": 66
+        },
+        {
+          "caller": "getInvestorId",
+          "callee": "new IOException",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "logConfig",
+          "startLine": 19,
+          "endLine": 48,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "AppConf",
+          "startLine": 9,
+          "endLine": 92,
+          "methods": [
+            "logConfig"
+          ],
+          "properties": [
+            "logger",
+            "clusterId",
+            "kafka",
+            "mqtt",
+            "dataFeed",
+            "database"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "logConfig",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "AppConf",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 21
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 22
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 24
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getUrls",
+          "lineNumber": 24
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 25
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 25
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic().getMarketData",
+          "lineNumber": 25
+        },
+        {
+          "caller": "logConfig",
+          "callee": "kafka.getTopic",
+          "lineNumber": 25
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 28
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getUrl",
+          "lineNumber": 28
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getTopic",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getTopic().getMarketData",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getTopic",
+          "lineNumber": 29
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 30
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getUsername",
+          "lineNumber": 30
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 31
+        },
+        {
+          "caller": "logConfig",
+          "callee": "mqtt.getPassword",
+          "lineNumber": 31
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 34
+        },
+        {
+          "caller": "logConfig",
+          "callee": "dataFeed.getTokenUrl",
+          "lineNumber": 34
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 35
+        },
+        {
+          "caller": "logConfig",
+          "callee": "dataFeed.getInvestorUrl",
+          "lineNumber": 35
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 36
+        },
+        {
+          "caller": "logConfig",
+          "callee": "dataFeed.getWebsocketUrl",
+          "lineNumber": 36
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 37
+        },
+        {
+          "caller": "logConfig",
+          "callee": "dataFeed.getUsername",
+          "lineNumber": 37
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 38
+        },
+        {
+          "caller": "logConfig",
+          "callee": "dataFeed.getPassword",
+          "lineNumber": 38
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 42
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getUrl",
+          "lineNumber": 42
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 43
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getUsername",
+          "lineNumber": 43
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 44
+        },
+        {
+          "caller": "logConfig",
+          "callee": "database.getPassword",
+          "lineNumber": 44
+        },
+        {
+          "caller": "logConfig",
+          "callee": "logger.info",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 214,
+      "nonEmptyLines": 184,
+      "functions": [
+        {
+          "name": "KafkaService",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "appConf",
+            "mapper"
+          ]
+        },
+        {
+          "name": "connectProducer",
+          "startLine": 45,
+          "endLine": 67,
+          "params": [
+            "bootstrapServers",
+            "clientId",
+            "groupId"
+          ]
+        },
+        {
+          "name": "createDefaultTopic",
+          "startLine": 69,
+          "endLine": 71,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 73,
+          "endLine": 75,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 77,
+          "endLine": 94,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        },
+        {
+          "name": "startConsumer",
+          "startLine": 96,
+          "endLine": 150,
+          "params": [
+            "bootstrapServers",
+            "groupId",
+            "topics"
+          ]
+        },
+        {
+          "name": "subscribe",
+          "startLine": 152,
+          "endLine": 163,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "shutdown",
+          "startLine": 165,
+          "endLine": 195,
+          "params": []
+        },
+        {
+          "name": "toJson",
+          "startLine": 197,
+          "endLine": 211,
+          "params": [
+            "message",
+            "uri"
+          ]
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 213,
+          "endLine": 213,
+          "params": [
+            "topic",
+            "key",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaService",
+          "startLine": 27,
+          "endLine": 214,
+          "methods": [
+            "KafkaService",
+            "connectProducer",
+            "createDefaultTopic",
+            "send",
+            "send",
+            "startConsumer",
+            "subscribe",
+            "shutdown",
+            "toJson",
+            "handleIncomingMessage"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf",
+            "producer",
+            "consumer",
+            "defaultTopic",
+            "consumerThread",
+            "running"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaService",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "connectProducer",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "createDefaultTopic",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "startConsumer",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "subscribe",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "shutdown",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "toJson",
+          "line": 197,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaService",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connectProducer",
+          "callee": "producer.close",
+          "lineNumber": 48
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 50
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new Properties",
+          "lineNumber": 55
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 56
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 57
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 58
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 59
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "props.put",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "StringSerializer.class.getName",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "new KafkaProducer<>",
+          "lineNumber": 62
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.info",
+          "lineNumber": 63
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "logger.error",
+          "lineNumber": 65
+        },
+        {
+          "caller": "connectProducer",
+          "callee": "e.getMessage",
+          "lineNumber": 65
+        },
+        {
+          "caller": "send",
+          "callee": "send",
+          "lineNumber": 74
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 79
+        },
+        {
+          "caller": "send",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 84
+        },
+        {
+          "caller": "send",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 84
+        },
+        {
+          "caller": "send",
+          "callee": "new ProducerRecord<>",
+          "lineNumber": 85
+        },
+        {
+          "caller": "send",
+          "callee": "producer.send",
+          "lineNumber": 86
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 88
+        },
+        {
+          "caller": "send",
+          "callee": "exception.getMessage",
+          "lineNumber": 88
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 92
+        },
+        {
+          "caller": "send",
+          "callee": "e.getMessage",
+          "lineNumber": 92
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 98
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Properties",
+          "lineNumber": 103
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 104
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 105
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 105
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 106
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 107
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 107
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 108
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "StringDeserializer.class.getName",
+          "lineNumber": 108
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 109
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 110
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "props.put",
+          "lineNumber": 111
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new KafkaConsumer<>",
+          "lineNumber": 113
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.subscribe",
+          "lineNumber": 114
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 118
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.poll",
+          "lineNumber": 121
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "Duration.ofMillis",
+          "lineNumber": 121
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.topic",
+          "lineNumber": 124
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.key",
+          "lineNumber": 125
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "record.value",
+          "lineNumber": 126
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread(() -> handleIncomingMessage(topic, key, value)).start",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "new Thread",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "handleIncomingMessage",
+          "lineNumber": 128
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 132
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 134
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 134
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumer.close",
+          "lineNumber": 137
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 139
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 139
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "consumerThread.start",
+          "lineNumber": 144
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.info",
+          "lineNumber": 145
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "logger.error",
+          "lineNumber": 148
+        },
+        {
+          "caller": "startConsumer",
+          "callee": "e.getMessage",
+          "lineNumber": 148
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 154
+        },
+        {
+          "caller": "subscribe",
+          "callee": "consumer.subscribe",
+          "lineNumber": 158
+        },
+        {
+          "caller": "subscribe",
+          "callee": "Collections.singletonList",
+          "lineNumber": 158
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.info",
+          "lineNumber": 159
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 161
+        },
+        {
+          "caller": "subscribe",
+          "callee": "e.getMessage",
+          "lineNumber": 161
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.info",
+          "lineNumber": 167
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumer.wakeup",
+          "lineNumber": 173
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 176
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 176
+        },
+        {
+          "caller": "shutdown",
+          "callee": "consumerThread.join",
+          "lineNumber": 181
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 184
+        },
+        {
+          "caller": "shutdown",
+          "callee": "Thread.currentThread",
+          "lineNumber": 184
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.flush",
+          "lineNumber": 189
+        },
+        {
+          "caller": "shutdown",
+          "callee": "producer.close",
+          "lineNumber": 190
+        },
+        {
+          "caller": "shutdown",
+          "callee": "logger.error",
+          "lineNumber": 193
+        },
+        {
+          "caller": "shutdown",
+          "callee": "e.getMessage",
+          "lineNumber": 193
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri)\n                .payload(message).build",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString())\n                .uri(uri).payload",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId())\n                .eventId(UUID.randomUUID().toString()).uri",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder()\n                .sourceId(appConf.getClusterId()).eventId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder().sourceId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "Message.builder",
+          "lineNumber": 198
+        },
+        {
+          "caller": "toJson",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 199
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID().toString",
+          "lineNumber": 200
+        },
+        {
+          "caller": "toJson",
+          "callee": "UUID.randomUUID",
+          "lineNumber": 200
+        },
+        {
+          "caller": "toJson",
+          "callee": "mapper.writeValueAsString",
+          "lineNumber": 206
+        },
+        {
+          "caller": "toJson",
+          "callee": "logger.error",
+          "lineNumber": 208
+        },
+        {
+          "caller": "toJson",
+          "callee": "e.getMessage",
+          "lineNumber": 208
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "MqttListener",
+          "startLine": 33,
+          "endLine": 48,
+          "params": [
+            "appConf",
+            "tokenClient",
+            "kafkaProducer",
+            "mqttProducer",
+            "objectMapper",
+            "stockIdRepository"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 50,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "initConnection",
+          "startLine": 59,
+          "endLine": 78,
+          "params": []
+        },
+        {
+          "name": "connectionLost",
+          "startLine": 80,
+          "endLine": 87,
+          "params": [
+            "cause"
+          ]
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 89,
+          "endLine": 104,
+          "params": [
+            "topic",
+            "message"
+          ]
+        },
+        {
+          "name": "scheduleReset",
+          "startLine": 107,
+          "endLine": 110,
+          "params": []
+        },
+        {
+          "name": "scheduleDisconnect",
+          "startLine": 113,
+          "endLine": 121,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "MqttListener",
+          "startLine": 22,
+          "endLine": 122,
+          "methods": [
+            "MqttListener",
+            "init",
+            "initConnection",
+            "connectionLost",
+            "handleIncomingMessage",
+            "scheduleReset",
+            "scheduleDisconnect"
+          ],
+          "properties": [
+            "logger",
+            "appConf",
+            "tokenClient",
+            "kafkaProducer",
+            "mqttProducer",
+            "objectMapper",
+            "stockIdRepository"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MqttListener",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "initConnection",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "connectionLost",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "MqttListener",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "initConnection",
+          "lineNumber": 53
+        },
+        {
+          "caller": "init",
+          "callee": "logger.error",
+          "lineNumber": 55
+        },
+        {
+          "caller": "init",
+          "callee": "e.getMessage",
+          "lineNumber": 55
+        },
+        {
+          "caller": "initConnection",
+          "callee": "stockIdRepository.getAllStockIds",
+          "lineNumber": 60
+        },
+        {
+          "caller": "initConnection",
+          "callee": "tokenClient.getToken",
+          "lineNumber": 61
+        },
+        {
+          "caller": "initConnection",
+          "callee": "tokenClient.getInvestorId",
+          "lineNumber": 62
+        },
+        {
+          "caller": "initConnection",
+          "callee": "connect",
+          "lineNumber": 63
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getDataFeed().getWebsocketUrl",
+          "lineNumber": 63
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getDataFeed",
+          "lineNumber": 63
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 64
+        },
+        {
+          "caller": "initConnection",
+          "callee": "stockIds.parallelStream().forEach",
+          "lineNumber": 71
+        },
+        {
+          "caller": "initConnection",
+          "callee": "stockIds.parallelStream",
+          "lineNumber": 71
+        },
+        {
+          "caller": "initConnection",
+          "callee": "subscribe",
+          "lineNumber": 73
+        },
+        {
+          "caller": "initConnection",
+          "callee": "logger.error",
+          "lineNumber": 75
+        },
+        {
+          "caller": "initConnection",
+          "callee": "e.getMessage",
+          "lineNumber": 75
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "initConnection",
+          "lineNumber": 83
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "logger.error",
+          "lineNumber": 85
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "e.getMessage",
+          "lineNumber": 85
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "logger.info",
+          "lineNumber": 91
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "objectMapper.readTree",
+          "lineNumber": 93
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "new Stock",
+          "lineNumber": 94
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "stock.setStockId",
+          "lineNumber": 95
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "jsonNode.get(\"symbol\").asText",
+          "lineNumber": 95
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "jsonNode.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "stock.setMatchPrice",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "jsonNode.get(\"matchPrice\").decimalValue",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "jsonNode.get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "objectMapper.writeValueAsString",
+          "lineNumber": 97
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "kafkaProducer.publish",
+          "lineNumber": 99
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "mqttProducer.publish",
+          "lineNumber": 100
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "logger.error",
+          "lineNumber": 102
+        },
+        {
+          "caller": "handleIncomingMessage",
+          "callee": "e.getMessage",
+          "lineNumber": 102
+        },
+        {
+          "caller": "scheduleReset",
+          "callee": "initConnection",
+          "lineNumber": 109
+        },
+        {
+          "caller": "scheduleDisconnect",
+          "callee": "super.disconnect",
+          "lineNumber": 116
+        },
+        {
+          "caller": "scheduleDisconnect",
+          "callee": "logger.info",
+          "lineNumber": 117
+        },
+        {
+          "caller": "scheduleDisconnect",
+          "callee": "logger.error",
+          "lineNumber": 119
+        },
+        {
+          "caller": "scheduleDisconnect",
+          "callee": "e.getMessage",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 5,
+        "functionCount": 7,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "classes": [
+        {
+          "name": "Message",
+          "startLine": 9,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "sourceId",
+            "eventId",
+            "uri",
+            "timestamp",
+            "payload"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Message",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 8,
+      "classes": [
+        {
+          "name": "Stock",
+          "startLine": 7,
+          "endLine": 11,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "matchPrice"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Stock",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 141,
+      "nonEmptyLines": 121,
+      "functions": [
+        {
+          "name": "MqttService",
+          "startLine": 21,
+          "endLine": 24,
+          "params": [
+            "appConf"
+          ]
+        },
+        {
+          "name": "connect",
+          "startLine": 26,
+          "endLine": 71,
+          "params": [
+            "brokerUrl",
+            "clientId",
+            "username",
+            "password"
+          ]
+        },
+        {
+          "name": "disconnect",
+          "startLine": 73,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "createDefaultTopic",
+          "startLine": 86,
+          "endLine": 88,
+          "params": [
+            "defaultTopic"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 90,
+          "endLine": 92,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "send",
+          "startLine": 94,
+          "endLine": 106,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        },
+        {
+          "name": "subscribe",
+          "startLine": 108,
+          "endLine": 122,
+          "params": [
+            "topic"
+          ]
+        },
+        {
+          "name": "connectionLost",
+          "startLine": 124,
+          "endLine": 128,
+          "params": [
+            "throwable"
+          ]
+        },
+        {
+          "name": "messageArrived",
+          "startLine": 130,
+          "endLine": 135,
+          "params": [
+            "topic",
+            "mqttMessage"
+          ]
+        },
+        {
+          "name": "deliveryComplete",
+          "startLine": 137,
+          "endLine": 138,
+          "params": [
+            "iMqttDeliveryToken"
+          ]
+        },
+        {
+          "name": "handleIncomingMessage",
+          "startLine": 140,
+          "endLine": 140,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MqttService",
+          "startLine": 13,
+          "endLine": 141,
+          "methods": [
+            "MqttService",
+            "connect",
+            "disconnect",
+            "createDefaultTopic",
+            "send",
+            "send",
+            "subscribe",
+            "connectionLost",
+            "messageArrived",
+            "deliveryComplete",
+            "handleIncomingMessage"
+          ],
+          "properties": [
+            "logger",
+            "appConf",
+            "client",
+            "defaultTopic",
+            "isDisconnect"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MqttService",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "connect",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "disconnect",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "createDefaultTopic",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "send",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "subscribe",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "connectionLost",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "messageArrived",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "deliveryComplete",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "MqttService",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "connect",
+          "callee": "client.isConnected",
+          "lineNumber": 27
+        },
+        {
+          "caller": "connect",
+          "callee": "client.disconnect",
+          "lineNumber": 29
+        },
+        {
+          "caller": "connect",
+          "callee": "logger.error",
+          "lineNumber": 31
+        },
+        {
+          "caller": "connect",
+          "callee": "e.getMessage",
+          "lineNumber": 31
+        },
+        {
+          "caller": "connect",
+          "callee": "new MqttClient",
+          "lineNumber": 36
+        },
+        {
+          "caller": "connect",
+          "callee": "new MemoryPersistence",
+          "lineNumber": 36
+        },
+        {
+          "caller": "connect",
+          "callee": "logger.error",
+          "lineNumber": 38
+        },
+        {
+          "caller": "connect",
+          "callee": "e.getMessage",
+          "lineNumber": 38
+        },
+        {
+          "caller": "connect",
+          "callee": "client.setCallback",
+          "lineNumber": 40
+        },
+        {
+          "caller": "connect",
+          "callee": "new MqttConnectOptions",
+          "lineNumber": 42
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setCleanSession",
+          "lineNumber": 43
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setMaxInflight",
+          "lineNumber": 44
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setAutomaticReconnect",
+          "lineNumber": 45
+        },
+        {
+          "caller": "connect",
+          "callee": "brokerUrl.startsWith",
+          "lineNumber": 48
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setSocketFactory",
+          "lineNumber": 49
+        },
+        {
+          "caller": "connect",
+          "callee": "SSLSocketFactory.getDefault",
+          "lineNumber": 49
+        },
+        {
+          "caller": "connect",
+          "callee": "username.isBlank",
+          "lineNumber": 52
+        },
+        {
+          "caller": "connect",
+          "callee": "password.isBlank",
+          "lineNumber": 52
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setUserName",
+          "lineNumber": 53
+        },
+        {
+          "caller": "connect",
+          "callee": "options.setPassword",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect",
+          "callee": "password.toCharArray",
+          "lineNumber": 54
+        },
+        {
+          "caller": "connect",
+          "callee": "logger.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "connect",
+          "callee": "client.connect",
+          "lineNumber": 60
+        },
+        {
+          "caller": "connect",
+          "callee": "logger.info",
+          "lineNumber": 62
+        },
+        {
+          "caller": "connect",
+          "callee": "logger.error",
+          "lineNumber": 64
+        },
+        {
+          "caller": "connect",
+          "callee": "e.getMessage",
+          "lineNumber": 64
+        },
+        {
+          "caller": "disconnect",
+          "callee": "client.isConnected",
+          "lineNumber": 75
+        },
+        {
+          "caller": "disconnect",
+          "callee": "client.disconnect",
+          "lineNumber": 76
+        },
+        {
+          "caller": "disconnect",
+          "callee": "logger.info",
+          "lineNumber": 77
+        },
+        {
+          "caller": "disconnect",
+          "callee": "logger.error",
+          "lineNumber": 80
+        },
+        {
+          "caller": "disconnect",
+          "callee": "e.getMessage",
+          "lineNumber": 80
+        },
+        {
+          "caller": "send",
+          "callee": "send",
+          "lineNumber": 91
+        },
+        {
+          "caller": "send",
+          "callee": "client.isConnected",
+          "lineNumber": 96
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 97
+        },
+        {
+          "caller": "send",
+          "callee": "new MqttMessage",
+          "lineNumber": 100
+        },
+        {
+          "caller": "send",
+          "callee": "payload.getBytes",
+          "lineNumber": 100
+        },
+        {
+          "caller": "send",
+          "callee": "message.setQos",
+          "lineNumber": 101
+        },
+        {
+          "caller": "send",
+          "callee": "client.publish",
+          "lineNumber": 102
+        },
+        {
+          "caller": "send",
+          "callee": "logger.error",
+          "lineNumber": 104
+        },
+        {
+          "caller": "send",
+          "callee": "e.getMessage",
+          "lineNumber": 104
+        },
+        {
+          "caller": "subscribe",
+          "callee": "client.isConnected",
+          "lineNumber": 110
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 111
+        },
+        {
+          "caller": "subscribe",
+          "callee": "client.subscribe",
+          "lineNumber": 114
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 116
+        },
+        {
+          "caller": "subscribe",
+          "callee": "e.getMessage",
+          "lineNumber": 116
+        },
+        {
+          "caller": "subscribe",
+          "callee": "logger.error",
+          "lineNumber": 120
+        },
+        {
+          "caller": "subscribe",
+          "callee": "e.getMessage",
+          "lineNumber": 120
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "logger.error",
+          "lineNumber": 126
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "throwable.getMessage",
+          "lineNumber": 126
+        },
+        {
+          "caller": "messageArrived",
+          "callee": "new String",
+          "lineNumber": 132
+        },
+        {
+          "caller": "messageArrived",
+          "callee": "mqttMessage.getPayload",
+          "lineNumber": 132
+        },
+        {
+          "caller": "messageArrived",
+          "callee": "new Thread(() -> handleIncomingMessage(topic, payload)).start",
+          "lineNumber": 134
+        },
+        {
+          "caller": "messageArrived",
+          "callee": "new Thread",
+          "lineNumber": 134
+        },
+        {
+          "caller": "messageArrived",
+          "callee": "handleIncomingMessage",
+          "lineNumber": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 37,
+      "functions": [
+        {
+          "name": "KafkaProducer",
+          "startLine": 20,
+          "endLine": 25,
+          "params": [
+            "appConf",
+            "mapper"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 27,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "publish",
+          "startLine": 33,
+          "endLine": 37,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "publish",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "topic",
+            "message"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "KafkaProducer",
+          "startLine": 14,
+          "endLine": 44,
+          "methods": [
+            "KafkaProducer",
+            "init",
+            "publish",
+            "publish"
+          ],
+          "properties": [
+            "logger",
+            "mapper",
+            "appConf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "KafkaProducer",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "KafkaProducer",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "createDefaultTopic",
+          "lineNumber": 29
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic().getMarketData",
+          "lineNumber": 29
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 29
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 29
+        },
+        {
+          "caller": "init",
+          "callee": "connectProducer",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getUrls",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka().getGroupId",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "appConf.getKafka",
+          "lineNumber": 30
+        },
+        {
+          "caller": "publish",
+          "callee": "toJson",
+          "lineNumber": 34
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 35
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic().getMarketData",
+          "lineNumber": 35
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 35
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka",
+          "lineNumber": 35
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 36
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic().getMarketData",
+          "lineNumber": 36
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka().getTopic",
+          "lineNumber": 36
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getKafka",
+          "lineNumber": 36
+        },
+        {
+          "caller": "publish",
+          "callee": "toJson",
+          "lineNumber": 40
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 41
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "MqttProducer",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "appConf"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 25,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "initConnection",
+          "startLine": 34,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "connectionLost",
+          "startLine": 40,
+          "endLine": 47,
+          "params": [
+            "cause"
+          ]
+        },
+        {
+          "name": "publish",
+          "startLine": 49,
+          "endLine": 57,
+          "params": [
+            "payload"
+          ]
+        },
+        {
+          "name": "publish",
+          "startLine": 59,
+          "endLine": 62,
+          "params": [
+            "topic",
+            "payload"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MqttProducer",
+          "startLine": 14,
+          "endLine": 63,
+          "methods": [
+            "MqttProducer",
+            "init",
+            "initConnection",
+            "connectionLost",
+            "publish",
+            "publish"
+          ],
+          "properties": [
+            "logger",
+            "appConf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MqttProducer",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "initConnection",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "connectionLost",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "publish",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "MqttProducer",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "initConnection",
+          "lineNumber": 28
+        },
+        {
+          "caller": "init",
+          "callee": "logger.error",
+          "lineNumber": 30
+        },
+        {
+          "caller": "init",
+          "callee": "e.getMessage",
+          "lineNumber": 30
+        },
+        {
+          "caller": "initConnection",
+          "callee": "createDefaultTopic",
+          "lineNumber": 35
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt().getTopic().getMarketData",
+          "lineNumber": 35
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt().getTopic",
+          "lineNumber": 35
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 35
+        },
+        {
+          "caller": "initConnection",
+          "callee": "connect",
+          "lineNumber": 36
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt().getUrl",
+          "lineNumber": 36
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 36
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getClusterId",
+          "lineNumber": 36
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt().getUsername",
+          "lineNumber": 37
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 37
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt().getPassword",
+          "lineNumber": 37
+        },
+        {
+          "caller": "initConnection",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 37
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "initConnection",
+          "lineNumber": 43
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "logger.error",
+          "lineNumber": 45
+        },
+        {
+          "caller": "connectionLost",
+          "callee": "e.getMessage",
+          "lineNumber": 45
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 50
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic().getMarketData",
+          "lineNumber": 50
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic",
+          "lineNumber": 50
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 50
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 52
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic().getMarketData",
+          "lineNumber": 52
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic",
+          "lineNumber": 52
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 52
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 54
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic().getMarketData",
+          "lineNumber": 54
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt().getTopic",
+          "lineNumber": 54
+        },
+        {
+          "caller": "publish",
+          "callee": "appConf.getMqtt",
+          "lineNumber": 54
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.error",
+          "lineNumber": 55
+        },
+        {
+          "caller": "publish",
+          "callee": "e.getMessage",
+          "lineNumber": 55
+        },
+        {
+          "caller": "publish",
+          "callee": "logger.info",
+          "lineNumber": 60
+        },
+        {
+          "caller": "publish",
+          "callee": "send",
+          "lineNumber": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 6,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "StockIdRepository",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "jdbcTemplate"
+          ]
+        },
+        {
+          "name": "getAllStockIds",
+          "startLine": 18,
+          "endLine": 21,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "StockIdRepository",
+          "startLine": 9,
+          "endLine": 22,
+          "methods": [
+            "StockIdRepository",
+            "getAllStockIds"
+          ],
+          "properties": [
+            "jdbcTemplate"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockIdRepository",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "getAllStockIds",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "StockIdRepository",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getAllStockIds",
+          "callee": "jdbcTemplate.queryForList",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    }
+  ]
+}

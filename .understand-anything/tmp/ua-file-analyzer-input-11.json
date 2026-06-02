@@ -1,0 +1,67 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "language": "java",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "language": "java",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "language": "java",
+      "sizeLines": 214,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "language": "java",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java"
+    ]
+  }
+}

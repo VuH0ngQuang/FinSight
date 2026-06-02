@@ -1,0 +1,1046 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "file",
+      "name": "PortfolioAllocationResult.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "summary": "DTO carrying allocation rows, invested capital, remaining budget, stock count, and budget utilization for portfolio allocation results.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java:PortfolioAllocationResult",
+      "type": "class",
+      "name": "PortfolioAllocationResult",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "summary": "Lombok-backed allocation result DTO returned by allocation and portfolio workflows.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        11,
+        22
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "file",
+      "name": "RankedStockDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "summary": "DTO representing a ranked stock candidate with identity, TOPSIS score, and match price for allocation workflows.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java:RankedStockDto",
+      "type": "class",
+      "name": "RankedStockDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "summary": "Lombok-backed DTO for stocks ordered by TOPSIS score.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        10,
+        19
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "type": "file",
+      "name": "StockAllocationDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "summary": "DTO representing one allocated stock position, including shares, price, total cost, TOPSIS score, and allocation percentage.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java:StockAllocationDto",
+      "type": "class",
+      "name": "StockAllocationDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "summary": "Lombok-backed DTO for a single stock allocation row.",
+      "tags": [
+        "data-transfer",
+        "portfolio",
+        "lombok"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        10,
+        22
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "file",
+      "name": "StockEntity.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "summary": "JPA entity for stock master data, valuation ratios, industry ratio benchmarks, match price, and yearly financial data relationships.",
+      "tags": [
+        "data-model",
+        "jpa",
+        "valuation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java:StockEntity",
+      "type": "class",
+      "name": "StockEntity",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "summary": "Persistence model for stocks and their valuation-related fields.",
+      "tags": [
+        "data-model",
+        "jpa",
+        "valuation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        12,
+        81
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "type": "file",
+      "name": "OvervaluationDetector.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "summary": "Evaluates whether a stock appears overvalued by comparing market price and valuation ratios against computed fair values and industry references.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Java service code uses BigDecimal arithmetic to preserve precision in financial calculations."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:OvervaluationDetector",
+      "type": "class",
+      "name": "OvervaluationDetector",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "summary": "Valuation helper that converts fair-value and multiple comparisons into an overvaluation decision.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        15,
+        68
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:evaluate",
+      "type": "function",
+      "name": "evaluate",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "summary": "Combines market price, fair values, and industry multiples into an overvaluation assessment.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        19,
+        54
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "type": "file",
+      "name": "StockValuationCalculator.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Implements valuation methods including DDM, DCF, residual income, market multiples, and composite fair value calculation for stock year data.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Java service code uses BigDecimal arithmetic to preserve precision in financial calculations."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:StockValuationCalculator",
+      "type": "class",
+      "name": "StockValuationCalculator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Valuation engine implementing intrinsic and market-multiple calculations over stock year data.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        19,
+        375
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDDM",
+      "type": "function",
+      "name": "calculateDDM",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates dividend discount model fair value from dividend, growth, required return, and share count inputs.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        27,
+        53
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDCF",
+      "type": "function",
+      "name": "calculateDCF",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates discounted cash-flow equity value using historical free cash-flow growth and terminal value assumptions.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        60,
+        120
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAverageFCFFGrowth",
+      "type": "function",
+      "name": "calculateAverageFCFFGrowth",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Derives bounded average free cash-flow growth from historical year-data trends.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        125,
+        163
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateRI",
+      "type": "function",
+      "name": "calculateRI",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates residual income valuation from current and prior book values, net income, and cost of equity.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        170,
+        223
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePE",
+      "type": "function",
+      "name": "calculatePE",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates PE-implied fair value from earnings per share and an industry PE multiple.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        229,
+        246
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePBV",
+      "type": "function",
+      "name": "calculatePBV",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates PBV-implied fair value from tangible book value per share and an industry PB multiple.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        252,
+        269
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePCF",
+      "type": "function",
+      "name": "calculatePCF",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates PCF-implied fair value from operating cash flow per share and an industry PCF multiple.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        275,
+        290
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePS",
+      "type": "function",
+      "name": "calculatePS",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Calculates PS-implied fair value from sales per share and an industry PS multiple.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        296,
+        311
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAllValuations",
+      "type": "function",
+      "name": "calculateAllValuations",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Populates all supported valuation fields for current year data, including intrinsic and multiple-based outputs.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        316,
+        343
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateCompositeFairValue",
+      "type": "function",
+      "name": "calculateCompositeFairValue",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "summary": "Builds a median composite fair value from non-null individual valuation outputs.",
+      "tags": [
+        "valuation",
+        "calculation",
+        "financial-model"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        349,
+        374
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "type": "file",
+      "name": "TopsisCalculator.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Ranks stocks with a weighted TOPSIS model using intrinsic valuation upside and industry-relative valuation criteria.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Java service code uses BigDecimal arithmetic to preserve precision in financial calculations."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:TopsisCalculator",
+      "type": "class",
+      "name": "TopsisCalculator",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Ranking engine that normalizes valuation criteria, applies AHP weights, and orders stocks by TOPSIS closeness.",
+      "tags": [
+        "valuation",
+        "financial-modeling",
+        "service"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        25,
+        259
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:rank",
+      "type": "function",
+      "name": "rank",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Ranks eligible stocks by weighted normalized valuation criteria and emits ordered ranked-stock DTOs.",
+      "tags": [
+        "ranking",
+        "topsis",
+        "valuation"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        30,
+        100
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:buildCriteriaRow",
+      "type": "function",
+      "name": "buildCriteriaRow",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Builds the TOPSIS criteria vector for one stock from fair-value upside and industry-relative multiples.",
+      "tags": [
+        "ranking",
+        "topsis",
+        "valuation"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        108,
+        177
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:criterionOrderByDescendingWeight",
+      "type": "function",
+      "name": "criterionOrderByDescendingWeight",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Returns criterion indexes sorted by descending configured weight for tie-breaking.",
+      "tags": [
+        "backtest",
+        "service",
+        "calculation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        191,
+        205
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:compareByTopsisThenCriteria",
+      "type": "function",
+      "name": "compareByTopsisThenCriteria",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Compares two ranked candidates by TOPSIS score, weighted criteria, and stock id.",
+      "tags": [
+        "ranking",
+        "topsis",
+        "valuation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        207,
+        225
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:vectorNormalize",
+      "type": "function",
+      "name": "vectorNormalize",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "summary": "Normalizes each TOPSIS criteria column by vector magnitude.",
+      "tags": [
+        "ranking",
+        "topsis",
+        "valuation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        227,
+        241
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "type": "file",
+      "name": "IndustryMedianCalculatorTest.java",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "summary": "JUnit tests covering median calculation, sector grouping, negative ratio filtering, and missing-sector handling for industry medians.",
+      "tags": [
+        "test",
+        "backtest",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:IndustryMedianCalculatorTest",
+      "type": "class",
+      "name": "IndustryMedianCalculatorTest",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "summary": "Test class for median and sector aggregation behavior.",
+      "tags": [
+        "test",
+        "backtest",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        12,
+        72
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:groupsBySectorAndSkipsNegatives",
+      "type": "function",
+      "name": "groupsBySectorAndSkipsNegatives",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "summary": "Verifies sector medians group valid positive multiples and omit invalid ratios.",
+      "tags": [
+        "test",
+        "fixture",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        37,
+        53
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:stock",
+      "type": "function",
+      "name": "stock",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "summary": "Creates a stock test fixture with sector and valuation multiple values.",
+      "tags": [
+        "test",
+        "fixture",
+        "validation"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        62,
+        71
+      ]
+    },
+    {
+      "id": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "type": "file",
+      "name": "PortfolioStateTest.java",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "summary": "JUnit tests covering portfolio mark-to-market behavior, allocation cash debits, transaction costs, and liquidation state cleanup.",
+      "tags": [
+        "test",
+        "backtest",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:PortfolioStateTest",
+      "type": "class",
+      "name": "PortfolioStateTest",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "summary": "Test class for portfolio state transitions during backtest operations.",
+      "tags": [
+        "test",
+        "backtest",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        16,
+        87
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:applyAllocationDebitsCashAndTxCost",
+      "type": "function",
+      "name": "applyAllocationDebitsCashAndTxCost",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "summary": "Verifies allocation application subtracts investment and transaction cost from cash.",
+      "tags": [
+        "test",
+        "fixture",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        27,
+        47
+      ]
+    },
+    {
+      "id": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:liquidateAppliesTxCostAndClearsHoldings",
+      "type": "function",
+      "name": "liquidateAppliesTxCostAndClearsHoldings",
+      "filePath": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "summary": "Verifies liquidation applies transaction cost, restores cash, and clears positions.",
+      "tags": [
+        "test",
+        "fixture",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        49,
+        71
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java:PortfolioAllocationResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java:PortfolioAllocationResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java:RankedStockDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java:RankedStockDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java:StockAllocationDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java:StockAllocationDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java:StockEntity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java:StockEntity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:OvervaluationDetector",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:OvervaluationDetector",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:evaluate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java:evaluate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:StockValuationCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:StockValuationCalculator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDDM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDDM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDCF",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateDCF",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAverageFCFFGrowth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAverageFCFFGrowth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateRI",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateRI",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePE",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePE",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePBV",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePBV",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePCF",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePCF",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePS",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculatePS",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAllValuations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateAllValuations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateCompositeFairValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java:calculateCompositeFairValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:TopsisCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:TopsisCalculator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:rank",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:rank",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:buildCriteriaRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:buildCriteriaRow",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:criterionOrderByDescendingWeight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:criterionOrderByDescendingWeight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:compareByTopsisThenCriteria",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:compareByTopsisThenCriteria",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:vectorNormalize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java:vectorNormalize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "target": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:IndustryMedianCalculatorTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "target": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:IndustryMedianCalculatorTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:groupsBySectorAndSkipsNegatives",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java:stock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:PortfolioStateTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "class:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:PortfolioStateTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:applyAllocationDebitsCashAndTxCost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "target": "function:market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java:liquidateAppliesTxCostAndClearsHoldings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

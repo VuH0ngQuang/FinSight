@@ -1,0 +1,1698 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-rest/src/app.ts",
+      "type": "file",
+      "name": "app.ts",
+      "filePath": "market-rest/src/app.ts",
+      "summary": "Creates the Express application for market-rest, wiring CORS, JSON parsing, health checks, Swagger UI, API routes, and a final 404 handler.",
+      "tags": [
+        "entry-point",
+        "api-handler",
+        "middleware",
+        "swagger"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Express application composition keeps the server bootstrap separate from route and process lifecycle startup."
+    },
+    {
+      "id": "file:market-rest/src/config/database.ts",
+      "type": "file",
+      "name": "database.ts",
+      "filePath": "market-rest/src/config/database.ts",
+      "summary": "Configures the shared MySQL connection pool from environment settings and exposes a startup ping used by the REST server bootstrap.",
+      "tags": [
+        "configuration",
+        "database",
+        "mysql",
+        "startup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/config/env.ts",
+      "type": "file",
+      "name": "env.ts",
+      "filePath": "market-rest/src/config/env.ts",
+      "summary": "Loads dotenv configuration and centralizes required runtime settings for server, database, Kafka, Redis, and backend command URIs.",
+      "tags": [
+        "configuration",
+        "environment",
+        "runtime-config",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "The exported config object gives TypeScript callers a typed application configuration surface via typeof config."
+    },
+    {
+      "id": "file:market-rest/src/config/kafka.ts",
+      "type": "file",
+      "name": "kafka.ts",
+      "filePath": "market-rest/src/config/kafka.ts",
+      "summary": "Builds a singleton KafkaJS client and exposes factory helpers for producers and consumers using configured brokers and group IDs.",
+      "tags": [
+        "configuration",
+        "kafka",
+        "factory",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/config/redis.ts",
+      "type": "file",
+      "name": "redis.ts",
+      "filePath": "market-rest/src/config/redis.ts",
+      "summary": "Creates the shared Redis client from configured host, port, password, and database values, including connection and error logging hooks.",
+      "tags": [
+        "configuration",
+        "redis",
+        "cache",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "type": "file",
+      "name": "KafkaConsumer.ts",
+      "filePath": "market-rest/src/consumer/KafkaConsumer.ts",
+      "summary": "Wraps a KafkaJS consumer with connection readiness, topic subscription, message handling, and disconnect operations for the market-rest service.",
+      "tags": [
+        "service",
+        "kafka",
+        "consumer",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "type": "file",
+      "name": "ahpConfigController.ts",
+      "filePath": "market-rest/src/controllers/ahpConfigController.ts",
+      "summary": "Defines Express handlers for reading AHP configuration directly and creating or updating AHP settings through the queue service.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "ahp-config",
+        "messaging"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/controllers/portfolioController.ts",
+      "type": "file",
+      "name": "portfolioController.ts",
+      "filePath": "market-rest/src/controllers/portfolioController.ts",
+      "summary": "Defines the portfolio allocation endpoint handler, validates the required allocation request fields, and delegates allocation work to the queue service.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "portfolio",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/controllers/stockController.ts",
+      "type": "file",
+      "name": "stockController.ts",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "summary": "Defines stock REST handlers for lookup, ID listing, CRUD-style queue commands, industry ratio updates, and valuation recalculation.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "stock",
+        "messaging"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "type": "file",
+      "name": "stockYearDataController.ts",
+      "filePath": "market-rest/src/controllers/stockYearDataController.ts",
+      "summary": "Defines stock-year data REST handlers with year parsing, direct reads, and queued create, update, and delete commands.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "stock-year-data",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/controllers/subscriptionController.ts",
+      "type": "file",
+      "name": "subscriptionController.ts",
+      "filePath": "market-rest/src/controllers/subscriptionController.ts",
+      "summary": "Defines subscription REST handlers for creating subscriptions through Kafka-backed queueing and listing available subscription plans.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "subscription",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/controllers/userController.ts",
+      "type": "file",
+      "name": "userController.ts",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "summary": "Defines user REST handlers for profile lookup, account mutation, authentication, and favorite-stock management with cache invalidation after changes.",
+      "tags": [
+        "api-handler",
+        "controller",
+        "user",
+        "cache-invalidation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-rest/src/docs/swagger.ts",
+      "type": "file",
+      "name": "swagger.ts",
+      "filePath": "market-rest/src/docs/swagger.ts",
+      "summary": "Defines the OpenAPI 3.0 Swagger specification for market-rest endpoints, request schemas, response descriptions, and API tags.",
+      "tags": [
+        "api-schema",
+        "swagger",
+        "documentation",
+        "openapi"
+      ],
+      "complexity": "complex",
+      "languageNotes": "The specification is embedded as a TypeScript object consumed by swagger-jsdoc and served from the Express app."
+    },
+    {
+      "id": "file:market-rest/src/dto/AhpConfigDto.ts",
+      "type": "file",
+      "name": "AhpConfigDto.ts",
+      "filePath": "market-rest/src/dto/AhpConfigDto.ts",
+      "summary": "Declares the AHP configuration transfer shape with user ownership plus serialized criteria, pairwise matrix, and weight data.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "ahp-config",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "type": "file",
+      "name": "PortfolioAllocationRequest.ts",
+      "filePath": "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "summary": "Declares the portfolio allocation request payload with user, budget, stock-count, and optional lot-size fields.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "portfolio",
+        "request"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/ResponseDto.ts",
+      "type": "file",
+      "name": "ResponseDto.ts",
+      "filePath": "market-rest/src/dto/ResponseDto.ts",
+      "summary": "Declares the generic service response envelope with success state, error metadata, and optional typed data.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "response",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/StockDto.ts",
+      "type": "file",
+      "name": "StockDto.ts",
+      "filePath": "market-rest/src/dto/StockDto.ts",
+      "summary": "Declares the stock transfer shape, combining stock identity, market ratios, current pricing, and nested yearly financial data.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "stock",
+        "financial-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/StockYearDataDto.ts",
+      "type": "file",
+      "name": "StockYearDataDto.ts",
+      "filePath": "market-rest/src/dto/StockYearDataDto.ts",
+      "summary": "Declares yearly stock financial metrics used for valuation, including income, cash flow, equity, discount rates, and ratio outputs.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "stock-year-data",
+        "valuation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/SubscriptionDto.ts",
+      "type": "file",
+      "name": "SubscriptionDto.ts",
+      "filePath": "market-rest/src/dto/SubscriptionDto.ts",
+      "summary": "Declares subscription status values and the subscription transfer shape used by subscription queue and controller flows.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "subscription",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/UserDetailDto.ts",
+      "type": "file",
+      "name": "UserDetailDto.ts",
+      "filePath": "market-rest/src/dto/UserDetailDto.ts",
+      "summary": "Declares the enriched user detail transfer shape with account fields, subscriptions, and optional AHP configuration.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "user",
+        "profile"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/UserDto.ts",
+      "type": "file",
+      "name": "UserDto.ts",
+      "filePath": "market-rest/src/dto/UserDto.ts",
+      "summary": "Declares the user command payload shape for account creation, updates, login, admin state, and favorite-stock actions.",
+      "tags": [
+        "type-definition",
+        "dto",
+        "user",
+        "request"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/dto/message.ts",
+      "type": "file",
+      "name": "message.ts",
+      "filePath": "market-rest/src/dto/message.ts",
+      "summary": "Defines the generic Kafka message envelope class used to populate payload metadata and a UTC+7 timestamp when publishing commands.",
+      "tags": [
+        "data-model",
+        "kafka",
+        "message-envelope",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "market-rest/src/index.ts",
+      "summary": "Bootstraps the market-rest process by creating the app, checking MySQL, connecting Redis, starting the HTTP listener, and handling shutdown signals.",
+      "tags": [
+        "entry-point",
+        "startup",
+        "server",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/interfaces/KafkaEnvelope.ts",
+      "type": "file",
+      "name": "KafkaEnvelope.ts",
+      "filePath": "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "summary": "Declares the generic Kafka envelope contract shared by message DTOs, including source, event, URI, timestamp, and payload fields.",
+      "tags": [
+        "type-definition",
+        "interface",
+        "kafka",
+        "message-envelope"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-rest/src/models/AhpConfigEntity.ts",
+      "type": "file",
+      "name": "AhpConfigEntity.ts",
+      "filePath": "market-rest/src/models/AhpConfigEntity.ts",
+      "summary": "Declares the persisted AHP configuration entity shape with a user relation and serialized AHP preference data.",
+      "tags": [
+        "type-definition",
+        "data-model",
+        "ahp-config",
+        "entity"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/app.ts:createApp",
+      "type": "function",
+      "name": "createApp",
+      "filePath": "market-rest/src/app.ts",
+      "lineRange": [
+        11,
+        37
+      ],
+      "summary": "Builds and returns the configured Express application with middleware, health checks, Swagger UI, API routing, and 404 handling.",
+      "tags": [
+        "factory",
+        "express",
+        "middleware",
+        "api-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/config/database.ts:initDatabase",
+      "type": "function",
+      "name": "initDatabase",
+      "filePath": "market-rest/src/config/database.ts",
+      "lineRange": [
+        16,
+        24
+      ],
+      "summary": "Acquires a MySQL connection, pings it to verify startup connectivity, logs success, and releases the connection.",
+      "tags": [
+        "startup",
+        "database",
+        "health-check"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/config/kafka.ts:getKafka",
+      "type": "function",
+      "name": "getKafka",
+      "filePath": "market-rest/src/config/kafka.ts",
+      "lineRange": [
+        14,
+        19
+      ],
+      "summary": "Returns the shared KafkaJS client, lazily constructing it from the current Kafka configuration on first use.",
+      "tags": [
+        "factory",
+        "kafka",
+        "singleton"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/config/kafka.ts:createProducer",
+      "type": "function",
+      "name": "createProducer",
+      "filePath": "market-rest/src/config/kafka.ts",
+      "lineRange": [
+        21,
+        23
+      ],
+      "summary": "Creates a KafkaJS producer from the shared Kafka client for queue-backed command publishing.",
+      "tags": [
+        "factory",
+        "kafka",
+        "producer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/config/kafka.ts:createConsumer",
+      "type": "function",
+      "name": "createConsumer",
+      "filePath": "market-rest/src/config/kafka.ts",
+      "lineRange": [
+        25,
+        29
+      ],
+      "summary": "Creates a KafkaJS consumer from the shared Kafka client using the configured consumer group ID.",
+      "tags": [
+        "factory",
+        "kafka",
+        "consumer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/consumer/KafkaConsumer.ts:KafkaConsumer",
+      "type": "class",
+      "name": "KafkaConsumer",
+      "filePath": "market-rest/src/consumer/KafkaConsumer.ts",
+      "lineRange": [
+        6,
+        36
+      ],
+      "summary": "Encapsulates KafkaJS consumer setup, readiness waiting, handler execution, and disconnect lifecycle for the configured market-rest topic.",
+      "tags": [
+        "service",
+        "kafka",
+        "consumer",
+        "lifecycle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/ahpConfigController.ts:getAhpConfigByUserId",
+      "type": "function",
+      "name": "getAhpConfigByUserId",
+      "filePath": "market-rest/src/controllers/ahpConfigController.ts",
+      "lineRange": [
+        6,
+        28
+      ],
+      "summary": "Validates the userId path parameter, reads a user AHP configuration, and returns 400, 404, or the config payload.",
+      "tags": [
+        "api-handler",
+        "ahp-config",
+        "validation",
+        "read"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/ahpConfigController.ts:createAhpConfig",
+      "type": "function",
+      "name": "createAhpConfig",
+      "filePath": "market-rest/src/controllers/ahpConfigController.ts",
+      "lineRange": [
+        30,
+        41
+      ],
+      "summary": "Converts the request body to an AHP config DTO and queues a create command with success-based HTTP status mapping.",
+      "tags": [
+        "api-handler",
+        "ahp-config",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/ahpConfigController.ts:updateAhpConfig",
+      "type": "function",
+      "name": "updateAhpConfig",
+      "filePath": "market-rest/src/controllers/ahpConfigController.ts",
+      "lineRange": [
+        43,
+        54
+      ],
+      "summary": "Converts the request body to an AHP config DTO and queues an update command with success-based HTTP status mapping.",
+      "tags": [
+        "api-handler",
+        "ahp-config",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/portfolioController.ts:allocatePortfolio",
+      "type": "function",
+      "name": "allocatePortfolio",
+      "filePath": "market-rest/src/controllers/portfolioController.ts",
+      "lineRange": [
+        5,
+        21
+      ],
+      "summary": "Validates required allocation request fields and queues the portfolio allocation command for asynchronous processing.",
+      "tags": [
+        "api-handler",
+        "portfolio",
+        "validation",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:getStockById",
+      "type": "function",
+      "name": "getStockById",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        6,
+        27
+      ],
+      "summary": "Validates the stockId path parameter, loads a stock by ID, and maps missing or failed lookups to HTTP error responses.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "validation",
+        "read"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:getAllStocksId",
+      "type": "function",
+      "name": "getAllStocksId",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        29,
+        38
+      ],
+      "summary": "Reads and returns the available stock IDs through the stock service.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "read"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:createStock",
+      "type": "function",
+      "name": "createStock",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        40,
+        52
+      ],
+      "summary": "Queues stock creation from the request DTO and maps the queue response to created or bad-request status codes.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:updateStock",
+      "type": "function",
+      "name": "updateStock",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        54,
+        66
+      ],
+      "summary": "Queues stock updates from the request DTO and maps the queue response to success or bad-request status codes.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:deleteStock",
+      "type": "function",
+      "name": "deleteStock",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        68,
+        80
+      ],
+      "summary": "Queues stock deletion from the request DTO and maps the queue response to success or bad-request status codes.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:updateIndustryRatios",
+      "type": "function",
+      "name": "updateIndustryRatios",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        82,
+        94
+      ],
+      "summary": "Queues updates to stock industry valuation ratios and returns the queue result to the client.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "valuation",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockController.ts:forceRecalculateValuations",
+      "type": "function",
+      "name": "forceRecalculateValuations",
+      "filePath": "market-rest/src/controllers/stockController.ts",
+      "lineRange": [
+        96,
+        106
+      ],
+      "summary": "Queues a full valuation recalculation command and returns the result status to the client.",
+      "tags": [
+        "api-handler",
+        "stock",
+        "valuation",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockYearDataController.ts:getStockYearData",
+      "type": "function",
+      "name": "getStockYearData",
+      "filePath": "market-rest/src/controllers/stockYearDataController.ts",
+      "lineRange": [
+        6,
+        34
+      ],
+      "summary": "Validates stockId and numeric year parameters, loads stock-year financial data, and returns missing data as 404.",
+      "tags": [
+        "api-handler",
+        "stock-year-data",
+        "validation",
+        "read"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockYearDataController.ts:createStockYearData",
+      "type": "function",
+      "name": "createStockYearData",
+      "filePath": "market-rest/src/controllers/stockYearDataController.ts",
+      "lineRange": [
+        36,
+        55
+      ],
+      "summary": "Parses the year path parameter and queues creation of stock-year financial data for that year.",
+      "tags": [
+        "api-handler",
+        "stock-year-data",
+        "validation",
+        "queue-command"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockYearDataController.ts:updateStockYearData",
+      "type": "function",
+      "name": "updateStockYearData",
+      "filePath": "market-rest/src/controllers/stockYearDataController.ts",
+      "lineRange": [
+        57,
+        76
+      ],
+      "summary": "Parses the year path parameter and queues updates to stock-year financial data for that year.",
+      "tags": [
+        "api-handler",
+        "stock-year-data",
+        "validation",
+        "queue-command"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/stockYearDataController.ts:deleteStockYearData",
+      "type": "function",
+      "name": "deleteStockYearData",
+      "filePath": "market-rest/src/controllers/stockYearDataController.ts",
+      "lineRange": [
+        78,
+        89
+      ],
+      "summary": "Queues deletion of stock-year financial data from the request DTO and returns the queue result.",
+      "tags": [
+        "api-handler",
+        "stock-year-data",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/subscriptionController.ts:createSubscription",
+      "type": "function",
+      "name": "createSubscription",
+      "filePath": "market-rest/src/controllers/subscriptionController.ts",
+      "lineRange": [
+        6,
+        20
+      ],
+      "summary": "Queues subscription creation from the request DTO and returns created or bad-request status based on command success.",
+      "tags": [
+        "api-handler",
+        "subscription",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/subscriptionController.ts:getSubscriptionPlans",
+      "type": "function",
+      "name": "getSubscriptionPlans",
+      "filePath": "market-rest/src/controllers/subscriptionController.ts",
+      "lineRange": [
+        22,
+        34
+      ],
+      "summary": "Reads all subscription plans and returns them in a response data envelope.",
+      "tags": [
+        "api-handler",
+        "subscription",
+        "read"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:getFavoriteStocks",
+      "type": "function",
+      "name": "getFavoriteStocks",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        6,
+        21
+      ],
+      "summary": "Validates a userId path parameter and returns the user favorite stock IDs from the user service.",
+      "tags": [
+        "api-handler",
+        "user",
+        "favorites",
+        "read"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:getUserDetail",
+      "type": "function",
+      "name": "getUserDetail",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        23,
+        44
+      ],
+      "summary": "Validates a userId path parameter, loads enriched user detail, and returns 404 when the user is absent.",
+      "tags": [
+        "api-handler",
+        "user",
+        "profile",
+        "read"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        46,
+        58
+      ],
+      "summary": "Queues user creation from the request DTO and maps the queue result to created or bad-request responses.",
+      "tags": [
+        "api-handler",
+        "user",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:updateUser",
+      "type": "function",
+      "name": "updateUser",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        60,
+        72
+      ],
+      "summary": "Queues user updates from the request DTO and maps the queue result to success or bad-request responses.",
+      "tags": [
+        "api-handler",
+        "user",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:deleteUser",
+      "type": "function",
+      "name": "deleteUser",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        74,
+        89
+      ],
+      "summary": "Queues user deletion and invalidates favorite-stock cache entries after a successful delete for a known user ID.",
+      "tags": [
+        "api-handler",
+        "user",
+        "cache-invalidation",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:updatePassword",
+      "type": "function",
+      "name": "updatePassword",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        91,
+        103
+      ],
+      "summary": "Queues a password update command for a user payload and returns the queue result status.",
+      "tags": [
+        "api-handler",
+        "user",
+        "auth",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:loginUser",
+      "type": "function",
+      "name": "loginUser",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        105,
+        117
+      ],
+      "summary": "Queues a login command and maps unsuccessful authentication to HTTP 401.",
+      "tags": [
+        "api-handler",
+        "user",
+        "auth",
+        "queue-command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:addFavoriteStock",
+      "type": "function",
+      "name": "addFavoriteStock",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        119,
+        134
+      ],
+      "summary": "Queues a favorite-stock addition and invalidates the cached favorite list after success.",
+      "tags": [
+        "api-handler",
+        "user",
+        "favorites",
+        "cache-invalidation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/controllers/userController.ts:removeFavoriteStock",
+      "type": "function",
+      "name": "removeFavoriteStock",
+      "filePath": "market-rest/src/controllers/userController.ts",
+      "lineRange": [
+        136,
+        151
+      ],
+      "summary": "Queues a favorite-stock removal and invalidates the cached favorite list after success.",
+      "tags": [
+        "api-handler",
+        "user",
+        "favorites",
+        "cache-invalidation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-rest/src/dto/message.ts:Message",
+      "type": "class",
+      "name": "Message",
+      "filePath": "market-rest/src/dto/message.ts",
+      "lineRange": [
+        3,
+        27
+      ],
+      "summary": "Represents a typed Kafka envelope and fills in a UTC+7 ISO timestamp when one is not supplied by the caller.",
+      "tags": [
+        "data-model",
+        "kafka",
+        "message-envelope",
+        "timestamp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-rest/src/index.ts:startServer",
+      "type": "function",
+      "name": "startServer",
+      "filePath": "market-rest/src/index.ts",
+      "lineRange": [
+        8,
+        21
+      ],
+      "summary": "Initializes MySQL and Redis, starts the HTTP listener on the configured port, and exits the process on startup failure.",
+      "tags": [
+        "entry-point",
+        "startup",
+        "server",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-rest/src/app.ts",
+      "target": "function:market-rest/src/app.ts:createApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/app.ts",
+      "target": "function:market-rest/src/app.ts:createApp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/config/database.ts",
+      "target": "function:market-rest/src/config/database.ts:initDatabase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/config/database.ts",
+      "target": "function:market-rest/src/config/database.ts:initDatabase",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:getKafka",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:getKafka",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:createProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:createProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:createConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "function:market-rest/src/config/kafka.ts:createConsumer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "target": "class:market-rest/src/consumer/KafkaConsumer.ts:KafkaConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "target": "class:market-rest/src/consumer/KafkaConsumer.ts:KafkaConsumer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:getAhpConfigByUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:getAhpConfigByUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:createAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:createAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:updateAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "function:market-rest/src/controllers/ahpConfigController.ts:updateAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/portfolioController.ts",
+      "target": "function:market-rest/src/controllers/portfolioController.ts:allocatePortfolio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/portfolioController.ts",
+      "target": "function:market-rest/src/controllers/portfolioController.ts:allocatePortfolio",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:getStockById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:getStockById",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:getAllStocksId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:getAllStocksId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:createStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:createStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:updateStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:updateStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:deleteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:deleteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:updateIndustryRatios",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:updateIndustryRatios",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:forceRecalculateValuations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "function:market-rest/src/controllers/stockController.ts:forceRecalculateValuations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:getStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:getStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:createStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:createStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:updateStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:updateStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:deleteStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "function:market-rest/src/controllers/stockYearDataController.ts:deleteStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "function:market-rest/src/controllers/subscriptionController.ts:createSubscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "function:market-rest/src/controllers/subscriptionController.ts:createSubscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "function:market-rest/src/controllers/subscriptionController.ts:getSubscriptionPlans",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "function:market-rest/src/controllers/subscriptionController.ts:getSubscriptionPlans",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:getFavoriteStocks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:getFavoriteStocks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:getUserDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:getUserDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:createUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:updateUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:deleteUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:deleteUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:updatePassword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:updatePassword",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:loginUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:loginUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:addFavoriteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:addFavoriteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:removeFavoriteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "function:market-rest/src/controllers/userController.ts:removeFavoriteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/dto/message.ts",
+      "target": "class:market-rest/src/dto/message.ts:Message",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/dto/message.ts",
+      "target": "class:market-rest/src/dto/message.ts:Message",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-rest/src/index.ts",
+      "target": "function:market-rest/src/index.ts:startServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-rest/src/app.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/app.ts",
+      "target": "file:market-rest/src/docs/swagger.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/app.ts",
+      "target": "file:market-rest/src/routes/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/config/database.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/config/kafka.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/config/redis.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/consumer/KafkaConsumer.ts",
+      "target": "file:market-rest/src/config/kafka.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "file:market-rest/src/dto/AhpConfigDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "file:market-rest/src/services/ahpConfigQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/ahpConfigController.ts",
+      "target": "file:market-rest/src/services/ahpConfigService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/portfolioController.ts",
+      "target": "file:market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/portfolioController.ts",
+      "target": "file:market-rest/src/services/portfolioQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "file:market-rest/src/dto/StockDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "file:market-rest/src/services/stockQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockController.ts",
+      "target": "file:market-rest/src/services/stockService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "file:market-rest/src/dto/StockYearDataDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "file:market-rest/src/services/stockYearDataQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/stockYearDataController.ts",
+      "target": "file:market-rest/src/services/stockYearDataService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "file:market-rest/src/dto/SubscriptionDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "file:market-rest/src/services/subscriptionPlanService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/subscriptionController.ts",
+      "target": "file:market-rest/src/services/subscriptionQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "file:market-rest/src/dto/UserDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "file:market-rest/src/services/userQueueService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/controllers/userController.ts",
+      "target": "file:market-rest/src/services/userService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/dto/StockDto.ts",
+      "target": "file:market-rest/src/dto/StockYearDataDto.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/dto/UserDetailDto.ts",
+      "target": "file:market-rest/src/models/AhpConfigEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/dto/UserDetailDto.ts",
+      "target": "file:market-rest/src/models/Subscription.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/dto/message.ts",
+      "target": "file:market-rest/src/interfaces/KafkaEnvelope.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/index.ts",
+      "target": "file:market-rest/src/app.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/index.ts",
+      "target": "file:market-rest/src/config/database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/index.ts",
+      "target": "file:market-rest/src/config/env.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/index.ts",
+      "target": "file:market-rest/src/config/redis.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-rest/src/models/AhpConfigEntity.ts",
+      "target": "file:market-rest/src/models/UserEntity.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:market-rest/src/index.ts:startServer",
+      "target": "function:market-rest/src/config/database.ts:initDatabase",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-rest/src/index.ts:startServer",
+      "target": "function:market-rest/src/app.ts:createApp",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:market-rest/src/consumer/KafkaConsumer.ts:KafkaConsumer",
+      "target": "function:market-rest/src/config/kafka.ts:createConsumer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-rest/src/config/kafka.ts:createProducer",
+      "target": "function:market-rest/src/config/kafka.ts:getKafka",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:market-rest/src/config/kafka.ts:createConsumer",
+      "target": "function:market-rest/src/config/kafka.ts:getKafka",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

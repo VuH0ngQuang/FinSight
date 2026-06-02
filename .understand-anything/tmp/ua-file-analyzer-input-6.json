@@ -1,0 +1,166 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "language": "java",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "language": "java",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "language": "java",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "language": "java",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "language": "java",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "language": "java",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "language": "java",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "language": "java",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "language": "java",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "language": "java",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java"
+    ]
+  }
+}

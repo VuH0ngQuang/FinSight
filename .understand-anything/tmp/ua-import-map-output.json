@@ -1,0 +1,998 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 378,
+    "filesWithImports": 147,
+    "totalEdges": 463
+  },
+  "importMap": {
+    ".cursor/skills/ui-ux-pro-max/data/charts.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/colors.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/icons.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/landing.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/products.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/react-performance.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/astro.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/flutter.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/nextjs.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/react-native.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/react.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/shadcn.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/svelte.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/swiftui.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/stacks/vue.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/styles.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/typography.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/ui-reasoning.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/ux-guidelines.csv": [],
+    ".cursor/skills/ui-ux-pro-max/data/web-interface.csv": [],
+    ".cursor/skills/ui-ux-pro-max/scripts/core.py": [],
+    ".cursor/skills/ui-ux-pro-max/scripts/design_system.py": [
+      ".cursor/skills/ui-ux-pro-max/scripts/core.py"
+    ],
+    ".cursor/skills/ui-ux-pro-max/scripts/search.py": [
+      ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      ".cursor/skills/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    ".cursor/skills/ui-ux-pro-max/SKILL.md": [],
+    ".understand-anything/.understandignore": [],
+    "k6-test/load-test.js": [],
+    "k6-test/README.md": [],
+    "market-collector/.env.example": [],
+    "market-collector/.gitattributes": [],
+    "market-collector/.mvn/wrapper/maven-wrapper.properties": [],
+    "market-collector/FLOWCHART.md": [],
+    "market-collector/mvnw": [],
+    "market-collector/mvnw.cmd": [],
+    "market-collector/pom.xml": [],
+    "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java": [],
+    "market-collector/src/main/java/com/finsight/collector/configurations/DatabaseConf.java": [],
+    "market-collector/src/main/java/com/finsight/collector/configurations/DotEnvPostProcessor.java": [],
+    "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/model/Message.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java": [
+      "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/model/Message.java": [],
+    "market-collector/src/main/java/com/finsight/collector/model/Stock.java": [],
+    "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java": [
+      "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java"
+    ],
+    "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java": [],
+    "market-collector/src/main/resources/application.yaml": [],
+    "market-collector/src/main/resources/META-INF/spring.factories": [],
+    "market-collector/src/test/java/com/finsight/collector/MarketCollectorApplicationTests.java": [],
+    "market-frontend/.agent/workflows/ui-ux-pro-max.md": [],
+    "market-frontend/.cursor/commands/ui-ux-pro-max.md": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/charts.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/colors.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/icons.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/landing.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/products.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/prompts.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/react-performance.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/flutter.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/html-tailwind.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/nextjs.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/nuxt-ui.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/nuxtjs.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/react-native.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/react.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/shadcn.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/svelte.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/swiftui.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/stacks/vue.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/styles.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/typography.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/ui-reasoning.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/ux-guidelines.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/data/web-interface.csv": [],
+    "market-frontend/.shared/ui-ux-pro-max/scripts/core.py": [],
+    "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py": [
+      "market-frontend/.shared/ui-ux-pro-max/scripts/core.py"
+    ],
+    "market-frontend/.shared/ui-ux-pro-max/scripts/search.py": [
+      "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    "market-frontend/.vite/deps/_metadata.json": [],
+    "market-frontend/.vite/deps/package.json": [],
+    "market-frontend/eslint.config.js": [],
+    "market-frontend/index.html": [],
+    "market-frontend/package.json": [],
+    "market-frontend/README.md": [],
+    "market-frontend/src/App.css": [],
+    "market-frontend/src/App.tsx": [
+      "market-frontend/src/components/AdminRoute.tsx",
+      "market-frontend/src/components/layout/AppShell.tsx",
+      "market-frontend/src/components/ProtectedRoute.tsx",
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/pages/AdminPanel.tsx",
+      "market-frontend/src/pages/Checkout.tsx",
+      "market-frontend/src/pages/Dashboard.tsx",
+      "market-frontend/src/pages/LoginRegister.tsx",
+      "market-frontend/src/pages/Payment.tsx",
+      "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "market-frontend/src/pages/ProfileSettings.tsx",
+      "market-frontend/src/pages/StockDetail.tsx",
+      "market-frontend/src/pages/StockScanner.tsx",
+      "market-frontend/src/pages/SubscriptionHistory.tsx"
+    ],
+    "market-frontend/src/components/AdminRoute.tsx": [
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx": [
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/utils/ahp.ts"
+    ],
+    "market-frontend/src/components/charts/AhpWeightsBarChart.tsx": [
+      "market-frontend/src/utils/ahp.ts"
+    ],
+    "market-frontend/src/components/charts/FinancialBarChart.tsx": [
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/components/charts/PortfolioPieChart.tsx": [
+      "market-frontend/src/services/api/portfolioApi.ts"
+    ],
+    "market-frontend/src/components/charts/RatioCompareChart.tsx": [],
+    "market-frontend/src/components/charts/ValuationLineChart.tsx": [
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/components/charts/VietstockIframe.tsx": [],
+    "market-frontend/src/components/layout/AppShell.tsx": [
+      "market-frontend/src/components/layout/Sidebar.tsx",
+      "market-frontend/src/components/layout/TopBar.tsx",
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/components/layout/Sidebar.tsx": [
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/components/layout/TopBar.tsx": [
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ProtectedRoute.tsx": [
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts"
+    ],
+    "market-frontend/src/components/ui/Badge.tsx": [],
+    "market-frontend/src/components/ui/DataTable.tsx": [],
+    "market-frontend/src/components/ui/ErrorBanner.tsx": [],
+    "market-frontend/src/components/ui/LoadingSpinner.tsx": [],
+    "market-frontend/src/components/ui/Modal.tsx": [],
+    "market-frontend/src/components/ui/PriceTag.tsx": [
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/components/ui/ScoreBar.tsx": [],
+    "market-frontend/src/components/ui/StatCard.tsx": [],
+    "market-frontend/src/components/ui/TabGroup.tsx": [],
+    "market-frontend/src/config/api.ts": [],
+    "market-frontend/src/contexts/AuthContext.tsx": [
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/contexts/WatchlistContext.tsx": [
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/data/stockyeardata.ts": [],
+    "market-frontend/src/hooks/useAhpWeights.ts": [
+      "market-frontend/src/services/api/ahpConfigApi.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/hooks/useAuth.ts": [],
+    "market-frontend/src/hooks/useMarketData.ts": [
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/hooks/useStockList.ts": [
+      "market-frontend/src/services/api/stockApi.ts",
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/index.css": [],
+    "market-frontend/src/main.tsx": [
+      "market-frontend/src/App.tsx",
+      "market-frontend/src/index.css"
+    ],
+    "market-frontend/src/models/Profile.ts": [],
+    "market-frontend/src/models/Stock.ts": [],
+    "market-frontend/src/models/StockYearData.ts": [],
+    "market-frontend/src/pages/AdminPanel.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/components/ui/TabGroup.tsx",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/stockApi.ts",
+      "market-frontend/src/services/api/stockYearDataApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/Checkout.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx"
+    ],
+    "market-frontend/src/pages/Dashboard.tsx": [
+      "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAhpWeights.ts",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/pages/LoginRegister.tsx": [
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/pages/Payment.tsx": [
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/subscriptionApi.ts"
+    ],
+    "market-frontend/src/pages/PortfolioAllocator.tsx": [
+      "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/portfolioApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/ProfileSettings.tsx": [
+      "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/ahpConfigApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/ahp.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/StockDetail.tsx": [
+      "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/components/ui/TabGroup.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/services/api/stockYearDataApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/services/stockDetail.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/StockScanner.tsx": [
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/ScoreBar.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAhpWeights.ts",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/pages/SubscriptionHistory.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/services/api/ahpConfigApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/config.ts": [],
+    "market-frontend/src/services/api/portfolioApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/stockApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/stockYearDataApi.ts": [
+      "market-frontend/src/services/api/config.ts",
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/services/api/subscriptionApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/userApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/mqtt.ts": [],
+    "market-frontend/src/services/stockDetail.ts": [
+      "market-frontend/src/config/api.ts"
+    ],
+    "market-frontend/src/utils/ahp.ts": [],
+    "market-frontend/src/utils/formatters.ts": [],
+    "market-frontend/src/utils/topsis.ts": [
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/tsconfig.app.json": [],
+    "market-frontend/tsconfig.json": [],
+    "market-frontend/tsconfig.node.json": [],
+    "market-frontend/vite.config.ts": [],
+    "market-ingestion/.ai/mcp/mcp.json": [],
+    "market-ingestion/.attach_pid55": [],
+    "market-ingestion/.gitattributes": [],
+    "market-ingestion/.mvn/wrapper/maven-wrapper.properties": [],
+    "market-ingestion/mvnw": [],
+    "market-ingestion/mvnw.cmd": [],
+    "market-ingestion/pom.xml": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/DotEnvPostProcessor.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/RedisConf.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java"
+    ],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java": [],
+    "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java": [
+      "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java"
+    ],
+    "market-ingestion/src/main/resources/application.yaml": [],
+    "market-ingestion/src/main/resources/META-INF/spring.factories": [],
+    "market-ingestion/src/test/java/com/finsight/marketingestion/MarketIngestionApplicationTests.java": [],
+    "market-realtime/.ai/mcp/mcp.json": [],
+    "market-realtime/.gitattributes": [],
+    "market-realtime/.mvn/wrapper/maven-wrapper.properties": [],
+    "market-realtime/BACKTEST_USAGE_GUIDE.txt": [],
+    "market-realtime/Kafka topic.txt": [],
+    "market-realtime/market-realtime.drawio": [],
+    "market-realtime/market-realtime/backtest-out/data-check/20260421-104036/data_availability.csv": [],
+    "market-realtime/market-realtime/backtest-out/method-comparison/20260422-002320/method_comparison.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-104724/drawdown.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-104724/equity_curve.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-104724/metrics.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-104724/rebalance_log.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110157/drawdown.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110157/equity_curve.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110157/metrics.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110157/rebalance_log.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110407/drawdown.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110407/equity_curve.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110407/metrics.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-110407/rebalance_log.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-114048/drawdown.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-114048/equity_curve.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-114048/metrics.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260421-114048/rebalance_log.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260422-000909/drawdown.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260422-000909/equity_curve.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260422-000909/metrics.csv": [],
+    "market-realtime/market-realtime/backtest-out/single/20260422-000909/rebalance_log.csv": [],
+    "market-realtime/market-realtime/backtest-out/weight-sensitivity/20260422-002249/sensitivity_weights.csv": [],
+    "market-realtime/mvnw": [],
+    "market-realtime/mvnw.cmd": [],
+    "market-realtime/pom.xml": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestConfig.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestMetrics.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestResult.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BenchmarkLoader.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/CsvWriter.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/EquityCurve.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PerformanceMetrics.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/DatabaseConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/DotEnvPostProcessor.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/ITemplateConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/MailConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/PayOSConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/RedisConf.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java": [],
+    "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/main/resources/application-backtest.yaml": [],
+    "market-realtime/src/main/resources/application.yaml": [],
+    "market-realtime/src/main/resources/backtest/vnindex.csv": [],
+    "market-realtime/src/main/resources/META-INF/spring.factories": [],
+    "market-realtime/src/main/resources/templates/mail/overvaluation-alert.html": [],
+    "market-realtime/src/main/resources/templates/mail/welcome.html": [],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PerformanceMetricsTest.java": [],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java"
+    ],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/MarketRealtimeApplicationTests.java": [],
+    "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java": [
+      "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java"
+    ],
+    "market-realtime/TICK_PRICE_UPDATE_FLOWCHART.md": [],
+    "market-rest/package.json": [],
+    "market-rest/src/app.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/docs/swagger.ts",
+      "market-rest/src/routes/index.ts"
+    ],
+    "market-rest/src/config/database.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/config/env.ts": [],
+    "market-rest/src/config/kafka.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/config/redis.ts": [
+      "market-rest/src/config/env.ts"
+    ],
+    "market-rest/src/consumer/KafkaConsumer.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/kafka.ts"
+    ],
+    "market-rest/src/controllers/ahpConfigController.ts": [
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/services/ahpConfigQueueService.ts",
+      "market-rest/src/services/ahpConfigService.ts"
+    ],
+    "market-rest/src/controllers/portfolioController.ts": [
+      "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "market-rest/src/services/portfolioQueueService.ts"
+    ],
+    "market-rest/src/controllers/stockController.ts": [
+      "market-rest/src/dto/StockDto.ts",
+      "market-rest/src/services/stockQueueService.ts",
+      "market-rest/src/services/stockService.ts"
+    ],
+    "market-rest/src/controllers/stockYearDataController.ts": [
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/services/stockYearDataQueueService.ts",
+      "market-rest/src/services/stockYearDataService.ts"
+    ],
+    "market-rest/src/controllers/subscriptionController.ts": [
+      "market-rest/src/dto/SubscriptionDto.ts",
+      "market-rest/src/services/subscriptionPlanService.ts",
+      "market-rest/src/services/subscriptionQueueService.ts"
+    ],
+    "market-rest/src/controllers/userController.ts": [
+      "market-rest/src/dto/UserDto.ts",
+      "market-rest/src/services/userQueueService.ts",
+      "market-rest/src/services/userService.ts"
+    ],
+    "market-rest/src/docs/swagger.ts": [],
+    "market-rest/src/dto/AhpConfigDto.ts": [],
+    "market-rest/src/dto/message.ts": [
+      "market-rest/src/interfaces/KafkaEnvelope.ts"
+    ],
+    "market-rest/src/dto/PortfolioAllocationRequest.ts": [],
+    "market-rest/src/dto/ResponseDto.ts": [],
+    "market-rest/src/dto/StockDto.ts": [
+      "market-rest/src/dto/StockYearDataDto.ts"
+    ],
+    "market-rest/src/dto/StockYearDataDto.ts": [],
+    "market-rest/src/dto/SubscriptionDto.ts": [],
+    "market-rest/src/dto/UserDetailDto.ts": [
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/dto/UserDto.ts": [],
+    "market-rest/src/index.ts": [
+      "market-rest/src/app.ts",
+      "market-rest/src/config/database.ts",
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/redis.ts"
+    ],
+    "market-rest/src/interfaces/KafkaEnvelope.ts": [],
+    "market-rest/src/models/AhpConfigEntity.ts": [
+      "market-rest/src/models/UserEntity.ts"
+    ],
+    "market-rest/src/models/StockEntity.ts": [
+      "market-rest/src/models/UserEntity.ts"
+    ],
+    "market-rest/src/models/Subscription.ts": [
+      "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "market-rest/src/models/UserEntity.ts"
+    ],
+    "market-rest/src/models/SubscriptionPlanEntity.ts": [
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/models/UserEntity.ts": [
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/producer/KafkaProducer.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/kafka.ts"
+    ],
+    "market-rest/src/routes/ahpConfigRoutes.ts": [
+      "market-rest/src/controllers/ahpConfigController.ts"
+    ],
+    "market-rest/src/routes/index.ts": [
+      "market-rest/src/routes/ahpConfigRoutes.ts",
+      "market-rest/src/routes/portfolioRoutes.ts",
+      "market-rest/src/routes/stockRoutes.ts",
+      "market-rest/src/routes/stockYearDataRoutes.ts",
+      "market-rest/src/routes/subscriptionRoutes.ts",
+      "market-rest/src/routes/userRoutes.ts"
+    ],
+    "market-rest/src/routes/portfolioRoutes.ts": [
+      "market-rest/src/controllers/portfolioController.ts"
+    ],
+    "market-rest/src/routes/stockRoutes.ts": [
+      "market-rest/src/controllers/stockController.ts"
+    ],
+    "market-rest/src/routes/stockYearDataRoutes.ts": [
+      "market-rest/src/controllers/stockYearDataController.ts"
+    ],
+    "market-rest/src/routes/subscriptionRoutes.ts": [
+      "market-rest/src/controllers/subscriptionController.ts"
+    ],
+    "market-rest/src/routes/userRoutes.ts": [
+      "market-rest/src/controllers/userController.ts"
+    ],
+    "market-rest/src/services/ahpConfigQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/ahpConfigService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/kafkaRequestResponseService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/consumer/KafkaConsumer.ts",
+      "market-rest/src/dto/message.ts",
+      "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "market-rest/src/producer/KafkaProducer.ts"
+    ],
+    "market-rest/src/services/portfolioQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/StockDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/services/stockYearDataService.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/stockYearDataQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockYearDataService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/subscriptionPlanService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/models/SubscriptionPlanEntity.ts"
+    ],
+    "market-rest/src/services/subscriptionQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/SubscriptionDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/userQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/UserDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/userService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/UserDetailDto.ts",
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/Subscription.ts",
+      "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "market-rest/src/models/UserEntity.ts",
+      "market-rest/src/services/ahpConfigService.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/utils/cacheService.ts": [
+      "market-rest/src/config/redis.ts"
+    ],
+    "market-rest/tsconfig.json": [],
+    "market-webhooks/.ai/mcp/mcp.json": [],
+    "market-webhooks/.gitattributes": [],
+    "market-webhooks/.mvn/wrapper/maven-wrapper.properties": [],
+    "market-webhooks/mvnw": [],
+    "market-webhooks/mvnw.cmd": [],
+    "market-webhooks/pom.xml": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/DotEnvPostProcessor.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/PayOSConf.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java"
+    ],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java": [],
+    "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java": [
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java"
+    ],
+    "market-webhooks/src/main/resources/application.yaml": [],
+    "market-webhooks/src/main/resources/META-INF/spring.factories": [],
+    "market-webhooks/src/test/java/com/finsight/marketwebhooks/MarketWebhooksApplicationTests.java": [],
+    "proposal_thesis.md": []
+  }
+}

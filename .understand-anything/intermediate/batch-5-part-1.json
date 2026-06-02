@@ -1,0 +1,1193 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "type": "file",
+      "name": "MarketIngestionApplication.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "summary": "Spring Boot entry point that starts the market-ingestion service and enables application configuration binding.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:MarketIngestionApplication",
+      "type": "class",
+      "name": "MarketIngestionApplication",
+      "lineRange": [
+        9,
+        17
+      ],
+      "summary": "Bootstraps the Spring Boot market-ingestion application.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:main",
+      "type": "function",
+      "name": "main",
+      "lineRange": [
+        13,
+        15
+      ],
+      "summary": "Starts the Spring Boot application with the provided command-line arguments.",
+      "tags": [
+        "entry-point",
+        "spring-boot",
+        "bootstrap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "file",
+      "name": "AppConf.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "summary": "Defines strongly typed application settings for Kafka, Redis, and cluster identity, and logs the resolved runtime configuration at startup.",
+      "tags": [
+        "configuration",
+        "spring-boot",
+        "runtime-settings"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:AppConf",
+      "type": "class",
+      "name": "AppConf",
+      "lineRange": [
+        9,
+        73
+      ],
+      "summary": "Holds Kafka, Redis, URI, and cluster configuration properties for dependency injection.",
+      "tags": [
+        "configuration",
+        "spring-boot",
+        "properties"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:logConfig",
+      "type": "function",
+      "name": "logConfig",
+      "lineRange": [
+        18,
+        39
+      ],
+      "summary": "Logs key application settings after configuration properties are initialized.",
+      "tags": [
+        "configuration",
+        "logging",
+        "startup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "type": "file",
+      "name": "IngestionController.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "summary": "Exposes REST endpoints for uploading stock-year Excel data and confirming staged uploads through the ingestion service.",
+      "tags": [
+        "api-handler",
+        "rest-controller",
+        "upload"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:IngestionController",
+      "type": "class",
+      "name": "IngestionController",
+      "lineRange": [
+        14,
+        50
+      ],
+      "summary": "REST controller that delegates upload and confirmation requests to the stock-year upload service.",
+      "tags": [
+        "api-handler",
+        "rest-controller",
+        "upload"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:uploadStockData",
+      "type": "function",
+      "name": "uploadStockData",
+      "lineRange": [
+        25,
+        38
+      ],
+      "summary": "Accepts an uploaded spreadsheet and delegates validation and staging to the upload service.",
+      "tags": [
+        "api-handler",
+        "file-upload",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:confirmUpload",
+      "type": "function",
+      "name": "confirmUpload",
+      "lineRange": [
+        40,
+        49
+      ],
+      "summary": "Confirms a staged upload and triggers publishing of the parsed records.",
+      "tags": [
+        "api-handler",
+        "upload",
+        "confirmation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "type": "file",
+      "name": "RedisDao.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "summary": "Wraps Redis hash operations with JSON serialization for saving, loading, and deleting staged ingestion data.",
+      "tags": [
+        "data-access",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:RedisDao",
+      "type": "class",
+      "name": "RedisDao",
+      "lineRange": [
+        15,
+        68
+      ],
+      "summary": "Redis DAO encapsulating hash storage, expiry handling, and ObjectMapper conversion.",
+      "tags": [
+        "data-access",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:save",
+      "type": "function",
+      "name": "save",
+      "lineRange": [
+        37,
+        48
+      ],
+      "summary": "Serializes an entity and stores it in a Redis hash, optionally applying an expiry duration.",
+      "tags": [
+        "data-access",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:find",
+      "type": "function",
+      "name": "find",
+      "lineRange": [
+        54,
+        63
+      ],
+      "summary": "Reads a Redis hash value and deserializes it into the requested Java type.",
+      "tags": [
+        "data-access",
+        "redis",
+        "deserialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:delete",
+      "type": "function",
+      "name": "delete",
+      "lineRange": [
+        65,
+        67
+      ],
+      "summary": "Removes a field from a Redis hash namespace.",
+      "tags": [
+        "data-access",
+        "redis",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "type": "file",
+      "name": "ResponseDto.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "summary": "Generic response envelope used for Kafka request-response payloads and ingestion service responses.",
+      "tags": [
+        "data-model",
+        "dto",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java:ResponseDto",
+      "type": "class",
+      "name": "ResponseDto",
+      "lineRange": [
+        5,
+        11
+      ],
+      "summary": "Generic DTO for success state, error details, and typed response data.",
+      "tags": [
+        "data-model",
+        "dto",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "type": "file",
+      "name": "StockYearDataHistoryRequestDto.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "summary": "Request DTO carrying stock identifier and year values for validation-history lookups.",
+      "tags": [
+        "data-model",
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "class",
+      "name": "StockYearDataHistoryRequestDto",
+      "lineRange": [
+        7,
+        13
+      ],
+      "summary": "DTO for requesting historical stock-year validation data.",
+      "tags": [
+        "data-model",
+        "dto",
+        "request"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "type": "file",
+      "name": "StockYearDataHistoryResponseDto.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "summary": "Response DTO that returns historical stock-year records grouped by stock and year.",
+      "tags": [
+        "data-model",
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "class",
+      "name": "StockYearDataHistoryResponseDto",
+      "lineRange": [
+        6,
+        11
+      ],
+      "summary": "DTO for returning stock-year history records from validation history queries.",
+      "tags": [
+        "data-model",
+        "dto",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "type": "file",
+      "name": "UploadValidationResponse.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "summary": "Builds standardized upload-validation responses for failed, pending-confirmation, successful, and confirmed ingestion states.",
+      "tags": [
+        "data-model",
+        "dto",
+        "factory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:UploadValidationResponse",
+      "type": "class",
+      "name": "UploadValidationResponse",
+      "lineRange": [
+        8,
+        32
+      ],
+      "summary": "Factory-style response DTO for upload validation workflow outcomes.",
+      "tags": [
+        "data-model",
+        "dto",
+        "factory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:failed",
+      "type": "function",
+      "name": "failed",
+      "lineRange": [
+        17,
+        19
+      ],
+      "summary": "Creates a failed upload-validation response from a validation result.",
+      "tags": [
+        "factory",
+        "validation",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:waitingConfirmation",
+      "type": "function",
+      "name": "waitingConfirmation",
+      "lineRange": [
+        21,
+        23
+      ],
+      "summary": "Creates a response indicating an upload is valid enough to stage and awaits confirmation.",
+      "tags": [
+        "factory",
+        "upload",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:success",
+      "type": "function",
+      "name": "success",
+      "lineRange": [
+        25,
+        27
+      ],
+      "summary": "Creates a successful upload-validation response.",
+      "tags": [
+        "factory",
+        "upload",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:confirmed",
+      "type": "function",
+      "name": "confirmed",
+      "lineRange": [
+        29,
+        31
+      ],
+      "summary": "Creates a response indicating a staged upload was confirmed.",
+      "tags": [
+        "factory",
+        "upload",
+        "response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "type": "file",
+      "name": "RedisEnum.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "summary": "Defines Redis key namespaces used by the ingestion workflow.",
+      "tags": [
+        "constant",
+        "redis",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "type": "file",
+      "name": "KafkaRequestResponseService.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "summary": "Implements Kafka request-response coordination for validation-history queries using correlation IDs and a reply topic.",
+      "tags": [
+        "service",
+        "kafka",
+        "request-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:KafkaRequestResponseService",
+      "type": "class",
+      "name": "KafkaRequestResponseService",
+      "lineRange": [
+        23,
+        99
+      ],
+      "summary": "Kafka service that tracks pending replies and resolves validation-history responses by correlation ID.",
+      "tags": [
+        "service",
+        "kafka",
+        "request-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:init",
+      "type": "function",
+      "name": "init",
+      "lineRange": [
+        38,
+        46
+      ],
+      "summary": "Initializes Kafka producer or request-response infrastructure after dependency injection.",
+      "tags": [
+        "lifecycle",
+        "kafka",
+        "startup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:sendAndWait",
+      "type": "function",
+      "name": "sendAndWait",
+      "lineRange": [
+        48,
+        62
+      ],
+      "summary": "Publishes a request with a correlation ID and waits for the matching Kafka reply.",
+      "tags": [
+        "kafka",
+        "request-response",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:getStockYearDataValidationHistory",
+      "type": "function",
+      "name": "getStockYearDataValidationHistory",
+      "lineRange": [
+        64,
+        72
+      ],
+      "summary": "Requests historical validation records for uploaded stock-year data.",
+      "tags": [
+        "kafka",
+        "validation",
+        "history"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:handleIncomingMessage",
+      "type": "function",
+      "name": "handleIncomingMessage",
+      "lineRange": [
+        74,
+        90
+      ],
+      "summary": "Handles consumed Kafka messages and completes pending responses when a matching correlation ID is found.",
+      "tags": [
+        "kafka",
+        "consumer",
+        "callback"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "type": "file",
+      "name": "KafkaService.java",
+      "filePath": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "summary": "Manages Kafka producer and consumer lifecycle, topic creation, message publishing, JSON conversion, and asynchronous consumption.",
+      "tags": [
+        "service",
+        "kafka",
+        "messaging"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:KafkaService",
+      "type": "class",
+      "name": "KafkaService",
+      "lineRange": [
+        27,
+        221
+      ],
+      "summary": "Reusable Kafka transport service for producer, consumer, topic, and serialization behavior.",
+      "tags": [
+        "service",
+        "kafka",
+        "messaging"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:connectProducer",
+      "type": "function",
+      "name": "connectProducer",
+      "lineRange": [
+        45,
+        67
+      ],
+      "summary": "Creates and configures Kafka producer infrastructure and default topics.",
+      "tags": [
+        "kafka",
+        "producer",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:createDefaultTopic",
+      "type": "function",
+      "name": "createDefaultTopic",
+      "lineRange": [
+        69,
+        71
+      ],
+      "summary": "Creates the default Kafka topic when it does not already exist.",
+      "tags": [
+        "kafka",
+        "topic",
+        "setup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:send",
+      "type": "function",
+      "name": "send",
+      "lineRange": [
+        73,
+        75
+      ],
+      "summary": "Publishes a Kafka message payload to the configured or specified topic.",
+      "tags": [
+        "kafka",
+        "producer",
+        "messaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:startConsumer",
+      "type": "function",
+      "name": "startConsumer",
+      "lineRange": [
+        99,
+        153
+      ],
+      "summary": "Starts an asynchronous Kafka consumer loop for configured topics.",
+      "tags": [
+        "kafka",
+        "consumer",
+        "async"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:subscribe",
+      "type": "function",
+      "name": "subscribe",
+      "lineRange": [
+        155,
+        166
+      ],
+      "summary": "Subscribes the running Kafka consumer to an additional topic.",
+      "tags": [
+        "kafka",
+        "consumer",
+        "subscription"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:shutdown",
+      "type": "function",
+      "name": "shutdown",
+      "lineRange": [
+        168,
+        198
+      ],
+      "summary": "Stops Kafka consumer and producer resources and joins the consumer thread.",
+      "tags": [
+        "kafka",
+        "lifecycle",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:toJson",
+      "type": "function",
+      "name": "toJson",
+      "lineRange": [
+        200,
+        202
+      ],
+      "summary": "Serializes Kafka message content with URI and source metadata.",
+      "tags": [
+        "serialization",
+        "kafka",
+        "messaging"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:MarketIngestionApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:MarketIngestionApplication",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:AppConf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:AppConf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:logConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java:logConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:IngestionController",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:IngestionController",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:uploadStockData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:uploadStockData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:confirmUpload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java:confirmUpload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:RedisDao",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:RedisDao",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:save",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:save",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:find",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:find",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java:delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java:ResponseDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java:ResponseDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:UploadValidationResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:UploadValidationResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:failed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:failed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:waitingConfirmation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:waitingConfirmation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:success",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:success",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:confirmed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java:confirmed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:KafkaRequestResponseService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:KafkaRequestResponseService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:sendAndWait",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:sendAndWait",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:getStockYearDataValidationHistory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:getStockYearDataValidationHistory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java:handleIncomingMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "file:market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:KafkaService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "class:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:KafkaService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:connectProducer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:connectProducer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:createDefaultTopic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:createDefaultTopic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:startConsumer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:startConsumer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:subscribe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:subscribe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:shutdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:shutdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:toJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "target": "function:market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java:toJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

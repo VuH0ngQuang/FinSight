@@ -1,0 +1,298 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-frontend/src/hooks/useMarketData.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useStockList.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/main.tsx",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/AdminPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 538,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Checkout.tsx",
+      "language": "typescript",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Dashboard.tsx",
+      "language": "typescript",
+      "sizeLines": 212,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/LoginRegister.tsx",
+      "language": "typescript",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Payment.tsx",
+      "language": "typescript",
+      "sizeLines": 260,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "language": "typescript",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/ProfileSettings.tsx",
+      "language": "typescript",
+      "sizeLines": 409,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/StockDetail.tsx",
+      "language": "typescript",
+      "sizeLines": 252,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/StockScanner.tsx",
+      "language": "typescript",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/SubscriptionHistory.tsx",
+      "language": "typescript",
+      "sizeLines": 184,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/config.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/portfolioApi.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/stockApi.ts",
+      "language": "typescript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/subscriptionApi.ts",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/userApi.ts",
+      "language": "typescript",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/mqtt.ts",
+      "language": "typescript",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/stockDetail.ts",
+      "language": "typescript",
+      "sizeLines": 184,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/ahp.ts",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/formatters.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/topsis.ts",
+      "language": "typescript",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-frontend/src/hooks/useMarketData.ts": [
+      "market-frontend/src/services/mqtt.ts"
+    ],
+    "market-frontend/src/hooks/useStockList.ts": [
+      "market-frontend/src/services/api/stockApi.ts",
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/main.tsx": [
+      "market-frontend/src/App.tsx",
+      "market-frontend/src/index.css"
+    ],
+    "market-frontend/src/pages/AdminPanel.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/components/ui/TabGroup.tsx",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/stockApi.ts",
+      "market-frontend/src/services/api/stockYearDataApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/Checkout.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx"
+    ],
+    "market-frontend/src/pages/Dashboard.tsx": [
+      "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAhpWeights.ts",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/pages/LoginRegister.tsx": [
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/userApi.ts"
+    ],
+    "market-frontend/src/pages/Payment.tsx": [
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/subscriptionApi.ts"
+    ],
+    "market-frontend/src/pages/PortfolioAllocator.tsx": [
+      "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/portfolioApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/ProfileSettings.tsx": [
+      "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/Modal.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/services/api/ahpConfigApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/ahp.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/StockDetail.tsx": [
+      "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/components/ui/TabGroup.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/services/api/stockYearDataApi.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/services/stockDetail.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/pages/StockScanner.tsx": [
+      "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "market-frontend/src/components/ui/PriceTag.tsx",
+      "market-frontend/src/components/ui/ScoreBar.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/WatchlistContext.tsx",
+      "market-frontend/src/hooks/useAhpWeights.ts",
+      "market-frontend/src/hooks/useAuth.ts",
+      "market-frontend/src/hooks/useMarketData.ts",
+      "market-frontend/src/hooks/useStockList.ts",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts",
+      "market-frontend/src/utils/topsis.ts"
+    ],
+    "market-frontend/src/pages/SubscriptionHistory.tsx": [
+      "market-frontend/src/components/ui/Badge.tsx",
+      "market-frontend/src/components/ui/StatCard.tsx",
+      "market-frontend/src/contexts/AuthContext.tsx",
+      "market-frontend/src/services/api/userApi.ts",
+      "market-frontend/src/utils/formatters.ts"
+    ],
+    "market-frontend/src/services/api/ahpConfigApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/config.ts": [],
+    "market-frontend/src/services/api/portfolioApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/stockApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/stockYearDataApi.ts": [
+      "market-frontend/src/services/api/config.ts",
+      "market-frontend/src/services/stockDetail.ts"
+    ],
+    "market-frontend/src/services/api/subscriptionApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/api/userApi.ts": [
+      "market-frontend/src/services/api/config.ts"
+    ],
+    "market-frontend/src/services/mqtt.ts": [],
+    "market-frontend/src/services/stockDetail.ts": [
+      "market-frontend/src/config/api.ts"
+    ],
+    "market-frontend/src/utils/ahp.ts": [],
+    "market-frontend/src/utils/formatters.ts": [],
+    "market-frontend/src/utils/topsis.ts": [
+      "market-frontend/src/services/stockDetail.ts"
+    ]
+  }
+}

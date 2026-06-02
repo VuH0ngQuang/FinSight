@@ -69,7 +69,9 @@ public class UserServiceImpl implements UserService {
                 userEntity.setEmail(userDto.getEmail());
                 userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
                 userEntity.setPhoneNumber(userDto.getPhoneNumber());
-                AhpConfigEntity ahpConfigEntity = new AhpConfigEntity();
+                AhpConfigEntity ahpConfigEntity = AhpConfigEntity.builder()
+                        .ahpConfigId(IDGenerator.nextId())
+                        .build();
                 ahpConfigEntity.setUser(userEntity);
                 userEntity.setAhpConfig(ahpConfigEntity);
                 userRepository.save(userEntity);

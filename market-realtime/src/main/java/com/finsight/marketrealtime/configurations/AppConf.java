@@ -79,6 +79,7 @@ public class AppConf {
             logger.info("StockYearData Create       : {}", uri.getStockYearData().getCreate());
             logger.info("StockYearData Update       : {}", uri.getStockYearData().getUpdate());
             logger.info("StockYearData Delete       : {}", uri.getStockYearData().getDelete());
+            logger.info("StockYearData History      : {}", uri.getStockYearData().getValidationHistory());
 
             logger.info("Webhooks Payment           : {}", uri.getWebhooks().getPayment());
 
@@ -194,6 +195,7 @@ public class AppConf {
         private String create;
         private String update;
         private String delete;
+        private String validationHistory;
     }
 
     @Data
@@ -201,4 +203,3 @@ public class AppConf {
         private String payment;
     }
 }
-

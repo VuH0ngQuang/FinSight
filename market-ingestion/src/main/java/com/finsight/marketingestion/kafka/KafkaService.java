@@ -75,13 +75,16 @@ public class KafkaService {
     }
 
     public void send(String topic, String payload){
+        send(topic, UUID.randomUUID().toString(), payload);
+    }
+
+    public void send(String topic, String key, String payload){
         if (producer == null) {
             logger.error("KAFKA {} producer not initialized", topic);
             return;
         }
 
         try {
-            String key = UUID.randomUUID().toString();
             ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, payload);
             producer.send(record, (RecordMetadata metadata, Exception exception) -> {
                 if (exception != null) {
@@ -195,11 +198,15 @@ public class KafkaService {
     }
 
     public String toJson(String message, String uri) {
+        return toJson(message, uri, appConf.getClusterId());
+    }
+
+    public String toJson(Object payload, String uri, String sourceId) {
         Message msg = Message.builder()
-                .sourceId(appConf.getClusterId())
+                .sourceId(sourceId)
                 .eventId(UUID.randomUUID().toString())
                 .uri(uri)
-                .payload(message)
+                .payload(payload)
                 .build();
 
         try {
@@ -212,4 +219,3 @@ public class KafkaService {
 
     protected void handleIncomingMessage(String topic, String key, String payload){}
 }
-

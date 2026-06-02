@@ -1,0 +1,552 @@
+{
+  "nodes": [
+    {
+      "id": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "type": "file",
+      "name": "core.py",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "summary": "Implements the core UI/UX Pro Max CSV search engine, including BM25 ranking, domain detection, and stack-specific guideline lookup over bundled data files.",
+      "tags": ["search-engine", "bm25", "csv-data", "utility"],
+      "complexity": "complex",
+      "languageNotes": "Uses a compact pure-Python BM25 implementation with CSV-backed domain configuration for style, UX, chart, typography, icon, and framework stack searches."
+    },
+    {
+      "id": "class:.cursor/skills/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "class",
+      "name": "BM25",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [96, 155],
+      "summary": "Ranks text documents with the BM25 algorithm by tokenizing corpus entries, computing inverse document frequency, and scoring query terms against each document.",
+      "tags": ["search-engine", "ranking", "tokenization", "algorithm"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "function",
+      "name": "_load_csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [159, 162],
+      "summary": "Loads a UTF-8 CSV file into a list of dictionary rows for downstream search operations.",
+      "tags": ["csv-data", "io", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "function",
+      "name": "_search_csv",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [165, 187],
+      "summary": "Builds BM25 documents from configured CSV columns, ranks rows for a query, and returns selected output fields for positive-scoring matches.",
+      "tags": ["search-engine", "bm25", "csv-data", "ranking"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "function",
+      "name": "detect_domain",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [190, 209],
+      "summary": "Infers the most relevant UI/UX search domain by matching query text against keyword groups for colors, charts, landing pages, products, UX, typography, icons, React, and web guidance.",
+      "tags": ["classification", "search-engine", "domain-detection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "function",
+      "name": "search",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [212, 231],
+      "summary": "Main domain search entry point that auto-detects a domain when needed, selects the CSV configuration, and returns a structured result envelope.",
+      "tags": ["entry-point", "search-engine", "api", "csv-data"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "function",
+      "name": "search_stack",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "lineRange": [234, 253],
+      "summary": "Searches stack-specific guideline CSV files for supported frontend stacks and returns structured matches or validation errors for unknown stacks.",
+      "tags": ["stack-guidelines", "search-engine", "csv-data"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "type": "file",
+      "name": "design_system.py",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "summary": "Aggregates UI/UX search results and reasoning rules into complete design system recommendations, with formatters and persistence helpers for master and page override documents.",
+      "tags": ["design-system", "recommendation-engine", "markdown-generation", "persistence"],
+      "complexity": "complex",
+      "languageNotes": "Combines CSV-backed search, JSON rule parsing, markdown generation, and filesystem persistence in one orchestration module."
+    },
+    {
+      "id": "class:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "class",
+      "name": "DesignSystemGenerator",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [37, 236],
+      "summary": "Coordinates reasoning-rule lookup, multi-domain searches, best-match selection, and final design system dictionary assembly for a project query.",
+      "tags": ["design-system", "orchestration", "recommendation-engine", "csv-data"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "function",
+      "name": "format_ascii_box",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [242, 364],
+      "summary": "Formats a generated design system dictionary into a fixed-width ASCII report with pattern, style, color, typography, effects, anti-patterns, and checklist sections.",
+      "tags": ["formatting", "reporting", "design-system", "cli-output"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "function",
+      "name": "format_markdown",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [367, 458],
+      "summary": "Formats a generated design system dictionary as markdown sections and tables suitable for readable documentation output.",
+      "tags": ["formatting", "markdown-generation", "design-system", "documentation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "function",
+      "name": "generate_design_system",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [462, 487],
+      "summary": "Public entry point that generates a design system, optionally persists it, and returns either markdown or ASCII formatted output.",
+      "tags": ["entry-point", "design-system", "formatting", "persistence"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "type": "function",
+      "name": "persist_design_system",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [491, 539],
+      "summary": "Writes a generated design system into a project-specific design-system folder with a MASTER.md file and optional page override markdown.",
+      "tags": ["persistence", "markdown-generation", "filesystem", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_master_md",
+      "type": "function",
+      "name": "format_master_md",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [542, 802],
+      "summary": "Builds the MASTER.md source-of-truth document with global design rules, palette tokens, typography, component CSS snippets, style guidance, anti-patterns, and delivery checklist.",
+      "tags": ["markdown-generation", "design-system", "documentation", "component-specs"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_page_override_md",
+      "type": "function",
+      "name": "format_page_override_md",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [805, 911],
+      "summary": "Builds a page-specific override markdown document by detecting page context and listing layout, spacing, typography, color, component, and recommendation overrides.",
+      "tags": ["markdown-generation", "page-overrides", "design-system", "documentation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "type": "function",
+      "name": "_generate_intelligent_overrides",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [914, 1017],
+      "summary": "Derives page-specific design overrides by searching style, UX, and landing guidance, then translating matches into layout, spacing, color, component, and recommendation fields.",
+      "tags": ["page-overrides", "search-engine", "design-system", "recommendation-engine"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_detect_page_type",
+      "type": "function",
+      "name": "_detect_page_type",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "lineRange": [1020, 1052],
+      "summary": "Classifies page context into common product page types such as dashboard, checkout, settings, landing, authentication, pricing, article, product detail, search results, or empty state.",
+      "tags": ["classification", "page-overrides", "heuristics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "type": "file",
+      "name": "search.py",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "summary": "Provides the command-line interface for UI Pro Max search, stack guideline lookup, design system generation, JSON output, and optional persisted design-system files.",
+      "tags": ["cli", "entry-point", "search-engine", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.cursor/skills/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "function",
+      "name": "format_output",
+      "filePath": ".cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "lineRange": [30, 53],
+      "summary": "Formats search result dictionaries into compact markdown for terminal or assistant consumption, truncating long values to keep output manageable.",
+      "tags": ["formatting", "cli-output", "markdown-generation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "class:.cursor/skills/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "class:.cursor/skills/ui-ux-pro-max/scripts/core.py:BM25",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_load_csv",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:detect_domain",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search_stack",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:_search_csv",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "class:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_master_md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_page_override_md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_detect_page_type",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "class:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_master_md",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_page_override_md",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_detect_page_type",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "class:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:DesignSystemGenerator",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_markdown",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_ascii_box",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_master_md",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:persist_design_system",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_page_override_md",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:format_page_override_md",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_generate_intelligent_overrides",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:_detect_page_type",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "file:.cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "file:.cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/search.py:format_output",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/core.py:search_stack",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:.cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "function:.cursor/skills/ui-ux-pro-max/scripts/design_system.py:generate_design_system",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

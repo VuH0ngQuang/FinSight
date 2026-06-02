@@ -1,0 +1,218 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "type": "file",
+      "name": "StockRepository.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "summary": "Spring Data JPA repository for stock entities, including custom queries that eagerly load yearly data and favored-user relationships. It supports stock lookup, sector filtering, and valuation workflows that need rich stock aggregates.",
+      "tags": [
+        "repository",
+        "data-access",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring Data repository methods use derived query names and JPQL @Query annotations to define persistence behavior."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java:StockRepository",
+      "type": "class",
+      "name": "StockRepository",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "lineRange": [
+        12,
+        41
+      ],
+      "summary": "Repository interface declaring custom stock queries for sector lookup and eager loading of year-data and favorite-user relationships.",
+      "tags": [
+        "repository",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "type": "file",
+      "name": "SubscriptionPlanRepository.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "summary": "Spring Data repository for subscription plan entities. It exposes standard CRUD access used by subscription purchase and validation flows.",
+      "tags": [
+        "repository",
+        "data-access",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring Data repository methods use derived query names and JPQL @Query annotations to define persistence behavior."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java:SubscriptionPlanRepository",
+      "type": "class",
+      "name": "SubscriptionPlanRepository",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "lineRange": [
+        7,
+        9
+      ],
+      "summary": "Repository interface exposing persistence access for subscription plan entities.",
+      "tags": [
+        "repository",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "type": "file",
+      "name": "SubscriptionRepository.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "summary": "Spring Data repository for user subscriptions with a derived query for the most recent subscription by user. It backs subscription status and payment history workflows.",
+      "tags": [
+        "repository",
+        "data-access",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring Data repository methods use derived query names and JPQL @Query annotations to define persistence behavior."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java:SubscriptionRepository",
+      "type": "class",
+      "name": "SubscriptionRepository",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "lineRange": [
+        9,
+        12
+      ],
+      "summary": "Repository interface with subscription persistence and latest-subscription lookup by user id.",
+      "tags": [
+        "repository",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "type": "file",
+      "name": "UserRepository.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "summary": "Spring Data repository for user accounts with duplicate checks, credential lookup, and eager favorite-stock loading. It is the persistence boundary for authentication and profile operations.",
+      "tags": [
+        "repository",
+        "data-access",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Spring Data repository methods use derived query names and JPQL @Query annotations to define persistence behavior."
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java:UserRepository",
+      "type": "class",
+      "name": "UserRepository",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "lineRange": [
+        12,
+        20
+      ],
+      "summary": "Repository interface for user lookup, duplicate validation, and favorite-stock eager loading.",
+      "tags": [
+        "repository",
+        "spring-data",
+        "persistence"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java:StockRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java:StockRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java:SubscriptionPlanRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java:SubscriptionPlanRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java:SubscriptionRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java:SubscriptionRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java:UserRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java:UserRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

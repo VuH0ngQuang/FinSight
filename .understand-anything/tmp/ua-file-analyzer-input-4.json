@@ -1,0 +1,279 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "batchFiles": [
+    {
+      "path": "market-rest/src/models/StockEntity.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/Subscription.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/UserEntity.ts",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/producer/KafkaProducer.ts",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/ahpConfigRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/index.ts",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/portfolioRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/stockRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/stockYearDataRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/subscriptionRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/userRoutes.ts",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigService.ts",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/kafkaRequestResponseService.ts",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/portfolioQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockService.ts",
+      "language": "typescript",
+      "sizeLines": 220,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataService.ts",
+      "language": "typescript",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/subscriptionPlanService.ts",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/subscriptionQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/userQueueService.ts",
+      "language": "typescript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/userService.ts",
+      "language": "typescript",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/utils/cacheService.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "market-rest/src/models/StockEntity.ts": [
+      "market-rest/src/models/UserEntity.ts"
+    ],
+    "market-rest/src/models/Subscription.ts": [
+      "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "market-rest/src/models/UserEntity.ts"
+    ],
+    "market-rest/src/models/SubscriptionPlanEntity.ts": [
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/models/UserEntity.ts": [
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/models/Subscription.ts"
+    ],
+    "market-rest/src/producer/KafkaProducer.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/config/kafka.ts"
+    ],
+    "market-rest/src/routes/ahpConfigRoutes.ts": [
+      "market-rest/src/controllers/ahpConfigController.ts"
+    ],
+    "market-rest/src/routes/index.ts": [
+      "market-rest/src/routes/ahpConfigRoutes.ts",
+      "market-rest/src/routes/portfolioRoutes.ts",
+      "market-rest/src/routes/stockRoutes.ts",
+      "market-rest/src/routes/stockYearDataRoutes.ts",
+      "market-rest/src/routes/subscriptionRoutes.ts",
+      "market-rest/src/routes/userRoutes.ts"
+    ],
+    "market-rest/src/routes/portfolioRoutes.ts": [
+      "market-rest/src/controllers/portfolioController.ts"
+    ],
+    "market-rest/src/routes/stockRoutes.ts": [
+      "market-rest/src/controllers/stockController.ts"
+    ],
+    "market-rest/src/routes/stockYearDataRoutes.ts": [
+      "market-rest/src/controllers/stockYearDataController.ts"
+    ],
+    "market-rest/src/routes/subscriptionRoutes.ts": [
+      "market-rest/src/controllers/subscriptionController.ts"
+    ],
+    "market-rest/src/routes/userRoutes.ts": [
+      "market-rest/src/controllers/userController.ts"
+    ],
+    "market-rest/src/services/ahpConfigQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/ahpConfigService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/AhpConfigDto.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/kafkaRequestResponseService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/consumer/KafkaConsumer.ts",
+      "market-rest/src/dto/message.ts",
+      "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "market-rest/src/producer/KafkaProducer.ts"
+    ],
+    "market-rest/src/services/portfolioQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/StockDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/services/stockYearDataService.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/stockYearDataQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/stockYearDataService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/StockYearDataDto.ts",
+      "market-rest/src/models/StockEntity.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/services/subscriptionPlanService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/models/SubscriptionPlanEntity.ts"
+    ],
+    "market-rest/src/services/subscriptionQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/SubscriptionDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/userQueueService.ts": [
+      "market-rest/src/config/env.ts",
+      "market-rest/src/dto/ResponseDto.ts",
+      "market-rest/src/dto/UserDto.ts",
+      "market-rest/src/services/kafkaRequestResponseService.ts"
+    ],
+    "market-rest/src/services/userService.ts": [
+      "market-rest/src/config/database.ts",
+      "market-rest/src/dto/UserDetailDto.ts",
+      "market-rest/src/models/AhpConfigEntity.ts",
+      "market-rest/src/models/Subscription.ts",
+      "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "market-rest/src/models/UserEntity.ts",
+      "market-rest/src/services/ahpConfigService.ts",
+      "market-rest/src/utils/cacheService.ts"
+    ],
+    "market-rest/src/utils/cacheService.ts": [
+      "market-rest/src/config/redis.ts"
+    ]
+  }
+}

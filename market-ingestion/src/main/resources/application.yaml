@@ -9,7 +9,15 @@ app:
         groupId: ${KAFKA_GROUP_ID:market-ingestion}
         topic:
           marketIngestion: ${KAFKA_TOPIC_INGESTION:market-ingestion}
+          marketIngestionReply: ${KAFKA_TOPIC_INGESTION_REPLY:}
+
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD}
+      database: ${REDIS_DATABASE}
 
     uri:
       stockYearData:
           update: "/stockYearData/update/"
+          validationHistory: "/validation/stockYearData/history"

@@ -1,0 +1,1895 @@
+{
+  "projectRoot": "/home/vuhongquang/workspace/FinSight",
+  "files": [
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/charts.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/colors.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/icons.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/landing.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/products.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/react-performance.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/styles.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/typography.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/data/web-interface.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/core.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/design_system.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/scripts/search.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": ".cursor/skills/ui-ux-pro-max/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "k6-test/load-test.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "k6-test/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-collector/.env.example",
+      "language": "config",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-collector/.gitattributes",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-collector/FLOWCHART.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-collector/mvnw",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/mvnw.cmd",
+      "language": "batch",
+      "fileCategory": "script"
+    },
+    {
+      "path": "market-collector/pom.xml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/auth/TokenClient.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/configurations/DatabaseConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/configurations/DotEnvPostProcessor.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/listener/MqttListener.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/MarketCollectorApplication.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Message.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/model/Stock.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/mqtt/MqttService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/KafkaProducer.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/producer/MqttProducer.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/java/com/finsight/collector/repository/StockIdRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/main/resources/application.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-collector/src/main/resources/META-INF/spring.factories",
+      "language": "factories",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-collector/src/test/java/com/finsight/collector/MarketCollectorApplicationTests.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/.agent/workflows/ui-ux-pro-max.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-frontend/.cursor/commands/ui-ux-pro-max.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/charts.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/colors.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/icons.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/landing.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/products.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/prompts.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/react-performance.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/flutter.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/react-native.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/react.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/svelte.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/stacks/vue.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/styles.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/typography.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/ui-reasoning.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/ux-guidelines.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/data/web-interface.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/scripts/core.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/scripts/design_system.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/.shared/ui-ux-pro-max/scripts/search.py",
+      "language": "python",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/.vite/deps/_metadata.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/.vite/deps/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/eslint.config.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "market-frontend/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-frontend/src/App.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "market-frontend/src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/AdminRoute.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/PortfolioPieChart.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/charts/VietstockIframe.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/AppShell.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/Sidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/layout/TopBar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ProtectedRoute.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/Badge.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/DataTable.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/ErrorBanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/Modal.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/PriceTag.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/ScoreBar.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/StatCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/components/ui/TabGroup.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/config/api.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/contexts/AuthContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/contexts/WatchlistContext.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/data/stockyeardata.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useAhpWeights.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useAuth.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useMarketData.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/hooks/useStockList.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/index.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "market-frontend/src/main.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/models/Profile.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/models/Stock.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/models/StockYearData.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/AdminPanel.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Checkout.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Dashboard.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/LoginRegister.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/Payment.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/PortfolioAllocator.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/ProfileSettings.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/StockDetail.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/StockScanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/pages/SubscriptionHistory.tsx",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/portfolioApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/stockApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/subscriptionApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/api/userApi.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/mqtt.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/services/stockDetail.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/ahp.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/formatters.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/src/utils/topsis.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-frontend/tsconfig.app.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/tsconfig.node.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-frontend/vite.config.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/.ai/mcp/mcp.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-ingestion/.attach_pid55",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/.gitattributes",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-ingestion/mvnw",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/mvnw.cmd",
+      "language": "batch",
+      "fileCategory": "script"
+    },
+    {
+      "path": "market-ingestion/pom.xml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/DotEnvPostProcessor.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/configurations/RedisConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/controller/IngestionController.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/daos/RedisDao.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/ResponseDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryRequestDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/StockYearDataHistoryResponseDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/dto/UploadValidationResponse.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/enums/RedisEnum.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaRequestResponseService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/MarketIngestionApplication.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/model/Message.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/model/StockYearData.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/producer/KafkaProducer.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StagedUpload.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/StockYearDataValidationRecord.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/record/UploadValidationIssue.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/service/StockYearDataUploadService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/BusinessValidation.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/FileValidation.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/StructureValidation.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/java/com/finsight/marketingestion/validation/UploadValidationResult.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/main/resources/application.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-ingestion/src/main/resources/META-INF/spring.factories",
+      "language": "factories",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-ingestion/src/test/java/com/finsight/marketingestion/MarketIngestionApplicationTests.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/.ai/mcp/mcp.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-realtime/.gitattributes",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-realtime/BACKTEST_USAGE_GUIDE.txt",
+      "language": "txt",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-realtime/Kafka topic.txt",
+      "language": "txt",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-realtime/market-realtime.drawio",
+      "language": "drawio",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/data-check/20260421-104036/data_availability.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/method-comparison/20260422-002320/method_comparison.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-104724/drawdown.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-104724/equity_curve.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-104724/metrics.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-104724/rebalance_log.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110157/drawdown.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110157/equity_curve.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110157/metrics.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110157/rebalance_log.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110407/drawdown.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110407/equity_curve.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110407/metrics.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-110407/rebalance_log.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-114048/drawdown.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-114048/equity_curve.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-114048/metrics.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260421-114048/rebalance_log.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260422-000909/drawdown.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260422-000909/equity_curve.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260422-000909/metrics.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/single/20260422-000909/rebalance_log.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/market-realtime/backtest-out/weight-sensitivity/20260422-002249/sensitivity_weights.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/mvnw",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/mvnw.cmd",
+      "language": "batch",
+      "fileCategory": "script"
+    },
+    {
+      "path": "market-realtime/pom.xml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestConfig.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestMetrics.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestResult.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BenchmarkLoader.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/CsvWriter.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/EquityCurve.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PerformanceMetrics.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/DatabaseConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/DotEnvPostProcessor.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/ITemplateConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/MailConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/PayOSConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/configurations/RedisConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/listener/KafkaListener.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/MarketRealtimeApplication.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Message.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/StockRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionPlanRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/SubscriptionRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/UserRepository.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/MailServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PaymentServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/PortfolioAllocationServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/StockYearDataServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/SubscriptionServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/impl/UserServiceImpl.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MailService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/MessageRouterService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PaymentService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/service/UserService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/IDGenerator.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/utils/LockManager.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationResult.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/resources/application-backtest.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-realtime/src/main/resources/application.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-realtime/src/main/resources/backtest/vnindex.csv",
+      "language": "csv",
+      "fileCategory": "data"
+    },
+    {
+      "path": "market-realtime/src/main/resources/META-INF/spring.factories",
+      "language": "factories",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/main/resources/templates/mail/overvaluation-alert.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "market-realtime/src/main/resources/templates/mail/welcome.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PerformanceMetricsTest.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/MarketRealtimeApplicationTests.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/service/impl/AhpConfigServiceImplTest.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-realtime/TICK_PRICE_UPDATE_FLOWCHART.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "market-rest/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-rest/src/app.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/database.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/env.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/kafka.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/config/redis.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/consumer/KafkaConsumer.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/ahpConfigController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/portfolioController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/stockController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/stockYearDataController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/subscriptionController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/controllers/userController.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/docs/swagger.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/AhpConfigDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/message.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/PortfolioAllocationRequest.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/ResponseDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/StockDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/StockYearDataDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/SubscriptionDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/UserDetailDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/dto/UserDto.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/interfaces/KafkaEnvelope.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/AhpConfigEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/StockEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/Subscription.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/SubscriptionPlanEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/models/UserEntity.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/producer/KafkaProducer.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/ahpConfigRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/index.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/portfolioRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/stockRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/stockYearDataRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/subscriptionRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/routes/userRoutes.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/ahpConfigService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/kafkaRequestResponseService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/portfolioQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/stockYearDataService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/subscriptionPlanService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/subscriptionQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/userQueueService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/services/userService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/src/utils/cacheService.ts",
+      "language": "typescript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-rest/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-webhooks/.ai/mcp/mcp.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-webhooks/.gitattributes",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-webhooks/mvnw",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/mvnw.cmd",
+      "language": "batch",
+      "fileCategory": "script"
+    },
+    {
+      "path": "market-webhooks/pom.xml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/AppConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/DotEnvPostProcessor.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/configurations/PayOSConf.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/controllers/WebhookController.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/dto/PaymentDto.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/kafka/KafkaService.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/MarketWebhooksApplication.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/model/Message.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/java/com/finsight/marketwebhooks/producer/KafkaProducer.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/main/resources/application.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "market-webhooks/src/main/resources/META-INF/spring.factories",
+      "language": "factories",
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-webhooks/src/test/java/com/finsight/marketwebhooks/MarketWebhooksApplicationTests.java",
+      "language": "java",
+      "fileCategory": "code"
+    },
+    {
+      "path": "proposal_thesis.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    }
+  ]
+}

@@ -76,9 +76,8 @@ app:
         create: "/stockYearData/create/"
         update: "/stockYearData/update/"
         delete: "/stockYearData/delete"
+        validationHistory: "/validation/stockYearData/history"
       webhooks:
         payment: "/webhooks/payment"
       portfolio:
         allocate: "/portfolio/allocate"
-
-

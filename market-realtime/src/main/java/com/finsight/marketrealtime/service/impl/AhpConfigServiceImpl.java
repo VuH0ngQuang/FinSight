@@ -13,18 +13,23 @@ import com.finsight.marketrealtime.repository.UserRepository;
 import com.finsight.marketrealtime.service.AhpConfigService;
 import com.finsight.marketrealtime.utils.IDGenerator;
 import com.finsight.marketrealtime.utils.LockManager;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class AhpConfigServiceImpl implements AhpConfigService {
     private static final Logger logger = LoggerFactory.getLogger(AhpConfigServiceImpl.class);
+
+    private static final Map<Integer, Double> RI_MAP = Map.of(
+            1, 0.0, 2, 0.0, 3, 0.58, 4, 0.9,
+            5, 1.12, 6, 1.24, 7, 1.32, 8, 1.41, 9, 1.45, 10, 1.51
+    );
+
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
     private final AhpConfigRepository ahpConfigRepository;
@@ -36,8 +41,7 @@ public class AhpConfigServiceImpl implements AhpConfigService {
                                 AhpConfigRepository ahpConfigRepository,
                                 LockManager<Long> lockManager,
                                 ObjectMapper objectMapper,
-                                RedisDao redisDao
-                                ) {
+                                RedisDao redisDao) {
         this.userRepository = userRepository;
         this.ahpConfigRepository = ahpConfigRepository;
         this.lockManager = lockManager;
@@ -45,43 +49,61 @@ public class AhpConfigServiceImpl implements AhpConfigService {
         this.redisDao = redisDao;
     }
 
-    @PostConstruct
-    public void init() {
-        AhpConfigDto ahpConfigDto = AhpConfigDto.builder().
-                ahpConfigId(123L)
-                .userId(144995632409477120L)
-                .pairwiseMatrixJson("[[1,2,4,6,8,3,5],[0.5,1,3,5,7,2,4],[0.25,0.3333,1,4,6,2,3],[0.1667,0.2,0.25,1,5,3,4],[0.125,0.1429,0.1667,0.2,1,4,6],[0.3333,0.5,0.5,0.3333,0.25,1,2],[0.2,0.25,0.3333,0.25,0.1667,0.5,1]]")
-                .build();
-        updateAhpConfig(ahpConfigDto);
-    }
-
     @Override
     public ResponseDto createAhpConfig(AhpConfigDto ahpConfigDto) {
+        // Validate matrix + CR before acquiring lock or touching DB
+        WeightResult weightResult = null;
+        if (ahpConfigDto.getPairwiseMatrixJson() != null) {
+            try {
+                weightResult = computeWeights(ahpConfigDto.getPairwiseMatrixJson());
+                double cr = computeConsistencyRatio(weightResult.matrix(), weightResult.weights());
+                if (cr >= 0.1) {
+                    return ResponseDto.builder()
+                            .success(false).errorCode(400)
+                            .errorMessage(String.format(
+                                    "AHP matrix failed consistency check. CR=%.4f (must be < 0.1)", cr))
+                            .build();
+                }
+            } catch (JsonProcessingException | IllegalArgumentException e) {
+                return ResponseDto.builder()
+                        .success(false).errorCode(400)
+                        .errorMessage("Invalid pairwise matrix: " + e.getMessage())
+                        .build();
+            }
+        }
+
         AhpConfigEntity ahpConfigEntity = new AhpConfigEntity();
         ahpConfigEntity.setAhpConfigId(IDGenerator.nextId());
-        ReentrantLock lock = lockManager.getLock(ahpConfigEntity.getAhpConfigId());
+
+        // Lock on userId to prevent concurrent creates for the same user
+        ReentrantLock lock = lockManager.getLock(ahpConfigDto.getUserId());
         lock.lock();
         try {
-            UserEntity user = userRepository.
-                    findById(ahpConfigDto.getUserId()).
-                    orElse(null);
-
-            if (user == null) return ResponseDto.
-                    builder().
-                    success(false).
-                    errorCode(404).
-                    errorMessage("User not found").
-                    build();
+            UserEntity user = userRepository.findById(ahpConfigDto.getUserId()).orElse(null);
+            if (user == null) return ResponseDto.builder()
+                    .success(false).errorCode(404).errorMessage("User not found").build();
 
             ahpConfigEntity.setUser(user);
+
+            if (weightResult != null) {
+                ahpConfigEntity.setPairwiseMatrixJson(ahpConfigDto.getPairwiseMatrixJson());
+                try {
+                    ahpConfigEntity.setWeightsJson(objectMapper.writeValueAsString(weightResult.weights()));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException("Failed to serialize AHP weights", e);
+                }
+            }
+            if (ahpConfigDto.getCriteriaJson() != null) {
+                ahpConfigEntity.setCriteriaJson(ahpConfigDto.getCriteriaJson());
+            }
+
             ahpConfigRepository.save(ahpConfigEntity);
             AhpConfigDto dto = convertToDto(ahpConfigEntity);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
+            saveToRedis(dto);
+            return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
         }
-        return ResponseDto.builder().success(true).build();
     }
 
     @Override
@@ -93,23 +115,45 @@ public class AhpConfigServiceImpl implements AhpConfigService {
                     .findById(ahpConfigDto.getAhpConfigId())
                     .orElse(null);
 
-            if (ahpConfig == null) return ResponseDto.
-                    builder().
-                    success(false).
-                    errorCode(404).
-                    errorMessage("AHP Config not found: " + ahpConfigDto.getAhpConfigId()).
-                    build();
+            if (ahpConfig == null) return ResponseDto.builder()
+                    .success(false).errorCode(404)
+                    .errorMessage("AHP Config not found: " + ahpConfigDto.getAhpConfigId())
+                    .build();
 
-            if (ahpConfigDto.getCriteriaJson() != null) ahpConfig.setCriteriaJson(ahpConfigDto.getCriteriaJson());
+            if (ahpConfigDto.getCriteriaJson() != null) {
+                ahpConfig.setCriteriaJson(ahpConfigDto.getCriteriaJson());
+            }
+
             if (ahpConfigDto.getPairwiseMatrixJson() != null) {
+                WeightResult wr;
+                try {
+                    wr = computeWeights(ahpConfigDto.getPairwiseMatrixJson());
+                    double cr = computeConsistencyRatio(wr.matrix(), wr.weights());
+                    if (cr >= 0.1) {
+                        return ResponseDto.builder()
+                                .success(false).errorCode(400)
+                                .errorMessage(String.format(
+                                        "AHP matrix failed consistency check. CR=%.4f (must be < 0.1)", cr))
+                                .build();
+                    }
+                } catch (JsonProcessingException | IllegalArgumentException e) {
+                    return ResponseDto.builder()
+                            .success(false).errorCode(400)
+                            .errorMessage("Invalid pairwise matrix: " + e.getMessage())
+                            .build();
+                }
+
                 ahpConfig.setPairwiseMatrixJson(ahpConfigDto.getPairwiseMatrixJson());
-                ahpConfig.setWeightsJson(recalcWeights(ahpConfig));
+                try {
+                    ahpConfig.setWeightsJson(objectMapper.writeValueAsString(wr.weights()));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException("Failed to serialize AHP weights", e);
+                }
             }
 
             ahpConfigRepository.save(ahpConfig);
             AhpConfigDto dto = convertToDto(ahpConfig);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
-            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
+            saveToRedis(dto);
             return ResponseDto.builder().success(true).build();
         } finally {
             lock.unlock();
@@ -123,85 +167,89 @@ public class AhpConfigServiceImpl implements AhpConfigService {
                 String.valueOf(userId),
                 AhpConfigDto.class
         );
-        if (dto != null) {
-            return dto;
-        }
+        if (dto != null) return dto;
 
         AhpConfigEntity ahpConfigEntity = ahpConfigRepository.findByUserUserId(userId);
-        if (ahpConfigEntity == null) {
-            return null;
-        }
+        if (ahpConfigEntity == null) return null;
+
         dto = convertToDto(ahpConfigEntity);
-        redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
-        redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
+        saveToRedis(dto);
         return dto;
     }
 
-    private String recalcWeights(AhpConfigEntity ahpConfig) {
+    // --- Private helpers ---
+
+    private record WeightResult(double[][] matrix, double[] weights) {}
+
+    private WeightResult computeWeights(String pairwiseMatrixJson)
+            throws JsonProcessingException {
+        double[][] matrix = objectMapper.readValue(pairwiseMatrixJson, double[][].class);
+        int n = matrix.length;
+        if (n == 0) throw new IllegalArgumentException("Pairwise matrix is empty");
+
+        for (int i = 0; i < n; i++) {
+            if (matrix[i] == null || matrix[i].length != n) {
+                throw new IllegalArgumentException(
+                        "Pairwise matrix must be square (n x n). Row " + i +
+                        " length = " + (matrix[i] == null ? "null" : matrix[i].length));
+            }
+        }
+
+        double[] geoMeans = new double[n];
+        for (int i = 0; i < n; i++) {
+            double sumLog = 0.0;
+            for (int j = 0; j < n; j++) {
+                double value = matrix[i][j];
+                if (value <= 0) throw new IllegalArgumentException(
+                        "Pairwise matrix must contain only positive values. Found: " + value);
+                sumLog += Math.log(value);
+            }
+            geoMeans[i] = Math.exp(sumLog / n);
+        }
+
+        double total = 0.0;
+        for (double gm : geoMeans) total += gm;
+        if (total == 0) throw new IllegalStateException("Sum of geometric means is zero");
+
+        double[] weights = new double[n];
+        for (int i = 0; i < n; i++) weights[i] = geoMeans[i] / total;
+
+        return new WeightResult(matrix, weights);
+    }
+
+    private double computeConsistencyRatio(double[][] matrix, double[] weights) {
+        int n = matrix.length;
+        if (n <= 1) return 0.0;
+
+        double lambdaSum = 0.0;
+        for (int i = 0; i < n; i++) {
+            double aw = 0.0;
+            for (int j = 0; j < n; j++) aw += matrix[i][j] * weights[j];
+            lambdaSum += aw / weights[i];
+        }
+        double lambdaMax = lambdaSum / n;
+        double ci = (lambdaMax - n) / (n - 1);
+
+        Double ri = RI_MAP.get(n);
+        if (ri == null) {
+            throw new IllegalArgumentException(
+                    "AHP consistency ratio is not supported for matrix size " + n);
+        }
+        if (ri == 0.0) return 0.0;
+        return ci / ri;
+    }
+
+    private void saveToRedis(AhpConfigDto dto) {
         try {
-            // 1. Parse JSON -> double[][]
-            double[][] matrix = objectMapper.readValue(
-                    ahpConfig.getPairwiseMatrixJson(),
-                    double[][].class
-            );
-
-            int n = matrix.length;
-            if (n == 0) {
-                throw new IllegalArgumentException("Pairwise matrix is empty");
-            }
-
-            // sanity check: matrix must be square n x n
-            for (int i = 0; i < n; i++) {
-                if (matrix[i] == null || matrix[i].length != n) {
-                    throw new IllegalArgumentException(
-                            "Pairwise matrix must be square (n x n). " +
-                                    "Row " + i + " length = " + (matrix[i] == null ? "null" : matrix[i].length)
-                    );
-                }
-            }
-
-            double[] geoMeans = new double[n];
-
-            // 2. Compute geometric mean of each row
-            for (int i = 0; i < n; i++) {
-                double sumLog = 0.0;
-                for (int j = 0; j < n; j++) {
-                    double value = matrix[i][j];
-                    if (value <= 0) {
-                        throw new IllegalArgumentException(
-                                "Pairwise matrix must contain only positive values. Found: " + value
-                        );
-                    }
-                    sumLog += Math.log(value);
-                }
-                // geometric mean = exp(average log)
-                geoMeans[i] = Math.exp(sumLog / n);
-            }
-
-            // 3. Normalize geometric means to get weights
-            double total = 0.0;
-            for (double gm : geoMeans) {
-                total += gm;
-            }
-            if (total == 0) {
-                throw new IllegalStateException("Sum of geometric means is zero");
-            }
-
-            double[] weights = new double[n];
-            for (int i = 0; i < n; i++) {
-                weights[i] = geoMeans[i] / total;
-            }
-
-            // 4. Serialize weights back to JSON and return
-            return objectMapper.writeValueAsString(weights);
-
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Failed to parse or write AHP JSON", e);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getAhpConfigId(), dto);
+            redisDao.save(RedisEnum.AHPCONFIG.toString(), dto.getUserId(), dto);
+        } catch (Exception e) {
+            logger.warn("Failed to update AHP config Redis cache for id={}, userId={}: {}",
+                    dto.getAhpConfigId(), dto.getUserId(), e.getMessage());
         }
     }
 
     private AhpConfigDto convertToDto(AhpConfigEntity ahpConfigEntity) {
-
         return AhpConfigDto.builder()
                 .ahpConfigId(ahpConfigEntity.getAhpConfigId())
                 .userId(ahpConfigEntity.getUser().getUserId())

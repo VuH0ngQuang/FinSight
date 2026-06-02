@@ -1,0 +1,1158 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "type": "file",
+      "name": "ProfileSettings.tsx",
+      "filePath": "market-frontend/src/pages/ProfileSettings.tsx",
+      "summary": "Implements profile management, password updates, account deletion, subscription status display, and AHP preference configuration.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/src/pages/ProfileSettings.tsx:ProfileSettings",
+      "type": "function",
+      "name": "ProfileSettings",
+      "filePath": "market-frontend/src/pages/ProfileSettings.tsx",
+      "lineRange": [
+        40,
+        407
+      ],
+      "summary": "Manages profile forms, password updates, AHP matrix editing, subscription display, and account deletion controls.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-frontend/src/pages/StockDetail.tsx",
+      "type": "file",
+      "name": "StockDetail.tsx",
+      "filePath": "market-frontend/src/pages/StockDetail.tsx",
+      "summary": "Renders the detailed stock page with live prices, valuation ratios, financial charts, watchlist actions, and yearly financial data.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-frontend/src/pages/StockDetail.tsx:StockDetailPage",
+      "type": "function",
+      "name": "StockDetailPage",
+      "filePath": "market-frontend/src/pages/StockDetail.tsx",
+      "lineRange": [
+        34,
+        250
+      ],
+      "summary": "Loads one stock detail record and renders valuation, financial, watchlist, and live-price sections.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-frontend/src/pages/StockScanner.tsx",
+      "type": "file",
+      "name": "StockScanner.tsx",
+      "filePath": "market-frontend/src/pages/StockScanner.tsx",
+      "summary": "Implements the stock scanner table by ranking symbols with AHP-weighted TOPSIS scores, filters, live prices, and favorite toggles.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/StockScanner.tsx:StockScanner",
+      "type": "function",
+      "name": "StockScanner",
+      "filePath": "market-frontend/src/pages/StockScanner.tsx",
+      "lineRange": [
+        17,
+        174
+      ],
+      "summary": "Filters and ranks the stock list with TOPSIS scores, live prices, sectors, and watchlist mutations.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "type": "file",
+      "name": "SubscriptionHistory.tsx",
+      "filePath": "market-frontend/src/pages/SubscriptionHistory.tsx",
+      "summary": "Displays the user subscription history with billing metadata, status badges, and aggregate subscription statistics.",
+      "tags": [
+        "component",
+        "page",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/pages/SubscriptionHistory.tsx:SubscriptionHistory",
+      "type": "function",
+      "name": "SubscriptionHistory",
+      "filePath": "market-frontend/src/pages/SubscriptionHistory.tsx",
+      "lineRange": [
+        44,
+        182
+      ],
+      "summary": "Formats and displays subscription records, status metadata, and summary totals.",
+      "tags": [
+        "component",
+        "page",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "type": "file",
+      "name": "ahpConfigApi.ts",
+      "filePath": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "summary": "Defines API helpers for reading, creating, and updating user AHP configuration records through authenticated requests.",
+      "tags": [
+        "api-client",
+        "service",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/ahpConfigApi.ts:getAhpConfig",
+      "type": "function",
+      "name": "getAhpConfig",
+      "filePath": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "lineRange": [
+        19,
+        29
+      ],
+      "summary": "Fetches the current user AHP configuration from the authenticated backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/ahpConfigApi.ts:createAhpConfig",
+      "type": "function",
+      "name": "createAhpConfig",
+      "filePath": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "lineRange": [
+        31,
+        34
+      ],
+      "summary": "Creates an AHP configuration record for a user through the authenticated backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/ahpConfigApi.ts:updateAhpConfig",
+      "type": "function",
+      "name": "updateAhpConfig",
+      "filePath": "market-frontend/src/services/api/ahpConfigApi.ts",
+      "lineRange": [
+        36,
+        39
+      ],
+      "summary": "Updates an existing AHP configuration record with criteria, matrix, and weight JSON payloads.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/services/api/config.ts",
+      "type": "file",
+      "name": "config.ts",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "summary": "Centralizes frontend API base URL resolution, token/user-id accessors, and authenticated fetch wrappers.",
+      "tags": [
+        "api-client",
+        "service",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/config.ts:apiFetch",
+      "type": "function",
+      "name": "apiFetch",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "lineRange": [
+        5,
+        14
+      ],
+      "summary": "Builds an API request with JSON defaults and the configured frontend API base URL.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/config.ts:getToken",
+      "type": "function",
+      "name": "getToken",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "lineRange": [
+        16,
+        16
+      ],
+      "summary": "Reads the stored authentication token from localStorage.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/config.ts:getUserId",
+      "type": "function",
+      "name": "getUserId",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "lineRange": [
+        17,
+        17
+      ],
+      "summary": "Reads the stored authenticated user id from localStorage.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/config.ts:getIsAdmin",
+      "type": "function",
+      "name": "getIsAdmin",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "lineRange": [
+        18,
+        18
+      ],
+      "summary": "Reads the stored admin flag from localStorage.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/config.ts:authFetch",
+      "type": "function",
+      "name": "authFetch",
+      "filePath": "market-frontend/src/services/api/config.ts",
+      "lineRange": [
+        20,
+        21
+      ],
+      "summary": "Wraps API requests with a bearer token and JSON content defaults.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "type": "file",
+      "name": "portfolioApi.ts",
+      "filePath": "market-frontend/src/services/api/portfolioApi.ts",
+      "summary": "Defines the portfolio allocation API client and normalizes allocation results returned by the backend.",
+      "tags": [
+        "api-client",
+        "service",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/portfolioApi.ts:allocatePortfolio",
+      "type": "function",
+      "name": "allocatePortfolio",
+      "filePath": "market-frontend/src/services/api/portfolioApi.ts",
+      "lineRange": [
+        41,
+        63
+      ],
+      "summary": "Posts budget and stock constraints to the portfolio endpoint and returns allocation results.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/services/api/stockApi.ts",
+      "type": "file",
+      "name": "stockApi.ts",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "summary": "Defines stock administration API helpers for listing stock IDs, creating stocks, updating records, deleting symbols, and changing industry ratios.",
+      "tags": [
+        "api-client",
+        "service",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockApi.ts:getAllStockIds",
+      "type": "function",
+      "name": "getAllStockIds",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "lineRange": [
+        25,
+        29
+      ],
+      "summary": "Fetches all available stock symbols from the backend stock API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockApi.ts:createStock",
+      "type": "function",
+      "name": "createStock",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "lineRange": [
+        31,
+        34
+      ],
+      "summary": "Creates a stock master record through the backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockApi.ts:updateStock",
+      "type": "function",
+      "name": "updateStock",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "lineRange": [
+        36,
+        39
+      ],
+      "summary": "Updates an existing stock master record through the backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockApi.ts:deleteStock",
+      "type": "function",
+      "name": "deleteStock",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "lineRange": [
+        41,
+        44
+      ],
+      "summary": "Deletes a stock master record by symbol through the backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockApi.ts:updateIndustryRatios",
+      "type": "function",
+      "name": "updateIndustryRatios",
+      "filePath": "market-frontend/src/services/api/stockApi.ts",
+      "lineRange": [
+        46,
+        49
+      ],
+      "summary": "Updates industry ratio benchmarks for a stock through the backend API.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "type": "file",
+      "name": "stockYearDataApi.ts",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "summary": "Defines stock yearly-data API helpers, including CRUD operations and Excel upload support for financial history.",
+      "tags": [
+        "api-client",
+        "service",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockYearDataApi.ts:getStockYearData",
+      "type": "function",
+      "name": "getStockYearData",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "lineRange": [
+        21,
+        30
+      ],
+      "summary": "Fetches yearly financial data for a stock symbol.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockYearDataApi.ts:createStockYearData",
+      "type": "function",
+      "name": "createStockYearData",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "lineRange": [
+        32,
+        38
+      ],
+      "summary": "Creates a yearly financial data record for a stock.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockYearDataApi.ts:updateStockYearData",
+      "type": "function",
+      "name": "updateStockYearData",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "lineRange": [
+        40,
+        46
+      ],
+      "summary": "Updates a yearly financial data record for a stock.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockYearDataApi.ts:deleteStockYearData",
+      "type": "function",
+      "name": "deleteStockYearData",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "lineRange": [
+        48,
+        54
+      ],
+      "summary": "Deletes a yearly financial data record for a stock.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-frontend/src/services/api/stockYearDataApi.ts:uploadStockYearDataExcel",
+      "type": "function",
+      "name": "uploadStockYearDataExcel",
+      "filePath": "market-frontend/src/services/api/stockYearDataApi.ts",
+      "lineRange": [
+        62,
+        84
+      ],
+      "summary": "Uploads an Excel workbook containing stock yearly financial data.",
+      "tags": [
+        "api-client",
+        "async",
+        "service"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "function:market-frontend/src/pages/ProfileSettings.tsx:ProfileSettings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "function:market-frontend/src/pages/StockDetail.tsx:StockDetailPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "function:market-frontend/src/pages/StockScanner.tsx:StockScanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "function:market-frontend/src/pages/SubscriptionHistory.tsx:SubscriptionHistory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:getAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:getAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:createAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:createAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:updateAhpConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "function:market-frontend/src/services/api/ahpConfigApi.ts:updateAhpConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:apiFetch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:apiFetch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getIsAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:getIsAdmin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:authFetch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/config.ts",
+      "target": "function:market-frontend/src/services/api/config.ts:authFetch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "target": "function:market-frontend/src/services/api/portfolioApi.ts:allocatePortfolio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "target": "function:market-frontend/src/services/api/portfolioApi.ts:allocatePortfolio",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:getAllStockIds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:getAllStockIds",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:createStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:createStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:updateStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:updateStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:deleteStock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:deleteStock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:updateIndustryRatios",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "function:market-frontend/src/services/api/stockApi.ts:updateIndustryRatios",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:getStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:getStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:createStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:createStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:updateStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:updateStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:deleteStockYearData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:deleteStockYearData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:uploadStockYearDataExcel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "function:market-frontend/src/services/api/stockYearDataApi.ts:uploadStockYearDataExcel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/components/ahp/InvestmentPrioritySurveyModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/components/charts/AhpWeightsBarChart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/components/ui/Modal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/utils/ahp.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/ProfileSettings.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/charts/FinancialBarChart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/charts/RatioCompareChart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/charts/ValuationLineChart.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/charts/VietstockIframe.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/components/ui/TabGroup.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/hooks/useMarketData.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/services/stockDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockDetail.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/components/ui/ErrorBanner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/components/ui/LoadingSpinner.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/components/ui/PriceTag.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/components/ui/ScoreBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/contexts/WatchlistContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/hooks/useAhpWeights.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/hooks/useAuth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/hooks/useMarketData.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/hooks/useStockList.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/StockScanner.tsx",
+      "target": "file:market-frontend/src/utils/topsis.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "file:market-frontend/src/components/ui/Badge.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "file:market-frontend/src/components/ui/StatCard.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "file:market-frontend/src/contexts/AuthContext.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "file:market-frontend/src/services/api/userApi.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/pages/SubscriptionHistory.tsx",
+      "target": "file:market-frontend/src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/services/api/ahpConfigApi.ts",
+      "target": "file:market-frontend/src/services/api/config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/services/api/portfolioApi.ts",
+      "target": "file:market-frontend/src/services/api/config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockApi.ts",
+      "target": "file:market-frontend/src/services/api/config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "file:market-frontend/src/services/api/config.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-frontend/src/services/api/stockYearDataApi.ts",
+      "target": "file:market-frontend/src/services/stockDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

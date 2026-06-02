@@ -1,0 +1,277 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "type": "file",
+      "name": "PortfolioAllocationService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "summary": "Service contract for turning a portfolio allocation request into a response DTO. It fronts the ranking and allocation implementation.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java:PortfolioAllocationService",
+      "type": "class",
+      "name": "PortfolioAllocationService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "lineRange": [
+        6,
+        8
+      ],
+      "summary": "Service interface for portfolio allocation requests.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "type": "file",
+      "name": "StockService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "summary": "Service contract for stock CRUD, valuation recalculation, industry ratio updates, and DTO conversion. It defines the stock-management surface used across the realtime backend.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java:StockService",
+      "type": "class",
+      "name": "StockService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "lineRange": [
+        10,
+        19
+      ],
+      "summary": "Service interface covering stock mutations, valuation recalculation, and DTO conversion.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "type": "file",
+      "name": "StockYearDataService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "summary": "Service contract for creating, updating, deleting, and validating yearly stock financial data. It coordinates data maintenance with valuation recalculation.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java:StockYearDataService",
+      "type": "class",
+      "name": "StockYearDataService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "lineRange": [
+        10,
+        15
+      ],
+      "summary": "Service interface for stock yearly financial data mutations and validation history.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "type": "file",
+      "name": "SubscriptionService.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "summary": "Service contract for subscription lifecycle operations and subscription payment handling. It exposes create, update, delete, and payment flows to higher layers.",
+      "tags": [
+        "service",
+        "interface",
+        "contract",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java:SubscriptionService",
+      "type": "class",
+      "name": "SubscriptionService",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "lineRange": [
+        9,
+        14
+      ],
+      "summary": "Service interface for subscription lifecycle and payment-related operations.",
+      "tags": [
+        "service",
+        "interface",
+        "contract"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java:PortfolioAllocationService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java:PortfolioAllocationService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/PortfolioAllocationService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java:StockService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java:StockService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java:StockYearDataService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java:StockYearDataService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/StockYearDataService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java:SubscriptionService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java:SubscriptionService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/SubscriptionService.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

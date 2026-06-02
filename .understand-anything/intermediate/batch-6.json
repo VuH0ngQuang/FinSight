@@ -1,0 +1,1381 @@
+{
+  "nodes": [
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "type": "file",
+      "name": "BacktestRunner.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "summary": "CLI-oriented Spring backtest entry point that runs valuation strategy experiments and writes CSV reports for data checks, single runs, sweeps, sensitivity analysis, and method comparisons.",
+      "tags": [
+        "entry-point",
+        "backtesting",
+        "experiment-runner",
+        "reporting"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "type": "file",
+      "name": "RedisDao.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "summary": "Redis DAO wrapping hash operations with Jackson serialization for saving, finding, expiring, and deleting cached market-realtime objects.",
+      "tags": [
+        "service",
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "type": "file",
+      "name": "AhpConfigDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "summary": "DTO carrying persisted AHP criteria, pairwise matrix, and computed weights for a specific user configuration.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "type": "file",
+      "name": "LoginCacheDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "summary": "DTO representing cached login identity data, including credentials metadata and admin status for Redis-backed authentication flows.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "type": "file",
+      "name": "LoginDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "summary": "DTO for login and user identity payloads exchanged with authentication-related service and API layers.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "type": "file",
+      "name": "PaymentDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "summary": "DTO reporting payment result status with an identifier, success flag, and optional error message.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "type": "file",
+      "name": "PortfolioAllocationRequest.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "summary": "Request DTO describing portfolio allocation inputs such as user ID, budget, stock count, and lot size.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "type": "file",
+      "name": "ResponseDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "summary": "Generic API response wrapper containing success status, error details, and a typed data payload.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "type": "file",
+      "name": "StockDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "summary": "DTO exposing stock identity, sector, market price, valuation ratios, and industry benchmark ratios.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "type": "file",
+      "name": "StockYearDataDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "summary": "DTO carrying annual financial statement inputs and valuation outputs for a stock year record.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "type": "file",
+      "name": "StockYearDataHistoryRequestDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "summary": "Small request DTO identifying the stock and year used to fetch historical yearly financial data.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "type": "file",
+      "name": "StockYearDataHistoryResponseDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "summary": "Response DTO pairing a stock-year key with the returned historical data payload.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "type": "file",
+      "name": "SubscriptionDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "summary": "DTO for subscription state, linking users and plans with dates, error text, type, and lifecycle status.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "type": "file",
+      "name": "UserDto.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "summary": "DTO exposing user profile, credentials, admin flag, and favorite stock data for service/API exchange.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "type": "file",
+      "name": "RedisEnum.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/RedisEnum.java",
+      "summary": "Enum-like constants file defining Redis cache key names used by service-layer caching code.",
+      "tags": [
+        "enum",
+        "domain-state",
+        "constants"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "type": "file",
+      "name": "SubscriptionEnum.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "summary": "Enum-like constants file defining subscription lifecycle status values used by subscription DTOs and entities.",
+      "tags": [
+        "enum",
+        "domain-state",
+        "constants"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "file",
+      "name": "AhpConfigEntity.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "summary": "JPA entity storing a user's AHP criteria JSON, pairwise matrix JSON, and weights JSON in a one-to-one user configuration record.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Lombok and JPA annotations to keep entity classes declarative while mapping relationships and columns."
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "type": "file",
+      "name": "Subscription.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "summary": "JPA entity modeling a user subscription with date range, status, error message, and links to user and plan records.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Lombok and JPA annotations to keep entity classes declarative while mapping relationships and columns."
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "type": "file",
+      "name": "SubscriptionPlanEntity.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "summary": "JPA entity defining subscription plans with billing metadata and the subscriptions attached to each plan.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Lombok and JPA annotations to keep entity classes declarative while mapping relationships and columns."
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "type": "file",
+      "name": "UserEntity.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "summary": "JPA entity for application users, credentials, profile data, favorite stocks, subscriptions, and one-to-one AHP configuration.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses Lombok and JPA annotations to keep entity classes declarative while mapping relationships and columns."
+    },
+    {
+      "id": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "type": "file",
+      "name": "AhpConfigRepository.java",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "summary": "Spring Data repository for AHP configuration records with a finder keyed by the owning user ID.",
+      "tags": [
+        "repository",
+        "persistence",
+        "spring-data",
+        "data-access"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "class",
+      "name": "BacktestRunner",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        40,
+        341
+      ],
+      "summary": "Spring backtest profile runner that parses CLI options and dispatches market backtest experiments such as single runs, top-N sweeps, weight sensitivity, and method comparisons.",
+      "tags": [
+        "entry-point",
+        "backtesting",
+        "experiment-runner",
+        "spring-profile"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "class",
+      "name": "RedisDao",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "lineRange": [
+        15,
+        68
+      ],
+      "summary": "Redis hash data-access service that serializes cached entities to JSON, applies optional expirations, and deserializes cache hits back into typed objects.",
+      "tags": [
+        "service",
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java:AhpConfigDto",
+      "type": "class",
+      "name": "AhpConfigDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "lineRange": [
+        8,
+        16
+      ],
+      "summary": "DTO carrying persisted AHP criteria, pairwise matrix, and computed weights for a specific user configuration.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java:LoginCacheDto",
+      "type": "class",
+      "name": "LoginCacheDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "lineRange": [
+        8,
+        19
+      ],
+      "summary": "DTO representing cached login identity data, including credentials metadata and admin status for Redis-backed authentication flows.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java:LoginDto",
+      "type": "class",
+      "name": "LoginDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "lineRange": [
+        5,
+        14
+      ],
+      "summary": "DTO for login and user identity payloads exchanged with authentication-related service and API layers.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java:PaymentDto",
+      "type": "class",
+      "name": "PaymentDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "lineRange": [
+        8,
+        16
+      ],
+      "summary": "DTO reporting payment result status with an identifier, success flag, and optional error message.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java:PortfolioAllocationRequest",
+      "type": "class",
+      "name": "PortfolioAllocationRequest",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "lineRange": [
+        10,
+        20
+      ],
+      "summary": "Request DTO describing portfolio allocation inputs such as user ID, budget, stock count, and lot size.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java:ResponseDto",
+      "type": "class",
+      "name": "ResponseDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "lineRange": [
+        8,
+        17
+      ],
+      "summary": "Generic API response wrapper containing success status, error details, and a typed data payload.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java:StockDto",
+      "type": "class",
+      "name": "StockDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "lineRange": [
+        7,
+        21
+      ],
+      "summary": "DTO exposing stock identity, sector, market price, valuation ratios, and industry benchmark ratios.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java:StockYearDataDto",
+      "type": "class",
+      "name": "StockYearDataDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "lineRange": [
+        7,
+        29
+      ],
+      "summary": "DTO carrying annual financial statement inputs and valuation outputs for a stock year record.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "class",
+      "name": "StockYearDataHistoryRequestDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "lineRange": [
+        5,
+        9
+      ],
+      "summary": "Small request DTO identifying the stock and year used to fetch historical yearly financial data.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "class",
+      "name": "StockYearDataHistoryResponseDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "lineRange": [
+        7,
+        14
+      ],
+      "summary": "Response DTO pairing a stock-year key with the returned historical data payload.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java:SubscriptionDto",
+      "type": "class",
+      "name": "SubscriptionDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "lineRange": [
+        9,
+        19
+      ],
+      "summary": "DTO for subscription state, linking users and plans with dates, error text, type, and lifecycle status.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java:UserDto",
+      "type": "class",
+      "name": "UserDto",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "lineRange": [
+        6,
+        15
+      ],
+      "summary": "DTO exposing user profile, credentials, admin flag, and favorite stock data for service/API exchange.",
+      "tags": [
+        "data-transfer",
+        "api-payload",
+        "type-definition",
+        "lombok"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java:AhpConfigEntity",
+      "type": "class",
+      "name": "AhpConfigEntity",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "lineRange": [
+        14,
+        57
+      ],
+      "summary": "JPA entity storing a user's AHP criteria JSON, pairwise matrix JSON, and weights JSON in a one-to-one user configuration record.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java:Subscription",
+      "type": "class",
+      "name": "Subscription",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "lineRange": [
+        12,
+        33
+      ],
+      "summary": "JPA entity modeling a user subscription with date range, status, error message, and links to user and plan records.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java:SubscriptionPlanEntity",
+      "type": "class",
+      "name": "SubscriptionPlanEntity",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "lineRange": [
+        12,
+        30
+      ],
+      "summary": "JPA entity defining subscription plans with billing metadata and the subscriptions attached to each plan.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java:UserEntity",
+      "type": "class",
+      "name": "UserEntity",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "lineRange": [
+        18,
+        54
+      ],
+      "summary": "JPA entity for application users, credentials, profile data, favorite stocks, subscriptions, and one-to-one AHP configuration.",
+      "tags": [
+        "data-model",
+        "jpa-entity",
+        "persistence",
+        "domain-state"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java:AhpConfigRepository",
+      "type": "class",
+      "name": "AhpConfigRepository",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "lineRange": [
+        11,
+        15
+      ],
+      "summary": "Spring Data repository for AHP configuration records with a finder keyed by the owning user ID.",
+      "tags": [
+        "repository",
+        "spring-data",
+        "data-access"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "function",
+      "name": "BacktestRunner",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        52,
+        62
+      ],
+      "summary": "Constructs the backtest runner with engine, reporter, AHP configuration service, JSON mapper, and Spring application context dependencies.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:run",
+      "type": "function",
+      "name": "run",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        64,
+        97
+      ],
+      "summary": "Parses CLI mode and output arguments, dispatches the selected backtest workflow, and schedules Spring shutdown with an exit code.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runTopNSweep",
+      "type": "function",
+      "name": "runTopNSweep",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        115,
+        136
+      ],
+      "summary": "Runs the backtest repeatedly for fixed top-N portfolio sizes and writes comparative metrics to a sweep CSV.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runWeightSensitivity",
+      "type": "function",
+      "name": "runWeightSensitivity",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        138,
+        176
+      ],
+      "summary": "Runs a base backtest and repeated Dirichlet-perturbed weight simulations to measure sensitivity of returns and top-pick overlap.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runMethodComparison",
+      "type": "function",
+      "name": "runMethodComparison",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        178,
+        213
+      ],
+      "summary": "Compares AHP, equal-weight, PE-only, and random weighting methods by running each strategy and recording performance metrics.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:buildConfig",
+      "type": "function",
+      "name": "buildConfig",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        217,
+        226
+      ],
+      "summary": "Builds a BacktestConfig from CLI parameters, including year range, top-N count, lot size, capital, transaction costs, and AHP weights.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:resolveWeights",
+      "type": "function",
+      "name": "resolveWeights",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        228,
+        251
+      ],
+      "summary": "Resolves valuation weights from explicit CLI input or persisted user AHP configuration, falling back to equal weights when unavailable.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:parseArgs",
+      "type": "function",
+      "name": "parseArgs",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        255,
+        265
+      ],
+      "summary": "Converts --key=value and boolean CLI flags into a map consumed by the backtest mode dispatcher.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:perturbDirichlet",
+      "type": "function",
+      "name": "perturbDirichlet",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        280,
+        294
+      ],
+      "summary": "Samples a normalized Dirichlet-like perturbation around base valuation weights for sensitivity testing.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:gamma",
+      "type": "function",
+      "name": "gamma",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        297,
+        312
+      ],
+      "summary": "Implements a Marsaglia-Tsang gamma sampler used by Dirichlet weight perturbation.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:logSummary",
+      "type": "function",
+      "name": "logSummary",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "lineRange": [
+        330,
+        340
+      ],
+      "summary": "Logs key backtest metrics such as CAGR, Sharpe, drawdown, hit rate, alpha, and beta for a run label.",
+      "tags": [
+        "backtesting",
+        "workflow",
+        "metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "function",
+      "name": "RedisDao",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "lineRange": [
+        25,
+        35
+      ],
+      "summary": "Implements RedisDao behavior for RedisDao.java.",
+      "tags": [
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:save",
+      "type": "function",
+      "name": "save",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "lineRange": [
+        37,
+        52
+      ],
+      "summary": "Serializes an entity as JSON into a Redis hash and optionally applies an expiration to the hash key.",
+      "tags": [
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:find",
+      "type": "function",
+      "name": "find",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "lineRange": [
+        54,
+        63
+      ],
+      "summary": "Reads a JSON value from a Redis hash and deserializes it into the requested Java type, returning null on miss or parse failure.",
+      "tags": [
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:delete",
+      "type": "function",
+      "name": "delete",
+      "filePath": "market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "lineRange": [
+        65,
+        67
+      ],
+      "summary": "Deletes a cached Redis hash field by entity key and ID.",
+      "tags": [
+        "cache",
+        "redis",
+        "serialization"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java:AhpConfigDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java:AhpConfigDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java:LoginCacheDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginCacheDto.java:LoginCacheDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java:LoginDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/LoginDto.java:LoginDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java:PaymentDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PaymentDto.java:PaymentDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java:PortfolioAllocationRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationRequest.java:PortfolioAllocationRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java:ResponseDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/ResponseDto.java:ResponseDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java:StockDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockDto.java:StockDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java:StockYearDataDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataDto.java:StockYearDataDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryRequestDto.java:StockYearDataHistoryRequestDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockYearDataHistoryResponseDto.java:StockYearDataHistoryResponseDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java:SubscriptionDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java:SubscriptionDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java:UserDto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/dto/UserDto.java:UserDto",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java:AhpConfigEntity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java:AhpConfigEntity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java:Subscription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java:Subscription",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java:SubscriptionPlanEntity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/SubscriptionPlanEntity.java:SubscriptionPlanEntity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java:UserEntity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/UserEntity.java:UserEntity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java:AhpConfigRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java:AhpConfigRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:BacktestRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runTopNSweep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runWeightSensitivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:runMethodComparison",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:buildConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:resolveWeights",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:parseArgs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:perturbDirichlet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:gamma",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java:logSummary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:RedisDao",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:save",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:save",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:find",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:find",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:delete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "function:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java:delete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/AhpConfigDto.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/dto/SubscriptionDto.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/Subscription.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/enums/SubscriptionEnum.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/repository/AhpConfigRepository.java",
+      "target": "file:market-realtime/src/main/java/com/finsight/marketrealtime/model/AhpConfigEntity.java",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/service/AhpConfigService.java:AhpConfigService",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestRunner.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java:StockEntity",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:market-realtime/src/main/java/com/finsight/marketrealtime/daos/RedisDao.java",
+      "target": "class:market-realtime/src/main/java/com/finsight/marketrealtime/configurations/AppConf.java:AppConf",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

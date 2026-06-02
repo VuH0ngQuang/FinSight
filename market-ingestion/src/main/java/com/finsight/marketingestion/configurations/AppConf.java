@@ -13,6 +13,7 @@ public class AppConf {
     private String clusterId;
     private Uri uri;
     private Kafka kafka;
+    private Redis redis;
 
     @PostConstruct
     public void logConfig() {
@@ -21,6 +22,13 @@ public class AppConf {
         if (kafka != null) {
             logger.info("Kafka URLs           : {}", kafka.getUrls());
             logger.info("Kafka Topic          : {}", kafka.getTopic() != null ? kafka.getTopic().getMarketIngestion() : "(none)");
+        }
+
+        if (redis != null) {
+            logger.info("Redis HOST           : {}", redis.getHost());
+            logger.info("Redis port           : {}", redis.getPort());
+            logger.info("Redis password       : {}", redis.getPassword());
+            logger.info("Redis database       : {}", redis.getDatabase());
         }
 
         if (uri != null) {
@@ -44,12 +52,22 @@ public class AppConf {
     }
 
     @Data
+    public static class Redis {
+        private String host;
+        private int port;
+        private String password;
+        private int database;
+    }
+
+    @Data
     public static class StockYearData {
         private String update;
+        private String validationHistory;
     }
 
     @Data
     public static class KafkaTopic {
         private String marketIngestion;
+        private String marketIngestionReply;
     }
 }

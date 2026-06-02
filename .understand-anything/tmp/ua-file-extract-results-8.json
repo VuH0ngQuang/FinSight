@@ -1,0 +1,6719 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestEngine.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "BacktestEngine",
+          "startLine": 32,
+          "endLine": 44,
+          "params": [
+            "stockRepository",
+            "snapshotBuilder",
+            "topsisCalculator",
+            "allocator",
+            "metrics",
+            "benchmarkLoader"
+          ]
+        },
+        {
+          "name": "loadUniverse",
+          "startLine": 46,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "run",
+          "startLine": 50,
+          "endLine": 52,
+          "params": [
+            "cfg"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 57,
+          "endLine": 106,
+          "params": [
+            "cfg",
+            "universe",
+            "benchmarkSeries"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BacktestEngine",
+          "startLine": 20,
+          "endLine": 107,
+          "methods": [
+            "BacktestEngine",
+            "loadUniverse",
+            "run",
+            "run"
+          ],
+          "properties": [
+            "logger",
+            "stockRepository",
+            "snapshotBuilder",
+            "topsisCalculator",
+            "allocator",
+            "metrics",
+            "benchmarkLoader"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BacktestEngine",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "loadUniverse",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "BacktestEngine",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loadUniverse",
+          "callee": "stockRepository.findAllWithYearData",
+          "lineNumber": 47
+        },
+        {
+          "caller": "run",
+          "callee": "run",
+          "lineNumber": 51
+        },
+        {
+          "caller": "run",
+          "callee": "loadUniverse",
+          "lineNumber": 51
+        },
+        {
+          "caller": "run",
+          "callee": "benchmarkLoader.load",
+          "lineNumber": 51
+        },
+        {
+          "caller": "run",
+          "callee": "new HashMap<>",
+          "lineNumber": 60
+        },
+        {
+          "caller": "run",
+          "callee": "universeById.put",
+          "lineNumber": 61
+        },
+        {
+          "caller": "run",
+          "callee": "s.getStockId",
+          "lineNumber": 61
+        },
+        {
+          "caller": "run",
+          "callee": "PortfolioState.cash",
+          "lineNumber": 63
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.initialCapital",
+          "lineNumber": 63
+        },
+        {
+          "caller": "run",
+          "callee": "new EquityCurve",
+          "lineNumber": 64
+        },
+        {
+          "caller": "run",
+          "callee": "new RebalanceLog",
+          "lineNumber": 65
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.startYear",
+          "lineNumber": 67
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.endYear",
+          "lineNumber": 67
+        },
+        {
+          "caller": "run",
+          "callee": "pf.markToMarket",
+          "lineNumber": 71
+        },
+        {
+          "caller": "run",
+          "callee": "curve.record",
+          "lineNumber": 72
+        },
+        {
+          "caller": "run",
+          "callee": "pf.totalValue",
+          "lineNumber": 72
+        },
+        {
+          "caller": "run",
+          "callee": "snapshotBuilder.build",
+          "lineNumber": 75
+        },
+        {
+          "caller": "run",
+          "callee": "snap.stocks().isEmpty",
+          "lineNumber": 76
+        },
+        {
+          "caller": "run",
+          "callee": "snap.stocks",
+          "lineNumber": 76
+        },
+        {
+          "caller": "run",
+          "callee": "logger.warn",
+          "lineNumber": 77
+        },
+        {
+          "caller": "run",
+          "callee": "topsisCalculator.rank",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run",
+          "callee": "snap.stocks",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.weights",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run",
+          "callee": "ranked.isEmpty",
+          "lineNumber": 84
+        },
+        {
+          "caller": "run",
+          "callee": "logger.warn",
+          "lineNumber": 85
+        },
+        {
+          "caller": "run",
+          "callee": "pf.liquidateAt",
+          "lineNumber": 90
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.txCostBps",
+          "lineNumber": 90
+        },
+        {
+          "caller": "run",
+          "callee": "allocator.allocate",
+          "lineNumber": 93
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.topN",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.lotSize",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run",
+          "callee": "pf.applyAllocation",
+          "lineNumber": 95
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.txCostBps",
+          "lineNumber": 95
+        },
+        {
+          "caller": "run",
+          "callee": "log.add",
+          "lineNumber": 97
+        },
+        {
+          "caller": "run",
+          "callee": "pf.markToMarket",
+          "lineNumber": 101
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.endYear",
+          "lineNumber": 101
+        },
+        {
+          "caller": "run",
+          "callee": "curve.record",
+          "lineNumber": 102
+        },
+        {
+          "caller": "run",
+          "callee": "cfg.endYear",
+          "lineNumber": 102
+        },
+        {
+          "caller": "run",
+          "callee": "pf.totalValue",
+          "lineNumber": 102
+        },
+        {
+          "caller": "run",
+          "callee": "metrics.compute",
+          "lineNumber": 104
+        },
+        {
+          "caller": "run",
+          "callee": "new BacktestResult",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/BacktestReporter.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 148,
+      "nonEmptyLines": 135,
+      "functions": [
+        {
+          "name": "writeSingleRun",
+          "startLine": 27,
+          "endLine": 33,
+          "params": [
+            "outDir",
+            "result"
+          ]
+        },
+        {
+          "name": "writeDataAvailability",
+          "startLine": 35,
+          "endLine": 64,
+          "params": [
+            "outDir",
+            "universe"
+          ]
+        },
+        {
+          "name": "writeEquityCurve",
+          "startLine": 66,
+          "endLine": 83,
+          "params": [
+            "f",
+            "r"
+          ]
+        },
+        {
+          "name": "writeDrawdown",
+          "startLine": 85,
+          "endLine": 99,
+          "params": [
+            "f",
+            "r"
+          ]
+        },
+        {
+          "name": "writeRebalanceLog",
+          "startLine": 101,
+          "endLine": 121,
+          "params": [
+            "f",
+            "r"
+          ]
+        },
+        {
+          "name": "writeMetrics",
+          "startLine": 123,
+          "endLine": 135,
+          "params": [
+            "f",
+            "m"
+          ]
+        },
+        {
+          "name": "pct",
+          "startLine": 137,
+          "endLine": 139,
+          "params": [
+            "v"
+          ]
+        },
+        {
+          "name": "pctD",
+          "startLine": 141,
+          "endLine": 143,
+          "params": [
+            "v"
+          ]
+        },
+        {
+          "name": "round4",
+          "startLine": 145,
+          "endLine": 147,
+          "params": [
+            "v"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BacktestReporter",
+          "startLine": 22,
+          "endLine": 148,
+          "methods": [
+            "writeSingleRun",
+            "writeDataAvailability",
+            "writeEquityCurve",
+            "writeDrawdown",
+            "writeRebalanceLog",
+            "writeMetrics",
+            "pct",
+            "pctD",
+            "round4"
+          ],
+          "properties": [
+            "logger"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "writeSingleRun",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "writeDataAvailability",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "BacktestReporter",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "writeSingleRun",
+          "callee": "writeEquityCurve",
+          "lineNumber": 28
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "outDir.resolve",
+          "lineNumber": 28
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "writeDrawdown",
+          "lineNumber": 29
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "outDir.resolve",
+          "lineNumber": 29
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "writeRebalanceLog",
+          "lineNumber": 30
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "outDir.resolve",
+          "lineNumber": 30
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "writeMetrics",
+          "lineNumber": 31
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "outDir.resolve",
+          "lineNumber": 31
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "result.metrics",
+          "lineNumber": 31
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "logger.info",
+          "lineNumber": 32
+        },
+        {
+          "caller": "writeSingleRun",
+          "callee": "outDir.toAbsolutePath",
+          "lineNumber": 32
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "outDir.resolve",
+          "lineNumber": 36
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "new CsvWriter",
+          "lineNumber": 37
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "w.writeHeader",
+          "lineNumber": 38
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "s.getYearData",
+          "lineNumber": 40
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "yd.size",
+          "lineNumber": 41
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "yd.entrySet",
+          "lineNumber": 45
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue().getPriceEndYear",
+          "lineNumber": 46
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue().getPriceEndYear().compareTo",
+          "lineNumber": 47
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue().getPriceEndYear",
+          "lineNumber": 47
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getValue",
+          "lineNumber": 47
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getKey",
+          "lineNumber": 50
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getKey",
+          "lineNumber": 50
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getKey",
+          "lineNumber": 51
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "e.getKey",
+          "lineNumber": 51
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "w.writeRow",
+          "lineNumber": 54
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "s.getStockId",
+          "lineNumber": 55
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "s.getSector",
+          "lineNumber": 56
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "s.getSector",
+          "lineNumber": 56
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "logger.info",
+          "lineNumber": 63
+        },
+        {
+          "caller": "writeDataAvailability",
+          "callee": "f.toAbsolutePath",
+          "lineNumber": 63
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "r.benchmarkSeries",
+          "lineNumber": 67
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "new CsvWriter",
+          "lineNumber": 68
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "w.writeHeader",
+          "lineNumber": 69
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "r.equityCurve().points",
+          "lineNumber": 72
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "r.equityCurve",
+          "lineNumber": 72
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "bench.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.year",
+          "lineNumber": 73
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "prevPort.signum",
+          "lineNumber": 74
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "pct",
+          "lineNumber": 75
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.portfolioValue().divide(prevPort, 8, RoundingMode.HALF_UP).subtract",
+          "lineNumber": 75
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.portfolioValue().divide",
+          "lineNumber": 75
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.portfolioValue",
+          "lineNumber": 75
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "prevBench.signum",
+          "lineNumber": 76
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "pct",
+          "lineNumber": 77
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "b.divide(prevBench, 8, RoundingMode.HALF_UP).subtract",
+          "lineNumber": 77
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "b.divide",
+          "lineNumber": 77
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "w.writeRow",
+          "lineNumber": 78
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.year",
+          "lineNumber": 78
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.portfolioValue",
+          "lineNumber": 78
+        },
+        {
+          "caller": "writeEquityCurve",
+          "callee": "p.portfolioValue",
+          "lineNumber": 79
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "new CsvWriter",
+          "lineNumber": 86
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "w.writeHeader",
+          "lineNumber": 87
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "new java.util.TreeSet<>",
+          "lineNumber": 88
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "years.addAll",
+          "lineNumber": 89
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().drawdownSeries().keySet",
+          "lineNumber": 89
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().drawdownSeries",
+          "lineNumber": 89
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics",
+          "lineNumber": 89
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "years.addAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().benchmarkDrawdownSeries().keySet",
+          "lineNumber": 90
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().benchmarkDrawdownSeries",
+          "lineNumber": 90
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics",
+          "lineNumber": 90
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().drawdownSeries().get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().drawdownSeries",
+          "lineNumber": 92
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics",
+          "lineNumber": 92
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().benchmarkDrawdownSeries().get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics().benchmarkDrawdownSeries",
+          "lineNumber": 93
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "r.metrics",
+          "lineNumber": 93
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "w.writeRow",
+          "lineNumber": 94
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "pctD",
+          "lineNumber": 95
+        },
+        {
+          "caller": "writeDrawdown",
+          "callee": "pctD",
+          "lineNumber": 96
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "new CsvWriter",
+          "lineNumber": 102
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "w.writeHeader",
+          "lineNumber": 103
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "r.rebalanceLog().entries",
+          "lineNumber": 104
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "r.rebalanceLog",
+          "lineNumber": 104
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "new HashSet<>",
+          "lineNumber": 105
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.allocation",
+          "lineNumber": 106
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.allocation().getAllocations",
+          "lineNumber": 106
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.allocation",
+          "lineNumber": 106
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.allocation().getAllocations",
+          "lineNumber": 107
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.allocation",
+          "lineNumber": 107
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "w.writeRow",
+          "lineNumber": 108
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.year",
+          "lineNumber": 108
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getStockId",
+          "lineNumber": 108
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getShares",
+          "lineNumber": 108
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getPricePerShare",
+          "lineNumber": 109
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getTopsisScore",
+          "lineNumber": 109
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getAllocationPercentage",
+          "lineNumber": 109
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "held.add",
+          "lineNumber": 110
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "a.getStockId",
+          "lineNumber": 110
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "Math.min",
+          "lineNumber": 113
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.topRanked().size",
+          "lineNumber": 113
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.topRanked",
+          "lineNumber": 113
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.topRanked().get",
+          "lineNumber": 115
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.topRanked",
+          "lineNumber": 115
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "held.contains",
+          "lineNumber": 116
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "rs.getStockId",
+          "lineNumber": 116
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "w.writeRow",
+          "lineNumber": 117
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "entry.year",
+          "lineNumber": 117
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "rs.getStockId",
+          "lineNumber": 117
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "rs.getMatchPrice",
+          "lineNumber": 117
+        },
+        {
+          "caller": "writeRebalanceLog",
+          "callee": "rs.getTopsisScore",
+          "lineNumber": 117
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "new CsvWriter",
+          "lineNumber": 124
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeHeader",
+          "lineNumber": 125
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 126
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 126
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.cagr",
+          "lineNumber": 126
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 126
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.benchmarkCagr",
+          "lineNumber": 126
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 127
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 127
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.annualizedVolatility",
+          "lineNumber": 127
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 127
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.benchmarkVolatility",
+          "lineNumber": 127
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 128
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "round4",
+          "lineNumber": 128
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.sharpe",
+          "lineNumber": 128
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "round4",
+          "lineNumber": 128
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.benchmarkSharpe",
+          "lineNumber": 128
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 129
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "round4",
+          "lineNumber": 129
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.sortino",
+          "lineNumber": 129
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 130
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 130
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.maxDrawdown",
+          "lineNumber": 130
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 130
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.benchmarkMaxDrawdown",
+          "lineNumber": 130
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 131
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 131
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.hitRate",
+          "lineNumber": 131
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 132
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "pctD",
+          "lineNumber": 132
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.alpha",
+          "lineNumber": 132
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "w.writeRow",
+          "lineNumber": 133
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "round4",
+          "lineNumber": 133
+        },
+        {
+          "caller": "writeMetrics",
+          "callee": "m.beta",
+          "lineNumber": 133
+        },
+        {
+          "caller": "pct",
+          "callee": "v.multiply(BigDecimal.valueOf(100)).setScale(4, RoundingMode.HALF_UP).toPlainString",
+          "lineNumber": 138
+        },
+        {
+          "caller": "pct",
+          "callee": "v.multiply(BigDecimal.valueOf(100)).setScale",
+          "lineNumber": 138
+        },
+        {
+          "caller": "pct",
+          "callee": "v.multiply",
+          "lineNumber": 138
+        },
+        {
+          "caller": "pct",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 138
+        },
+        {
+          "caller": "pctD",
+          "callee": "BigDecimal.valueOf(v * 100).setScale(4, RoundingMode.HALF_UP).toPlainString",
+          "lineNumber": 142
+        },
+        {
+          "caller": "pctD",
+          "callee": "BigDecimal.valueOf(v * 100).setScale",
+          "lineNumber": 142
+        },
+        {
+          "caller": "pctD",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 142
+        },
+        {
+          "caller": "round4",
+          "callee": "BigDecimal.valueOf(v).setScale(4, RoundingMode.HALF_UP).toPlainString",
+          "lineNumber": 146
+        },
+        {
+          "caller": "round4",
+          "callee": "BigDecimal.valueOf(v).setScale",
+          "lineNumber": 146
+        },
+        {
+          "caller": "round4",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 9,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/HistoricalSnapshot.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculator.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "computeMediansBySector",
+          "startLine": 31,
+          "endLine": 52,
+          "params": [
+            "stocks"
+          ]
+        },
+        {
+          "name": "collect",
+          "startLine": 54,
+          "endLine": 57,
+          "params": [
+            "bucket",
+            "sector",
+            "value"
+          ]
+        },
+        {
+          "name": "addMedians",
+          "startLine": 59,
+          "endLine": 68,
+          "params": [
+            "out",
+            "bucket",
+            "key"
+          ]
+        },
+        {
+          "name": "median",
+          "startLine": 70,
+          "endLine": 81,
+          "params": [
+            "values"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "IndustryMedianCalculator",
+          "startLine": 22,
+          "endLine": 82,
+          "methods": [
+            "computeMediansBySector",
+            "collect",
+            "addMedians",
+            "median"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "computeMediansBySector",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "IndustryMedianCalculator",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "computeMediansBySector",
+          "callee": "new HashMap<>",
+          "lineNumber": 32
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "new HashMap<>",
+          "lineNumber": 33
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "new HashMap<>",
+          "lineNumber": 34
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "new HashMap<>",
+          "lineNumber": 35
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "s.getSector",
+          "lineNumber": 38
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "sector.isBlank",
+          "lineNumber": 39
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "collect",
+          "lineNumber": 40
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "s.getPeRatio",
+          "lineNumber": 40
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "collect",
+          "lineNumber": 41
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "s.getPbRatio",
+          "lineNumber": 41
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "collect",
+          "lineNumber": 42
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "s.getPcfRatio",
+          "lineNumber": 42
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "collect",
+          "lineNumber": 43
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "s.getPsRatio",
+          "lineNumber": 43
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "new HashMap<>",
+          "lineNumber": 46
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "addMedians",
+          "lineNumber": 47
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "addMedians",
+          "lineNumber": 48
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "addMedians",
+          "lineNumber": 49
+        },
+        {
+          "caller": "computeMediansBySector",
+          "callee": "addMedians",
+          "lineNumber": 50
+        },
+        {
+          "caller": "collect",
+          "callee": "value.compareTo",
+          "lineNumber": 55
+        },
+        {
+          "caller": "collect",
+          "callee": "bucket.computeIfAbsent(sector, k -> new ArrayList<>()).add",
+          "lineNumber": 56
+        },
+        {
+          "caller": "collect",
+          "callee": "bucket.computeIfAbsent",
+          "lineNumber": 56
+        },
+        {
+          "caller": "collect",
+          "callee": "new ArrayList<>",
+          "lineNumber": 56
+        },
+        {
+          "caller": "addMedians",
+          "callee": "bucket.entrySet",
+          "lineNumber": 62
+        },
+        {
+          "caller": "addMedians",
+          "callee": "median",
+          "lineNumber": 63
+        },
+        {
+          "caller": "addMedians",
+          "callee": "e.getValue",
+          "lineNumber": 63
+        },
+        {
+          "caller": "addMedians",
+          "callee": "out.computeIfAbsent(e.getKey(), k -> new HashMap<>()).put",
+          "lineNumber": 65
+        },
+        {
+          "caller": "addMedians",
+          "callee": "out.computeIfAbsent",
+          "lineNumber": 65
+        },
+        {
+          "caller": "addMedians",
+          "callee": "e.getKey",
+          "lineNumber": 65
+        },
+        {
+          "caller": "addMedians",
+          "callee": "new HashMap<>",
+          "lineNumber": 65
+        },
+        {
+          "caller": "median",
+          "callee": "values.isEmpty",
+          "lineNumber": 71
+        },
+        {
+          "caller": "median",
+          "callee": "new ArrayList<>",
+          "lineNumber": 72
+        },
+        {
+          "caller": "median",
+          "callee": "Collections.sort",
+          "lineNumber": 73
+        },
+        {
+          "caller": "median",
+          "callee": "sorted.size",
+          "lineNumber": 74
+        },
+        {
+          "caller": "median",
+          "callee": "sorted.get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "median",
+          "callee": "sorted.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "median",
+          "callee": "sorted.get",
+          "lineNumber": 79
+        },
+        {
+          "caller": "median",
+          "callee": "a.add(b).divide",
+          "lineNumber": 80
+        },
+        {
+          "caller": "median",
+          "callee": "a.add",
+          "lineNumber": 80
+        },
+        {
+          "caller": "median",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioAllocator.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 148,
+      "nonEmptyLines": 130,
+      "functions": [
+        {
+          "name": "allocate",
+          "startLine": 33,
+          "endLine": 147,
+          "params": [
+            "ranked",
+            "budget",
+            "n",
+            "lotSize"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PortfolioAllocator",
+          "startLine": 22,
+          "endLine": 148,
+          "methods": [
+            "allocate"
+          ],
+          "properties": [
+            "THOUSAND"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "allocate",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "PortfolioAllocator",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "allocate",
+          "callee": "ranked.isEmpty",
+          "lineNumber": 37
+        },
+        {
+          "caller": "allocate",
+          "callee": "budget.compareTo",
+          "lineNumber": 38
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of())\n                    .totalInvestment(BigDecimal.ZERO)\n                    .remainingBudget(budget == null ? BigDecimal.ZERO : budget)\n                    .budget(budget == null ? BigDecimal.ZERO : budget)\n                    .numberOfStocks(0)\n                    .budgetUtilizationPercent(0).build",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of())\n                    .totalInvestment(BigDecimal.ZERO)\n                    .remainingBudget(budget == null ? BigDecimal.ZERO : budget)\n                    .budget(budget == null ? BigDecimal.ZERO : budget)\n                    .numberOfStocks(0).budgetUtilizationPercent",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of())\n                    .totalInvestment(BigDecimal.ZERO)\n                    .remainingBudget(budget == null ? BigDecimal.ZERO : budget)\n                    .budget(budget == null ? BigDecimal.ZERO : budget).numberOfStocks",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of())\n                    .totalInvestment(BigDecimal.ZERO)\n                    .remainingBudget(budget == null ? BigDecimal.ZERO : budget).budget",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of())\n                    .totalInvestment(BigDecimal.ZERO).remainingBudget",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                    .allocations(List.of()).totalInvestment",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder().allocations",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder",
+          "lineNumber": 39
+        },
+        {
+          "caller": "allocate",
+          "callee": "List.of",
+          "lineNumber": 40
+        },
+        {
+          "caller": "allocate",
+          "callee": "Math.min",
+          "lineNumber": 49
+        },
+        {
+          "caller": "allocate",
+          "callee": "ranked.size",
+          "lineNumber": 49
+        },
+        {
+          "caller": "allocate",
+          "callee": "new ArrayList<>",
+          "lineNumber": 50
+        },
+        {
+          "caller": "allocate",
+          "callee": "ranked.subList",
+          "lineNumber": 50
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.stream().mapToDouble(RankedStockDto::getTopsisScore).sum",
+          "lineNumber": 53
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.stream().mapToDouble",
+          "lineNumber": 53
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.stream",
+          "lineNumber": 53
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 54
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 57
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get",
+          "lineNumber": 58
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getMatchPrice().multiply",
+          "lineNumber": 59
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 59
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getTopsisScore",
+          "lineNumber": 61
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 61
+        },
+        {
+          "caller": "allocate",
+          "callee": "budget.multiply",
+          "lineNumber": 62
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 62
+        },
+        {
+          "caller": "allocate",
+          "callee": "allocatedBudget\n                    .divide(priceVnd.multiply(BigDecimal.valueOf(lotSize)), 0, RoundingMode.DOWN).intValue",
+          "lineNumber": 64
+        },
+        {
+          "caller": "allocate",
+          "callee": "allocatedBudget.divide",
+          "lineNumber": 64
+        },
+        {
+          "caller": "allocate",
+          "callee": "priceVnd.multiply",
+          "lineNumber": 65
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 65
+        },
+        {
+          "caller": "allocate",
+          "callee": "spent.add",
+          "lineNumber": 68
+        },
+        {
+          "caller": "allocate",
+          "callee": "priceVnd.multiply",
+          "lineNumber": 68
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 68
+        },
+        {
+          "caller": "allocate",
+          "callee": "budget.subtract",
+          "lineNumber": 72
+        },
+        {
+          "caller": "allocate",
+          "callee": "remaining.compareTo",
+          "lineNumber": 74
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 76
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get(i).getMatchPrice()\n                        .multiply(THOUSAND).multiply",
+          "lineNumber": 77
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get(i).getMatchPrice().multiply",
+          "lineNumber": 77
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get(i).getMatchPrice",
+          "lineNumber": 77
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 79
+        },
+        {
+          "caller": "allocate",
+          "callee": "remaining.compareTo",
+          "lineNumber": 80
+        },
+        {
+          "caller": "allocate",
+          "callee": "remaining.subtract",
+          "lineNumber": 82
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 90
+        },
+        {
+          "caller": "allocate",
+          "callee": "ranked.size",
+          "lineNumber": 91
+        },
+        {
+          "caller": "allocate",
+          "callee": "ranked.get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "allocate",
+          "callee": "replacement.getMatchPrice()\n                        .multiply(THOUSAND).multiply",
+          "lineNumber": 93
+        },
+        {
+          "caller": "allocate",
+          "callee": "replacement.getMatchPrice().multiply",
+          "lineNumber": 93
+        },
+        {
+          "caller": "allocate",
+          "callee": "replacement.getMatchPrice",
+          "lineNumber": 93
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 95
+        },
+        {
+          "caller": "allocate",
+          "callee": "remaining.compareTo",
+          "lineNumber": 96
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.set",
+          "lineNumber": 97
+        },
+        {
+          "caller": "allocate",
+          "callee": "remaining.subtract",
+          "lineNumber": 99
+        },
+        {
+          "caller": "allocate",
+          "callee": "new ArrayList<>",
+          "lineNumber": 107
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.size",
+          "lineNumber": 109
+        },
+        {
+          "caller": "allocate",
+          "callee": "selected.get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getMatchPrice().multiply",
+          "lineNumber": 112
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 112
+        },
+        {
+          "caller": "allocate",
+          "callee": "priceVnd.multiply",
+          "lineNumber": 113
+        },
+        {
+          "caller": "allocate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 113
+        },
+        {
+          "caller": "allocate",
+          "callee": "totalInvestment.add",
+          "lineNumber": 114
+        },
+        {
+          "caller": "allocate",
+          "callee": "allocations.add",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId())\n                    .stockName(stock.getStockName())\n                    .shares(shares[i])\n                    .pricePerShare(priceVnd)\n                    .totalCost(cost)\n                    .topsisScore(stock.getTopsisScore()).build",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId())\n                    .stockName(stock.getStockName())\n                    .shares(shares[i])\n                    .pricePerShare(priceVnd)\n                    .totalCost(cost).topsisScore",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId())\n                    .stockName(stock.getStockName())\n                    .shares(shares[i])\n                    .pricePerShare(priceVnd).totalCost",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId())\n                    .stockName(stock.getStockName())\n                    .shares(shares[i]).pricePerShare",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId())\n                    .stockName(stock.getStockName()).shares",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder()\n                    .stockId(stock.getStockId()).stockName",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder().stockId",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "StockAllocationDto.builder",
+          "lineNumber": 116
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getStockId",
+          "lineNumber": 117
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getStockName",
+          "lineNumber": 118
+        },
+        {
+          "caller": "allocate",
+          "callee": "stock.getTopsisScore",
+          "lineNumber": 122
+        },
+        {
+          "caller": "allocate",
+          "callee": "totalInvestment.compareTo",
+          "lineNumber": 127
+        },
+        {
+          "caller": "allocate",
+          "callee": "a.getTotalCost()\n                        .divide(totalInvestment, 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 128
+        },
+        {
+          "caller": "allocate",
+          "callee": "a.getTotalCost().divide",
+          "lineNumber": 128
+        },
+        {
+          "caller": "allocate",
+          "callee": "a.getTotalCost",
+          "lineNumber": 128
+        },
+        {
+          "caller": "allocate",
+          "callee": "a.setAllocationPercentage",
+          "lineNumber": 131
+        },
+        {
+          "caller": "allocate",
+          "callee": "Math.round",
+          "lineNumber": 131
+        },
+        {
+          "caller": "allocate",
+          "callee": "budget.compareTo",
+          "lineNumber": 135
+        },
+        {
+          "caller": "allocate",
+          "callee": "totalInvestment.divide(budget, 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 136
+        },
+        {
+          "caller": "allocate",
+          "callee": "totalInvestment.divide",
+          "lineNumber": 136
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations)\n                .totalInvestment(totalInvestment)\n                .remainingBudget(budget.subtract(totalInvestment))\n                .budget(budget)\n                .numberOfStocks(allocations.size())\n                .budgetUtilizationPercent(Math.round(utilization * 100.0) / 100.0).build",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations)\n                .totalInvestment(totalInvestment)\n                .remainingBudget(budget.subtract(totalInvestment))\n                .budget(budget)\n                .numberOfStocks(allocations.size()).budgetUtilizationPercent",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations)\n                .totalInvestment(totalInvestment)\n                .remainingBudget(budget.subtract(totalInvestment))\n                .budget(budget).numberOfStocks",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations)\n                .totalInvestment(totalInvestment)\n                .remainingBudget(budget.subtract(totalInvestment)).budget",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations)\n                .totalInvestment(totalInvestment).remainingBudget",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(allocations).totalInvestment",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder().allocations",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "PortfolioAllocationResult.builder",
+          "lineNumber": 139
+        },
+        {
+          "caller": "allocate",
+          "callee": "budget.subtract",
+          "lineNumber": 142
+        },
+        {
+          "caller": "allocate",
+          "callee": "allocations.size",
+          "lineNumber": 144
+        },
+        {
+          "caller": "allocate",
+          "callee": "Math.round",
+          "lineNumber": 145
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/PortfolioState.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 135,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "cash",
+          "startLine": 35,
+          "endLine": 37,
+          "params": [
+            "startingCash",
+            "universe"
+          ]
+        },
+        {
+          "name": "PortfolioState",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "startingCash",
+            "universe"
+          ]
+        },
+        {
+          "name": "cash",
+          "startLine": 45,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "holdings",
+          "startLine": 47,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "markToMarket",
+          "startLine": 54,
+          "endLine": 65,
+          "params": [
+            "year"
+          ]
+        },
+        {
+          "name": "totalValue",
+          "startLine": 67,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "liquidateAt",
+          "startLine": 76,
+          "endLine": 89,
+          "params": [
+            "year",
+            "txCostBps"
+          ]
+        },
+        {
+          "name": "applyAllocation",
+          "startLine": 95,
+          "endLine": 111,
+          "params": [
+            "alloc",
+            "year",
+            "txCostBps"
+          ]
+        },
+        {
+          "name": "priceAt",
+          "startLine": 113,
+          "endLine": 119,
+          "params": [
+            "stockId",
+            "year"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PortfolioState",
+          "startLine": 25,
+          "endLine": 135,
+          "methods": [
+            "cash",
+            "PortfolioState",
+            "cash",
+            "holdings",
+            "markToMarket",
+            "totalValue",
+            "liquidateAt",
+            "applyAllocation",
+            "priceAt"
+          ],
+          "properties": [
+            "THOUSAND",
+            "TEN_THOUSAND",
+            "cash",
+            "lastValue",
+            "holdings",
+            "universe"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cash",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "cash",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "holdings",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "markToMarket",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "totalValue",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "liquidateAt",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "applyAllocation",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "PortfolioState",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cash",
+          "callee": "new PortfolioState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "holdings.values",
+          "lineNumber": 56
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "priceAt",
+          "lineNumber": 57
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "p.stockId",
+          "lineNumber": 57
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "value.add",
+          "lineNumber": 61
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "p.lastPriceVnd.multiply",
+          "lineNumber": 61
+        },
+        {
+          "caller": "markToMarket",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 61
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "holdings.values",
+          "lineNumber": 78
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "priceAt",
+          "lineNumber": 79
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "p.stockId",
+          "lineNumber": 79
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "gross.add",
+          "lineNumber": 81
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "px.multiply",
+          "lineNumber": 81
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 81
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "holdings.clear",
+          "lineNumber": 83
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "BigDecimal.ONE.subtract",
+          "lineNumber": 84
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "BigDecimal.valueOf(txCostBps).divide",
+          "lineNumber": 85
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 85
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "cash.add",
+          "lineNumber": 86
+        },
+        {
+          "caller": "liquidateAt",
+          "callee": "gross.multiply",
+          "lineNumber": 86
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "alloc.getAllocations",
+          "lineNumber": 96
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "alloc.getAllocations",
+          "lineNumber": 98
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getShares",
+          "lineNumber": 99
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getPricePerShare",
+          "lineNumber": 100
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "new Position",
+          "lineNumber": 102
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getStockId",
+          "lineNumber": 102
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getShares",
+          "lineNumber": 102
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "holdings.put",
+          "lineNumber": 103
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getStockId",
+          "lineNumber": 103
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "spent.add",
+          "lineNumber": 104
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "px.multiply",
+          "lineNumber": 104
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 104
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "a.getShares",
+          "lineNumber": 104
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "spent\n                .multiply(BigDecimal.valueOf(txCostBps)).divide",
+          "lineNumber": 106
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "spent.multiply",
+          "lineNumber": 106
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 107
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "cash.subtract(spent).subtract",
+          "lineNumber": 109
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "cash.subtract",
+          "lineNumber": 109
+        },
+        {
+          "caller": "applyAllocation",
+          "callee": "markToMarket",
+          "lineNumber": 110
+        },
+        {
+          "caller": "priceAt",
+          "callee": "universe.get",
+          "lineNumber": 114
+        },
+        {
+          "caller": "priceAt",
+          "callee": "s.getYearData",
+          "lineNumber": 115
+        },
+        {
+          "caller": "priceAt",
+          "callee": "s.getYearData().get",
+          "lineNumber": 116
+        },
+        {
+          "caller": "priceAt",
+          "callee": "s.getYearData",
+          "lineNumber": 116
+        },
+        {
+          "caller": "priceAt",
+          "callee": "yd.getPriceEndYear",
+          "lineNumber": 117
+        },
+        {
+          "caller": "priceAt",
+          "callee": "yd.getPriceEndYear().multiply",
+          "lineNumber": 118
+        },
+        {
+          "caller": "priceAt",
+          "callee": "yd.getPriceEndYear",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 9,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/RebalanceLog.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 20,
+      "functions": [
+        {
+          "name": "add",
+          "startLine": 17,
+          "endLine": 21,
+          "params": [
+            "year",
+            "ranked",
+            "alloc"
+          ]
+        },
+        {
+          "name": "entries",
+          "startLine": 23,
+          "endLine": 25,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "RebalanceLog",
+          "startLine": 12,
+          "endLine": 26,
+          "methods": [
+            "add",
+            "entries"
+          ],
+          "properties": [
+            "entries"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "add",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "entries",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "RebalanceLog",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "add",
+          "callee": "Math.min",
+          "lineNumber": 19
+        },
+        {
+          "caller": "add",
+          "callee": "ranked.size",
+          "lineNumber": 19
+        },
+        {
+          "caller": "add",
+          "callee": "entries.add",
+          "lineNumber": 20
+        },
+        {
+          "caller": "add",
+          "callee": "new Entry",
+          "lineNumber": 20
+        },
+        {
+          "caller": "add",
+          "callee": "new ArrayList<>",
+          "lineNumber": 20
+        },
+        {
+          "caller": "add",
+          "callee": "ranked.subList",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/SnapshotBuilder.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 149,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "SnapshotBuilder",
+          "startLine": 41,
+          "endLine": 45,
+          "params": [
+            "valuationCalculator",
+            "industryMedianCalculator"
+          ]
+        },
+        {
+          "name": "build",
+          "startLine": 47,
+          "endLine": 130,
+          "params": [
+            "universe",
+            "asOfYear"
+          ]
+        },
+        {
+          "name": "usableCriteriaCount",
+          "startLine": 132,
+          "endLine": 144,
+          "params": [
+            "c",
+            "asOfYear"
+          ]
+        },
+        {
+          "name": "positive",
+          "startLine": 146,
+          "endLine": 148,
+          "params": [
+            "v"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SnapshotBuilder",
+          "startLine": 33,
+          "endLine": 149,
+          "methods": [
+            "SnapshotBuilder",
+            "build",
+            "usableCriteriaCount",
+            "positive"
+          ],
+          "properties": [
+            "logger",
+            "valuationCalculator",
+            "industryMedianCalculator"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SnapshotBuilder",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "build",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "SnapshotBuilder",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "build",
+          "callee": "new ArrayList<>",
+          "lineNumber": 48
+        },
+        {
+          "caller": "build",
+          "callee": "universe.size",
+          "lineNumber": 48
+        },
+        {
+          "caller": "build",
+          "callee": "StockEntityCloner.clone",
+          "lineNumber": 52
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 53
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet().removeIf",
+          "lineNumber": 55
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet",
+          "lineNumber": 55
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 55
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().get",
+          "lineNumber": 57
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 57
+        },
+        {
+          "caller": "build",
+          "callee": "current.getPriceEndYear",
+          "lineNumber": 58
+        },
+        {
+          "caller": "build",
+          "callee": "current.getPriceEndYear().compareTo",
+          "lineNumber": 59
+        },
+        {
+          "caller": "build",
+          "callee": "current.getPriceEndYear",
+          "lineNumber": 59
+        },
+        {
+          "caller": "build",
+          "callee": "c.setMatchPrice",
+          "lineNumber": 64
+        },
+        {
+          "caller": "build",
+          "callee": "current.getPriceEndYear",
+          "lineNumber": 64
+        },
+        {
+          "caller": "build",
+          "callee": "c.setPeRatio",
+          "lineNumber": 68
+        },
+        {
+          "caller": "build",
+          "callee": "valuationCalculator.calculatePE",
+          "lineNumber": 68
+        },
+        {
+          "caller": "build",
+          "callee": "c.setPbRatio",
+          "lineNumber": 69
+        },
+        {
+          "caller": "build",
+          "callee": "valuationCalculator.calculatePBV",
+          "lineNumber": 69
+        },
+        {
+          "caller": "build",
+          "callee": "c.setPcfRatio",
+          "lineNumber": 70
+        },
+        {
+          "caller": "build",
+          "callee": "valuationCalculator.calculatePCF",
+          "lineNumber": 70
+        },
+        {
+          "caller": "build",
+          "callee": "c.setPsRatio",
+          "lineNumber": 71
+        },
+        {
+          "caller": "build",
+          "callee": "valuationCalculator.calculatePS",
+          "lineNumber": 71
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPeRatio",
+          "lineNumber": 74
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPbRatio",
+          "lineNumber": 75
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPcfRatio",
+          "lineNumber": 76
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPsRatio",
+          "lineNumber": 77
+        },
+        {
+          "caller": "build",
+          "callee": "clones.add",
+          "lineNumber": 79
+        },
+        {
+          "caller": "build",
+          "callee": "industryMedianCalculator.computeMediansBySector",
+          "lineNumber": 84
+        },
+        {
+          "caller": "build",
+          "callee": "mediansBySector.getOrDefault",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build",
+          "callee": "c.getSector",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build",
+          "callee": "Map.of",
+          "lineNumber": 87
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPeRatio",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build",
+          "callee": "m.get",
+          "lineNumber": 88
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPbRatio",
+          "lineNumber": 89
+        },
+        {
+          "caller": "build",
+          "callee": "m.get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPcfRatio",
+          "lineNumber": 90
+        },
+        {
+          "caller": "build",
+          "callee": "m.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "build",
+          "callee": "c.setIndustryPsRatio",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build",
+          "callee": "m.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 96
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 97
+        },
+        {
+          "caller": "build",
+          "callee": "new ArrayList<>",
+          "lineNumber": 99
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet().stream().mapToInt(Integer::intValue).min().orElse",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet().stream().mapToInt(Integer::intValue).min",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet().stream().mapToInt",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet().stream",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().keySet",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 100
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData().get",
+          "lineNumber": 102
+        },
+        {
+          "caller": "build",
+          "callee": "c.getYearData",
+          "lineNumber": 102
+        },
+        {
+          "caller": "build",
+          "callee": "history.add",
+          "lineNumber": 103
+        },
+        {
+          "caller": "build",
+          "callee": "new HashMap<>",
+          "lineNumber": 106
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPeRatio",
+          "lineNumber": 107
+        },
+        {
+          "caller": "build",
+          "callee": "industryMultiples.put",
+          "lineNumber": 107
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPeRatio",
+          "lineNumber": 107
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPbRatio",
+          "lineNumber": 108
+        },
+        {
+          "caller": "build",
+          "callee": "industryMultiples.put",
+          "lineNumber": 108
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPbRatio",
+          "lineNumber": 108
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPcfRatio",
+          "lineNumber": 109
+        },
+        {
+          "caller": "build",
+          "callee": "industryMultiples.put",
+          "lineNumber": 109
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPcfRatio",
+          "lineNumber": 109
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPsRatio",
+          "lineNumber": 110
+        },
+        {
+          "caller": "build",
+          "callee": "industryMultiples.put",
+          "lineNumber": 110
+        },
+        {
+          "caller": "build",
+          "callee": "c.getIndustryPsRatio",
+          "lineNumber": 110
+        },
+        {
+          "caller": "build",
+          "callee": "valuationCalculator.calculateAllValuations",
+          "lineNumber": 113
+        },
+        {
+          "caller": "build",
+          "callee": "logger.debug",
+          "lineNumber": 115
+        },
+        {
+          "caller": "build",
+          "callee": "c.getStockId",
+          "lineNumber": 115
+        },
+        {
+          "caller": "build",
+          "callee": "ex.getMessage",
+          "lineNumber": 115
+        },
+        {
+          "caller": "build",
+          "callee": "new ArrayList<>",
+          "lineNumber": 120
+        },
+        {
+          "caller": "build",
+          "callee": "clones.size",
+          "lineNumber": 120
+        },
+        {
+          "caller": "build",
+          "callee": "usableCriteriaCount",
+          "lineNumber": 122
+        },
+        {
+          "caller": "build",
+          "callee": "eligible.add",
+          "lineNumber": 123
+        },
+        {
+          "caller": "build",
+          "callee": "logger.info",
+          "lineNumber": 127
+        },
+        {
+          "caller": "build",
+          "callee": "universe.size",
+          "lineNumber": 128
+        },
+        {
+          "caller": "build",
+          "callee": "clones.size",
+          "lineNumber": 128
+        },
+        {
+          "caller": "build",
+          "callee": "eligible.size",
+          "lineNumber": 128
+        },
+        {
+          "caller": "build",
+          "callee": "new HistoricalSnapshot",
+          "lineNumber": 129
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getYearData().get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getYearData",
+          "lineNumber": 134
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 136
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "yd.getDdm",
+          "lineNumber": 136
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 137
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "yd.getDcf",
+          "lineNumber": 137
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 138
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "yd.getRi",
+          "lineNumber": 138
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 139
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getPeRatio",
+          "lineNumber": 139
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getIndustryPeRatio",
+          "lineNumber": 139
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 140
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getPbRatio",
+          "lineNumber": 140
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getIndustryPbRatio",
+          "lineNumber": 140
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 141
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getPcfRatio",
+          "lineNumber": 141
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getIndustryPcfRatio",
+          "lineNumber": 141
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "positive",
+          "lineNumber": 142
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getPsRatio",
+          "lineNumber": 142
+        },
+        {
+          "caller": "usableCriteriaCount",
+          "callee": "c.getIndustryPsRatio",
+          "lineNumber": 142
+        },
+        {
+          "caller": "positive",
+          "callee": "v.compareTo",
+          "lineNumber": 147
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/backtest/StockEntityCloner.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 66,
+      "functions": [
+        {
+          "name": "StockEntityCloner",
+          "startLine": 21,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "clone",
+          "startLine": 23,
+          "endLine": 47,
+          "params": [
+            "src"
+          ]
+        },
+        {
+          "name": "cloneYearData",
+          "startLine": 49,
+          "endLine": 72,
+          "params": [
+            "s"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StockEntityCloner",
+          "startLine": 19,
+          "endLine": 73,
+          "methods": [
+            "StockEntityCloner",
+            "clone",
+            "cloneYearData"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "clone",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "cloneYearData",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "StockEntityCloner",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "clone",
+          "callee": "new StockEntity",
+          "lineNumber": 25
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setStockId",
+          "lineNumber": 26
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getStockId",
+          "lineNumber": 26
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setStockName",
+          "lineNumber": 27
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getStockName",
+          "lineNumber": 27
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setSector",
+          "lineNumber": 28
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getSector",
+          "lineNumber": 28
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setMatchPrice",
+          "lineNumber": 29
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getMatchPrice",
+          "lineNumber": 29
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setPeRatio",
+          "lineNumber": 30
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getPeRatio",
+          "lineNumber": 30
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setPbRatio",
+          "lineNumber": 31
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getPbRatio",
+          "lineNumber": 31
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setPcfRatio",
+          "lineNumber": 32
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getPcfRatio",
+          "lineNumber": 32
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setPsRatio",
+          "lineNumber": 33
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getPsRatio",
+          "lineNumber": 33
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setIndustryPeRatio",
+          "lineNumber": 34
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getIndustryPeRatio",
+          "lineNumber": 34
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setIndustryPbRatio",
+          "lineNumber": 35
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getIndustryPbRatio",
+          "lineNumber": 35
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setIndustryPcfRatio",
+          "lineNumber": 36
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getIndustryPcfRatio",
+          "lineNumber": 36
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setIndustryPsRatio",
+          "lineNumber": 37
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getIndustryPsRatio",
+          "lineNumber": 37
+        },
+        {
+          "caller": "clone",
+          "callee": "new HashMap<>",
+          "lineNumber": 39
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getYearData",
+          "lineNumber": 40
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getYearData().entrySet",
+          "lineNumber": 41
+        },
+        {
+          "caller": "clone",
+          "callee": "src.getYearData",
+          "lineNumber": 41
+        },
+        {
+          "caller": "clone",
+          "callee": "yd.put",
+          "lineNumber": 42
+        },
+        {
+          "caller": "clone",
+          "callee": "e.getKey",
+          "lineNumber": 42
+        },
+        {
+          "caller": "clone",
+          "callee": "cloneYearData",
+          "lineNumber": 42
+        },
+        {
+          "caller": "clone",
+          "callee": "e.getValue",
+          "lineNumber": 42
+        },
+        {
+          "caller": "clone",
+          "callee": "c.setYearData",
+          "lineNumber": 45
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "new StockYearData",
+          "lineNumber": 51
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setNetIncome",
+          "lineNumber": 52
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getNetIncome",
+          "lineNumber": 52
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setTotalEquity",
+          "lineNumber": 53
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getTotalEquity",
+          "lineNumber": 53
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setIntangibles",
+          "lineNumber": 54
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getIntangibles",
+          "lineNumber": 54
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setOperatingCashFlow",
+          "lineNumber": 55
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getOperatingCashFlow",
+          "lineNumber": 55
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setFreeCashFlow",
+          "lineNumber": 56
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getFreeCashFlow",
+          "lineNumber": 56
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setRevenue",
+          "lineNumber": 57
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getRevenue",
+          "lineNumber": 57
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setDividendPerShare",
+          "lineNumber": 58
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getDividendPerShare",
+          "lineNumber": 58
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setSharesOutstanding",
+          "lineNumber": 59
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getSharesOutstanding",
+          "lineNumber": 59
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setPriceEndYear",
+          "lineNumber": 60
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getPriceEndYear",
+          "lineNumber": 60
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setCostOfEquity",
+          "lineNumber": 61
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getCostOfEquity",
+          "lineNumber": 61
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setWacc",
+          "lineNumber": 62
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getWacc",
+          "lineNumber": 62
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setDividendGrowthRate",
+          "lineNumber": 63
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getDividendGrowthRate",
+          "lineNumber": 63
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setDdm",
+          "lineNumber": 64
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getDdm",
+          "lineNumber": 64
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setDcf",
+          "lineNumber": 65
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getDcf",
+          "lineNumber": 65
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setRi",
+          "lineNumber": 66
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getRi",
+          "lineNumber": 66
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setPe",
+          "lineNumber": 67
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getPe",
+          "lineNumber": 67
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setPbv",
+          "lineNumber": 68
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getPbv",
+          "lineNumber": 68
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setPcf",
+          "lineNumber": 69
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getPcf",
+          "lineNumber": 69
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "d.setPs",
+          "lineNumber": 70
+        },
+        {
+          "caller": "cloneYearData",
+          "callee": "s.getPs",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/PortfolioAllocationResult.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "classes": [
+        {
+          "name": "PortfolioAllocationResult",
+          "startLine": 11,
+          "endLine": 22,
+          "methods": [],
+          "properties": [
+            "allocations",
+            "totalInvestment",
+            "remainingBudget",
+            "budget",
+            "numberOfStocks",
+            "budgetUtilizationPercent"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PortfolioAllocationResult",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/RankedStockDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "classes": [
+        {
+          "name": "RankedStockDto",
+          "startLine": 10,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "stockName",
+            "topsisScore",
+            "matchPrice"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "RankedStockDto",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/dto/StockAllocationDto.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 19,
+      "classes": [
+        {
+          "name": "StockAllocationDto",
+          "startLine": 10,
+          "endLine": 22,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "stockName",
+            "shares",
+            "pricePerShare",
+            "totalCost",
+            "topsisScore",
+            "allocationPercentage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockAllocationDto",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/model/StockEntity.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 75,
+      "classes": [
+        {
+          "name": "StockEntity",
+          "startLine": 12,
+          "endLine": 81,
+          "methods": [],
+          "properties": [
+            "stockId",
+            "stockName",
+            "sector",
+            "matchPrice",
+            "peRatio",
+            "pbRatio",
+            "pcfRatio",
+            "psRatio",
+            "industryPeRatio",
+            "industryPbRatio",
+            "industryPcfRatio",
+            "industryPsRatio",
+            "favoredByUsers",
+            "yearData"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StockEntity",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/OvervaluationDetector.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 56,
+      "functions": [
+        {
+          "name": "evaluate",
+          "startLine": 19,
+          "endLine": 54,
+          "params": [
+            "stock",
+            "latestYearData"
+          ]
+        },
+        {
+          "name": "isGreater",
+          "startLine": 56,
+          "endLine": 59,
+          "params": [
+            "value",
+            "target"
+          ]
+        },
+        {
+          "name": "evaluatePEG",
+          "startLine": 61,
+          "endLine": 67,
+          "params": [
+            "peRatio",
+            "dividendGrowthRate"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OvervaluationDetector",
+          "startLine": 15,
+          "endLine": 68,
+          "methods": [
+            "evaluate",
+            "isGreater",
+            "evaluatePEG"
+          ],
+          "properties": [
+            "THRESHOLD"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "evaluate",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "OvervaluationDetector",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "evaluate",
+          "callee": "new LinkedHashMap<>",
+          "lineNumber": 20
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getMatchPrice().multiply",
+          "lineNumber": 22
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 22
+        },
+        {
+          "caller": "evaluate",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 22
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getPeRatio",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getIndustryPeRatio",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 27
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 27
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getPbRatio",
+          "lineNumber": 27
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getIndustryPbRatio",
+          "lineNumber": 27
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 29
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 29
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getPcfRatio",
+          "lineNumber": 29
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getIndustryPcfRatio",
+          "lineNumber": 29
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 31
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 31
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getPsRatio",
+          "lineNumber": 31
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getIndustryPsRatio",
+          "lineNumber": 31
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 33
+        },
+        {
+          "caller": "evaluate",
+          "callee": "evaluatePEG",
+          "lineNumber": 33
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getPeRatio",
+          "lineNumber": 33
+        },
+        {
+          "caller": "evaluate",
+          "callee": "latestYearData.getDividendGrowthRate",
+          "lineNumber": 33
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 35
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 35
+        },
+        {
+          "caller": "evaluate",
+          "callee": "latestYearData.getDdm",
+          "lineNumber": 35
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 37
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 37
+        },
+        {
+          "caller": "evaluate",
+          "callee": "latestYearData.getDcf",
+          "lineNumber": 37
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.put",
+          "lineNumber": 39
+        },
+        {
+          "caller": "evaluate",
+          "callee": "isGreater",
+          "lineNumber": 39
+        },
+        {
+          "caller": "evaluate",
+          "callee": "latestYearData.getRi",
+          "lineNumber": 39
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream().filter(v -> v != null).count",
+          "lineNumber": 41
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream().filter",
+          "lineNumber": 41
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream",
+          "lineNumber": 41
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values",
+          "lineNumber": 41
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream().filter(v -> Boolean.TRUE.equals(v)).count",
+          "lineNumber": 42
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream().filter",
+          "lineNumber": 42
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values().stream",
+          "lineNumber": 42
+        },
+        {
+          "caller": "evaluate",
+          "callee": "results.values",
+          "lineNumber": 42
+        },
+        {
+          "caller": "evaluate",
+          "callee": "Boolean.TRUE.equals",
+          "lineNumber": 42
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).\n                totalIndicators((int) total).\n                overvaluedCount((int) overcount).\n                overvaluePercent(percent).\n                overvalued(percent >= THRESHOLD * 100).\n                indicatorResults(results).build",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).\n                totalIndicators((int) total).\n                overvaluedCount((int) overcount).\n                overvaluePercent(percent).\n                overvalued(percent >= THRESHOLD * 100).indicatorResults",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).\n                totalIndicators((int) total).\n                overvaluedCount((int) overcount).\n                overvaluePercent(percent).overvalued",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).\n                totalIndicators((int) total).\n                overvaluedCount((int) overcount).overvaluePercent",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).\n                totalIndicators((int) total).overvaluedCount",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).\n                stockName(stock.getStockName()).totalIndicators",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().\n                stockId(stock.getStockId()).stockName",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder().stockId",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "OvervaluationResult.builder",
+          "lineNumber": 45
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getStockId",
+          "lineNumber": 46
+        },
+        {
+          "caller": "evaluate",
+          "callee": "stock.getStockName",
+          "lineNumber": 47
+        },
+        {
+          "caller": "isGreater",
+          "callee": "value.compareTo",
+          "lineNumber": 58
+        },
+        {
+          "caller": "evaluatePEG",
+          "callee": "dividendGrowthRate.compareTo",
+          "lineNumber": 63
+        },
+        {
+          "caller": "evaluatePEG",
+          "callee": "peRatio.divide",
+          "lineNumber": 64
+        },
+        {
+          "caller": "evaluatePEG",
+          "callee": "dividendGrowthRate.multiply",
+          "lineNumber": 65
+        },
+        {
+          "caller": "evaluatePEG",
+          "callee": "BigDecimal.valueOf",
+          "lineNumber": 65
+        },
+        {
+          "caller": "evaluatePEG",
+          "callee": "peg.compareTo",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/StockValuationCalculator.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 375,
+      "nonEmptyLines": 309,
+      "functions": [
+        {
+          "name": "calculateDDM",
+          "startLine": 27,
+          "endLine": 53,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "calculateDCF",
+          "startLine": 60,
+          "endLine": 120,
+          "params": [
+            "historicalData",
+            "currentData",
+            "projectionYears"
+          ]
+        },
+        {
+          "name": "calculateAverageFCFFGrowth",
+          "startLine": 125,
+          "endLine": 163,
+          "params": [
+            "historicalData"
+          ]
+        },
+        {
+          "name": "calculateRI",
+          "startLine": 170,
+          "endLine": 223,
+          "params": [
+            "currentData",
+            "previousData",
+            "projectionYears"
+          ]
+        },
+        {
+          "name": "calculatePE",
+          "startLine": 229,
+          "endLine": 246,
+          "params": [
+            "data",
+            "unusedIndustryPE"
+          ]
+        },
+        {
+          "name": "calculatePBV",
+          "startLine": 252,
+          "endLine": 269,
+          "params": [
+            "data",
+            "unusedIndustryPB"
+          ]
+        },
+        {
+          "name": "calculatePCF",
+          "startLine": 275,
+          "endLine": 290,
+          "params": [
+            "data",
+            "unusedIndustryPCF"
+          ]
+        },
+        {
+          "name": "calculatePS",
+          "startLine": 296,
+          "endLine": 311,
+          "params": [
+            "data",
+            "unusedIndustryPS"
+          ]
+        },
+        {
+          "name": "calculateAllValuations",
+          "startLine": 316,
+          "endLine": 343,
+          "params": [
+            "currentData",
+            "previousData",
+            "historicalData",
+            "industryMultiples"
+          ]
+        },
+        {
+          "name": "calculateCompositeFairValue",
+          "startLine": 349,
+          "endLine": 374,
+          "params": [
+            "data"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StockValuationCalculator",
+          "startLine": 19,
+          "endLine": 375,
+          "methods": [
+            "calculateDDM",
+            "calculateDCF",
+            "calculateAverageFCFFGrowth",
+            "calculateRI",
+            "calculatePE",
+            "calculatePBV",
+            "calculatePCF",
+            "calculatePS",
+            "calculateAllValuations",
+            "calculateCompositeFairValue"
+          ],
+          "properties": [
+            "logger"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "calculateDDM",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "calculateDCF",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "calculateRI",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePE",
+          "line": 229,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePBV",
+          "line": 252,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePCF",
+          "line": 275,
+          "isDefault": false
+        },
+        {
+          "name": "calculatePS",
+          "line": 296,
+          "isDefault": false
+        },
+        {
+          "name": "calculateAllValuations",
+          "line": 316,
+          "isDefault": false
+        },
+        {
+          "name": "calculateCompositeFairValue",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "StockValuationCalculator",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getDividendPerShare",
+          "lineNumber": 28
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getCostOfEquity",
+          "lineNumber": 29
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getDividendGrowthRate",
+          "lineNumber": 30
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "logger.warn",
+          "lineNumber": 31
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getCostOfEquity",
+          "lineNumber": 35
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getDividendGrowthRate",
+          "lineNumber": 36
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "costOfEquity.compareTo",
+          "lineNumber": 39
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "logger.warn",
+          "lineNumber": 40
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getDividendPerShare().multiply",
+          "lineNumber": 46
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "data.getDividendPerShare",
+          "lineNumber": 46
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 47
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "costOfEquity.subtract",
+          "lineNumber": 50
+        },
+        {
+          "caller": "calculateDDM",
+          "callee": "nextDividend.divide",
+          "lineNumber": 52
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getFreeCashFlow",
+          "lineNumber": 63
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getWacc",
+          "lineNumber": 64
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getSharesOutstanding",
+          "lineNumber": 65
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "logger.warn",
+          "lineNumber": 66
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getWacc",
+          "lineNumber": 70
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "new BigDecimal",
+          "lineNumber": 71
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "calculateAverageFCFFGrowth",
+          "lineNumber": 74
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getFreeCashFlow",
+          "lineNumber": 78
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "lastFCFF.multiply",
+          "lineNumber": 83
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 83
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add(wacc).pow",
+          "lineNumber": 86
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 86
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "new MathContext",
+          "lineNumber": 87
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "projectedFCFF.divide",
+          "lineNumber": 90
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "pvCashFlows.add",
+          "lineNumber": 91
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "wacc.compareTo",
+          "lineNumber": 97
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "logger.warn",
+          "lineNumber": 98
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "lastFCFF.multiply",
+          "lineNumber": 104
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 104
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "terminalFCFF.divide",
+          "lineNumber": 105
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "wacc.subtract",
+          "lineNumber": 106
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add(wacc).pow",
+          "lineNumber": 110
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 110
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "new MathContext",
+          "lineNumber": 111
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "terminalValue.divide",
+          "lineNumber": 112
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "pvCashFlows.add",
+          "lineNumber": 115
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "new BigDecimal",
+          "lineNumber": 118
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "currentData.getSharesOutstanding",
+          "lineNumber": 118
+        },
+        {
+          "caller": "calculateDCF",
+          "callee": "enterpriseValue.divide",
+          "lineNumber": 119
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.size",
+          "lineNumber": 126
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 127
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.size",
+          "lineNumber": 133
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.get(i).getFreeCashFlow",
+          "lineNumber": 134
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.get(i-1).getFreeCashFlow",
+          "lineNumber": 135
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "historicalData.get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "previousFCFF.compareTo",
+          "lineNumber": 138
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "currentFCFF.subtract(previousFCFF).divide",
+          "lineNumber": 139
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "currentFCFF.subtract",
+          "lineNumber": 139
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "totalGrowth.add",
+          "lineNumber": 141
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "totalGrowth.divide",
+          "lineNumber": 147
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 147
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "avgGrowth.compareTo",
+          "lineNumber": 150
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 150
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "logger.warn",
+          "lineNumber": 151
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 152
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "avgGrowth.compareTo",
+          "lineNumber": 154
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 154
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "logger.warn",
+          "lineNumber": 155
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 156
+        },
+        {
+          "caller": "calculateAverageFCFFGrowth",
+          "callee": "new BigDecimal",
+          "lineNumber": 162
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getNetIncome",
+          "lineNumber": 173
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getTotalEquity",
+          "lineNumber": 174
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getIntangibles",
+          "lineNumber": 175
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getCostOfEquity",
+          "lineNumber": 176
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getSharesOutstanding",
+          "lineNumber": 177
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "logger.warn",
+          "lineNumber": 178
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getCostOfEquity",
+          "lineNumber": 182
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getTotalEquity().subtract",
+          "lineNumber": 185
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getTotalEquity",
+          "lineNumber": 185
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getIntangibles",
+          "lineNumber": 186
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousData.getTotalEquity",
+          "lineNumber": 190
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousData.getIntangibles",
+          "lineNumber": 191
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousData.getTotalEquity().subtract",
+          "lineNumber": 192
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousData.getTotalEquity",
+          "lineNumber": 192
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousData.getIntangibles",
+          "lineNumber": 192
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "previousBV.multiply",
+          "lineNumber": 196
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getNetIncome().subtract",
+          "lineNumber": 197
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getNetIncome",
+          "lineNumber": 197
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "new BigDecimal",
+          "lineNumber": 202
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "lastAE.multiply",
+          "lineNumber": 206
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "BigDecimal.ONE.add(costOfEquity).pow",
+          "lineNumber": 209
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "BigDecimal.ONE.add",
+          "lineNumber": 209
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "new MathContext",
+          "lineNumber": 210
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "projectedAE.divide",
+          "lineNumber": 211
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "pvAbnormalEarnings.add",
+          "lineNumber": 213
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentBookValue.add",
+          "lineNumber": 218
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "new BigDecimal",
+          "lineNumber": 221
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "currentData.getSharesOutstanding",
+          "lineNumber": 221
+        },
+        {
+          "caller": "calculateRI",
+          "callee": "equityValue.divide",
+          "lineNumber": 222
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getNetIncome",
+          "lineNumber": 230
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 230
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 230
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "logger.warn",
+          "lineNumber": 231
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getNetIncome().divide",
+          "lineNumber": 236
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getNetIncome",
+          "lineNumber": 236
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "new BigDecimal",
+          "lineNumber": 237
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 237
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "eps.compareTo",
+          "lineNumber": 239
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "logger.warn",
+          "lineNumber": 240
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getPriceEndYear().divide",
+          "lineNumber": 245
+        },
+        {
+          "caller": "calculatePE",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 245
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getTotalEquity",
+          "lineNumber": 253
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getIntangibles",
+          "lineNumber": 253
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 254
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 254
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "logger.warn",
+          "lineNumber": 255
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getTotalEquity().subtract",
+          "lineNumber": 260
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getTotalEquity",
+          "lineNumber": 260
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getIntangibles",
+          "lineNumber": 260
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "tangibleBookValue.divide",
+          "lineNumber": 261
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "new BigDecimal",
+          "lineNumber": 261
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 261
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "bvps.compareTo",
+          "lineNumber": 263
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "logger.warn",
+          "lineNumber": 264
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getPriceEndYear().divide",
+          "lineNumber": 268
+        },
+        {
+          "caller": "calculatePBV",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 268
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getOperatingCashFlow",
+          "lineNumber": 276
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 276
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 276
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "logger.warn",
+          "lineNumber": 277
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getOperatingCashFlow().divide",
+          "lineNumber": 281
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getOperatingCashFlow",
+          "lineNumber": 281
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "new BigDecimal",
+          "lineNumber": 282
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 282
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "cfps.compareTo",
+          "lineNumber": 284
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "logger.warn",
+          "lineNumber": 285
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getPriceEndYear().divide",
+          "lineNumber": 289
+        },
+        {
+          "caller": "calculatePCF",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 289
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getRevenue",
+          "lineNumber": 297
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 297
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 297
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "logger.warn",
+          "lineNumber": 298
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getRevenue().divide",
+          "lineNumber": 302
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getRevenue",
+          "lineNumber": 302
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "new BigDecimal",
+          "lineNumber": 303
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getSharesOutstanding",
+          "lineNumber": 303
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "sps.compareTo",
+          "lineNumber": 305
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "logger.warn",
+          "lineNumber": 306
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getPriceEndYear().divide",
+          "lineNumber": 310
+        },
+        {
+          "caller": "calculatePS",
+          "callee": "data.getPriceEndYear",
+          "lineNumber": 310
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "logger.info",
+          "lineNumber": 321
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setDdm",
+          "lineNumber": 324
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculateDDM",
+          "lineNumber": 324
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setDcf",
+          "lineNumber": 325
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculateDCF",
+          "lineNumber": 325
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setRi",
+          "lineNumber": 326
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculateRI",
+          "lineNumber": 326
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "industryMultiples.isEmpty",
+          "lineNumber": 329
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setPe",
+          "lineNumber": 330
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculatePE",
+          "lineNumber": 330
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "industryMultiples.get",
+          "lineNumber": 330
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setPbv",
+          "lineNumber": 331
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculatePBV",
+          "lineNumber": 331
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "industryMultiples.get",
+          "lineNumber": 331
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setPcf",
+          "lineNumber": 332
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculatePCF",
+          "lineNumber": 332
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "industryMultiples.get",
+          "lineNumber": 332
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "currentData.setPs",
+          "lineNumber": 333
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "calculatePS",
+          "lineNumber": 333
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "industryMultiples.get",
+          "lineNumber": 333
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "logger.warn",
+          "lineNumber": 335
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "logger.info",
+          "lineNumber": 338
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "logger.error",
+          "lineNumber": 340
+        },
+        {
+          "caller": "calculateAllValuations",
+          "callee": "new RuntimeException",
+          "lineNumber": 341
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "Arrays.asList",
+          "lineNumber": 350
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getDdm",
+          "lineNumber": 351
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getDcf",
+          "lineNumber": 351
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getRi",
+          "lineNumber": 351
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getPe",
+          "lineNumber": 352
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getPbv",
+          "lineNumber": 352
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getPcf",
+          "lineNumber": 352
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "data.getPs",
+          "lineNumber": 352
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "valuations.stream()\n            .filter(Objects::nonNull).collect",
+          "lineNumber": 356
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "valuations.stream().filter",
+          "lineNumber": 356
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "valuations.stream",
+          "lineNumber": 356
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "Collectors.toList",
+          "lineNumber": 358
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.isEmpty",
+          "lineNumber": 360
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "Collections.sort",
+          "lineNumber": 365
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.size",
+          "lineNumber": 366
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.get(size/2 - 1)\n                .add(validValuations.get(size/2)).divide",
+          "lineNumber": 368
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.get(size/2 - 1).add",
+          "lineNumber": 368
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.get",
+          "lineNumber": 368
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.get",
+          "lineNumber": 369
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "new BigDecimal",
+          "lineNumber": 370
+        },
+        {
+          "caller": "calculateCompositeFairValue",
+          "callee": "validValuations.get",
+          "lineNumber": 372
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/main/java/com/finsight/marketrealtime/valuation/TopsisCalculator.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 259,
+      "nonEmptyLines": 224,
+      "functions": [
+        {
+          "name": "rank",
+          "startLine": 30,
+          "endLine": 100,
+          "params": [
+            "stocks",
+            "ahpWeights"
+          ]
+        },
+        {
+          "name": "buildCriteriaRow",
+          "startLine": 108,
+          "endLine": 177,
+          "params": [
+            "stock"
+          ]
+        },
+        {
+          "name": "copyMatrix",
+          "startLine": 179,
+          "endLine": 185,
+          "params": [
+            "src"
+          ]
+        },
+        {
+          "name": "criterionOrderByDescendingWeight",
+          "startLine": 191,
+          "endLine": 205,
+          "params": [
+            "weights"
+          ]
+        },
+        {
+          "name": "compareByTopsisThenCriteria",
+          "startLine": 207,
+          "endLine": 225,
+          "params": [
+            "roundedScores",
+            "normalizedOnly",
+            "criterionOrder",
+            "eligible"
+          ]
+        },
+        {
+          "name": "vectorNormalize",
+          "startLine": 227,
+          "endLine": 241,
+          "params": [
+            "matrix"
+          ]
+        },
+        {
+          "name": "applyWeights",
+          "startLine": 243,
+          "endLine": 249,
+          "params": [
+            "matrix",
+            "weights"
+          ]
+        },
+        {
+          "name": "euclidean",
+          "startLine": 251,
+          "endLine": 258,
+          "params": [
+            "a",
+            "b"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TopsisCalculator",
+          "startLine": 25,
+          "endLine": 259,
+          "methods": [
+            "rank",
+            "buildCriteriaRow",
+            "copyMatrix",
+            "criterionOrderByDescendingWeight",
+            "compareByTopsisThenCriteria",
+            "vectorNormalize",
+            "applyWeights",
+            "euclidean"
+          ],
+          "properties": [
+            "logger",
+            "NUM_CRITERIA"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "rank",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "TopsisCalculator",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "rank",
+          "callee": "stocks.isEmpty",
+          "lineNumber": 31
+        },
+        {
+          "caller": "rank",
+          "callee": "List.of",
+          "lineNumber": 32
+        },
+        {
+          "caller": "rank",
+          "callee": "new IllegalArgumentException",
+          "lineNumber": 35
+        },
+        {
+          "caller": "rank",
+          "callee": "new ArrayList<>",
+          "lineNumber": 40
+        },
+        {
+          "caller": "rank",
+          "callee": "new ArrayList<>",
+          "lineNumber": 41
+        },
+        {
+          "caller": "rank",
+          "callee": "buildCriteriaRow",
+          "lineNumber": 44
+        },
+        {
+          "caller": "rank",
+          "callee": "eligible.add",
+          "lineNumber": 46
+        },
+        {
+          "caller": "rank",
+          "callee": "rows.add",
+          "lineNumber": 47
+        },
+        {
+          "caller": "rank",
+          "callee": "eligible.isEmpty",
+          "lineNumber": 51
+        },
+        {
+          "caller": "rank",
+          "callee": "logger.warn",
+          "lineNumber": 52
+        },
+        {
+          "caller": "rank",
+          "callee": "List.of",
+          "lineNumber": 53
+        },
+        {
+          "caller": "rank",
+          "callee": "eligible.size",
+          "lineNumber": 56
+        },
+        {
+          "caller": "rank",
+          "callee": "rows.toArray",
+          "lineNumber": 57
+        },
+        {
+          "caller": "rank",
+          "callee": "vectorNormalize",
+          "lineNumber": 59
+        },
+        {
+          "caller": "rank",
+          "callee": "copyMatrix",
+          "lineNumber": 60
+        },
+        {
+          "caller": "rank",
+          "callee": "applyWeights",
+          "lineNumber": 61
+        },
+        {
+          "caller": "rank",
+          "callee": "Arrays.fill",
+          "lineNumber": 65
+        },
+        {
+          "caller": "rank",
+          "callee": "Arrays.fill",
+          "lineNumber": 66
+        },
+        {
+          "caller": "rank",
+          "callee": "criterionOrderByDescendingWeight",
+          "lineNumber": 75
+        },
+        {
+          "caller": "rank",
+          "callee": "euclidean",
+          "lineNumber": 79
+        },
+        {
+          "caller": "rank",
+          "callee": "euclidean",
+          "lineNumber": 80
+        },
+        {
+          "caller": "rank",
+          "callee": "Math.round",
+          "lineNumber": 82
+        },
+        {
+          "caller": "rank",
+          "callee": "new ArrayList<>",
+          "lineNumber": 85
+        },
+        {
+          "caller": "rank",
+          "callee": "IntStream.range(0, m).boxed().toList",
+          "lineNumber": 85
+        },
+        {
+          "caller": "rank",
+          "callee": "IntStream.range(0, m).boxed",
+          "lineNumber": 85
+        },
+        {
+          "caller": "rank",
+          "callee": "IntStream.range",
+          "lineNumber": 85
+        },
+        {
+          "caller": "rank",
+          "callee": "order.sort",
+          "lineNumber": 86
+        },
+        {
+          "caller": "rank",
+          "callee": "compareByTopsisThenCriteria",
+          "lineNumber": 86
+        },
+        {
+          "caller": "rank",
+          "callee": "new ArrayList<>",
+          "lineNumber": 88
+        },
+        {
+          "caller": "rank",
+          "callee": "eligible.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "rank",
+          "callee": "result.add",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder()\n                    .stockId(s.getStockId())\n                    .stockName(s.getStockName())\n                    .topsisScore(roundedScores[idx])\n                    .matchPrice(s.getMatchPrice()).build",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder()\n                    .stockId(s.getStockId())\n                    .stockName(s.getStockName())\n                    .topsisScore(roundedScores[idx]).matchPrice",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder()\n                    .stockId(s.getStockId())\n                    .stockName(s.getStockName()).topsisScore",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder()\n                    .stockId(s.getStockId()).stockName",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder().stockId",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "RankedStockDto.builder",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rank",
+          "callee": "s.getStockId",
+          "lineNumber": 92
+        },
+        {
+          "caller": "rank",
+          "callee": "s.getStockName",
+          "lineNumber": 93
+        },
+        {
+          "caller": "rank",
+          "callee": "s.getMatchPrice",
+          "lineNumber": 95
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 109
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getMatchPrice().compareTo",
+          "lineNumber": 109
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 109
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getMatchPrice",
+          "lineNumber": 113
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getYearData",
+          "lineNumber": 114
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.isEmpty",
+          "lineNumber": 117
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.keySet().stream().mapToInt(Integer::intValue).max().orElse",
+          "lineNumber": 118
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.keySet().stream().mapToInt(Integer::intValue).max",
+          "lineNumber": 118
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.keySet().stream().mapToInt",
+          "lineNumber": 118
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.keySet().stream",
+          "lineNumber": 118
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.keySet",
+          "lineNumber": 118
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "yearData.get",
+          "lineNumber": 119
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm",
+          "lineNumber": 126
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm().compareTo",
+          "lineNumber": 126
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm",
+          "lineNumber": 126
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm().divide(price, 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 127
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm().divide",
+          "lineNumber": 127
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDdm",
+          "lineNumber": 127
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf",
+          "lineNumber": 132
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf().compareTo",
+          "lineNumber": 132
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf",
+          "lineNumber": 132
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf().divide(price, 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 133
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf().divide",
+          "lineNumber": 133
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getDcf",
+          "lineNumber": 133
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi",
+          "lineNumber": 138
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi().compareTo",
+          "lineNumber": 138
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi",
+          "lineNumber": 138
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi().divide(price, 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 139
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi().divide",
+          "lineNumber": 139
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "latest.getRi",
+          "lineNumber": 139
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPeRatio",
+          "lineNumber": 144
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPeRatio().compareTo",
+          "lineNumber": 144
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPeRatio",
+          "lineNumber": 144
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPeRatio",
+          "lineNumber": 145
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPeRatio().divide(stock.getPeRatio(), 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 146
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPeRatio().divide",
+          "lineNumber": 146
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPeRatio",
+          "lineNumber": 146
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPeRatio",
+          "lineNumber": 146
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPbRatio",
+          "lineNumber": 151
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPbRatio().compareTo",
+          "lineNumber": 151
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPbRatio",
+          "lineNumber": 151
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPbRatio",
+          "lineNumber": 152
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPbRatio().divide(stock.getPbRatio(), 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 153
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPbRatio().divide",
+          "lineNumber": 153
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPbRatio",
+          "lineNumber": 153
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPbRatio",
+          "lineNumber": 153
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPcfRatio",
+          "lineNumber": 158
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPcfRatio().compareTo",
+          "lineNumber": 158
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPcfRatio",
+          "lineNumber": 158
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPcfRatio",
+          "lineNumber": 159
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPcfRatio().divide(stock.getPcfRatio(), 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 160
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPcfRatio().divide",
+          "lineNumber": 160
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPcfRatio",
+          "lineNumber": 160
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPcfRatio",
+          "lineNumber": 160
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPsRatio",
+          "lineNumber": 165
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPsRatio().compareTo",
+          "lineNumber": 165
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPsRatio",
+          "lineNumber": 165
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPsRatio",
+          "lineNumber": 166
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPsRatio().divide(stock.getPsRatio(), 6, RoundingMode.HALF_UP).doubleValue",
+          "lineNumber": 167
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPsRatio().divide",
+          "lineNumber": 167
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getIndustryPsRatio",
+          "lineNumber": 167
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getPsRatio",
+          "lineNumber": 167
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "logger.debug",
+          "lineNumber": 172
+        },
+        {
+          "caller": "buildCriteriaRow",
+          "callee": "stock.getStockId",
+          "lineNumber": 172
+        },
+        {
+          "caller": "copyMatrix",
+          "callee": "Arrays.copyOf",
+          "lineNumber": 182
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "IntStream.range(0, NUM_CRITERIA).boxed().toArray",
+          "lineNumber": 192
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "IntStream.range(0, NUM_CRITERIA).boxed",
+          "lineNumber": 192
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "IntStream.range",
+          "lineNumber": 192
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "Arrays.sort",
+          "lineNumber": 193
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "Double.compare",
+          "lineNumber": 194
+        },
+        {
+          "caller": "criterionOrderByDescendingWeight",
+          "callee": "Integer.compare",
+          "lineNumber": 198
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "Double.compare",
+          "lineNumber": 213
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "Double.compare",
+          "lineNumber": 218
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "eligible.get(i).getStockId().compareTo",
+          "lineNumber": 223
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "eligible.get(i).getStockId",
+          "lineNumber": 223
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "eligible.get",
+          "lineNumber": 223
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "eligible.get(j).getStockId",
+          "lineNumber": 223
+        },
+        {
+          "caller": "compareByTopsisThenCriteria",
+          "callee": "eligible.get",
+          "lineNumber": 223
+        },
+        {
+          "caller": "vectorNormalize",
+          "callee": "Math.sqrt",
+          "lineNumber": 234
+        },
+        {
+          "caller": "euclidean",
+          "callee": "Math.sqrt",
+          "lineNumber": 257
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/IndustryMedianCalculatorTest.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 59,
+      "functions": [
+        {
+          "name": "oddCountReturnsMiddleValue",
+          "startLine": 16,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "evenCountReturnsAverage",
+          "startLine": 23,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "emptyOrNullReturnsNull",
+          "startLine": 31,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "groupsBySectorAndSkipsNegatives",
+          "startLine": 37,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "skipsStocksWithoutSector",
+          "startLine": 55,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "stock",
+          "startLine": 62,
+          "endLine": 71,
+          "params": [
+            "sector",
+            "pe",
+            "pb",
+            "pcf",
+            "ps"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "IndustryMedianCalculatorTest",
+          "startLine": 12,
+          "endLine": 72,
+          "methods": [
+            "oddCountReturnsMiddleValue",
+            "evenCountReturnsAverage",
+            "emptyOrNullReturnsNull",
+            "groupsBySectorAndSkipsNegatives",
+            "skipsStocksWithoutSector",
+            "stock"
+          ],
+          "properties": [
+            "calc"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "IndustryMedianCalculator.median",
+          "lineNumber": 18
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "List.of",
+          "lineNumber": 18
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "new BigDecimal",
+          "lineNumber": 19
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "new BigDecimal",
+          "lineNumber": 19
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "new BigDecimal",
+          "lineNumber": 19
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "assertEquals",
+          "lineNumber": 20
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "m.compareTo",
+          "lineNumber": 20
+        },
+        {
+          "caller": "oddCountReturnsMiddleValue",
+          "callee": "new BigDecimal",
+          "lineNumber": 20
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "IndustryMedianCalculator.median",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "List.of",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "new BigDecimal",
+          "lineNumber": 26
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "new BigDecimal",
+          "lineNumber": 26
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "new BigDecimal",
+          "lineNumber": 26
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "new BigDecimal",
+          "lineNumber": 26
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "assertEquals",
+          "lineNumber": 28
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "m.compareTo",
+          "lineNumber": 28
+        },
+        {
+          "caller": "evenCountReturnsAverage",
+          "callee": "new BigDecimal",
+          "lineNumber": 28
+        },
+        {
+          "caller": "emptyOrNullReturnsNull",
+          "callee": "assertNull",
+          "lineNumber": 33
+        },
+        {
+          "caller": "emptyOrNullReturnsNull",
+          "callee": "IndustryMedianCalculator.median",
+          "lineNumber": 33
+        },
+        {
+          "caller": "emptyOrNullReturnsNull",
+          "callee": "List.of",
+          "lineNumber": 33
+        },
+        {
+          "caller": "emptyOrNullReturnsNull",
+          "callee": "assertNull",
+          "lineNumber": 34
+        },
+        {
+          "caller": "emptyOrNullReturnsNull",
+          "callee": "IndustryMedianCalculator.median",
+          "lineNumber": 34
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "stock",
+          "lineNumber": 39
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "stock",
+          "lineNumber": 40
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "stock",
+          "lineNumber": 41
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "stock",
+          "lineNumber": 42
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "calc.computeMediansBySector",
+          "lineNumber": 44
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "List.of",
+          "lineNumber": 44
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "assertEquals",
+          "lineNumber": 47
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get(\"PE\").compareTo",
+          "lineNumber": 47
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "new BigDecimal",
+          "lineNumber": 47
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "assertEquals",
+          "lineNumber": 49
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get(\"PB\").compareTo",
+          "lineNumber": 49
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get",
+          "lineNumber": 49
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "new BigDecimal",
+          "lineNumber": 49
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "assertEquals",
+          "lineNumber": 51
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get(\"PS\").compareTo",
+          "lineNumber": 51
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"BANK\").get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "new BigDecimal",
+          "lineNumber": 51
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "assertEquals",
+          "lineNumber": 52
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get(\"RETAIL\").size",
+          "lineNumber": 52
+        },
+        {
+          "caller": "groupsBySectorAndSkipsNegatives",
+          "callee": "out.get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "skipsStocksWithoutSector",
+          "callee": "stock",
+          "lineNumber": 57
+        },
+        {
+          "caller": "skipsStocksWithoutSector",
+          "callee": "calc.computeMediansBySector",
+          "lineNumber": 58
+        },
+        {
+          "caller": "skipsStocksWithoutSector",
+          "callee": "List.of",
+          "lineNumber": 58
+        },
+        {
+          "caller": "skipsStocksWithoutSector",
+          "callee": "assertTrue",
+          "lineNumber": 59
+        },
+        {
+          "caller": "skipsStocksWithoutSector",
+          "callee": "out.isEmpty",
+          "lineNumber": 59
+        },
+        {
+          "caller": "stock",
+          "callee": "new StockEntity",
+          "lineNumber": 63
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setStockId",
+          "lineNumber": 64
+        },
+        {
+          "caller": "stock",
+          "callee": "System.nanoTime",
+          "lineNumber": 64
+        },
+        {
+          "caller": "stock",
+          "callee": "Math.random",
+          "lineNumber": 64
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setSector",
+          "lineNumber": 65
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setPeRatio",
+          "lineNumber": 66
+        },
+        {
+          "caller": "stock",
+          "callee": "new BigDecimal",
+          "lineNumber": 66
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setPbRatio",
+          "lineNumber": 67
+        },
+        {
+          "caller": "stock",
+          "callee": "new BigDecimal",
+          "lineNumber": 67
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setPcfRatio",
+          "lineNumber": 68
+        },
+        {
+          "caller": "stock",
+          "callee": "new BigDecimal",
+          "lineNumber": 68
+        },
+        {
+          "caller": "stock",
+          "callee": "s.setPsRatio",
+          "lineNumber": 69
+        },
+        {
+          "caller": "stock",
+          "callee": "new BigDecimal",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 6,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "market-realtime/src/test/java/com/finsight/marketrealtime/backtest/PortfolioStateTest.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "cashOnlyMarkToMarketIsIdempotent",
+          "startLine": 18,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "applyAllocationDebitsCashAndTxCost",
+          "startLine": 27,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "liquidateAppliesTxCostAndClearsHoldings",
+          "startLine": 49,
+          "endLine": 71,
+          "params": []
+        },
+        {
+          "name": "stockWithPrice",
+          "startLine": 73,
+          "endLine": 80,
+          "params": [
+            "id",
+            "year",
+            "priceThousand"
+          ]
+        },
+        {
+          "name": "yearData",
+          "startLine": 82,
+          "endLine": 86,
+          "params": [
+            "priceThousand"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PortfolioStateTest",
+          "startLine": 16,
+          "endLine": 87,
+          "methods": [
+            "cashOnlyMarkToMarketIsIdempotent",
+            "applyAllocationDebitsCashAndTxCost",
+            "liquidateAppliesTxCostAndClearsHoldings",
+            "stockWithPrice",
+            "yearData"
+          ],
+          "properties": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "PortfolioState.cash",
+          "lineNumber": 20
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "new BigDecimal",
+          "lineNumber": 20
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "Map.of",
+          "lineNumber": 20
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.markToMarket",
+          "lineNumber": 21
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "assertEquals",
+          "lineNumber": 22
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.totalValue().compareTo",
+          "lineNumber": 22
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.totalValue",
+          "lineNumber": 22
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "new BigDecimal",
+          "lineNumber": 22
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.markToMarket",
+          "lineNumber": 23
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "assertEquals",
+          "lineNumber": 24
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.totalValue().compareTo",
+          "lineNumber": 24
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "pf.totalValue",
+          "lineNumber": 24
+        },
+        {
+          "caller": "cashOnlyMarkToMarketIsIdempotent",
+          "callee": "new BigDecimal",
+          "lineNumber": 24
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new HashMap<>",
+          "lineNumber": 29
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "universe.put",
+          "lineNumber": 30
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "stockWithPrice",
+          "lineNumber": 30
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 30
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "PortfolioState.cash",
+          "lineNumber": 32
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 32
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 34
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder()\n                .stockId(\"AAA\").shares(50).pricePerShare(pxVnd)\n                .totalCost(pxVnd.multiply(new BigDecimal(\"50\"))).build",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder()\n                .stockId(\"AAA\").shares(50).pricePerShare(pxVnd).totalCost",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder()\n                .stockId(\"AAA\").shares(50).pricePerShare",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder()\n                .stockId(\"AAA\").shares",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder().stockId",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "StockAllocationDto.builder",
+          "lineNumber": 35
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pxVnd.multiply",
+          "lineNumber": 37
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 37
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(List.of(alloc)).build",
+          "lineNumber": 39
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "PortfolioAllocationResult.builder().allocations",
+          "lineNumber": 39
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "PortfolioAllocationResult.builder",
+          "lineNumber": 39
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "List.of",
+          "lineNumber": 40
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pf.applyAllocation",
+          "lineNumber": 42
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "assertEquals",
+          "lineNumber": 44
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pf.cash().compareTo",
+          "lineNumber": 44
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pf.cash",
+          "lineNumber": 44
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 44
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "assertEquals",
+          "lineNumber": 46
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pf.totalValue().compareTo",
+          "lineNumber": 46
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "pf.totalValue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "applyAllocationDebitsCashAndTxCost",
+          "callee": "new BigDecimal",
+          "lineNumber": 46
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new HashMap<>",
+          "lineNumber": 51
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "universe.put",
+          "lineNumber": 52
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "stockWithPrice",
+          "lineNumber": 52
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new BigDecimal",
+          "lineNumber": 52
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "PortfolioState.cash",
+          "lineNumber": 54
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "PortfolioAllocationResult.builder()\n                .allocations(List.of(StockAllocationDto.builder()\n                        .stockId(\"AAA\").shares(100).pricePerShare(new BigDecimal(\"10000\")).build())).build",
+          "lineNumber": 55
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "PortfolioAllocationResult.builder().allocations",
+          "lineNumber": 55
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "PortfolioAllocationResult.builder",
+          "lineNumber": 55
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "List.of",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "StockAllocationDto.builder()\n                        .stockId(\"AAA\").shares(100).pricePerShare(new BigDecimal(\"10000\")).build",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "StockAllocationDto.builder()\n                        .stockId(\"AAA\").shares(100).pricePerShare",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "StockAllocationDto.builder()\n                        .stockId(\"AAA\").shares",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "StockAllocationDto.builder().stockId",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "StockAllocationDto.builder",
+          "lineNumber": 56
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new BigDecimal",
+          "lineNumber": 57
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "PortfolioState.cash",
+          "lineNumber": 60
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new BigDecimal",
+          "lineNumber": 60
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "universe.get(\"AAA\").getYearData().put",
+          "lineNumber": 62
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "universe.get(\"AAA\").getYearData",
+          "lineNumber": 62
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "universe.get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "yearData",
+          "lineNumber": 62
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new BigDecimal",
+          "lineNumber": 62
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "pf.applyAllocation",
+          "lineNumber": 63
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "pf.liquidateAt",
+          "lineNumber": 65
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "assertEquals",
+          "lineNumber": 69
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "cashAfter.compareTo",
+          "lineNumber": 69
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "new BigDecimal",
+          "lineNumber": 69
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "assertTrue",
+          "lineNumber": 70
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "pf.holdings().isEmpty",
+          "lineNumber": 70
+        },
+        {
+          "caller": "liquidateAppliesTxCostAndClearsHoldings",
+          "callee": "pf.holdings",
+          "lineNumber": 70
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "new StockEntity",
+          "lineNumber": 74
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "s.setStockId",
+          "lineNumber": 75
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "new HashMap<>",
+          "lineNumber": 76
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "yd.put",
+          "lineNumber": 77
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "yearData",
+          "lineNumber": 77
+        },
+        {
+          "caller": "stockWithPrice",
+          "callee": "s.setYearData",
+          "lineNumber": 78
+        },
+        {
+          "caller": "yearData",
+          "callee": "new StockYearData",
+          "lineNumber": 83
+        },
+        {
+          "caller": "yearData",
+          "callee": "y.setPriceEndYear",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    }
+  ]
+}
