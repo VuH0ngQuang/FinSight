@@ -1,4 +1,4 @@
-import { authFetch } from './config'
+import { authFetch, parseApiJson, readApiResponseText } from './config'
 
 export interface AhpConfigDto {
   ahpConfigId: string
@@ -30,7 +30,7 @@ interface AhpConfigResponseEnvelope {
 }
 
 const assertAhpConfigSuccess = async (res: Response, fallback: string): Promise<void> => {
-  const text = await res.text().catch(() => '')
+  const text = await readApiResponseText(res)
   let json: AhpConfigResponseEnvelope | null = null
 
   if (text) {
@@ -52,7 +52,7 @@ export const getAhpConfig = async (userId: string): Promise<AhpConfigDto | null>
   const res = await authFetch(`/ahpConfig/get/${userId}`)
   if (res.status === 404) return null
   if (!res.ok) throw new Error('Failed to load AHP config')
-  const json = (await res.json()) as unknown
+  const json = await parseApiJson<unknown>(res)
   const payload =
     json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
       ? (json as Record<string, unknown>).data

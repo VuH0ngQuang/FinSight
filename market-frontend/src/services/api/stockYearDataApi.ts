@@ -1,4 +1,4 @@
-import { authFetch } from './config'
+import { authFetch, parseApiJson, readApiResponseText } from './config'
 import type { StockYearApiRecord } from '../stockDetail'
 
 export interface CreateStockYearDataRequest {
@@ -21,7 +21,7 @@ export interface DeleteStockYearDataRequest {
 export const getStockYearData = async (stockId: string, year: number): Promise<StockYearApiRecord> => {
   const res = await authFetch(`/stockYearData/get/${encodeURIComponent(stockId)}/${year}`)
   if (!res.ok) throw new Error(`Failed to load year data for ${stockId} (${year})`)
-  const json = (await res.json()) as unknown
+  const json = await parseApiJson<unknown>(res)
   const payload =
       json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
           ? (json as Record<string, unknown>).data
@@ -121,7 +121,7 @@ export const uploadStockYearDataExcel = async (file: File): Promise<UploadValida
     body: formData,
   })
 
-  const response = parseUploadValidationResponse(await res.text())
+  const response = parseUploadValidationResponse(await readApiResponseText(res))
   if (!res.ok) {
     throw new Error(response.message || 'Failed to upload stock year data Excel file')
   }
@@ -142,7 +142,7 @@ export const confirmStockYearDataUpload = async (uploadId: string): Promise<Uplo
     headers,
   })
 
-  const response = parseUploadValidationResponse(await res.text())
+  const response = parseUploadValidationResponse(await readApiResponseText(res))
   if (!res.ok) {
     throw new Error(response.message || 'Failed to confirm stock year data upload')
   }

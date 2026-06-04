@@ -1,4 +1,4 @@
-import { authFetch } from './config'
+import { authFetch, parseApiJson } from './config'
 
 export interface PortfolioAllocateRequest {
   userId: string
@@ -42,7 +42,7 @@ export const allocatePortfolio = async (req: PortfolioAllocateRequest): Promise<
   const res = await authFetch('/portfolio/allocate', { method: 'POST', body: JSON.stringify(req) })
   if (!res.ok) throw new Error('Failed to compute portfolio allocation')
 
-  const raw = (await res.json()) as RawPortfolioAllocationResponse | ApiEnvelope<RawPortfolioAllocationResponse>
+  const raw = await parseApiJson<RawPortfolioAllocationResponse | ApiEnvelope<RawPortfolioAllocationResponse>>(res)
   const payload = ('data' in raw && raw.data ? raw.data : raw) as RawPortfolioAllocationResponse
   const rawAllocations = Array.isArray(payload.allocations) ? payload.allocations : []
 

@@ -84,7 +84,10 @@ public class UserServiceImpl implements UserService {
                     logger.warn("Failed to send welcome email to {}", userEntity.getEmail(), e);
                 }
 
-                return ResponseDto.builder().success(true).build();
+                return ResponseDto.builder()
+                        .success(true)
+                        .data(convertToDto(userEntity))
+                        .build();
             } finally {
                 lock.unlock();
             }

@@ -36,21 +36,21 @@ public class AppConf {
         if (database != null) {
             logger.info("Database URL               : {}", database.getUrl());
             logger.info("Database username          : {}", database.getUsername());
-            logger.info("Database password          : {}", database.getPassword());
+            logger.info("Database password set      : {}", isConfigured(database.getPassword()));
         }
 
         if (redis != null) {
             logger.info("Redis HOST                 : {}", redis.getHost());
             logger.info("Redis port                 : {}", redis.getPort());
-            logger.info("Redis password             : {}", redis.getPassword());
+            logger.info("Redis password set         : {}", isConfigured(redis.getPassword()));
             logger.info("Redis database             : {}", redis.getDatabase());
         }
 
-        if (redis != null) {
+        if (mail != null) {
             logger.info("Mail HOST                  : {}", mail.getHost());
             logger.info("Mail port                  : {}", mail.getPort());
             logger.info("Mail username              : {}", mail.getUsername());
-            logger.info("Mail password              : {}", mail.getPassword());
+            logger.info("Mail password set          : {}", isConfigured(mail.getPassword()));
         }
 
         if (uri != null) {
@@ -86,6 +86,10 @@ public class AppConf {
             logger.info("Portfolio Allocate         : {}", uri.getPortfolio().getAllocate());
         }
         logger.info("=====================================");
+    }
+
+    private boolean isConfigured(String value) {
+        return value != null && !value.isBlank();
     }
 
     @Data

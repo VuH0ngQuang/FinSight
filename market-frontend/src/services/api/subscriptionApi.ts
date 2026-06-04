@@ -1,4 +1,4 @@
-import { apiFetch, authFetch } from './config'
+import { apiFetch, authFetch, parseApiJson } from './config'
 
 export interface SubscriptionPlanDto {
   planId: number
@@ -11,7 +11,7 @@ export const getSubscriptionPlans = async (): Promise<SubscriptionPlanDto[]> => 
   const res = await apiFetch('/subscription/plans')
   if (!res.ok) throw new Error('Failed to load subscription plans')
 
-  const json = (await res.json()) as unknown
+  const json = await parseApiJson<unknown>(res)
   const payload =
     json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
       ? (json as Record<string, unknown>).data
@@ -40,7 +40,7 @@ export const createSubscription = async (payload: CreateSubscriptionPayload): Pr
     method: 'POST',
     body: JSON.stringify(payload),
   })
-  const json = (await res.json()) as { success: boolean; data: string | null; errorMessage: string | null }
+  const json = await parseApiJson<{ success: boolean; data: string | null; errorMessage: string | null }>(res)
   if (!json.success || !json.data) {
     throw new Error(json.errorMessage ?? 'Failed to create subscription')
   }

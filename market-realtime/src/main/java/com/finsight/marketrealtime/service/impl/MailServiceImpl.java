@@ -37,7 +37,7 @@ public class MailServiceImpl implements MailService {
         context.setVariable("username", username);
         context.setVariable("email", to);
         context.setVariable("loginUrl", appConf.getAppDomain() + "/login");
-        sendEmail(to, "Welcome aboard, " + username + "\uD83C\uDF89", "mail/welcome", context);
+        sendEmail(to, "Welcome aboard, " + username + "\uD83C\uDF89", "welcome", context);
     }
 
     @Override

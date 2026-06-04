@@ -1,0 +1,8 @@
+target
+.env
+.idea
+.vscode
+.ai
+.agents
+.codex
+*.iml

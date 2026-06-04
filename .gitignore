@@ -39,6 +39,10 @@ CLAUDE.md
 GEMINI.md
 .claude
 .gitnexus
+.understand-anything
+.codex
+.agents
+.cursor
 
 # Backtest harness output
 market-realtime/backtest-out/

@@ -1,4 +1,4 @@
-import { authFetch } from './config'
+import { authFetch, parseApiJson } from './config'
 
 export interface CreateStockRequest {
   stockId: string
@@ -25,7 +25,7 @@ export interface UpdateIndustryRatiosRequest {
 export const getAllStockIds = async (): Promise<string[]> => {
   const res = await authFetch('/stock/getAllStocksId')
   if (!res.ok) throw new Error('Failed to load stock IDs')
-  return res.json() as Promise<string[]>
+  return parseApiJson<string[]>(res)
 }
 
 export const createStock = async (req: CreateStockRequest): Promise<void> => {

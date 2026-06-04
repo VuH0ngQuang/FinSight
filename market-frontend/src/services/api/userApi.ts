@@ -1,4 +1,4 @@
-import { authFetch, apiFetch } from './config'
+import { authFetch, apiFetch, parseApiJson, readApiResponseText } from './config'
 
 export interface AhpConfigDetailDto {
   ahpConfigId: string
@@ -72,25 +72,25 @@ export interface FavoriteStockRequest {
 export const loginUser = async (req: LoginRequest): Promise<LoginResponse> => {
   const res = await apiFetch('/user/login', { method: 'POST', body: JSON.stringify(req) })
   if (!res.ok) {
-    const err = await res.text().catch(() => 'Login failed')
+    const err = await readApiResponseText(res)
     throw new Error(err || 'Login failed')
   }
-  return res.json() as Promise<LoginResponse>
+  return parseApiJson<LoginResponse>(res)
 }
 
 export const createUser = async (req: CreateUserRequest): Promise<LoginResponse> => {
   const res = await apiFetch('/user/create', { method: 'POST', body: JSON.stringify(req) })
   if (!res.ok) {
-    const err = await res.text().catch(() => 'Registration failed')
+    const err = await readApiResponseText(res)
     throw new Error(err || 'Registration failed')
   }
-  return res.json() as Promise<LoginResponse>
+  return parseApiJson<LoginResponse>(res)
 }
 
 export const getUserDetail = async (userId: string): Promise<UserDetailDto> => {
   const res = await authFetch(`/user/getDetail/${userId}`)
   if (!res.ok) throw new Error('Failed to load user detail')
-  const json = (await res.json()) as unknown
+  const json = await parseApiJson<unknown>(res)
 
   const payload =
     json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
@@ -173,7 +173,7 @@ export const removeFavoriteStock = async (req: FavoriteStockRequest): Promise<vo
 export const getFavoriteStockIds = async (userId: string): Promise<string[]> => {
   const res = await authFetch(`/user/favoriteStocks/${encodeURIComponent(userId)}`)
   if (!res.ok) throw new Error('Failed to load watchlist')
-  const json = (await res.json()) as unknown
+  const json = await parseApiJson<unknown>(res)
   const payload =
     json && typeof json === 'object' && 'data' in (json as Record<string, unknown>)
       ? (json as Record<string, unknown>).data

@@ -1,0 +1,183 @@
+name: finsight
+
+x-timezone-env: &timezone-env
+  TZ: ${TZ:-Asia/Ho_Chi_Minh}
+
+x-common-java-env: &common-java-env
+  <<: *timezone-env
+  JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--Duser.timezone=Asia/Ho_Chi_Minh}
+  KAFKA_URLS: ${KAFKA_URLS:?Set KAFKA_URLS in .env}
+  KAFKA_TOPIC_MARKET_DATA: ${KAFKA_TOPIC_MARKET_DATA:-market-data}
+  KAFKA_TOPIC_WEBHOOKS: ${KAFKA_TOPIC_WEBHOOKS:-market-payment}
+  KAFKA_TOPIC_INGESTION: ${KAFKA_TOPIC_INGESTION:-market-ingestion}
+  MQTT_URL: ${MQTT_URL:-tcp://localhost:1883}
+  MQTT_USERNAME: ${MQTT_USERNAME:-}
+  MQTT_PASSWORD: ${MQTT_PASSWORD:-}
+  MQTT_TOPIC_MARKET_DATA: ${MQTT_TOPIC_MARKET_DATA:-market-data}
+
+x-db-env: &db-env
+  DB_HOST: ${DB_JDBC_URL:?Set DB_JDBC_URL in .env}
+  DB_USERNAME: ${DB_USER:?Set DB_USER in .env}
+  DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+
+x-redis-env: &redis-env
+  REDIS_HOST: ${REDIS_HOST:?Set REDIS_HOST in .env}
+  REDIS_PORT: ${REDIS_PORT:-6379}
+  REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+  REDIS_DATABASE: ${REDIS_DATABASE:-0}
+
+x-payos-env: &payos-env
+  PAYOS_CLIENT_ID: ${PAYOS_CLIENT_ID:?Set PAYOS_CLIENT_ID in .env}
+  PAYOS_API_KEY: ${PAYOS_API_KEY:?Set PAYOS_API_KEY in .env}
+  PAYOS_CHECKSUM_KEY: ${PAYOS_CHECKSUM_KEY:?Set PAYOS_CHECKSUM_KEY in .env}
+
+services:
+  market-rest-1:
+    build:
+      context: ./market-rest
+    image: finsight/market-rest:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.10
+    environment:
+      <<: *timezone-env
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      CLUSTER_ID: market-rest-1
+      DB_HOST: ${DB_HOST:?Set DB_HOST in .env}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_USER: ${DB_USER:?Set DB_USER in .env}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DB_NAME: ${DB_NAME:?Set DB_NAME in .env}
+      KAFKA_URLS: ${KAFKA_URLS:?Set KAFKA_URLS in .env}
+      KAFKA_GROUP_ID: market-rest-1
+      KAFKA_REST_TOPIC: ${KAFKA_TOPIC_REST:-market-rest}
+      KAFKA_REQUEST_TIMEOUT_MS: ${KAFKA_REQUEST_TIMEOUT_MS:-15000}
+      REDIS_HOST: ${REDIS_HOST:?Set REDIS_HOST in .env}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DATABASE:-0}
+      REDIS_CACHE_TTL: ${REDIS_CACHE_TTL:-3600}
+
+  market-rest-2:
+    build:
+      context: ./market-rest
+    image: finsight/market-rest:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.11
+    environment:
+      <<: *timezone-env
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      CLUSTER_ID: market-rest-2
+      DB_HOST: ${DB_HOST:?Set DB_HOST in .env}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_USER: ${DB_USER:?Set DB_USER in .env}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DB_NAME: ${DB_NAME:?Set DB_NAME in .env}
+      KAFKA_URLS: ${KAFKA_URLS:?Set KAFKA_URLS in .env}
+      KAFKA_GROUP_ID: market-rest-2
+      KAFKA_REST_TOPIC: ${KAFKA_TOPIC_REST:-market-rest}
+      KAFKA_REQUEST_TIMEOUT_MS: ${KAFKA_REQUEST_TIMEOUT_MS:-15000}
+      REDIS_HOST: ${REDIS_HOST:?Set REDIS_HOST in .env}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DB: ${REDIS_DATABASE:-0}
+      REDIS_CACHE_TTL: ${REDIS_CACHE_TTL:-3600}
+
+  market-frontend:
+    build:
+      context: ./market-frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:?Set VITE_API_BASE_URL in .env}
+        VITE_INGESTION_API_BASE_URL: ${VITE_INGESTION_API_BASE_URL:?Set VITE_INGESTION_API_BASE_URL in .env}
+        VITE_MQTT_BROKER_URL: ${VITE_MQTT_BROKER_URL:?Set VITE_MQTT_BROKER_URL in .env}
+        VITE_MQTT_TOPIC: ${VITE_MQTT_TOPIC:-market-data}
+    image: finsight/market-frontend:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.12
+    environment:
+      <<: *timezone-env
+
+  market-ingestion:
+    build:
+      context: ./market-ingestion
+    image: finsight/market-ingestion:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.13
+    environment:
+      <<: [*common-java-env, *redis-env]
+      SERVER_PORT: 1111
+      CLUSTER_ID: market-ingestion-1
+      KAFKA_GROUP_ID: market-ingestion
+      KAFKA_TOPIC_INGESTION_REPLY: ${KAFKA_TOPIC_INGESTION_REPLY:-}
+
+  market-realtime:
+    build:
+      context: ./market-realtime
+    image: finsight/market-realtime:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.14
+    environment:
+      <<: [*common-java-env, *db-env, *redis-env, *payos-env]
+      SERVER_PORT: 8080
+      CLUSTER_ID: market-realtime-1
+      APP_DOMAIN: ${APP_DOMAIN:-localhost}
+      KAFKA_GROUP_ID: market-realtime
+      KAFKA_TOPIC_RESTART: ${KAFKA_TOPIC_REST:-market-rest}
+      MAIL_HOST: ${MAIL_HOST:-smtp.example.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+
+  market-collector:
+    build:
+      context: ./market-collector
+    image: finsight/market-collector:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.15
+    environment:
+      <<: [*common-java-env, *db-env]
+      SERVER_PORT: 8080
+      CLUSTER_ID: market-collector-1
+      KAFKA_GROUP_ID: market-collector
+      DATAFEED_TOKENURL: ${DATAFEED_TOKENURL:-wss://datafeed-lts-krx.dnse.com.vn:443/wss}
+      DATAFEED_INVERSTORURL: ${DATAFEED_INVERSTORURL:?Set DATAFEED_INVERSTORURL in .env}
+      DATAFEED_WEBSOCKETURL: ${DATAFEED_WEBSOCKETURL:?Set DATAFEED_WEBSOCKETURL in .env}
+      DATAFEED_USERNAME: ${DATAFEED_USERNAME:-}
+      DATAFEED_PASSWORD: ${DATAFEED_PASSWORD:-}
+
+  market-webhooks:
+    build:
+      context: ./market-webhooks
+    image: finsight/market-webhooks:local
+    restart: unless-stopped
+    networks:
+      finsight-net:
+        ipv4_address: 10.255.254.16
+    environment:
+      <<: [*common-java-env, *payos-env]
+      SERVER_PORT: 5000
+      CLUSTER_ID: market-webhooks-1
+      KAFKA_GROUP_ID: market-webhooks
+
+networks:
+  finsight-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.255.254.0/24
+          gateway: 10.255.254.1

@@ -27,7 +27,7 @@ public class AppConf {
         if (redis != null) {
             logger.info("Redis HOST           : {}", redis.getHost());
             logger.info("Redis port           : {}", redis.getPort());
-            logger.info("Redis password       : {}", redis.getPassword());
+            logger.info("Redis password set   : {}", isConfigured(redis.getPassword()));
             logger.info("Redis database       : {}", redis.getDatabase());
         }
 
@@ -36,6 +36,10 @@ public class AppConf {
         }
 
         logger.info("=====================================");
+    }
+
+    private boolean isConfigured(String value) {
+        return value != null && !value.isBlank();
     }
 
     @Data

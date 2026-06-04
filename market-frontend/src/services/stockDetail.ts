@@ -1,4 +1,5 @@
 import { API_STOCK_DETAIL_URL } from '../config/api'
+import { assertNonHtmlResponse, parseApiJson } from './api/config'
 
 export type StockYearApiRecord = {
   netIncome?: number
@@ -162,7 +163,7 @@ export const fetchStockDetail = async (
     return cached
   }
 
-  const response = await fetch(stockDetailEndpoint(normalizedSymbol), { signal })
+  const response = await assertNonHtmlResponse(await fetch(stockDetailEndpoint(normalizedSymbol), { signal }))
   if (!response.ok) {
     const message =
       response.status === 404
@@ -171,7 +172,7 @@ export const fetchStockDetail = async (
     throw new Error(message)
   }
 
-  const payload = (await response.json()) as unknown
+  const payload = await parseApiJson<unknown>(response)
   if (!isStockDetailResponse(payload)) {
     throw new Error('Unexpected payload received from the stock detail endpoint.')
   }
@@ -181,4 +182,3 @@ export const fetchStockDetail = async (
 
   return payload
 }
-
