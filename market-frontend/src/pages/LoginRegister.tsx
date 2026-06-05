@@ -6,6 +6,26 @@ import ErrorBanner from '../components/ui/ErrorBanner'
 import LoadingSpinner from '../components/ui/LoadingSpinner'
 
 type Tab = 'signin' | 'register'
+type AuthPayload = {
+  userId?: unknown
+  admin?: unknown
+  isAdmin?: unknown
+}
+
+const unwrapAuthPayload = (response: unknown): AuthPayload => {
+  if (!response || typeof response !== 'object') return {}
+
+  const root = response as Record<string, unknown>
+  const payload = root.payload && typeof root.payload === 'object'
+    ? root.payload as Record<string, unknown>
+    : root
+
+  const data = payload.data && typeof payload.data === 'object'
+    ? payload.data as Record<string, unknown>
+    : payload
+
+  return data as AuthPayload
+}
 
 const LoginRegister = () => {
   const { userId, login } = useAuth()
@@ -32,8 +52,7 @@ const LoginRegister = () => {
     setError(null)
     setLoading(true)
     try {
-      const res = (await loginUser({ email, password })) as any
-      const payload = res?.data ?? res
+      const payload = unwrapAuthPayload(await loginUser({ email, password }))
       const nextUserId = payload?.userId
       const nextIsAdmin = Boolean(payload?.admin ?? payload?.isAdmin)
       if (!nextUserId) throw new Error('Login failed: missing userId')
@@ -52,8 +71,7 @@ const LoginRegister = () => {
     setError(null)
     setLoading(true)
     try {
-      const res = (await createUser({ username: regUsername, email: regEmail, password: regPassword, phoneNumber: regPhone || undefined })) as any
-      const payload = res?.data ?? res
+      const payload = unwrapAuthPayload(await createUser({ username: regUsername, email: regEmail, password: regPassword, phoneNumber: regPhone || undefined }))
       const nextUserId = payload?.userId
       const nextIsAdmin = Boolean(payload?.admin ?? payload?.isAdmin)
       if (!nextUserId) throw new Error('Registration failed: missing userId')

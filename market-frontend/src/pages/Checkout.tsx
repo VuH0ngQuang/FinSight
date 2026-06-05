@@ -13,7 +13,7 @@ interface PlanInfo {
 
 const DEFAULT_PLAN: PlanInfo = {
   name: 'Pro',
-  price: '199,000',
+  price: '10,000',
   period: '/month',
   features: [
     'Full TOPSIS analysis',

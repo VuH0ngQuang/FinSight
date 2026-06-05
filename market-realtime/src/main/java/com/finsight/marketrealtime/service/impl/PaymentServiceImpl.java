@@ -34,8 +34,8 @@ public class PaymentServiceImpl implements PaymentService {
                 .orderCode(id)
                 .amount(amount)
                 .description("FinSight Sub Ref: " + ref)
-                .cancelUrl("http://103.162.20.119:5173/payment/checkout")
-                .returnUrl("http://103.162.20.119:5173/payment/checkout")
+                .cancelUrl("https://"+appConf.getAppDomain()+"/payment/checkout")
+                .returnUrl("https://"+appConf.getAppDomain()+"/payment/checkout")
                 .build();
 
         CreatePaymentLinkResponse paymentLink = payOS.paymentRequests().create(paymentLinkRequest);

@@ -5,54 +5,55 @@ export type MarketDataPayload = {
   matchPrice: number
 }
 
-const MQTT_BROKER_URL =
-  import.meta.env.VITE_MQTT_BROKER_URL ?? 'wss://iot.vuhongquang.com:8084/mqtt'
-const MQTT_TOPIC = import.meta.env.VITE_MQTT_TOPIC ?? 'market-data'
+// In browsers, mqtt.js uses WebSocket transport automatically
+// mqtts:// is converted to wss:// for secure WebSocket connections
+const MQTT_BROKER_URL = 'wss://iot.vuhongquang.com:8084/mqtt'
+const MQTT_TOPIC = 'market-data'
 
 type MqttClient = ReturnType<typeof mqtt.connect>
 
 let client: MqttClient | null = null
 let subscribers: Set<(data: MarketDataPayload) => void> = new Set()
-let statusSubscribers: Set<(isConnected: boolean) => void> = new Set()
+const statusSubscribers: Set<(isConnected: boolean) => void> = new Set()
 let isConnected = false
-let connectionHolders = 0
+
+const setConnectionStatus = (status: boolean) => {
+  isConnected = status
+  statusSubscribers.forEach((callback) => callback(status))
+}
 
 // Generate a random client ID
 const generateClientId = (): string => {
   return `finsight_${Math.random().toString(36).substring(2, 15)}_${Date.now()}`
 }
 
-const setConnectionStatus = (status: boolean) => {
-  if (isConnected === status) return
-  isConnected = status
-  statusSubscribers.forEach((callback) => callback(status))
-}
-
-const shouldKeepConnectionAlive = () => connectionHolders > 0 || subscribers.size > 0
-
-const disconnectIfIdle = () => {
-  if (!shouldKeepConnectionAlive() && client) {
-    disconnectMqtt()
-  }
-}
-
 export const connectMqtt = (): MqttClient => {
-  if (client) {
+  if (client && client.connected) {
     return client
+  }
+
+  if (client) {
+    client.end()
   }
 
   const clientId = generateClientId()
   console.log('Connecting with client ID:', clientId)
 
+  // Explicitly configure for WebSocket transport (required in browsers)
   client = mqtt.connect(MQTT_BROKER_URL, {
     protocol: 'wss',
     clientId,
-    keepalive: 60,
+    keepalive: 60, // Send keepalive packets every 60 seconds
     reconnectPeriod: 5000,
     connectTimeout: 10000,
-    clean: true,
+    clean: true, // Clean session
+    // Prevent automatic disconnection
     will: undefined,
-    wsOptions: {},
+    // WebSocket specific options
+    wsOptions: {
+      // Some brokers require a specific path, try '/mqtt' or '/ws' if default doesn't work
+      // path: '/mqtt',
+    },
   })
 
   client.on('connect', () => {
@@ -103,6 +104,7 @@ export const connectMqtt = (): MqttClient => {
 
   client.on('close', () => {
     console.log('MQTT connection closed')
+    // Log additional connection state information
     if (client) {
       console.log('Client disconnected:', !client.connected)
       console.log('Client options:', {
@@ -113,6 +115,17 @@ export const connectMqtt = (): MqttClient => {
       console.log('Active subscribers:', subscribers.size)
     }
     setConnectionStatus(false)
+
+    // If there are still subscribers, try to reconnect
+    if (subscribers.size > 0) {
+      console.log('Attempting to reconnect due to active subscribers...')
+      setTimeout(() => {
+        if (subscribers.size > 0 && (!client || !client.connected)) {
+          console.log('Reconnecting MQTT...')
+          connectMqtt()
+        }
+      }, 2000)
+    }
   })
 
   client.on('end', () => {
@@ -125,6 +138,7 @@ export const connectMqtt = (): MqttClient => {
     setConnectionStatus(false)
   })
 
+  // Handle reconnection
   client.on('reconnect', () => {
     console.log('MQTT reconnecting...')
   })
@@ -136,34 +150,42 @@ export const disconnectMqtt = () => {
   if (client) {
     client.end()
     client = null
+    subscribers.clear()
     setConnectionStatus(false)
-  }
-}
-
-export const startMqttConnection = (): (() => void) => {
-  connectionHolders += 1
-  connectMqtt()
-
-  return () => {
-    connectionHolders = Math.max(0, connectionHolders - 1)
-    setTimeout(disconnectIfIdle, 1000)
   }
 }
 
 export const subscribeToMarketData = (
   callback: (data: MarketDataPayload) => void,
 ): (() => void) => {
+  if (!client || !client.connected) {
+    connectMqtt()
+  }
+
   subscribers.add(callback)
-  connectMqtt()
 
   return () => {
     subscribers.delete(callback)
-    setTimeout(disconnectIfIdle, 1000)
+    // Only disconnect if there are no more subscribers
+    // But keep the connection alive if there are still subscribers
+    if (subscribers.size === 0 && client) {
+      // Don't disconnect immediately, wait a bit in case new subscribers come in
+      setTimeout(() => {
+        if (subscribers.size === 0 && client) {
+          disconnectMqtt()
+        }
+      }, 1000)
+    }
   }
 }
 
 export const getMqttConnectionStatus = (): boolean => {
   return isConnected && client?.connected === true
+}
+
+export const startMqttConnection = (): (() => void) => {
+  connectMqtt()
+  return () => undefined
 }
 
 export const subscribeToMqttStatus = (
