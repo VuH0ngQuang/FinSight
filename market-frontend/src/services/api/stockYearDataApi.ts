@@ -122,7 +122,7 @@ export const uploadStockYearDataExcel = async (file: File): Promise<UploadValida
   })
 
   const response = parseUploadValidationResponse(await readApiResponseText(res))
-  if (!res.ok) {
+  if (!res.ok && response.status !== 'FAILED') {
     throw new Error(response.message || 'Failed to upload stock year data Excel file')
   }
 

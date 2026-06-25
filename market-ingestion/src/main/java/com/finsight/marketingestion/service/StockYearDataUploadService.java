@@ -14,6 +14,7 @@ import com.finsight.marketingestion.model.StockYearData;
 import com.finsight.marketingestion.producer.KafkaProducer;
 import com.finsight.marketingestion.record.StagedUpload;
 import com.finsight.marketingestion.record.StockYearDataValidationRecord;
+import com.finsight.marketingestion.record.UploadValidationIssue;
 import com.finsight.marketingestion.validation.BusinessValidation;
 import com.finsight.marketingestion.validation.FileValidation;
 import com.finsight.marketingestion.validation.StructureValidation;
@@ -79,44 +80,76 @@ public class StockYearDataUploadService {
     }
 
     public UploadValidationResponse uploadStockData(MultipartFile file) throws Exception {
+        log.info("Starting stock year data upload validation: {}", describeFile(file));
+
         UploadValidationResult result = fileValidation.validate(file);
         if (result.hasErrors()) {
+            logValidationResult("file validation failed", result);
             return UploadValidationResponse.failed(result);
         }
+        log.info("File validation passed: {}", describeFile(file));
 
         try (InputStream inputStream = file.getInputStream();
              Workbook workbook = new XSSFWorkbook(inputStream)) {
+            log.info("Workbook opened: fileName={}, sheets={}", file.getOriginalFilename(), workbook.getNumberOfSheets());
+
             structureValidation.validateWorkbook(workbook, result);
             if (result.hasErrors()) {
+                logValidationResult("workbook structure validation failed", result);
                 return UploadValidationResponse.failed(result);
             }
+            log.info("Workbook structure validation passed: fileName={}", file.getOriginalFilename());
 
             List<StockYearDataValidationRecord> records = parseStockData(workbook);
+            log.info("Parsed stock year data records: fileName={}, records={}", file.getOriginalFilename(), records.size());
             List<StockYearDataHistoryResponseDto> historyRecords = fetchHistoryRecords(records, result);
+            log.info(
+                    "Loaded stock year data history records: fileName={}, requestedRecords={}, historyRecords={}",
+                    file.getOriginalFilename(),
+                    records.size(),
+                    historyRecords.size()
+            );
             result.merge(businessValidation.validate(records, historyRecords));
 
             if (result.hasErrors()) {
+                logValidationResult("business validation failed", result);
                 return UploadValidationResponse.failed(result);
             }
 
             if (result.hasWarnings()) {
                 String uploadId = stageUpload(file, records, result);
+                logValidationResult("upload waiting for confirmation", result);
+                log.warn(
+                        "Stock year data upload staged because warnings exist: uploadId={}, fileName={}, records={}",
+                        uploadId,
+                        file.getOriginalFilename(),
+                        records.size()
+                );
                 return UploadValidationResponse.waitingConfirmation(uploadId, result);
             }
 
             publishRecords(records);
+            log.info("Stock year data upload published successfully: fileName={}, records={}", file.getOriginalFilename(), records.size());
             return UploadValidationResponse.success();
         }
     }
 
     public UploadValidationResponse confirmUpload(String uploadId) throws Exception {
+        log.info("Confirming staged stock year data upload: uploadId={}", uploadId);
         StagedUpload stagedUpload = redisDao.find(RedisEnum.UPLOAD_VALIDATION.toString(), uploadId, StagedUpload.class);
         if (stagedUpload == null) {
+            log.warn("Staged stock year data upload not found or expired: uploadId={}", uploadId);
             throw new IllegalArgumentException("Upload validation session not found or expired");
         }
 
         publishRecords(stagedUpload.records());
         redisDao.delete(RedisEnum.UPLOAD_VALIDATION.toString(), uploadId);
+        log.info(
+                "Staged stock year data upload confirmed: uploadId={}, fileName={}, records={}",
+                uploadId,
+                stagedUpload.fileName(),
+                stagedUpload.records() == null ? 0 : stagedUpload.records().size()
+        );
         return UploadValidationResponse.confirmed();
     }
 
@@ -282,9 +315,45 @@ public class StockYearDataUploadService {
                 .sorted(Comparator.comparing(StockYearDataValidationRecord::stockId).thenComparing(StockYearDataValidationRecord::year))
                 .toList();
 
+        log.info("Publishing stock year data records to Kafka: records={}", sortedRecords.size());
         for (StockYearDataValidationRecord record : sortedRecords) {
             String message = objectMapper.writeValueAsString(record.data());
             kafkaProducer.publish(message, appConf.getUri().getStockYearData().getUpdate() + record.year());
+        }
+    }
+
+    private String describeFile(MultipartFile file) {
+        if (file == null) {
+            return "file=null";
+        }
+        return "name=" + file.getOriginalFilename()
+                + ", contentType=" + file.getContentType()
+                + ", size=" + file.getSize()
+                + ", empty=" + file.isEmpty();
+    }
+
+    private void logValidationResult(String stage, UploadValidationResult result) {
+        log.warn(
+                "Stock year data upload {}: errors={}, warnings={}",
+                stage,
+                result.getErrors().size(),
+                result.getWarnings().size()
+        );
+        for (UploadValidationIssue issue : result.getErrors()) {
+            log.warn(
+                    "Stock year data upload {} error: field={}, message={}",
+                    stage,
+                    issue.field(),
+                    issue.message()
+            );
+        }
+        for (UploadValidationIssue issue : result.getWarnings()) {
+            log.warn(
+                    "Stock year data upload {} warning: field={}, message={}",
+                    stage,
+                    issue.field(),
+                    issue.message()
+            );
         }
     }
 

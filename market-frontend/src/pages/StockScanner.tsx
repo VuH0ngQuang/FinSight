@@ -87,7 +87,10 @@ const StockScanner = () => {
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex-1">
           <h1 className="text-xl font-bold text-slate-900">Stock Scanner</h1>
-          <p className="text-sm text-slate-500">TOPSIS-ranked across {symbols?.length ?? 0} stocks</p>
+          <p className="text-sm text-slate-500">
+            TOPSIS-ranked across {symbols?.length ?? 0} stocks
+            {!userId && ' using equal default AHP weights'}
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <div className="relative">

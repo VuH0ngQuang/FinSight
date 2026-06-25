@@ -9,8 +9,12 @@ import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.4/index.js';
 // ---------------------------------------------------------------------------
 const responseTimeTrend  = new Trend('custom_response_time', true);
 const responseTimeSuccessByScenario = new Trend('custom_response_time_success_by_scenario', true);
+const responseTimeSuccessByEndpoint = new Trend('custom_response_time_success_by_endpoint', true);
 const errorRate          = new Rate('custom_error_rate');
 const requestCount       = new Counter('custom_request_count');
+const endpointRequestCount = new Counter('custom_endpoint_request_count');
+const endpointSuccessCount = new Counter('custom_endpoint_success_count');
+const endpointErrorRate = new Rate('custom_endpoint_error_rate');
 const upstreamTimeTrend  = new Trend('upstream_response_time', true);
 
 const trendGetStock          = new Trend('endpoint_get_stock', true);
@@ -90,17 +94,21 @@ const WEIGHTS = {
 };
 
 const ENDPOINT_CONFIG = {
-  getStock:          { metric: 'endpoint_get_stock',           tag: 'get_stock',           threshold: 'p(95)<1000' },
-  getAllStockIds:    { metric: 'endpoint_get_all_stock_ids',   tag: 'get_all_stock_ids',   threshold: 'p(95)<500'  },
-  getUserDetail:     { metric: 'endpoint_get_user_detail',     tag: 'get_user_detail',     threshold: 'p(95)<1500' },
-  updateUser:        { metric: 'endpoint_update_user',         tag: 'update_user',         threshold: 'p(95)<3000' },
-  login:             { metric: 'endpoint_login',               tag: 'login',               threshold: 'p(95)<3000' },
-  favoriteStock:     { metric: 'endpoint_favorite_stock',      tag: 'favorite_stock',      threshold: 'p(95)<3000' },
-  getAhpConfig:      { metric: 'endpoint_get_ahp_config',      tag: 'get_ahp_config',      threshold: 'p(95)<1000' },
-  updateAhpConfig:   { metric: 'endpoint_update_ahp_config',   tag: 'update_ahp_config',   threshold: 'p(95)<5000' },
-  getStockYearData:  { metric: 'endpoint_get_stock_year_data', tag: 'get_stock_year_data', threshold: 'p(95)<1000' },
-  portfolioAllocate: { metric: 'endpoint_portfolio_allocate',  tag: 'portfolio_allocate',  threshold: 'p(95)<5000' },
+  getStock:          { metric: 'endpoint_get_stock',           tag: 'get_stock',           threshold: 'p(95)<1000', expectedStatuses: [200, 404] },
+  getAllStockIds:    { metric: 'endpoint_get_all_stock_ids',   tag: 'get_all_stock_ids',   threshold: 'p(95)<500',  expectedStatuses: [200] },
+  getUserDetail:     { metric: 'endpoint_get_user_detail',     tag: 'get_user_detail',     threshold: 'p(95)<1500', expectedStatuses: [200, 404] },
+  updateUser:        { metric: 'endpoint_update_user',         tag: 'update_user',         threshold: 'p(95)<3000', expectedStatuses: [200] },
+  login:             { metric: 'endpoint_login',               tag: 'login',               threshold: 'p(95)<3000', expectedStatuses: [200, 401] },
+  favoriteStock:     { metric: 'endpoint_favorite_stock',      tag: 'favorite_stock',      threshold: 'p(95)<3000', expectedStatuses: [200] },
+  getAhpConfig:      { metric: 'endpoint_get_ahp_config',      tag: 'get_ahp_config',      threshold: 'p(95)<1000', expectedStatuses: [200, 404] },
+  updateAhpConfig:   { metric: 'endpoint_update_ahp_config',   tag: 'update_ahp_config',   threshold: 'p(95)<5000', expectedStatuses: [200] },
+  getStockYearData:  { metric: 'endpoint_get_stock_year_data', tag: 'get_stock_year_data', threshold: 'p(95)<1000', expectedStatuses: [200, 404] },
+  portfolioAllocate: { metric: 'endpoint_portfolio_allocate',  tag: 'portfolio_allocate',  threshold: 'p(95)<5000', expectedStatuses: [200] },
 };
+
+const EXPECTED_STATUSES_BY_TAG = Object.fromEntries(
+    Object.values(ENDPOINT_CONFIG).map((config) => [config.tag, config.expectedStatuses]),
+);
 
 const enabledEndpointKeys = Object.keys(WEIGHTS).filter((key) => WEIGHTS[key] > 0);
 const endpointThresholds = Object.fromEntries(
@@ -144,11 +152,23 @@ for (const rps of RPS_STEPS) {
 
 const perScenarioThresholds = {};
 const perScenarioSuccessThresholds = {};
+const perScenarioCountThresholds = {};
 for (const rps of RPS_STEPS) {
   perScenarioThresholds[`http_req_duration{scenario:rps_${rps}}`] = ['max>=0'];
   perScenarioThresholds[`http_req_failed{scenario:rps_${rps}}`] = ['rate>=0'];
+  perScenarioThresholds[`custom_error_rate{scenario:rps_${rps}}`] = ['rate>=0'];
   // Force k6 to materialize scenario-tagged submetrics for custom success-only trend.
   perScenarioSuccessThresholds[`custom_response_time_success_by_scenario{scenario:rps_${rps}}`] = ['max>=0'];
+  perScenarioCountThresholds[`custom_request_count{scenario:rps_${rps}}`] = ['count>=0'];
+}
+
+const perEndpointThresholds = {};
+for (const key of enabledEndpointKeys) {
+  const endpoint = ENDPOINT_CONFIG[key].tag;
+  perEndpointThresholds[`custom_response_time_success_by_endpoint{endpoint:${endpoint}}`] = ['max>=0'];
+  perEndpointThresholds[`custom_endpoint_request_count{endpoint:${endpoint}}`] = ['count>=0'];
+  perEndpointThresholds[`custom_endpoint_success_count{endpoint:${endpoint}}`] = ['count>=0'];
+  perEndpointThresholds[`custom_endpoint_error_rate{endpoint:${endpoint}}`] = ['rate>=0'];
 }
 
 export const options = {
@@ -159,6 +179,8 @@ export const options = {
     ...endpointThresholds,
     ...perScenarioThresholds,
     ...perScenarioSuccessThresholds,
+    ...perScenarioCountThresholds,
+    ...perEndpointThresholds,
   },
 };
 
@@ -169,13 +191,21 @@ function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function recordMetrics(res, endpointTrend) {
+function recordMetrics(res, endpointTrend, endpointName) {
+  const expectedStatuses = EXPECTED_STATUSES_BY_TAG[endpointName] || [200];
+  const failed = !expectedStatuses.includes(res.status);
+
   responseTimeTrend.add(res.timings.duration);
   endpointTrend.add(res.timings.duration);
   requestCount.add(1);
-  errorRate.add(res.status >= 400 || res.status === 0);
-  if (res.status > 0 && res.status < 400) {
+  endpointRequestCount.add(1, { endpoint: endpointName });
+  errorRate.add(failed);
+  endpointErrorRate.add(failed, { endpoint: endpointName });
+
+  if (!failed) {
+    endpointSuccessCount.add(1, { endpoint: endpointName });
     responseTimeSuccessByScenario.add(res.timings.duration, { scenario: exec.scenario.name });
+    responseTimeSuccessByEndpoint.add(res.timings.duration, { endpoint: endpointName });
   }
 
   const upstream = res.headers['X-Response-Time'] || res.headers['x-response-time'];
@@ -212,7 +242,7 @@ function testGetStock() {
     'get_stock: status 200|404': (r) => r.status === 200 || r.status === 404,
     'get_stock: has body':       (r) => r.body && r.body.length > 0,
   });
-  recordMetrics(res, trendGetStock);
+  recordMetrics(res, trendGetStock, 'get_stock');
 }
 
 // ---- GET /api/stock/getAllStocksId ----
@@ -228,7 +258,7 @@ function testGetAllStockIds() {
       try { return Array.isArray(JSON.parse(r.body)); } catch { return false; }
     },
   });
-  recordMetrics(res, trendGetAllIds);
+  recordMetrics(res, trendGetAllIds, 'get_all_stock_ids');
 }
 
 // ---- GET /api/user/getDetail/:userId ----
@@ -242,7 +272,7 @@ function testGetUserDetail() {
   check(res, {
     'get_user: status 200|404': (r) => r.status === 200 || r.status === 404,
   });
-  recordMetrics(res, trendGetUser);
+  recordMetrics(res, trendGetUser, 'get_user_detail');
 }
 
 // ---- PUT /api/user/update (safe fields only, then revert) ----
@@ -257,7 +287,7 @@ function testUpdateUser() {
       'update_user (modify): status 200': (r) => r.status === 200,
     });
     logFirstError('update_user_modify', res1);
-    recordMetrics(res1, trendUpdateUser);
+    recordMetrics(res1, trendUpdateUser, 'update_user');
 
     const res2 = http.put(
         `${baseUrl()}/api/user/update`,
@@ -268,7 +298,7 @@ function testUpdateUser() {
       'update_user (revert): status 200': (r) => r.status === 200,
     });
     logFirstError('update_user_revert', res2);
-    recordMetrics(res2, trendUpdateUser);
+    recordMetrics(res2, trendUpdateUser, 'update_user');
   });
 }
 
@@ -285,7 +315,7 @@ function testLogin() {
     'login: status 200|401': (r) => r.status === 200 || r.status === 401,
   });
   logFirstError('login', res);
-  recordMetrics(res, trendLogin);
+  recordMetrics(res, trendLogin, 'login');
 }
 
 // ---- POST addFavoriteStock ? removeFavoriteStock (paired) ----
@@ -306,7 +336,7 @@ function testFavoriteStock() {
       'addFavorite: status 200': (r) => r.status === 200,
     });
     logFirstError('addFavoriteStock', addRes);
-    recordMetrics(addRes, trendFavoriteStock);
+    recordMetrics(addRes, trendFavoriteStock, 'favorite_stock');
 
     const removeRes = http.post(
         `${baseUrl()}/api/user/removeFavoriteStock`,
@@ -317,7 +347,7 @@ function testFavoriteStock() {
       'removeFavorite: status 200': (r) => r.status === 200,
     });
     logFirstError('removeFavoriteStock', removeRes);
-    recordMetrics(removeRes, trendFavoriteStock);
+    recordMetrics(removeRes, trendFavoriteStock, 'favorite_stock');
   });
 }
 
@@ -332,7 +362,7 @@ function testGetAhpConfig() {
   check(res, {
     'get_ahp: status 200|404': (r) => r.status === 200 || r.status === 404,
   });
-  recordMetrics(res, trendGetAhpConfig);
+  recordMetrics(res, trendGetAhpConfig, 'get_ahp_config');
 }
 
 // ---- PUT /api/ahpConfig/update (modify ? revert) ----
@@ -352,7 +382,7 @@ function testUpdateAhpConfig() {
       'update_ahp (modify): status 200': (r) => r.status === 200,
     });
     logFirstError('update_ahp_modify', res1);
-    recordMetrics(res1, trendUpdateAhpConfig);
+    recordMetrics(res1, trendUpdateAhpConfig, 'update_ahp_config');
 
     const reverted = {
       ahpConfigId: AHP_CONFIG_ID,
@@ -368,7 +398,7 @@ function testUpdateAhpConfig() {
       'update_ahp (revert): status 200': (r) => r.status === 200,
     });
     logFirstError('update_ahp_revert', res2);
-    recordMetrics(res2, trendUpdateAhpConfig);
+    recordMetrics(res2, trendUpdateAhpConfig, 'update_ahp_config');
   });
 }
 
@@ -384,7 +414,7 @@ function testGetStockYearData() {
   check(res, {
     'get_year_data: status 200|404': (r) => r.status === 200 || r.status === 404,
   });
-  recordMetrics(res, trendGetYearData);
+  recordMetrics(res, trendGetYearData, 'get_stock_year_data');
 }
 
 // ---- POST /api/portfolio/allocate ----
@@ -403,7 +433,7 @@ function testPortfolioAllocate() {
     },
   });
   logFirstError('portfolio_allocate', res);
-  recordMetrics(res, trendPortfolio);
+  recordMetrics(res, trendPortfolio, 'portfolio_allocate');
 }
 
 // ---------------------------------------------------------------------------
@@ -481,18 +511,54 @@ function fmtMs(value) {
   return `${value.toFixed(2)}ms`;
 }
 
+function fmtCount(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return '';
+  return `${Math.round(value)}`;
+}
+
+function fmtPct(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return '';
+  return `${(value * 100).toFixed(2)}%`;
+}
+
+function reportPathFrom(csvPath, suffix, extension) {
+  const slashIndex = csvPath.lastIndexOf('/');
+  const dotIndex = csvPath.lastIndexOf('.');
+  const base = dotIndex > slashIndex ? csvPath.substring(0, dotIndex) : csvPath;
+  return `${base}${suffix}${extension}`;
+}
+
+function valuesFor(data, metricName) {
+  return data.metrics[metricName]?.values || {};
+}
+
+function highestRpsAtOrBelow(data, maxErrorRate) {
+  let highest = '';
+  for (const rps of RPS_STEPS) {
+    const failed = valuesFor(data, `custom_error_rate{scenario:rps_${rps}}`);
+    if (typeof failed.rate === 'number' && failed.rate <= maxErrorRate) {
+      highest = rps;
+    }
+  }
+  return highest;
+}
+
 export function handleSummary(data) {
   const csvPath = __ENV.SIMPLE_CSV_PATH || 'summary-simple.csv';
   const lines = ['rps,avg,min,max,med,p(90),p(95),error_rate,avg_success,min_success,max_success,med_success,p(90)_success,p(95)_success'];
+  const rpsLines = ['rps,request_count,avg_success,min_success,max_success,med_success,p(90)_success,error_rate,avg_all,min_all,max_all,med_all,p(90)_all,p(95)_all'];
+  const endpointLines = ['endpoint,request_count,success_count,error_rate,avg_success,min_success,max_success,med_success,p(90)_success,avg_all,min_all,max_all,med_all,p(90)_all'];
 
   for (const rps of RPS_STEPS) {
     const durationKey = `http_req_duration{scenario:rps_${rps}}`;
-    const failedKey = `http_req_failed{scenario:rps_${rps}}`;
+    const failedKey = `custom_error_rate{scenario:rps_${rps}}`;
     const successKey = `custom_response_time_success_by_scenario{scenario:rps_${rps}}`;
+    const requestCountKey = `custom_request_count{scenario:rps_${rps}}`;
 
     const duration = data.metrics[durationKey];
     const failed = data.metrics[failedKey];
     const success = data.metrics[successKey];
+    const rpsRequestCount = data.metrics[requestCountKey];
 
     if (!duration || !duration.values) continue;
 
@@ -520,11 +586,85 @@ export function handleSummary(data) {
       fmtMs(sv?.['p(90)']),
       fmtMs(sv?.['p(95)']),
     ].join(','));
+
+    rpsLines.push([
+      rps,
+      fmtCount(rpsRequestCount?.values?.count),
+      fmtMs(sv?.avg),
+      fmtMs(sv?.min),
+      fmtMs(sv?.max),
+      fmtMs(sv?.med),
+      fmtMs(sv?.['p(90)']),
+      errRate,
+      fmtMs(v.avg),
+      fmtMs(v.min),
+      fmtMs(v.max),
+      fmtMs(v.med),
+      fmtMs(v['p(90)']),
+      fmtMs(v['p(95)']),
+    ].join(','));
   }
+
+  for (const key of enabledEndpointKeys) {
+    const endpoint = ENDPOINT_CONFIG[key].tag;
+    const all = valuesFor(data, ENDPOINT_CONFIG[key].metric);
+    const success = valuesFor(data, `custom_response_time_success_by_endpoint{endpoint:${endpoint}}`);
+    const requests = valuesFor(data, `custom_endpoint_request_count{endpoint:${endpoint}}`);
+    const successes = valuesFor(data, `custom_endpoint_success_count{endpoint:${endpoint}}`);
+    const failures = valuesFor(data, `custom_endpoint_error_rate{endpoint:${endpoint}}`);
+
+    endpointLines.push([
+      endpoint,
+      fmtCount(requests.count),
+      fmtCount(successes.count),
+      fmtPct(failures.rate),
+      fmtMs(success.avg),
+      fmtMs(success.min),
+      fmtMs(success.max),
+      fmtMs(success.med),
+      fmtMs(success['p(90)']),
+      fmtMs(all.avg),
+      fmtMs(all.min),
+      fmtMs(all.max),
+      fmtMs(all.med),
+      fmtMs(all['p(90)']),
+    ].join(','));
+  }
+
+  const highestRps = Math.max(...RPS_STEPS);
+  const overallRequests = valuesFor(data, 'custom_request_count');
+  const overallErrors = valuesFor(data, 'custom_error_rate');
+  const overallSuccess = valuesFor(data, 'custom_response_time_success_by_scenario');
+  const highestSuccess = valuesFor(data, `custom_response_time_success_by_scenario{scenario:rps_${highestRps}}`);
+  const highestErrors = valuesFor(data, `custom_error_rate{scenario:rps_${highestRps}}`);
+  const stableAt1Pct = highestRpsAtOrBelow(data, 0.01);
+  const stableAt3Pct = highestRpsAtOrBelow(data, 0.03);
+  const stableAt5Pct = highestRpsAtOrBelow(data, 0.05);
+
+  const cvLines = [
+    '# FinSight k6 Benchmark Summary',
+    '',
+    `- Targets: ${BASE_URLS.join(', ')}`,
+    `- Mode: ${READ_ONLY ? 'read-only' : 'full read/write'}; steps: ${RPS_STEPS[0]}-${highestRps} RPS; ${STEP_DURATION} per step; ${STEP_GAP_SEC}s gap.`,
+    `- Total requests: ${fmtCount(overallRequests.count)}; overall error rate: ${fmtPct(overallErrors.rate)}.`,
+    `- Overall expected-response latency: avg ${fmtMs(overallSuccess.avg)}, median ${fmtMs(overallSuccess.med)}, p90 ${fmtMs(overallSuccess['p(90)'])}.`,
+    `- At ${highestRps} RPS: avg expected-response latency ${fmtMs(highestSuccess.avg)}; error rate ${fmtPct(highestErrors.rate)}.`,
+    `- Highest tested RPS within error-rate bands: <=1% ${stableAt1Pct || 'n/a'}, <=3% ${stableAt3Pct || 'n/a'}, <=5% ${stableAt5Pct || 'n/a'}.`,
+    '',
+    'CV wording candidate:',
+    `Benchmarked read-only REST APIs across two Node.js/Express replicas with ${fmtCount(overallRequests.count)} k6 requests, averaging ${fmtMs(overallSuccess.avg)} expected-response latency overall and ${fmtMs(highestSuccess.avg)} at ${highestRps} RPS; maintained <=5% semantic error rate through ${stableAt5Pct || highestRps} RPS.`,
+    '',
+  ];
+
+  const rpsCsvPath = __ENV.RPS_CSV_PATH || reportPathFrom(csvPath, '-rps', '.csv');
+  const endpointCsvPath = __ENV.ENDPOINT_CSV_PATH || reportPathFrom(csvPath, '-endpoints', '.csv');
+  const cvSummaryPath = __ENV.CV_SUMMARY_PATH || reportPathFrom(csvPath, '-cv-summary', '.md');
 
   return {
     stdout: textSummary(data, { indent: ' ', enableColors: true }),
     [csvPath]: `${lines.join('\n')}\n`,
+    [rpsCsvPath]: `${rpsLines.join('\n')}\n`,
+    [endpointCsvPath]: `${endpointLines.join('\n')}\n`,
+    [cvSummaryPath]: `${cvLines.join('\n')}`,
   };
 }
-

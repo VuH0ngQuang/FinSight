@@ -21,7 +21,7 @@ const NavItem = ({ to, icon, label }: { to: string; icon: React.ReactNode; label
 )
 
 const Sidebar = () => {
-  const { isAdmin, logout } = useAuth()
+  const { userId, isAdmin, logout } = useAuth()
   const [mqttConnected, setMqttConnected] = useState(getMqttConnectionStatus())
 
   useEffect(() => {
@@ -85,16 +85,29 @@ const Sidebar = () => {
           <span className={`h-2 w-2 rounded-full ${mqttConnected ? 'bg-emerald-500' : 'bg-slate-300'}`} />
           {mqttConnected ? 'Live' : 'Offline'}
         </div>
-        <button
-          onClick={logout}
-          className="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-700 transition-all"
-        >
-          <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
-          Sign out
-        </button>
+        {userId ? (
+          <button
+            onClick={logout}
+            className="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-700 transition-all"
+          >
+            <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Sign out
+          </button>
+        ) : (
+          <NavLink
+            to="/login"
+            className="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-blue-600 hover:bg-blue-50 transition-all"
+          >
+            <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" /><line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+            Sign in
+          </NavLink>
+        )}
       </div>
     </aside>
   )

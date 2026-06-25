@@ -15,6 +15,7 @@ import com.finsight.marketrealtime.service.MailService;
 import com.finsight.marketrealtime.service.UserService;
 import com.finsight.marketrealtime.utils.IDGenerator;
 import com.finsight.marketrealtime.utils.LockManager;
+import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,14 @@ public class UserServiceImpl implements UserService {
         this.redisDao = redisDao;
         this.mailService = mailService;
     }
+
+//    @PostConstruct
+//    private void init() {
+//        UserDto userDto = new UserDto();
+//        userDto.setEmail("test3@test.com");
+//        userDto.setPassword("test123");
+//        login(userDto);
+//    }
 
     @Override
     public ResponseDto createUser(UserDto userDto) {

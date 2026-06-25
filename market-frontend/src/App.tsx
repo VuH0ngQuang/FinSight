@@ -22,21 +22,43 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginRegister />} />
 
-        <Route
-          element={
-            <ProtectedRoute>
-              <AppShell />
-            </ProtectedRoute>
-          }
-        >
+        <Route element={<AppShell />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/stocks" element={<StockScanner />} />
           <Route path="/stocks/:symbol" element={<StockDetailPage />} />
-          <Route path="/portfolio" element={<PortfolioAllocator />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/payment/checkout" element={<Checkout />} />
-          <Route path="/subscriptions" element={<SubscriptionHistory />} />
-          <Route path="/profile" element={<ProfileSettings />} />
+          <Route
+            path="/portfolio"
+            element={
+              <ProtectedRoute>
+                <PortfolioAllocator />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/payment/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/subscriptions"
+            element={
+              <ProtectedRoute>
+                <SubscriptionHistory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfileSettings />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/admin"
             element={

@@ -28,8 +28,7 @@ public class StructureValidation {
             "sharesOutstanding",
             "priceEndYear",
             "costOfEquity",
-            "wacc",
-            "dividendGrowthRate"
+            "wacc"
     );
 
     public void validateWorkbook(Workbook workbook, UploadValidationResult result) {

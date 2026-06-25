@@ -152,7 +152,15 @@ const Dashboard = () => {
           <div className="flex-1 overflow-y-auto divide-y divide-slate-50">
             {favoriteSymbols.length === 0 && !isLoading && (
               <div className="p-6 text-center text-sm text-slate-400">
-                No favorites yet. <Link to="/stocks" className="text-blue-600 hover:underline">Browse stocks</Link>
+                {userId ? (
+                  <>
+                    No favorites yet. <Link to="/stocks" className="text-blue-600 hover:underline">Browse stocks</Link>
+                  </>
+                ) : (
+                  <>
+                    Sign in to create and manage your watchlist. <Link to="/login" className="text-blue-600 hover:underline">Log in</Link>
+                  </>
+                )}
               </div>
             )}
             {favoriteSymbols.map((sym) => {
@@ -182,7 +190,7 @@ const Dashboard = () => {
             })}
 
             {/* All stocks for quick add */}
-            {symbols && symbols.filter((s) => !favoriteSymbols.includes(s)).slice(0, 10).map((sym) => {
+            {userId && symbols && symbols.filter((s) => !favoriteSymbols.includes(s)).slice(0, 10).map((sym) => {
               const d = details[sym]
               return (
                 <div key={sym} className="flex items-center justify-between px-4 py-3 hover:bg-slate-50 transition-colors opacity-60">

@@ -70,7 +70,6 @@ const Payment = () => {
         }
       } catch (error) {
         // Keep fallback amounts when API is unavailable.
-        // eslint-disable-next-line no-console
         console.error('Failed to load subscription plans', error)
       } finally {
         if (mounted) setIsPricingLoaded(true)
@@ -99,7 +98,11 @@ const Payment = () => {
   const selectedProPricing = billing === '1Y' ? proYearly : proMonthly
 
   const handleCta = async (tier: typeof TIERS[number]) => {
-    if (tier.name !== 'Pro' || !userId) return
+    if (tier.name !== 'Pro') return
+    if (!userId) {
+      navigate('/login')
+      return
+    }
     setCreateError(null)
     setIsCreating(true)
     try {
