@@ -8,41 +8,12 @@
 
 ---
 
-## Fastest local setup
-
-Use this path for a local development or demonstration environment. Install Docker first, then run from the repository root:
-
-```bash
-chmod +x quick-docker-setup.sh
-./quick-docker-setup.sh
-```
-
-The script:
-
-- creates `.env.quickstart` with generated local database and Redis passwords;
-- leaves an existing `.env` unchanged;
-- starts MySQL, Redis, Kafka, and MQTT;
-- loads the bundled thesis database snapshot into a new MySQL volume;
-- creates the required Kafka topics;
-- builds and starts the core FinSight services and local gateway.
-
-When it completes, open <http://localhost:8080>. Useful follow-up commands are:
-
-```bash
-./quick-docker-setup.sh status
-./quick-docker-setup.sh logs
-./quick-docker-setup.sh stop
-```
-
-This quick setup intentionally does not enable the DNSE live-market collector or PayOS webhooks. Those integrations need real credentials. The bundled database is thesis demonstration data and is imported only when the local MySQL volume is first created; see [Loading or Restoring Demonstration Data](#11-loading-or-restoring-demonstration-data).
-
-If the script fails, read the error first, then use [Troubleshooting](#16-troubleshooting). The remaining sections document manual, production, and advanced deployment paths.
+> **Want the one-command setup?** Use [QUICK_DOCKER_SETUP.md](QUICK_DOCKER_SETUP.md) for Windows, Linux, or macOS.
 
 ---
 
 ## Contents
 
-0. [Fastest local setup](#fastest-local-setup)
 1. [Document Scope](#1-document-scope)
 2. [System Overview](#2-system-overview)
 3. [Important Deployment Characteristics](#3-important-deployment-characteristics)
@@ -345,7 +316,8 @@ Confirm the expected files exist:
 
 ```bash
 ls docker-compose.yml docker-compose.local.yml .env.example \
-  quick-docker-setup.sh recreate-docker.sh
+  quick-docker-setup.sh quick-docker-setup.ps1 quick-docker-setup.cmd \
+  recreate-docker.sh
 ```
 
 The deployment commands in this document must be run from the repository root.
@@ -547,7 +519,7 @@ Do not expose `market-realtime` or `market-collector` publicly unless a specific
 
 This option runs MySQL, Redis, Kafka, MQTT, the FinSight services, and a local gateway in Docker.
 
-For the automated path, run `./quick-docker-setup.sh`; it performs sections 9.4 through 9.9 with a separate `.env.quickstart` file. The manual steps below are retained for custom configuration and troubleshooting.
+For the automated path, follow [QUICK_DOCKER_SETUP.md](QUICK_DOCKER_SETUP.md). It performs sections 9.4 through 9.9 with a separate `.env.quickstart` file. The manual steps below are retained for custom configuration and troubleshooting.
 
 It is suitable for development and thesis demonstrations. It is **not** a production security configuration.
 
@@ -1666,9 +1638,7 @@ These limitations do not prevent a controlled deployment, but they must be addre
 
 Automated local setup:
 
-```bash
-./quick-docker-setup.sh
-```
+See [QUICK_DOCKER_SETUP.md](QUICK_DOCKER_SETUP.md) for the Windows, Linux, and macOS one-command setup.
 
 Validate:
 
