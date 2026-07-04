@@ -53,49 +53,101 @@ The thesis baseline and latest benchmark use different profiles and reporting se
 
 ## Event-driven architecture
 
+![FinSight high-level deployment architecture](diagram-export-31-03-2026-22_52_43.png)
+
+The deployment view above shows the external integrations and service boundaries. The diagram below expands the backend request/reply, persistence, ingestion, payment, and alerting paths implemented by the current services.
+
 ```mermaid
 flowchart LR
-    Browser[React browser client]
-    Gateway[Gateway / load balancer]
-    Frontend[market-frontend]
-    REST1[market-rest-1]
-    REST2[market-rest-2]
-    Kafka[(Apache Kafka)]
-    Realtime[market-realtime]
-    Ingestion[market-ingestion]
-    Collector[market-collector]
-    Webhooks[market-webhooks]
-    MySQL[(MySQL)]
-    Redis[(Redis)]
-    MQTT[(MQTT broker)]
-    DNSE[DNSE market feed]
-    PayOS[PayOS]
+    subgraph Actors[Actors and external systems]
+        EndUser[End user]
+        Operator[Admin / operator]
+        PayProvider[PayOS webhook]
+    end
 
-    Browser --> Gateway
-    Gateway --> Frontend
-    Gateway --> REST1
-    Gateway --> REST2
+    subgraph REST[market-rest - Express API replicas]
+        Controllers[Express controllers]
+        Queue[Queue services and sendAndWait]
+        ReadServices[Redis-first read services]
+    end
 
-    REST1 --> Redis
-    REST1 --> MySQL
-    REST2 --> Redis
-    REST2 --> MySQL
+    subgraph Kafka[Apache Kafka]
+        RestTopic[market-rest request topic]
+        ResponseTopic[Per-replica CLUSTER_ID response topic]
+        IngestionTopic[market-ingestion topic]
+        WebhookTopic[market-payment webhook topic]
+    end
 
-    REST1 -->|commands + correlation key| Kafka
-    REST2 -->|commands + correlation key| Kafka
-    Kafka -->|correlated replies| REST1
-    Kafka -->|correlated replies| REST2
-    Kafka --> Realtime
-    Realtime --> MySQL
-    Realtime --> Redis
+    subgraph Realtime[market-realtime]
+        Listener[KafkaListener]
+        Router[MessageRouterService]
+        UserService[UserServiceImpl]
+        StockService[StockServiceImpl]
+        YearService[StockYearDataServiceImpl]
+        AhpService[AhpConfigServiceImpl]
+        SubscriptionService[SubscriptionServiceImpl]
+        PortfolioService[PortfolioAllocationServiceImpl]
+        Scheduler[Scheduled valuation job]
+    end
 
-    Ingestion -->|confirmed batches| Kafka
-    DNSE -->|live ticks| Collector
-    Collector -->|persistence events| Kafka
-    Collector -->|price fan-out| MQTT
-    MQTT -->|MQTT over WebSocket| Browser
-    PayOS --> Webhooks
-    Webhooks -->|verified payment events| Kafka
+    subgraph Producers[Event producers]
+        IngestionService[market-ingestion]
+        WebhookService[market-webhooks]
+    end
+
+    subgraph Infrastructure[Infrastructure and integrations]
+        MySQL[(MySQL)]
+        Redis[(Redis hashes)]
+        SMTP[SMTP server]
+        PayOSAPI[PayOS checkout API]
+    end
+
+    EndUser -->|HTTP user, AHP, stock-year and portfolio APIs| Controllers
+    Operator -->|HTTP stock administration APIs| Controllers
+    Operator -->|Upload and confirm Excel batch| IngestionService
+
+    Controllers -->|GET read path| ReadServices
+    ReadServices -->|Cache lookup and backfill| Redis
+    ReadServices -->|Cache miss| MySQL
+
+    Controllers -->|POST, PUT and DELETE commands| Queue
+    Queue -->|Envelope and correlation ID| RestTopic
+    RestTopic --> Listener
+    IngestionService -->|Validated batch| IngestionTopic
+    IngestionTopic --> Listener
+    PayProvider -->|HTTPS callback| WebhookService
+    WebhookService -->|Verified payment event| WebhookTopic
+    WebhookTopic --> Listener
+
+    Listener --> Router
+    Router -->|URI dispatch| UserService
+    Router -->|URI dispatch| StockService
+    Router -->|URI dispatch| YearService
+    Router -->|URI dispatch| AhpService
+    Router -->|URI dispatch| SubscriptionService
+    Router -->|URI dispatch| PortfolioService
+
+    Router -->|ResponseDto| Listener
+    Listener -->|Publish with the same key| ResponseTopic
+    ResponseTopic -->|Resolve pending promise| Queue
+    Queue -->|HTTP response| Controllers
+
+    UserService --> MySQL
+    UserService --> Redis
+    StockService --> MySQL
+    StockService --> Redis
+    YearService --> MySQL
+    YearService --> Redis
+    AhpService --> MySQL
+    AhpService --> Redis
+    SubscriptionService --> MySQL
+    SubscriptionService --> Redis
+    SubscriptionService --> PayOSAPI
+    PortfolioService --> MySQL
+
+    YearService -->|Recalculate valuations| StockService
+    Scheduler -->|Overvaluation detection| StockService
+    StockService -->|Templated alert email| SMTP
 ```
 
 ### Why the backend is structured this way
