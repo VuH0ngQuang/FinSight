@@ -3,13 +3,46 @@
 **Project:** FinSight  
 **Document purpose:** Installation, configuration, deployment, verification, and maintenance guide  
 **Intended audience:** Thesis evaluators, developers, system administrators, and deployment engineers  
-**Last reviewed:** June 24, 2026  
+**Last reviewed:** July 4, 2026<br>
 **Repository deployment file:** `docker-compose.yml`
+
+---
+
+## Fastest local setup
+
+Use this path for a local development or demonstration environment. Install Docker first, then run from the repository root:
+
+```bash
+chmod +x quick-docker-setup.sh
+./quick-docker-setup.sh
+```
+
+The script:
+
+- creates `.env.quickstart` with generated local database and Redis passwords;
+- leaves an existing `.env` unchanged;
+- starts MySQL, Redis, Kafka, and MQTT;
+- loads the bundled thesis database snapshot into a new MySQL volume;
+- creates the required Kafka topics;
+- builds and starts the core FinSight services and local gateway.
+
+When it completes, open <http://localhost:8080>. Useful follow-up commands are:
+
+```bash
+./quick-docker-setup.sh status
+./quick-docker-setup.sh logs
+./quick-docker-setup.sh stop
+```
+
+This quick setup intentionally does not enable the DNSE live-market collector or PayOS webhooks. Those integrations need real credentials. The bundled database is thesis demonstration data and is imported only when the local MySQL volume is first created; see [Loading or Restoring Demonstration Data](#11-loading-or-restoring-demonstration-data).
+
+If the script fails, read the error first, then use [Troubleshooting](#16-troubleshooting). The remaining sections document manual, production, and advanced deployment paths.
 
 ---
 
 ## Contents
 
+0. [Fastest local setup](#fastest-local-setup)
 1. [Document Scope](#1-document-scope)
 2. [System Overview](#2-system-overview)
 3. [Important Deployment Characteristics](#3-important-deployment-characteristics)
@@ -188,7 +221,9 @@ spring:
 
 Therefore, it can create or update mapped tables when it connects to MySQL.
 
-The repository does not contain a complete SQL migration or seed-data package. A new database may have the schema but no stocks, subscription plans, users, or historical financial records. A production or thesis demonstration deployment should restore an approved database dump or load the required data separately.
+The repository contains `deployment/mysql/init/01-finsight.sql`, a complete point-in-time thesis database snapshot for the local demonstration stack. The local MySQL container imports it only when its data volume is first created.
+
+The snapshot is not a versioned migration system. `market-realtime` may still update mapped tables through Hibernate, and production deployments should use reviewed migrations plus an approved backup or seed process.
 
 ---
 
@@ -309,7 +344,8 @@ cd FinSight
 Confirm the expected files exist:
 
 ```bash
-ls docker-compose.yml .env.example recreate-docker.sh
+ls docker-compose.yml docker-compose.local.yml .env.example \
+  quick-docker-setup.sh recreate-docker.sh
 ```
 
 The deployment commands in this document must be run from the repository root.
@@ -511,18 +547,15 @@ Do not expose `market-realtime` or `market-collector` publicly unless a specific
 
 This option runs MySQL, Redis, Kafka, MQTT, the FinSight services, and a local gateway in Docker.
 
+For the automated path, run `./quick-docker-setup.sh`; it performs sections 9.4 through 9.9 with a separate `.env.quickstart` file. The manual steps below are retained for custom configuration and troubleshooting.
+
 It is suitable for development and thesis demonstrations. It is **not** a production security configuration.
 
 PayOS, SMTP, and the authorized DNSE market feed remain third-party services and are not emulated by this local stack.
 
-### 9.1 Create the local Mosquitto configuration
+### 9.1 Local Mosquitto configuration
 
-```bash
-mkdir -p deployment/mosquitto/config
-nano deployment/mosquitto/config/mosquitto.conf
-```
-
-Use:
+The repository includes `deployment/mosquitto/config/mosquitto.conf` with the following local-only configuration:
 
 ```conf
 persistence true
@@ -539,14 +572,9 @@ allow_anonymous true
 
 Anonymous MQTT access is acceptable only for an isolated demonstration. Production must use authentication, authorization, and TLS.
 
-### 9.2 Create the local gateway configuration
+### 9.2 Local gateway configuration
 
-```bash
-mkdir -p deployment/nginx
-nano deployment/nginx/local.conf
-```
-
-Use:
+The repository includes `deployment/nginx/local.conf`:
 
 ```nginx
 upstream finsight_rest {
@@ -594,9 +622,9 @@ server {
 
 Using one browser origin for the frontend and REST API avoids cross-origin browser requests in the local demonstration.
 
-### 9.3 Create `docker-compose.local.yml`
+### 9.3 Local Compose override
 
-Create this file in the repository root:
+The repository includes `docker-compose.local.yml`. It adds the local infrastructure, gateway, dependency ordering, and optional profiles shown below:
 
 ```yaml
 services:
@@ -614,6 +642,7 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./deployment/mysql/init/01-finsight.sql:/docker-entrypoint-initdb.d/01-finsight.sql:ro
     networks:
       - finsight-net
     healthcheck:
@@ -769,6 +798,10 @@ The Kafka settings are based on the Apache Kafka project's official single-node 
 <https://github.com/apache/kafka/blob/trunk/docker/examples/docker-compose-files/single-node/plaintext/docker-compose.yml>
 
 ### 9.4 Configure `.env` for the local stack
+
+Skip this section when using `quick-docker-setup.sh`; the script generates `.env.quickstart` without changing `.env`.
+
+For a manual deployment, copy `.env.example` to `.env`, then apply the following local values.
 
 Add a local MySQL root password:
 
@@ -1174,9 +1207,25 @@ Useful startup indicators include:
 
 ## 11. Loading or Restoring Demonstration Data
 
-Because the repository does not include a complete seed package, use an approved SQL dump when a populated demonstration is required.
+The quick local deployment includes `deployment/mysql/init/01-finsight.sql`, containing all seven application tables and the approved thesis demonstration rows. The MySQL image imports it automatically when `mysql-data` is first created.
+
+Rerunning `quick-docker-setup.sh` does not overwrite an existing database. To discard all local changes and reload the bundled snapshot:
+
+```bash
+docker compose \
+  --env-file .env.quickstart \
+  -f docker-compose.yml \
+  -f docker-compose.local.yml \
+  down -v
+
+./quick-docker-setup.sh
+```
+
+> **Destructive operation:** `down -v` deletes the local MySQL, Redis, Kafka, and MQTT volumes.
 
 ### 11.1 Import a dump into local MySQL
+
+Use this procedure for a different approved dump or an existing MySQL volume:
 
 ```bash
 docker compose \
@@ -1590,7 +1639,7 @@ The following points describe the repository state reviewed for this guide:
 4. Frontend public URLs are build-time values.
 5. Frontend MQTT code currently contains a hard-coded broker URL and topic.
 6. REST CORS origins are not configured through a dedicated public-origin variable.
-7. A complete database migration and seed-data package is not included.
+7. The bundled thesis database is a point-in-time snapshot, not a versioned migration system.
 8. MySQL uses Hibernate `ddl-auto: update`, which is convenient for development but should be replaced by versioned migrations for a mature production system.
 9. Local anonymous MQTT is suitable only for isolated testing.
 10. The fixed Docker subnet may conflict with an existing LAN or VPN.
@@ -1614,6 +1663,12 @@ These limitations do not prevent a controlled deployment, but they must be addre
 ---
 
 ## 20. Quick Command Summary
+
+Automated local setup:
+
+```bash
+./quick-docker-setup.sh
+```
 
 Validate:
 
